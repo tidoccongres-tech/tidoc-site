@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ti'Doc</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #3f6f91;
+      background: #f7f2ea;
+    }
+
+    /* NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 8%;
+      background: rgba(255,255,255,0.95);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #3f6f91;
+      margin-left: 30px;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,0.25)),
+        url("hero.jpg") center/cover no-repeat;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(70px, 12vw, 150px);
+      letter-spacing: 18px;
+      color: #1683aa;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .hero-subtitle {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.88);
+      padding: 25px 40px;
+      border-radius: 30px;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: bold;
+      letter-spacing: 2px;
+      max-width: 1000px;
+    }
+
+    /* ACTIVITES */
+    .activity {
+      min-height: 540px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .activity-image {
+      min-height: 500px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .activity-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 70px 10%;
+      background: linear-gradient(135deg, #f5eee4, #25a8c8);
+    }
+
+    .activity-text h2 {
+      font-size: 48px;
+      margin-bottom: 25px;
+      letter-spacing: 3px;
+    }
+
+    .activity-text p {
+      line-height: 1.8;
+      font-size: 18px;
+      max-width: 520px;
+      color: #55768b;
+    }
+
+    .button {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 30px;
+      padding: 14px 25px;
+      border: 1px solid #5b6870;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #4d5c64;
+      background: #fffaf4;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* PRESENTATION */
+    .presentation {
+      padding: 100px 10%;
+      text-align: center;
+      background: #f7f2ea;
+    }
+
+    .presentation-box {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 50px;
+      border-radius: 50px;
+      background: linear-gradient(180deg, #4da4cf, #007a98);
+      color: white;
+    }
+
+    .presentation-box p {
+      font-size: 25px;
+      line-height: 1.5;
+      font-weight: 600;
+      max-width: 950px;
+      margin: auto;
+    }
+
+    .doctor-icon {
+      margin-top: 45px;
+      font-size: 100px;
+    }
+
+    /* BANDEAU */
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      background: #fffaf4;
+      padding: 22px 0;
+      font-weight: bold;
+      font-size: 28px;
+    }
+
+    .ticker-content {
+      display: inline-block;
+      animation: scroll 15s linear infinite;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* CONTACT */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      min-height: 600px;
+    }
+
+    .contact-image {
+      background: url("contact.jpg") center/cover no-repeat;
+    }
+
+    .contact-content {
+      padding: 70px 10%;
+      background: linear-gradient(135deg, #f2eadf, #70c9dc);
+    }
+
+    .contact-content h2 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .contact-content p {
+      font-size: 18px;
+      margin: 12px 0;
+    }
+
+    .newsletter {
+      margin-top: 60px;
+    }
+
+    .newsletter h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .newsletter input {
+      padding: 14px;
+      width: 65%;
+      border: 1px solid #6c8b99;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .newsletter button {
+      padding: 14px 20px;
+      border: none;
+      background: #1683aa;
+      color: white;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #fffaf4;
+    }
+
+    /* TELEPHONE */
+    @media (max-width: 800px) {
+
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .activity,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .activity.reverse .activity-image {
+        order: 1;
+      }
+
+      .activity.reverse .activity-text {
+        order: 2;
+      }
+
+      .activity-image {
+        min-height: 350px;
+      }
+
+      .activity-text h2 {
+        font-size: 36px;
+      }
+
+      .presentation-box p {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    TI'DOC
+  </div>
+
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#apropos">À propos</a>
+    <a href="#activites">Nos activités</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+</header>
+
+
+<section class="hero" id="accueil">
+
+  <h1>TI'DOC</h1>
+
+  <div class="hero-subtitle">
+    Le congrès étudiant francophone de Cluj-Napoca
+  </div>
+
+</section>
+
+
+<section id="activites">
+
+  <!-- CONFERENCES -->
+
+  <div class="activity">
+
+    <div class="activity-image"
+      style="background-image:url('conference.jpg');">
+    </div>
+
+    <div class="activity-text">
+
+      <h2>Conférences</h2>
+
+      <p>
+        Un format à grande échelle, chaque conférence pouvant accueillir
+        jusqu'à 150 participants, avec des intervenants pluriculturels
+        et pluridisciplinaires.
+      </p>
+
+      <a href="#" class="button">
+        Lire plus →
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- WORKSHOPS -->
+
+  <div class="activity reverse">
+
+    <div class="activity-text">
+
+      <h2>Workshops</h2>
+
+      <p>
+        Des activités pratiques en groupes réduits, permettant un
+        approfondissement des connaissances et la possibilité pour tous
+        de réaliser les gestes techniques sous la supervision de
+        professionnels de santé.
+      </p>
+
+      <a href="#" class="button">
+        Lire plus →
+      </a>
+
+    </div>
+
+    <div class="activity-image"
+      style="background-image:url('workshop.jpg');">
+    </div>
+
+  </div>
+
+
+  <!-- TABLES RONDES -->
+
+  <div class="activity">
+
+    <div class="activity-image"
+      style="background-image:url('table-ronde.jpg');">
+    </div>
+
+    <div class="activity-text">
+
+      <h2>Tables rondes</h2>
+
+      <p>
+        Un espace de discussion entre étudiants proposé par les
+        différents cercles de recherches francophones de Cluj-Napoca.
+        Nos tables rondes vous permettront d'aborder des sujets variés
+        avec d'autres étudiants aussi passionnés que vous !
+      </p>
+
+      <a href="#" class="button">
+        Lire plus →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="presentation" id="apropos">
+
+  <div class="presentation-box">
+
+    <p>
+      Ti'Doc, c'est surtout des étudiants en santé avides d'apprendre
+      qui ont décidé de créer leur propre événement et de le partager.
+      <br><br>
+      Vous pouvez également rejoindre l'équipe Ti'Doc en participant
+      à notre prochaine édition !
+      <br><br>
+      Nous vous attendons nombreux et... petits docteurs deviendront grands.
+    </p>
+
+    <div class="doctor-icon">
+      🩺
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="ticker">
+
+  <div class="ticker-content">
+    Ti'Doc 2027, c'est parti ! 💙 &nbsp;&nbsp;&nbsp;
+    Ti'Doc 2027, c'est parti ! 💙 &nbsp;&nbsp;&nbsp;
+    Ti'Doc 2027, c'est parti ! 💙 &nbsp;&nbsp;&nbsp;
+    Ti'Doc 2027, c'est parti ! 💙 &nbsp;&nbsp;&nbsp;
+    Ti'Doc 2027, c'est parti ! 💙
+  </div>
+
+</div>
+
+
+<section class="contact" id="contact">
+
+  <div class="contact-image">
+  </div>
+
+  <div class="contact-content">
+
+    <h2>Nous contacter :</h2>
+
+    <p>✉️ tidoc.congres@gmail.com</p>
+    <p>🎵 @congres_tidoc</p>
+    <p>🔵 Congres Ti'doc</p>
+    <p>📷 @congres_tidoc</p>
+
+
+    <div class="newsletter">
+
+      <h3>
+        S'abonner à notre newsletter :
+      </h3>
+
+      <input
+        type="email"
+        placeholder="Votre adresse e-mail">
+
+      <button>
+        S'abonner
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+  © Ti'Doc 2027
+</footer>
+
+</body>
+</html>
