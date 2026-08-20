@@ -69,12 +69,12 @@
   padding: 40px 20px;
 }
     
-    .hero h1 {
-      font-size: clamp(70px, 12vw, 150px);
-      letter-spacing: 18px;
-      color: #1683aa;
-      text-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
+    .hero-title {
+  width: min(600px, 75vw);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 
     .hero-subtitle {
       margin-top: 20px;
@@ -313,7 +313,7 @@
 
 <section class="hero" id="accueil">
 
-  <h1>TI'DOC</h1>
+  <img src="files/tidoc.png" alt="Ti'Doc" class="hero-title">
 
   <div class="hero-subtitle">
     Le congrès étudiant francophone de Cluj-Napoca
