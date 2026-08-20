@@ -64,18 +64,25 @@ header{
   align-items:center;
   justify-content:space-between;
 
-  padding:18px 7%;
+  padding:22px 7%;
 
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  background:transparent;
 
-  box-shadow:0 4px 25px rgba(7,60,75,.08);
+  transition:
+    background .3s ease,
+    box-shadow .3s ease,
+    padding .3s ease;
 }
+
+
+/* LOGO */
 
 .logo img{
   width:82px;
 }
+
+
+/* MENU */
 
 nav{
   display:flex;
@@ -83,24 +90,61 @@ nav{
   gap:36px;
 
   background:rgba(255,255,255,.92);
+
   backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 
   padding:15px 25px;
+
   border-radius:50px;
 
   box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+  transition:
+    background .3s ease,
+    box-shadow .3s ease;
 }
+
 
 nav a{
   text-decoration:none;
+
   color:var(--blue-dark);
+
   font-size:15px;
   font-weight:600;
+
   transition:.25s;
 }
 
+
 nav a:hover{
   color:var(--blue);
+}
+
+
+/* =========================
+   HEADER QUAND ON DESCEND
+========================= */
+
+header.scrolled{
+  background:rgba(255,255,255,.96);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:0 5px 25px rgba(7,60,75,.10);
+
+  padding-top:12px;
+  padding-bottom:12px;
+}
+
+
+/* Le menu s'intègre dans la barre blanche */
+
+header.scrolled nav{
+  background:transparent;
+  box-shadow:none;
 }
 
 
