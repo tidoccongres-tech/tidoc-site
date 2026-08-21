@@ -52,11 +52,11 @@ a{
 
 
 /* =========================
-   HEADER
+   HEADER — IDENTIQUE ACCUEIL
 ========================= */
 
 header{
-  position:fixed;
+  position:absolute;
   top:0;
   left:0;
   width:100%;
@@ -66,43 +66,96 @@ header{
   align-items:center;
   justify-content:space-between;
 
-  padding:14px 7%;
+  padding:22px 7%;
 
-  background:rgba(255,255,255,.96);
+  /* IMPORTANT : aucune barre blanche */
+  background:transparent;
+}
 
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
 
-  box-shadow:0 5px 25px rgba(7,60,75,.08);
+/* LOGO */
+
+.logo{
+  display:block;
 }
 
 .logo img{
-  width:72px;
+  width:82px;
+  height:auto;
 }
+
+
+/* PETITE CAPSULE BLANCHE UNIQUEMENT */
 
 nav{
   display:flex;
   align-items:center;
-  gap:32px;
+  gap:36px;
 
-  padding:13px 24px;
+  background:rgba(255,255,255,.92);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  padding:15px 25px;
 
   border-radius:50px;
+
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
 }
+
 
 nav a{
   text-decoration:none;
-  color:var(--blue-dark);
+
+  color:#0B5367;
 
   font-size:15px;
-  font-weight:700;
+  font-weight:600;
+
+  transition:.25s;
 }
 
-nav a:hover,
-nav a.active{
-  color:var(--blue);
+
+nav a:hover{
+  color:#198CA7;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+  header{
+    position:absolute;
+
+    padding:18px 5%;
+
+    align-items:flex-start;
+
+    /* toujours transparent */
+    background:transparent;
+  }
+
+  .logo img{
+    width:62px;
+  }
+
+  nav{
+    gap:8px;
+
+    padding:10px 12px;
+
+    border-radius:50px;
+  }
+
+  nav a{
+    font-size:11px;
+  }
+
+}
 
 /* =========================
    HERO
