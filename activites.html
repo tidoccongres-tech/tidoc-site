@@ -2434,7 +2434,6 @@ animatedElements.forEach(element => {
 const TIDOC_DRIVE_API =
   "https://script.google.com/macros/s/AKfycbwv_x1Qeqm8ucMtiwtLVGPAB50zGNlqH8CyG1-4Z1w3farfW6_jDK7mP6L68RCwdYIT/exec";
 
-
 const conferenceCarousel =
   document.getElementById("conference-carousel");
 
@@ -2442,37 +2441,61 @@ const conferenceCarousel =
 async function loadConferencePhotos(){
 
   if(!conferenceCarousel){
-    console.error("Galerie conférences introuvable.");
     return;
   }
 
+  conferenceCarousel.innerHTML = `
+    <div class="gallery-loading">
+      Chargement des photos...
+    </div>
+  `;
+
   try{
 
-    const response =
-      await fetch(TIDOC_DRIVE_API);
+    const response = await fetch(
+      TIDOC_DRIVE_API,
+      {
+        method: "GET",
+        redirect: "follow"
+      }
+    );
 
-    const data =
-      await response.json();
+    if(!response.ok){
+      throw new Error(
+        "Erreur HTTP : " + response.status
+      );
+    }
 
+    const text = await response.text();
+
+    console.log(
+      "Réponse Ti'Doc :",
+      text.substring(0,200)
+    );
+
+    const data = JSON.parse(text);
 
     if(
       !data.success ||
-      !data.photos ||
-      data.photos.length === 0
+      !Array.isArray(data.photos)
     ){
+      throw new Error(
+        "Format de données incorrect"
+      );
+    }
+
+    if(data.photos.length === 0){
 
       conferenceCarousel.innerHTML = `
         <div class="gallery-loading">
-          Aucune photo disponible pour le moment.
+          Aucune photo disponible.
         </div>
       `;
 
       return;
     }
 
-
     conferenceCarousel.innerHTML = "";
-
 
     data.photos.forEach(photo => {
 
@@ -2481,51 +2504,65 @@ async function loadConferencePhotos(){
 
       card.className = "drive-photo";
 
+      const image =
+        document.createElement("img");
 
-      card.innerHTML = `
+      image.src = photo.image;
+      image.alt =
+        photo.conference || "Ti'Doc 2025";
 
-        <img
-          src="${photo.image}"
-          alt="${photo.conference}"
-          loading="lazy"
-        >
+      image.loading = "lazy";
 
-        <div class="drive-photo-caption">
 
-          <span>
-            ${photo.day}
-          </span>
+      const caption =
+        document.createElement("div");
 
-          <strong>
-            ${photo.conference}
-          </strong>
+      caption.className =
+        "drive-photo-caption";
 
-        </div>
 
-      `;
+      const day =
+        document.createElement("span");
 
+      day.textContent =
+        photo.day || "";
+
+
+      const title =
+        document.createElement("strong");
+
+      title.textContent =
+        photo.conference || "";
+
+
+      caption.appendChild(day);
+      caption.appendChild(title);
+
+      card.appendChild(image);
+      card.appendChild(caption);
 
       conferenceCarousel.appendChild(card);
 
     });
 
+    console.log(
+      data.photos.length +
+      " photos Ti'Doc chargées."
+    );
 
-  }catch(error){
+  }
+
+  catch(error){
 
     console.error(
-      "Erreur galerie Ti'Doc :",
+      "ERREUR GALERIE TIDOC :",
       error
     );
 
     conferenceCarousel.innerHTML = `
-
       <div class="gallery-loading">
-
-        Impossible de charger
-        les photos pour le moment.
-
+        Impossible de charger les photos pour le moment.
       </div>
-
     `;
 
   }
@@ -2533,9 +2570,7 @@ async function loadConferencePhotos(){
 }
 
 
-/* =========================
-   FLÈCHES
-========================= */
+/* FLÈCHES */
 
 const conferenceNext =
   document.getElementById("conference-next");
@@ -2544,37 +2579,33 @@ const conferencePrev =
   document.getElementById("conference-prev");
 
 
-if(conferenceNext){
-
-  conferenceNext.addEventListener("click", () => {
-
-    conferenceCarousel.scrollBy({
-      left:570,
-      behavior:"smooth"
-    });
-
-  });
-
-}
-
-
-if(conferencePrev){
-
-  conferencePrev.addEventListener("click", () => {
+conferenceNext?.addEventListener(
+  "click",
+  () => {
 
     conferenceCarousel.scrollBy({
-      left:-570,
-      behavior:"smooth"
+      left: 570,
+      behavior: "smooth"
     });
 
-  });
+  }
+);
 
-}
+
+conferencePrev?.addEventListener(
+  "click",
+  () => {
+
+    conferenceCarousel.scrollBy({
+      left: -570,
+      behavior: "smooth"
+    });
+
+  }
+);
 
 
-/* =========================
-   CHARGEMENT
-========================= */
+/* LANCEMENT */
 
 loadConferencePhotos();
 
