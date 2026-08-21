@@ -2143,6 +2143,161 @@ animatedElements.forEach(element => {
 });
 
 </script>
+
+<!-- ==================================================
+     GOOGLE DRIVE → GALERIE CONFÉRENCES
+================================================== -->
+
+<script>
+
+const TIDOC_DRIVE_API =
+  "https://script.google.com/macros/s/AKfycbwv_x1Qeqm8ucMtiwtLVGPAB50zGNlqH8CyG1-4Z1w3farfW6_jDK7mP6L68RCwdYIT/exec";
+
+
+const conferenceCarousel =
+  document.getElementById("conference-carousel");
+
+
+async function loadConferencePhotos(){
+
+  if(!conferenceCarousel){
+    console.error("Galerie conférences introuvable.");
+    return;
+  }
+
+  try{
+
+    const response =
+      await fetch(TIDOC_DRIVE_API);
+
+    const data =
+      await response.json();
+
+
+    if(
+      !data.success ||
+      !data.photos ||
+      data.photos.length === 0
+    ){
+
+      conferenceCarousel.innerHTML = `
+        <div class="gallery-loading">
+          Aucune photo disponible pour le moment.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    conferenceCarousel.innerHTML = "";
+
+
+    data.photos.forEach(photo => {
+
+      const card =
+        document.createElement("div");
+
+      card.className = "drive-photo";
+
+
+      card.innerHTML = `
+
+        <img
+          src="${photo.image}"
+          alt="${photo.conference}"
+          loading="lazy"
+        >
+
+        <div class="drive-photo-caption">
+
+          <span>
+            ${photo.day}
+          </span>
+
+          <strong>
+            ${photo.conference}
+          </strong>
+
+        </div>
+
+      `;
+
+
+      conferenceCarousel.appendChild(card);
+
+    });
+
+
+  }catch(error){
+
+    console.error(
+      "Erreur galerie Ti'Doc :",
+      error
+    );
+
+    conferenceCarousel.innerHTML = `
+
+      <div class="gallery-loading">
+
+        Impossible de charger
+        les photos pour le moment.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   FLÈCHES
+========================= */
+
+const conferenceNext =
+  document.getElementById("conference-next");
+
+const conferencePrev =
+  document.getElementById("conference-prev");
+
+
+if(conferenceNext){
+
+  conferenceNext.addEventListener("click", () => {
+
+    conferenceCarousel.scrollBy({
+      left:570,
+      behavior:"smooth"
+    });
+
+  });
+
+}
+
+
+if(conferencePrev){
+
+  conferencePrev.addEventListener("click", () => {
+
+    conferenceCarousel.scrollBy({
+      left:-570,
+      behavior:"smooth"
+    });
+
+  });
+
+}
+
+
+/* =========================
+   CHARGEMENT
+========================= */
+
+loadConferencePhotos();
+
+</script>
    
 </body>
 </html>
