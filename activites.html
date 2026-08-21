@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nos activités — Ti'Doc</title>
+
+<style>
+
+/* =========================
+   BASE
+========================= */
+
+:root{
+  --blue:#198CA7;
+  --blue-dark:#0B5367;
+  --blue-deep:#073C4B;
+  --blue-light:#E9F7FA;
+  --white:#FFFFFF;
+  --text:#153C46;
+  --grey:#637D84;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#F8FCFD;
+  overflow-x:hidden;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+a{
+  color:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 7%;
+
+  background:rgba(255,255,255,.96);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:0 5px 25px rgba(7,60,75,.08);
+}
+
+.logo img{
+  width:72px;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:32px;
+
+  padding:13px 24px;
+
+  border-radius:50px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--blue-dark);
+
+  font-size:15px;
+  font-weight:700;
+}
+
+nav a:hover,
+nav a.active{
+  color:var(--blue);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:620px;
+
+  padding:170px 8% 100px;
+
+  display:flex;
+  align-items:flex-end;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,52,65,.92),
+      rgba(5,52,65,.55),
+      rgba(5,52,65,.12)
+    ),
+    url("./files/IMG_3230_resultat.jpeg") center/cover;
+}
+
+.hero-content{
+  max-width:760px;
+}
+
+.hero-tag{
+  display:inline-block;
+
+  margin-bottom:22px;
+  padding:9px 16px;
+
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:50px;
+
+  background:rgba(255,255,255,.12);
+
+  font-size:13px;
+  font-weight:800;
+
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(50px,7vw,85px);
+  line-height:1;
+}
+
+.hero p{
+  max-width:650px;
+
+  margin-top:25px;
+
+  font-size:20px;
+  line-height:1.7;
+
+  color:rgba(255,255,255,.9);
+}
+
+
+/* =========================
+   ONGLETS
+========================= */
+
+.tabs-wrapper{
+  position:relative;
+  z-index:20;
+
+  width:min(700px,90%);
+
+  margin:-35px auto 0;
+
+  padding:8px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+
+  border-radius:50px;
+
+  background:white;
+
+  box-shadow:0 18px 55px rgba(7,60,75,.15);
+}
+
+.tab-button{
+  min-height:58px;
+
+  border:0;
+  border-radius:50px;
+
+  background:transparent;
+  color:var(--blue-dark);
+
+  font-size:16px;
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.tab-button.active{
+  color:white;
+  background:var(--blue);
+}
+
+
+/* =========================
+   CONTENU EDITION
+========================= */
+
+.edition-content{
+  display:none;
+}
+
+.edition-content.active{
+  display:block;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+  padding:120px 7% 70px;
+
+  text-align:center;
+}
+
+.intro-inner{
+  max-width:850px;
+  margin:auto;
+}
+
+.section-tag{
+  color:var(--blue);
+
+  font-size:13px;
+  font-weight:800;
+
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.intro h2{
+  margin-top:14px;
+
+  color:var(--blue-deep);
+
+  font-size:clamp(40px,5vw,64px);
+  line-height:1.05;
+}
+
+.intro p{
+  margin-top:22px;
+
+  color:var(--grey);
+
+  font-size:18px;
+  line-height:1.8;
+}
+
+
+/* =========================
+   CHIFFRES
+========================= */
+
+.stats{
+  width:min(1050px,86%);
+  margin:0 auto 120px;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  background:white;
+
+  box-shadow:0 15px 45px rgba(7,60,75,.08);
+}
+
+.stat{
+  padding:35px 25px;
+  text-align:center;
+}
+
+.stat + .stat{
+  border-left:1px solid #E2EEF0;
+}
+
+.stat strong{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:var(--blue);
+  font-size:34px;
+}
+
+.stat span{
+  color:var(--grey);
+  font-weight:700;
+}
+
+
+/* =========================
+   SECTIONS ACTIVITES
+========================= */
+
+.program-section{
+  padding:0 7% 120px;
+}
+
+.program-heading{
+  max-width:1200px;
+
+  margin:0 auto 45px;
+}
+
+.program-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:clamp(34px,4vw,50px);
+}
+
+.program-heading p{
+  max-width:700px;
+
+  margin-top:15px;
+
+  color:var(--grey);
+  line-height:1.7;
+}
+
+
+/* =========================
+   CARTES PROGRAMME
+========================= */
+
+.program-grid{
+  max-width:1200px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.program-card{
+  position:relative;
+
+  min-height:180px;
+
+  padding:30px;
+
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+
+  overflow:hidden;
+
+  border:1px solid #E3EFF1;
+  border-radius:24px;
+
+  background:white;
+
+  box-shadow:0 10px 30px rgba(7,60,75,.05);
+
+  transition:.25s;
+}
+
+.program-card:hover{
+  transform:translateY(-4px);
+
+  box-shadow:0 18px 38px rgba(7,60,75,.1);
+}
+
+.type-badge{
+  min-width:76px;
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50px;
+
+  color:white;
+  background:var(--blue);
+
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.program-info{
+  flex:1;
+}
+
+.program-info h3{
+  margin-bottom:9px;
+
+  color:var(--blue-deep);
+
+  font-size:22px;
+  line-height:1.25;
+}
+
+.program-info p{
+  color:var(--blue);
+  font-weight:700;
+}
+
+
+/* WORKSHOP */
+
+.workshop-card .type-badge{
+  color:var(--blue-dark);
+  background:#DDF4F8;
+}
+
+
+/* EVENT */
+
+.event-card .type-badge{
+  color:white;
+  background:var(--blue-dark);
+}
+
+
+/* =========================
+   EVENEMENTS VISUELS
+========================= */
+
+.event-feature{
+  max-width:1200px;
+
+  margin:0 auto 120px;
+
+  padding:0 7%;
+}
+
+.event-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.event-visual{
+  position:relative;
+
+  min-height:390px;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  color:white;
+}
+
+.event-visual img{
+  width:100%;
+  height:100%;
+
+  position:absolute;
+  inset:0;
+
+  object-fit:cover;
+}
+
+.event-overlay{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  padding:30px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(4,52,65,.93),
+      rgba(4,52,65,.15) 65%
+    );
+}
+
+.event-overlay span{
+  margin-bottom:8px;
+
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+
+  opacity:.8;
+}
+
+.event-overlay h3{
+  font-size:25px;
+}
+
+
+/* =========================
+   GALERIE
+========================= */
+
+.gallery{
+  padding:110px 7%;
+
+  background:var(--blue-light);
+}
+
+.gallery-inner{
+  max-width:1200px;
+  margin:auto;
+}
+
+.gallery-heading{
+  margin-bottom:45px;
+}
+
+.gallery-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:clamp(36px,4vw,52px);
+}
+
+.gallery-grid{
+  display:grid;
+
+  grid-template-columns:1.4fr .8fr .8fr;
+  grid-template-rows:260px 260px;
+
+  gap:15px;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  border-radius:24px;
+}
+
+.gallery-main{
+  grid-row:1 / 3;
+}
+
+
+/* =========================
+   TEMOIGNAGES
+========================= */
+
+.testimonials{
+  padding:120px 7%;
+  background:white;
+}
+
+.testimonials-inner{
+  max-width:1100px;
+  margin:auto;
+}
+
+.testimonials-heading{
+  text-align:center;
+
+  margin-bottom:50px;
+}
+
+.testimonials-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:clamp(36px,4vw,52px);
+}
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.testimonial{
+  padding:40px;
+
+  border-radius:28px;
+
+  background:#F7FCFD;
+
+  border:1px solid #E1EFF1;
+}
+
+.quote{
+  margin-bottom:18px;
+
+  color:var(--blue);
+
+  font-size:65px;
+  line-height:.7;
+  font-weight:900;
+}
+
+.testimonial blockquote{
+  color:var(--text);
+
+  font-size:19px;
+  line-height:1.7;
+}
+
+.testimonial strong{
+  display:block;
+
+  margin-top:25px;
+
+  color:var(--blue-dark);
+}
+
+
+/* =========================
+   2026 PLACEHOLDER
+========================= */
+
+.edition-2026{
+  min-height:700px;
+
+  padding:160px 7%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+}
+
+.edition-2026-box{
+  width:min(800px,100%);
+
+  padding:80px 50px;
+
+  border-radius:35px;
+
+  background:white;
+
+  box-shadow:0 20px 55px rgba(7,60,75,.1);
+}
+
+.edition-2026-box h2{
+  margin:15px 0 20px;
+
+  color:var(--blue-deep);
+
+  font-size:clamp(40px,5vw,60px);
+}
+
+.edition-2026-box p{
+  color:var(--grey);
+
+  font-size:18px;
+  line-height:1.7;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:32px 7%;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:var(--blue-deep);
+
+  color:rgba(255,255,255,.8);
+
+  font-size:14px;
+}
+
+.footer-logo{
+  width:65px;
+}
+
+
+/* =========================
+   TABLETTE
+========================= */
+
+@media(max-width:900px){
+
+  nav{
+    gap:16px;
+  }
+
+  nav a{
+    font-size:13px;
+  }
+
+  .hero{
+    min-height:550px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .stat + .stat{
+    border-left:0;
+    border-top:1px solid #E2EEF0;
+  }
+
+  .program-grid{
+    grid-template-columns:1fr;
+  }
+
+  .event-grid{
+    grid-template-columns:1fr;
+  }
+
+  .event-visual{
+    min-height:380px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:300px 220px 220px;
+  }
+
+  .gallery-main{
+    grid-column:1 / 3;
+    grid-row:auto;
+  }
+
+}
+
+
+/* =========================
+   TELEPHONE
+========================= */
+
+@media(max-width:650px){
+
+  header{
+    padding:11px 4%;
+  }
+
+  .logo img{
+    width:55px;
+  }
+
+  nav{
+    gap:9px;
+    padding:10px;
+  }
+
+  nav a{
+    font-size:10px;
+  }
+
+  nav a:nth-child(2){
+    display:none;
+  }
+
+  .hero{
+    min-height:500px;
+
+    padding:140px 6% 70px;
+  }
+
+  .tabs-wrapper{
+    margin-top:-28px;
+  }
+
+  .tab-button{
+    min-height:52px;
+    font-size:14px;
+  }
+
+  .intro{
+    padding-top:90px;
+  }
+
+  .program-card{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .type-badge{
+    min-width:70px;
+  }
+
+  .gallery-grid{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .gallery-grid img{
+    height:280px;
+  }
+
+  .testimonial-grid{
+    grid-template-columns:1fr;
+  }
+
+  footer{
+    flex-direction:column;
+    gap:20px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <a href="index.html" class="logo">
+    <img src="files/logo.png" alt="Logo Ti'Doc">
+  </a>
+
+  <nav>
+
+    <a href="index.html">
+      Accueil
+    </a>
+
+    <a href="index.html#apropos">
+      À propos
+    </a>
+
+    <a href="activites.html" class="active">
+      Nos activités
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <span class="hero-tag">
+      Ti'Doc au fil des éditions
+    </span>
+
+    <h1>
+      Nos activités
+    </h1>
+
+    <p>
+      Retrouvez les conférences, workshops,
+      tables rondes et événements qui ont rythmé
+      les différentes éditions de Ti'Doc.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     ONGLETS 2025 / 2026
+========================= -->
+
+<div class="tabs-wrapper">
+
+  <button
+    class="tab-button active"
+    data-tab="edition2025">
+
+    Édition 2025
+
+  </button>
+
+  <button
+    class="tab-button"
+    data-tab="edition2026">
+
+    Édition 2026
+
+  </button>
+
+</div>
+
+
+
+<!-- ==================================================
+     EDITION 2025
+================================================== -->
+
+<div
+  class="edition-content active"
+  id="edition2025"
+>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+  <div class="intro-inner">
+
+    <span class="section-tag">
+      Première édition
+    </span>
+
+    <h2>
+      Retour sur Ti'Doc 2025
+    </h2>
+
+    <p>
+      Une première édition riche en rencontres,
+      en apprentissages et en moments de partage
+      autour de la médecine et de la santé.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- CHIFFRES -->
+
+<div class="stats">
+
+  <div class="stat">
+
+    <strong>
+      CONF
+    </strong>
+
+    <span>
+      Conférences
+    </span>
+
+  </div>
+
+  <div class="stat">
+
+    <strong>
+      WS
+    </strong>
+
+    <span>
+      Workshops
+    </span>
+
+  </div>
+
+  <div class="stat">
+
+    <strong>
+      EVENT
+    </strong>
+
+    <span>
+      Moments de partage
+    </span>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     CONFERENCES
+========================= -->
+
+<section class="program-section">
+
+  <div class="program-heading">
+
+    <span class="section-tag">
+      Conférences
+    </span>
+
+    <h2>
+      Des sujets variés,
+      des intervenants passionnés.
+    </h2>
+
+  </div>
+
+
+  <div class="program-grid">
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Les lymphomes chez l'enfant
+        </h3>
+
+        <p>
+          Dr. Vannier
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Médecine dentaire dans l'ère du numérique
+        </h3>
+
+        <p>
+          Dr. Mesaros
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Les dessous de la gynécologie :
+          prévention, action, réaction
+        </h3>
+
+        <p>
+          Dr. Fried
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Les cellules souches primitives :
+          rôle et implications dans les maladies
+        </h3>
+
+        <p>
+          Dr. Cismaru
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          La vitrectomie dans les traumatismes oculaires
+        </h3>
+
+        <p>
+          Dr. Samoila
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          ARS et ANSM :
+          deux institutions clefs pour la santé publique
+        </h3>
+
+        <p>
+          Dr. Ratignier-Carbonneil
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Médicaments et grossesse
+        </h3>
+
+        <p>
+          Dr. Bouquet
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Le tabagisme :
+          généralités et prise en charge
+        </h3>
+
+        <p>
+          Dr. Lemoine
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          VIH, où en est-on en 2025 ?
+        </h3>
+
+        <p>
+          Dr. Frentiu et Dr. Briciu
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          De l'assiette à la peau :
+          quand l'alimentation devient cosmétique
+        </h3>
+
+        <p>
+          Dr. Cozma-Petrut
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          La chirurgie vasculaire en pratique
+        </h3>
+
+        <p>
+          Dr. Reny
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card">
+
+      <span class="type-badge">
+        CONF
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Les troubles de la mémoire liés à l'anxiété
+        </h3>
+
+        <p>
+          Dr. Popa
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORKSHOPS
+========================= -->
+
+<section class="program-section">
+
+  <div class="program-heading">
+
+    <span class="section-tag">
+      Workshops
+    </span>
+
+    <h2>
+      Apprendre en pratiquant.
+    </h2>
+
+    <p>
+      Des ateliers en petits groupes permettant
+      aux participants de découvrir et de pratiquer
+      différents gestes et approches médicales.
+    </p>
+
+  </div>
+
+
+  <div class="program-grid">
+
+
+    <div class="program-card workshop-card">
+
+      <span class="type-badge">
+        WS
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Échographie du pelvis
+        </h3>
+
+        <p>
+          Dr. Bouquet
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card workshop-card">
+
+      <span class="type-badge">
+        WS
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Échographie de l'épaule,
+          du poumon et du canal carpien
+        </h3>
+
+        <p>
+          Dr. Lemoine
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card workshop-card">
+
+      <span class="type-badge">
+        WS
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Intubation, ventilation,
+          voie intraveineuse et perfusion
+        </h3>
+
+        <p>
+          Dr. Challi
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card workshop-card">
+
+      <span class="type-badge">
+        WS
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Adaptation de la pratique médicale à l'autisme
+        </h3>
+
+        <p>
+          Asociația Autism Transilvania
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card workshop-card">
+
+      <span class="type-badge">
+        WS
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Table ronde :
+          Anatomie et innovations technologiques
+        </h3>
+
+        <p>
+          CEFA
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card workshop-card">
+
+      <span class="type-badge">
+        WS
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Table ronde :
+          Éthique médicale
+        </h3>
+
+        <p>
+          Cercle de sémiologie médicale
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     EVENEMENTS
+========================= -->
+
+<section class="program-section">
+
+  <div class="program-heading">
+
+    <span class="section-tag">
+      Événements
+    </span>
+
+    <h2>
+      Et aussi des moments
+      pour se retrouver.
+    </h2>
+
+  </div>
+
+
+  <div class="program-grid">
+
+
+    <div class="program-card event-card">
+
+      <span class="type-badge">
+        EVENT
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Cérémonie d'ouverture
+        </h3>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card event-card">
+
+      <span class="type-badge">
+        EVENT
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Visite du musée de la pharmacie
+        </h3>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card event-card">
+
+      <span class="type-badge">
+        EVENT
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Trivia Night
+        </h3>
+
+        <p>
+          avec CMC Event
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="program-card event-card">
+
+      <span class="type-badge">
+        EVENT
+      </span>
+
+      <div class="program-info">
+
+        <h3>
+          Scrub Party
+        </h3>
+
+        <p>
+          avec CMC Event
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     GALERIE
+========================= -->
+
+<section class="gallery">
+
+  <div class="gallery-inner">
+
+    <div class="gallery-heading">
+
+      <span class="section-tag">
+        En images
+      </span>
+
+      <h2>
+        Quelques souvenirs
+        de Ti'Doc 2025.
+      </h2>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+      <img
+        src="files/IMG_3230_resultat.jpeg"
+        alt="Ti'Doc 2025"
+        class="gallery-main"
+      >
+
+      <img
+        src="files/workshop.png"
+        alt="Workshop Ti'Doc"
+      >
+
+      <img
+        src="files/IMG_3579_resultat.jpeg"
+        alt="Ti'Doc"
+      >
+
+      <img
+        src="files/IMG_3897.jpeg"
+        alt="Ti'Doc"
+      >
+
+      <img
+        src="files/IMG_3082_resultat.jpeg"
+        alt="Congrès Ti'Doc"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     TEMOIGNAGES
+========================= -->
+
+<section class="testimonials">
+
+  <div class="testimonials-inner">
+
+    <div class="testimonials-heading">
+
+      <span class="section-tag">
+        Ils en parlent
+      </span>
+
+      <h2>
+        Vos retours sur
+        la première édition.
+      </h2>
+
+    </div>
+
+
+    <div class="testimonial-grid">
+
+
+      <div class="testimonial">
+
+        <div class="quote">
+          “
+        </div>
+
+        <blockquote>
+          Merci aux organisateurs,
+          c'était super et vous avez fait
+          un beau travail &lt;3.
+        </blockquote>
+
+        <strong>
+          Naelle El Fassal
+        </strong>
+
+      </div>
+
+
+
+      <div class="testimonial">
+
+        <div class="quote">
+          “
+        </div>
+
+        <blockquote>
+          Rien de plus,
+          c'était très bien pour une première.
+        </blockquote>
+
+        <strong>
+          Elise Mesple
+        </strong>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     EDITION 2026
+================================================== -->
+
+<div
+  class="edition-content"
+  id="edition2026"
+>
+
+  <section class="edition-2026">
+
+    <div class="edition-2026-box">
+
+      <span class="section-tag">
+        Deuxième édition
+      </span>
+
+      <h2>
+        Ti'Doc 2026
+      </h2>
+
+      <p>
+        La deuxième édition arrive ici.
+        Nous allons construire cette partie
+        ensemble avec son programme,
+        ses photos, ses intervenants
+        et ses temps forts.
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <img
+    src="files/logo.png"
+    alt="Ti'Doc"
+    class="footer-logo"
+  >
+
+  <span>
+    © Ti'Doc 2027 — Cluj-Napoca
+  </span>
+
+</footer>
+
+
+
+<!-- =========================
+     SCRIPT ONGLETS
+========================= -->
+
+<script>
+
+const buttons =
+  document.querySelectorAll(".tab-button");
+
+const contents =
+  document.querySelectorAll(".edition-content");
+
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    buttons.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    contents.forEach(content =>
+      content.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    document
+      .getElementById(button.dataset.tab)
+      .classList.add("active");
+
+  });
+
+});
+
+</script>
+
+
+</body>
+</html>
