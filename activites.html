@@ -2686,6 +2686,187 @@ conferencePrev?.addEventListener(
 loadConferencePhotos();
 
 </script>
+
+<!-- ==================================================
+     GOOGLE DRIVE → GALERIE WORKSHOPS
+================================================== -->
+
+<script>
+
+const workshopCarousel =
+  document.getElementById("workshop-carousel");
+
+
+async function loadWorkshopPhotos(){
+
+  if(!workshopCarousel){
+    return;
+  }
+
+  workshopCarousel.innerHTML = `
+    <div class="gallery-loading">
+      Chargement des photos...
+    </div>
+  `;
+
+  try{
+
+    const response = await fetch(
+      TIDOC_DRIVE_API,
+      {
+        method: "GET",
+        redirect: "follow"
+      }
+    );
+
+    if(!response.ok){
+      throw new Error(
+        "Erreur HTTP : " + response.status
+      );
+    }
+
+    const text = await response.text();
+
+    const data = JSON.parse(text);
+
+
+    if(
+      !data.success ||
+      !Array.isArray(data.workshops)
+    ){
+      throw new Error(
+        "Format de données workshops incorrect"
+      );
+    }
+
+
+    if(data.workshops.length === 0){
+
+      workshopCarousel.innerHTML = `
+        <div class="gallery-loading">
+          Aucune photo de workshop disponible.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    workshopCarousel.innerHTML = "";
+
+
+    data.workshops.forEach(photo => {
+
+      const card =
+        document.createElement("div");
+
+      card.className = "drive-photo";
+
+
+      const image =
+        document.createElement("img");
+
+      image.src = photo.image;
+
+      image.alt =
+        photo.workshop || "Workshop Ti'Doc 2025";
+
+      image.loading = "lazy";
+
+
+      const caption =
+        document.createElement("div");
+
+      caption.className =
+        "drive-photo-caption";
+
+
+      const day =
+        document.createElement("span");
+
+      day.textContent =
+        photo.day || "";
+
+
+      const title =
+        document.createElement("strong");
+
+      title.textContent =
+        photo.workshop || "";
+
+
+      caption.appendChild(day);
+      caption.appendChild(title);
+
+      card.appendChild(image);
+      card.appendChild(caption);
+
+      workshopCarousel.appendChild(card);
+
+    });
+
+  }
+
+  catch(error){
+
+    console.error(
+      "ERREUR GALERIE WORKSHOPS :",
+      error
+    );
+
+    workshopCarousel.innerHTML = `
+      <div class="gallery-loading">
+        Impossible de charger les photos des workshops.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   FLÈCHES WORKSHOPS
+========================= */
+
+const workshopNext =
+  document.getElementById("workshop-next");
+
+const workshopPrev =
+  document.getElementById("workshop-prev");
+
+
+workshopNext?.addEventListener(
+  "click",
+  () => {
+
+    workshopCarousel.scrollBy({
+      left:570,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+workshopPrev?.addEventListener(
+  "click",
+  () => {
+
+    workshopCarousel.scrollBy({
+      left:-570,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+/* LANCEMENT */
+
+loadWorkshopPhotos();
+
+</script>
    
 </body>
 </html>
