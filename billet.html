@@ -947,7 +947,405 @@ nav a:hover{
 
 }
 
+/* =====================================================
+   EMPLOI DU TEMPS
+===================================================== */
 
+.schedule-card{
+
+  margin-top:30px;
+  padding:38px;
+
+  border-radius:32px;
+
+  background:white;
+
+  box-shadow:
+    0 18px 55px
+    rgba(7,60,75,.09);
+
+}
+
+
+.schedule-heading{
+
+  max-width:700px;
+
+  margin-bottom:30px;
+
+}
+
+
+.schedule-heading span{
+
+  color:var(--blue);
+
+  font-size:11px;
+
+  font-weight:900;
+
+  letter-spacing:1.6px;
+
+  text-transform:uppercase;
+
+}
+
+
+.schedule-heading h3{
+
+  margin-top:8px;
+
+  color:var(--blue-deep);
+
+  font-size:30px;
+
+}
+
+
+.schedule-heading p{
+
+  margin-top:10px;
+
+  color:var(--grey);
+
+  font-size:14px;
+
+  line-height:1.6;
+
+}
+
+
+/* JOUR */
+
+.schedule-days{
+
+  display:grid;
+
+  gap:24px;
+
+}
+
+
+.schedule-day{
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    #DDECEF;
+
+  border-radius:25px;
+
+  background:#FCFEFE;
+
+}
+
+
+.schedule-day-header{
+
+  padding:20px 24px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:15px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #073C4B,
+      #0B6479
+    );
+
+  color:white;
+
+}
+
+
+.schedule-day-name{
+
+  font-size:21px;
+
+  font-weight:900;
+
+}
+
+
+.schedule-day-count{
+
+  padding:7px 11px;
+
+  border-radius:50px;
+
+  background:
+    rgba(255,255,255,.14);
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+/* TIMELINE */
+
+.schedule-items{
+
+  position:relative;
+
+  padding:
+    10px 24px
+    22px;
+
+}
+
+
+.schedule-item{
+
+  position:relative;
+
+  display:grid;
+
+  grid-template-columns:
+    90px 22px 1fr;
+
+  gap:14px;
+
+  min-height:115px;
+
+  padding-top:20px;
+
+}
+
+
+.schedule-time{
+
+  padding-top:2px;
+
+  color:var(--blue-dark);
+
+  font-size:13px;
+
+  font-weight:900;
+
+}
+
+
+.schedule-line{
+
+  position:relative;
+
+  display:flex;
+
+  justify-content:center;
+
+}
+
+
+.schedule-line::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:11px;
+
+  bottom:-22px;
+
+  width:2px;
+
+  background:#DCECEF;
+
+}
+
+
+.schedule-item:last-child
+.schedule-line::before{
+
+  bottom:50%;
+
+}
+
+
+.schedule-dot{
+
+  position:relative;
+
+  z-index:2;
+
+  width:14px;
+  height:14px;
+
+  margin-top:6px;
+
+  border-radius:50%;
+
+  background:var(--blue);
+
+  box-shadow:
+    0 0 0 5px
+    var(--blue-light);
+
+}
+
+
+.schedule-activity{
+
+  padding:
+    17px 19px;
+
+  border-radius:18px;
+
+  background:white;
+
+  border:
+    1px solid
+    #E1EEF0;
+
+  box-shadow:
+    0 8px 24px
+    rgba(7,60,75,.05);
+
+}
+
+
+.schedule-type{
+
+  display:inline-block;
+
+  margin-bottom:7px;
+
+  color:var(--blue);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1.3px;
+
+  text-transform:uppercase;
+
+}
+
+
+.schedule-activity h4{
+
+  color:var(--blue-deep);
+
+  font-size:17px;
+
+  line-height:1.35;
+
+}
+
+
+.schedule-meta{
+
+  margin-top:11px;
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:7px;
+
+}
+
+
+.schedule-pill{
+
+  padding:6px 9px;
+
+  border-radius:50px;
+
+  background:var(--blue-light);
+
+  color:var(--blue-dark);
+
+  font-size:10px;
+
+  font-weight:700;
+
+}
+
+
+.schedule-empty{
+
+  padding:22px;
+
+  border-radius:18px;
+
+  color:var(--grey);
+
+  background:#F5FAFB;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  .schedule-card{
+
+    padding:
+      27px 20px;
+
+  }
+
+
+  .schedule-item{
+
+    grid-template-columns:
+      60px 18px 1fr;
+
+    gap:9px;
+
+  }
+
+
+  .schedule-time{
+
+    font-size:11px;
+
+  }
+
+
+  .schedule-day-header{
+
+    padding:
+      17px 18px;
+
+  }
+
+
+  .schedule-day-name{
+
+    font-size:18px;
+
+  }
+
+
+  .schedule-items{
+
+    padding:
+      8px 15px
+      18px;
+
+  }
+
+
+  .schedule-activity{
+
+    padding:
+      15px;
+
+  }
+
+}
 
 /* =====================================================
    NOTE
@@ -1260,7 +1658,7 @@ footer{
 ===================================================== */
 
 const BILLETTERIE_API =
-  "https://script.google.com/macros/s/AKfycbw0636mhEr2ovm9QbCkJROVsjPHUjqGB3KyAF9vRg7nGL3XncJf14XjVS9YtJ70Ut8T/exec";
+  "https://script.google.com/macros/s/AKfycbxO3P7Ej81mNr4xj-p-AxmNqGxUoc85dSowotKYML39frz-QeZ68jrXFrpVI6IuWn-o/exec";
 
 
 /* =====================================================
@@ -1374,7 +1772,357 @@ async function loadTicket(){
 
 }
 
+/* =====================================================
+   TRI DES HORAIRES
+===================================================== */
 
+function timeToMinutes(
+  value
+){
+
+  const text =
+    String(
+      value || ""
+    ).trim();
+
+
+  const match =
+    text.match(
+      /(\d{1,2})[:hH](\d{2})/
+    );
+
+
+  if(!match){
+
+    return 99999;
+
+  }
+
+
+  return (
+    Number(match[1]) * 60 +
+    Number(match[2])
+  );
+
+}
+
+
+
+/* =====================================================
+   CRÉER L'EMPLOI DU TEMPS
+===================================================== */
+
+function buildScheduleHtml(
+  reservations
+){
+
+  const activities =
+    reservations.filter(
+      item =>
+        item.day ||
+        item.startTime
+    );
+
+
+  if(
+    activities.length === 0
+  ){
+
+    return `
+
+      <section class="schedule-card">
+
+        <div class="schedule-heading">
+
+          <span>
+            Votre planning
+          </span>
+
+          <h3>
+            Mon emploi du temps
+          </h3>
+
+          <p>
+            Les horaires apparaîtront ici
+            dès que le programme détaillé
+            aura été publié.
+          </p>
+
+        </div>
+
+        <div class="schedule-empty">
+          Le planning détaillé arrive bientôt 💙
+        </div>
+
+      </section>
+
+    `;
+
+  }
+
+
+  const grouped =
+    {};
+
+
+  activities.forEach(
+    function(item){
+
+      const day =
+        String(
+          item.day ||
+          "À définir"
+        ).trim();
+
+
+      if(
+        !grouped[day]
+      ){
+
+        grouped[day] =
+          [];
+
+      }
+
+
+      grouped[day].push(
+        item
+      );
+
+    }
+  );
+
+
+  Object
+    .values(grouped)
+    .forEach(
+      function(items){
+
+        items.sort(
+          function(a,b){
+
+            return (
+              timeToMinutes(
+                a.startTime
+              )
+              -
+              timeToMinutes(
+                b.startTime
+              )
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  const daysHtml =
+    Object
+      .entries(grouped)
+      .map(
+        function(
+          [day, items]
+        ){
+
+          const activitiesHtml =
+            items
+              .map(
+                function(item){
+
+                  let timeText =
+                    item.startTime ||
+                    "Horaire à définir";
+
+
+                  if(
+                    item.startTime &&
+                    item.endTime
+                  ){
+
+                    timeText =
+                      item.startTime +
+                      " – " +
+                      item.endTime;
+
+                  }
+
+
+                  return `
+
+                    <div class="schedule-item">
+
+                      <div class="schedule-time">
+
+                        ${escapeHtml(
+                          item.startTime ||
+                          "—"
+                        )}
+
+                      </div>
+
+
+                      <div class="schedule-line">
+
+                        <div class="schedule-dot"></div>
+
+                      </div>
+
+
+                      <div class="schedule-activity">
+
+                        <span class="schedule-type">
+
+                          ${escapeHtml(
+                            item.type
+                          )}
+
+                        </span>
+
+
+                        <h4>
+
+                          ${escapeHtml(
+                            item.name
+                          )}
+
+                        </h4>
+
+
+                        <div class="schedule-meta">
+
+                          <span class="schedule-pill">
+
+                            🕒
+                            ${escapeHtml(
+                              timeText
+                            )}
+
+                          </span>
+
+
+                          ${
+                            item.room
+                              ? `
+
+                                <span class="schedule-pill">
+
+                                  📍
+                                  ${escapeHtml(
+                                    item.room
+                                  )}
+
+                                </span>
+
+                              `
+                              : ""
+                          }
+
+
+                          ${
+                            item.speaker
+                              ? `
+
+                                <span class="schedule-pill">
+
+                                  🎤
+                                  ${escapeHtml(
+                                    item.speaker
+                                  )}
+
+                                </span>
+
+                              `
+                              : ""
+                          }
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  `;
+
+                }
+              )
+              .join("");
+
+
+          return `
+
+            <div class="schedule-day">
+
+              <div class="schedule-day-header">
+
+                <div class="schedule-day-name">
+
+                  ${escapeHtml(
+                    day
+                  )}
+
+                </div>
+
+
+                <div class="schedule-day-count">
+
+                  ${items.length}
+                  activité(s)
+
+                </div>
+
+              </div>
+
+
+              <div class="schedule-items">
+
+                ${activitiesHtml}
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join("");
+
+
+  return `
+
+    <section class="schedule-card">
+
+      <div class="schedule-heading">
+
+        <span>
+          Votre planning
+        </span>
+
+        <h3>
+          Mon emploi du temps
+        </h3>
+
+        <p>
+          Retrouvez ici votre programme personnel,
+          organisé par journée et par horaire.
+        </p>
+
+      </div>
+
+
+      <div class="schedule-days">
+
+        ${daysHtml}
+
+      </div>
+
+    </section>
+
+  `;
+
+}
 
 /* =====================================================
    AFFICHER LE BILLET
@@ -1405,6 +2153,10 @@ function renderTicket(
   const reservations =
     data.reservations || [];
 
+  const scheduleHtml =
+  buildScheduleHtml(
+    reservations
+  );
 
   const reservationHtml =
 
@@ -1635,7 +2387,7 @@ function renderTicket(
 
     </section>
 
-
+${scheduleHtml}
 
     <p class="ticket-note">
 
