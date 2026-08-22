@@ -51,12 +51,12 @@ a{
 }
 
 
-/* =========================
-   HEADER — IDENTIQUE ACCUEIL
+   /* =========================
+   HEADER
 ========================= */
 
 header{
-  position:absolute;
+  position:fixed;
   top:0;
   left:0;
   width:100%;
@@ -68,24 +68,23 @@ header{
 
   padding:22px 7%;
 
-  /* IMPORTANT : aucune barre blanche */
   background:transparent;
+
+  transition:
+    background .3s ease,
+    box-shadow .3s ease,
+    padding .3s ease;
 }
 
 
 /* LOGO */
 
-.logo{
-  display:block;
-}
-
 .logo img{
   width:82px;
-  height:auto;
 }
 
 
-/* PETITE CAPSULE BLANCHE UNIQUEMENT */
+/* MENU */
 
 nav{
   display:flex;
@@ -102,13 +101,17 @@ nav{
   border-radius:50px;
 
   box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+  transition:
+    background .3s ease,
+    box-shadow .3s ease;
 }
 
 
 nav a{
   text-decoration:none;
 
-  color:#0B5367;
+  color:var(--blue-dark);
 
   font-size:15px;
   font-weight:600;
@@ -118,9 +121,33 @@ nav a{
 
 
 nav a:hover{
-  color:#198CA7;
+  color:var(--blue);
 }
 
+
+/* =========================
+   HEADER QUAND ON DESCEND
+========================= */
+
+header.scrolled{
+  background:rgba(255,255,255,.96);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:0 5px 25px rgba(7,60,75,.10);
+
+  padding-top:12px;
+  padding-bottom:12px;
+}
+
+
+/* Le menu s'intègre dans la barre blanche */
+
+header.scrolled nav{
+  background:transparent;
+  box-shadow:none;
+}
 
 /* =========================
    MOBILE
@@ -1424,25 +1451,21 @@ footer{
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <!-- ================= HEADER ================= -->
 
 <header>
 
-  <a href="index.html" class="logo">
+  <a href="index.html#accueil" class="logo">
     <img src="files/logo.png" alt="Logo Ti'Doc">
   </a>
 
   <nav>
-  <a href="index.html#accueil">Accueil</a>
-  <a href="index.html#apropos">À propos</a>
-  <a href="activites.html">Nos activités</a>
-  <a href="billetterie.html">Billetterie</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
+    <a href="index.html#accueil">Accueil</a>
+    <a href="index.html#apropos">À propos</a>
+    <a href="activites.html">Nos activités</a>
+    <a href="billetterie.html">Billetterie</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
 
 </header>
 
