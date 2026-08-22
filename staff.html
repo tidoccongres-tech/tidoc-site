@@ -1,1 +1,1088 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>Espace Staff — Ti'Doc 2027</title>
+
+
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+  --blue:#198CA7;
+  --blue-dark:#0B5367;
+  --blue-deep:#073C4B;
+  --blue-light:#E9F7FA;
+  --text:#153C46;
+  --grey:#637D84;
+  --white:#FFFFFF;
+  --light:#F5FAFB;
+  --border:#DCECEF;
+}
+
+
+/* =====================================================
+   BASE
+===================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+html{
+  min-height:100%;
+}
+
+
+body{
+
+  min-height:100vh;
+  min-height:100dvh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:
+    var(--text);
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(25,140,167,.15),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(25,140,167,.10),
+      transparent 30%
+    ),
+    #F5FAFB;
+
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.staff-page{
+
+  min-height:100vh;
+  min-height:100dvh;
+
+  padding:
+    max(30px, env(safe-area-inset-top))
+    20px
+    max(30px, env(safe-area-inset-bottom));
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+/* =====================================================
+   CONTENEUR
+===================================================== */
+
+.staff-container{
+
+  width:
+    min(
+      440px,
+      100%
+    );
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.staff-logo{
+
+  width:90px;
+
+  margin:
+    0 auto 28px;
+
+}
+
+
+/* =====================================================
+   CARTE
+===================================================== */
+
+.staff-card{
+
+  padding:
+    38px 34px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.8);
+
+  border-radius:
+    32px;
+
+  background:
+    rgba(255,255,255,.94);
+
+  box-shadow:
+    0 25px 70px
+    rgba(7,60,75,.14);
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+}
+
+
+/* =====================================================
+   TITRE
+===================================================== */
+
+.staff-tag{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  padding:
+    8px 13px;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+  font-size:
+    10px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    1.4px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.staff-card h1{
+
+  margin-top:18px;
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    36px;
+
+  line-height:
+    1.08;
+
+}
+
+
+.staff-intro{
+
+  margin-top:13px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    14px;
+
+  line-height:
+    1.65;
+
+}
+
+
+/* =====================================================
+   FORMULAIRE
+===================================================== */
+
+.staff-form{
+
+  margin-top:30px;
+
+}
+
+
+.staff-form label{
+
+  display:block;
+
+  margin-bottom:9px;
+
+  color:
+    var(--blue-dark);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+}
+
+
+.code-wrapper{
+
+  position:relative;
+
+}
+
+
+.staff-input{
+
+  width:100%;
+
+  height:58px;
+
+  padding:
+    0 55px 0 18px;
+
+  border:
+    2px solid
+    var(--border);
+
+  border-radius:
+    17px;
+
+  outline:none;
+
+  color:
+    var(--blue-deep);
+
+  background:
+    #FAFDFD;
+
+  font-size:
+    16px;
+
+  font-weight:
+    700;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+
+}
+
+
+.staff-input:focus{
+
+  border-color:
+    var(--blue);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(25,140,167,.10);
+
+}
+
+
+.show-code{
+
+  position:absolute;
+
+  top:50%;
+  right:10px;
+
+  transform:
+    translateY(-50%);
+
+  width:40px;
+  height:40px;
+
+  border:0;
+
+  border-radius:12px;
+
+  color:
+    var(--grey);
+
+  background:
+    transparent;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+}
+
+
+/* =====================================================
+   BOUTON
+===================================================== */
+
+.staff-button{
+
+  width:100%;
+
+  margin-top:16px;
+
+  padding:
+    17px 20px;
+
+  border:0;
+
+  border-radius:
+    17px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue-dark)
+    );
+
+  box-shadow:
+    0 12px 30px
+    rgba(25,140,167,.25);
+
+  font-size:
+    14px;
+
+  font-weight:
+    900;
+
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
+
+}
+
+
+.staff-button:hover{
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+.staff-button:disabled{
+
+  opacity:.55;
+
+  cursor:not-allowed;
+
+  transform:none;
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.staff-message{
+
+  display:none;
+
+  margin-top:16px;
+
+  padding:
+    13px 15px;
+
+  border-radius:
+    14px;
+
+  font-size:
+    12px;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.5;
+
+}
+
+
+.staff-message.error{
+
+  display:block;
+
+  color:#963F4A;
+
+  background:#FFF0F2;
+
+}
+
+
+.staff-message.success{
+
+  display:block;
+
+  color:#176A57;
+
+  background:#EDF9F5;
+
+}
+
+
+/* =====================================================
+   SÉCURITÉ
+===================================================== */
+
+.security-note{
+
+  margin-top:24px;
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:10px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    11px;
+
+  line-height:
+    1.55;
+
+}
+
+
+.security-icon{
+
+  flex-shrink:0;
+
+  width:27px;
+  height:27px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:9px;
+
+  color:
+    var(--blue);
+
+  background:
+    var(--blue-light);
+
+}
+
+
+/* =====================================================
+   RETOUR
+===================================================== */
+
+.back-link{
+
+  display:block;
+
+  margin-top:22px;
+
+  text-align:center;
+
+  color:
+    var(--grey);
+
+  font-size:
+    11px;
+
+  font-weight:
+    700;
+
+  text-decoration:none;
+
+}
+
+
+.back-link:hover{
+  color:var(--blue);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:520px){
+
+  .staff-page{
+
+    align-items:
+      flex-start;
+
+    padding-top:
+      max(
+        55px,
+        env(safe-area-inset-top)
+      );
+
+  }
+
+
+  .staff-logo{
+
+    width:76px;
+
+    margin-bottom:23px;
+
+  }
+
+
+  .staff-card{
+
+    padding:
+      30px 23px;
+
+    border-radius:
+      27px;
+
+  }
+
+
+  .staff-card h1{
+
+    font-size:
+      32px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="staff-page">
+
+  <div class="staff-container">
+
+
+    <img
+      src="files/logo.png"
+      alt="Ti'Doc"
+      class="staff-logo"
+    >
+
+
+    <section class="staff-card">
+
+
+      <span class="staff-tag">
+
+        🔐 Accès réservé
+
+      </span>
+
+
+      <h1>
+
+        Espace Staff
+
+      </h1>
+
+
+      <p class="staff-intro">
+
+        Accédez à l'outil de contrôle
+        des billets Ti'Doc 2027.
+
+      </p>
+
+
+
+      <form
+        id="staff-login-form"
+        class="staff-form"
+      >
+
+
+        <label for="staff-code">
+
+          Code staff Ti'Doc
+
+        </label>
+
+
+        <div class="code-wrapper">
+
+
+          <input
+            id="staff-code"
+            class="staff-input"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Entrez le code staff"
+            required
+          >
+
+
+          <button
+            id="show-code"
+            class="show-code"
+            type="button"
+            aria-label="Afficher le code"
+          >
+
+            👁
+
+          </button>
+
+
+        </div>
+
+
+        <button
+          id="login-button"
+          class="staff-button"
+          type="submit"
+        >
+
+          Accéder au contrôle →
+
+        </button>
+
+
+        <div
+          id="staff-message"
+          class="staff-message"
+        ></div>
+
+
+      </form>
+
+
+
+      <div class="security-note">
+
+        <div class="security-icon">
+
+          🛡️
+
+        </div>
+
+        <div>
+
+          Cet espace est réservé
+          aux membres autorisés de l'équipe Ti'Doc.
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+    <a
+      href="index.html"
+      class="back-link"
+    >
+
+      ← Retour au site Ti'Doc
+
+    </a>
+
+
+  </div>
+
+</main>
+
+
+
+<script>
+
+/* =====================================================
+   API
+===================================================== */
+
+/*
+  IMPORTANT :
+  mets ici EXACTEMENT la même URL Apps Script
+  que celle utilisée actuellement par ton site.
+*/
+
+const STAFF_API =
+  "https://script.google.com/macros/s/AKfycbwsovttBzH6546XYsnGE6fz4piiqOkZ1vD_0YZHE4nUhFz7BhB7limxAcbrvE-Sz41q/exec";
+
+
+/* =====================================================
+   ÉLÉMENTS
+===================================================== */
+
+const form =
+  document.getElementById(
+    "staff-login-form"
+  );
+
+
+const input =
+  document.getElementById(
+    "staff-code"
+  );
+
+
+const button =
+  document.getElementById(
+    "login-button"
+  );
+
+
+const message =
+  document.getElementById(
+    "staff-message"
+  );
+
+
+const showCodeButton =
+  document.getElementById(
+    "show-code"
+  );
+
+
+/* =====================================================
+   AFFICHER / MASQUER CODE
+===================================================== */
+
+showCodeButton.addEventListener(
+  "click",
+  function(){
+
+    const hidden =
+      input.type ===
+      "password";
+
+
+    input.type =
+      hidden
+        ? "text"
+        : "password";
+
+
+    showCodeButton.textContent =
+      hidden
+        ? "🙈"
+        : "👁";
+
+  }
+);
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showMessage(
+  text,
+  type
+){
+
+  message.textContent =
+    text;
+
+
+  message.className =
+    "staff-message " +
+    type;
+
+}
+
+
+/* =====================================================
+   CONNEXION
+===================================================== */
+
+form.addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+
+    const code =
+      input.value.trim();
+
+
+    if (!code) {
+
+      showMessage(
+        "Entrez le code staff.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "Vérification...";
+
+
+    message.className =
+      "staff-message";
+
+
+    try {
+
+
+      const url =
+        STAFF_API +
+        "?action=staffLogin" +
+        "&code=" +
+        encodeURIComponent(
+          code
+        );
+
+
+      const response =
+        await fetch(
+          url
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if (
+        !result.success ||
+        !result.sessionToken
+      ) {
+
+        throw new Error(
+          result.message ||
+          "Code staff incorrect."
+        );
+
+      }
+
+
+      /* =============================================
+         MÉMORISER LA SESSION
+      ============================================= */
+
+      localStorage.setItem(
+        "tidoc_staff_session",
+        result.sessionToken
+      );
+
+
+      localStorage.setItem(
+        "tidoc_staff_expires",
+        String(
+          result.expiresAt || ""
+        )
+      );
+
+
+      showMessage(
+        "Accès autorisé ✓",
+        "success"
+      );
+
+
+      /*
+        Notre prochaine page sera scan.html.
+      */
+
+      setTimeout(
+        function(){
+
+          window.location.href =
+            "scan.html";
+
+        },
+        500
+      );
+
+
+    }
+
+
+    catch(error) {
+
+
+      console.error(
+        error
+      );
+
+
+      showMessage(
+        error.message ||
+        "Impossible de se connecter.",
+        "error"
+      );
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        "Accéder au contrôle →";
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   SESSION DÉJÀ EXISTANTE
+===================================================== */
+
+async function checkExistingSession(){
+
+  const session =
+    localStorage.getItem(
+      "tidoc_staff_session"
+    );
+
+
+  const expires =
+    Number(
+      localStorage.getItem(
+        "tidoc_staff_expires"
+      ) || 0
+    );
+
+
+  if (
+    !session ||
+    !expires ||
+    Date.now() >= expires
+  ) {
+
+    localStorage.removeItem(
+      "tidoc_staff_session"
+    );
+
+    localStorage.removeItem(
+      "tidoc_staff_expires"
+    );
+
+    return;
+
+  }
+
+
+  try {
+
+
+    const response =
+      await fetch(
+
+        STAFF_API +
+        "?action=staffSession" +
+        "&session=" +
+        encodeURIComponent(
+          session
+        )
+
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      result.success &&
+      result.valid
+    ) {
+
+      window.location.href =
+        "scan.html";
+
+      return;
+
+    }
+
+
+    localStorage.removeItem(
+      "tidoc_staff_session"
+    );
+
+
+    localStorage.removeItem(
+      "tidoc_staff_expires"
+    );
+
+
+  }
+
+
+  catch(error){
+
+    console.error(
+      error
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   LANCEMENT
+===================================================== */
+
+checkExistingSession();
+
+</script>
+
+
+</body>
+
+</html>
