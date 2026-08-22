@@ -3487,9 +3487,9 @@ footer{
 
 
 
-<!-- =========================
-     FUTURE GALERIE CONF 2026
-========================= -->
+<!-- ==================================================
+     PHOTOS DES CONFÉRENCES 2026
+================================================== -->
 
 <section class="drive-gallery-section">
 
@@ -3507,10 +3507,41 @@ footer{
       </h2>
 
       <p>
-        Les photos de Ti'Doc 2026
-        seront ajoutées ici.
+        Quelques souvenirs des conférences
+        de Ti'Doc 2026.
       </p>
 
+    </div>
+
+    <div class="drive-gallery-arrows">
+
+      <button
+        class="gallery-arrow"
+        id="conference2026-prev"
+        aria-label="Photos précédentes"
+      >
+        ←
+      </button>
+
+      <button
+        class="gallery-arrow"
+        id="conference2026-next"
+        aria-label="Photos suivantes"
+      >
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+  <div
+    class="drive-carousel"
+    id="conference2026-carousel"
+  >
+
+    <div class="gallery-loading">
+      Chargement des photos...
     </div>
 
   </div>
@@ -3761,9 +3792,9 @@ footer{
 
 
 
-<!-- =========================
-     FUTURE GALERIE WS 2026
-========================= -->
+<!-- ==================================================
+     PHOTOS DES WORKSHOPS 2026
+================================================== -->
 
 <section class="drive-gallery-section">
 
@@ -3781,10 +3812,41 @@ footer{
       </h2>
 
       <p>
-        Les photos des workshops
-        de Ti'Doc 2026 seront ajoutées ici.
+        Quelques souvenirs des workshops
+        de Ti'Doc 2026.
       </p>
 
+    </div>
+
+    <div class="drive-gallery-arrows">
+
+      <button
+        class="gallery-arrow"
+        id="workshop2026-prev"
+        aria-label="Photos précédentes"
+      >
+        ←
+      </button>
+
+      <button
+        class="gallery-arrow"
+        id="workshop2026-next"
+        aria-label="Photos suivantes"
+      >
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+  <div
+    class="drive-carousel"
+    id="workshop2026-carousel"
+  >
+
+    <div class="gallery-loading">
+      Chargement des photos...
     </div>
 
   </div>
@@ -3869,9 +3931,9 @@ footer{
 
 
 
-<!-- =========================
-     FUTURE GALERIE EVENTS 2026
-========================= -->
+<!-- ==================================================
+     PHOTOS DES ÉVÉNEMENTS 2026
+================================================== -->
 
 <section class="drive-gallery-section">
 
@@ -3889,10 +3951,41 @@ footer{
       </h2>
 
       <p>
-        Les photos des événements
-        de Ti'Doc 2026 seront ajoutées ici.
+        Quelques souvenirs des moments forts
+        de Ti'Doc 2026.
       </p>
 
+    </div>
+
+    <div class="drive-gallery-arrows">
+
+      <button
+        class="gallery-arrow"
+        id="event2026-prev"
+        aria-label="Photos précédentes"
+      >
+        ←
+      </button>
+
+      <button
+        class="gallery-arrow"
+        id="event2026-next"
+        aria-label="Photos suivantes"
+      >
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+  <div
+    class="drive-carousel"
+    id="event2026-carousel"
+  >
+
+    <div class="gallery-loading">
+      Chargement des photos...
     </div>
 
   </div>
@@ -4663,6 +4756,376 @@ eventPrev?.addEventListener(
 loadEventPhotos();
 
 </script>   
+
+<!-- ==================================================
+     GOOGLE DRIVE → GALERIES 2026
+================================================== -->
+
+<script>
+
+async function load2026Photos(){
+
+  const conferenceCarousel2026 =
+    document.getElementById("conference2026-carousel");
+
+  const workshopCarousel2026 =
+    document.getElementById("workshop2026-carousel");
+
+  const eventCarousel2026 =
+    document.getElementById("event2026-carousel");
+
+
+  try{
+
+    const response = await fetch(
+      TIDOC_DRIVE_API,
+      {
+        method:"GET",
+        redirect:"follow"
+      }
+    );
+
+    if(!response.ok){
+      throw new Error(
+        "Erreur HTTP : " + response.status
+      );
+    }
+
+    const data = await response.json();
+
+
+    /* =============================================
+       CONFÉRENCES 2026
+    ============================================= */
+
+    if(
+      conferenceCarousel2026 &&
+      Array.isArray(data.photos2026)
+    ){
+
+      conferenceCarousel2026.innerHTML = "";
+
+      if(data.photos2026.length === 0){
+
+        conferenceCarousel2026.innerHTML = `
+          <div class="gallery-loading">
+            Aucune photo disponible.
+          </div>
+        `;
+
+      }
+
+      data.photos2026.forEach(photo => {
+
+        const card =
+          document.createElement("div");
+
+        card.className = "drive-photo";
+
+
+        const image =
+          document.createElement("img");
+
+        image.src = photo.image;
+        image.alt =
+          photo.conference ||
+          "Conférence Ti'Doc 2026";
+
+        image.loading = "lazy";
+
+
+        const caption =
+          document.createElement("div");
+
+        caption.className =
+          "drive-photo-caption";
+
+
+        const day =
+          document.createElement("span");
+
+        day.textContent =
+          photo.day || "Ti'Doc 2026";
+
+
+        const title =
+          document.createElement("strong");
+
+        title.textContent =
+          photo.conference ||
+          photo.folder ||
+          "Conférence";
+
+
+        caption.appendChild(day);
+        caption.appendChild(title);
+
+        card.appendChild(image);
+        card.appendChild(caption);
+
+        conferenceCarousel2026.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =============================================
+       WORKSHOPS 2026
+    ============================================= */
+
+    if(
+      workshopCarousel2026 &&
+      Array.isArray(data.workshops2026)
+    ){
+
+      workshopCarousel2026.innerHTML = "";
+
+      if(data.workshops2026.length === 0){
+
+        workshopCarousel2026.innerHTML = `
+          <div class="gallery-loading">
+            Aucune photo disponible.
+          </div>
+        `;
+
+      }
+
+      data.workshops2026.forEach(photo => {
+
+        const card =
+          document.createElement("div");
+
+        card.className = "drive-photo";
+
+
+        const image =
+          document.createElement("img");
+
+        image.src = photo.image;
+        image.alt =
+          photo.workshop ||
+          "Workshop Ti'Doc 2026";
+
+        image.loading = "lazy";
+
+
+        const caption =
+          document.createElement("div");
+
+        caption.className =
+          "drive-photo-caption";
+
+
+        const day =
+          document.createElement("span");
+
+        day.textContent =
+          photo.day || "Ti'Doc 2026";
+
+
+        const title =
+          document.createElement("strong");
+
+        title.textContent =
+          photo.workshop ||
+          photo.folder ||
+          "Workshop";
+
+
+        caption.appendChild(day);
+        caption.appendChild(title);
+
+        card.appendChild(image);
+        card.appendChild(caption);
+
+        workshopCarousel2026.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =============================================
+       ÉVÉNEMENTS 2026
+    ============================================= */
+
+    if(
+      eventCarousel2026 &&
+      Array.isArray(data.events2026)
+    ){
+
+      eventCarousel2026.innerHTML = "";
+
+      if(data.events2026.length === 0){
+
+        eventCarousel2026.innerHTML = `
+          <div class="gallery-loading">
+            Aucune photo disponible.
+          </div>
+        `;
+
+      }
+
+      data.events2026.forEach(photo => {
+
+        const card =
+          document.createElement("div");
+
+        card.className = "drive-photo";
+
+
+        const image =
+          document.createElement("img");
+
+        image.src = photo.image;
+        image.alt =
+          photo.event ||
+          "Événement Ti'Doc 2026";
+
+        image.loading = "lazy";
+
+
+        const caption =
+          document.createElement("div");
+
+        caption.className =
+          "drive-photo-caption";
+
+
+        const day =
+          document.createElement("span");
+
+        day.textContent =
+          photo.day || "Ti'Doc 2026";
+
+
+        const title =
+          document.createElement("strong");
+
+        title.textContent =
+          photo.event ||
+          "Événement";
+
+
+        caption.appendChild(day);
+        caption.appendChild(title);
+
+        card.appendChild(image);
+        card.appendChild(caption);
+
+        eventCarousel2026.appendChild(card);
+
+      });
+
+    }
+
+  }
+
+  catch(error){
+
+    console.error(
+      "ERREUR GALERIES 2026 :",
+      error
+    );
+
+    [
+      conferenceCarousel2026,
+      workshopCarousel2026,
+      eventCarousel2026
+    ].forEach(carousel => {
+
+      if(carousel){
+
+        carousel.innerHTML = `
+          <div class="gallery-loading">
+            Impossible de charger les photos.
+          </div>
+        `;
+
+      }
+
+    });
+
+  }
+
+}
+
+
+/* ==================================================
+   FLÈCHES
+================================================== */
+
+function setupCarouselArrows(
+  carouselId,
+  previousId,
+  nextId
+){
+
+  const carousel =
+    document.getElementById(carouselId);
+
+  const previous =
+    document.getElementById(previousId);
+
+  const next =
+    document.getElementById(nextId);
+
+
+  previous?.addEventListener("click", () => {
+
+    carousel?.scrollBy({
+      left:-570,
+      behavior:"smooth"
+    });
+
+  });
+
+
+  next?.addEventListener("click", () => {
+
+    carousel?.scrollBy({
+      left:570,
+      behavior:"smooth"
+    });
+
+  });
+
+}
+
+
+/* CONFÉRENCES */
+
+setupCarouselArrows(
+  "conference2026-carousel",
+  "conference2026-prev",
+  "conference2026-next"
+);
+
+
+/* WORKSHOPS */
+
+setupCarouselArrows(
+  "workshop2026-carousel",
+  "workshop2026-prev",
+  "workshop2026-next"
+);
+
+
+/* ÉVÉNEMENTS */
+
+setupCarouselArrows(
+  "event2026-carousel",
+  "event2026-prev",
+  "event2026-next"
+);
+
+
+/* LANCEMENT */
+
+load2026Photos();
+
+</script>
    
 </body>
 </html>
