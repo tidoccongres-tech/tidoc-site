@@ -3095,7 +3095,6 @@ async function saveProgramme(){
   const token =
     getTokenFromUrl();
 
-
   const button =
     document.getElementById(
       "save-programme-button"
@@ -3105,7 +3104,7 @@ async function saveProgramme(){
   if(!token){
 
     alert(
-      "Lien participant invalide."
+      "Lien d'accès invalide."
     );
 
     return;
@@ -3142,18 +3141,14 @@ async function saveProgramme(){
 
 
     const response =
-      await fetch(
-        url
-      );
+      await fetch(url);
 
 
     const result =
       await response.json();
 
 
-    if(
-      !result.success
-    ){
+    if(!result.success){
 
       throw new Error(
         result.message ||
@@ -3164,17 +3159,22 @@ async function saveProgramme(){
 
 
     alert(
-      "Votre programme Ti'Doc est enregistré 💙"
+      "Votre programme a bien été enregistré 💙"
     );
 
+
+    if(button){
+
+      button.textContent =
+        "Programme enregistré ✓";
+
+    }
 
   }
 
   catch(error){
 
-    console.error(
-      error
-    );
+    console.error(error);
 
 
     alert(
@@ -3182,9 +3182,6 @@ async function saveProgramme(){
       error.message
     );
 
-  }
-
-  finally{
 
     if(button){
 
