@@ -1761,15 +1761,24 @@ newsletterForm?.addEventListener(
 
     event.preventDefault();
 
+
     const email =
       newsletterEmail.value.trim();
 
+
     if(!email){
+
+      newsletterMessage.textContent =
+        "Veuillez entrer une adresse e-mail.";
+
       return;
+
     }
+
 
     newsletterMessage.textContent =
       "Inscription en cours...";
+
 
     try{
 
@@ -1777,27 +1786,39 @@ newsletterForm?.addEventListener(
         await fetch(
           NEWSLETTER_API,
           {
+
             method:"POST",
 
             headers:{
               "Content-Type":
-                "text/plain;charset=utf-8"
+                "application/x-www-form-urlencoded;charset=UTF-8"
             },
 
-            body:JSON.stringify({
-              email:email
-            })
+            body:
+              "email=" +
+              encodeURIComponent(email)
+
           }
         );
 
+
       const data =
         await response.json();
+
+
+      console.log(
+        "Réponse newsletter :",
+        data
+      );
 
 
       if(data.success){
 
         newsletterMessage.textContent =
           "Merci ! Votre inscription à la newsletter est confirmée 💙";
+
+        newsletterMessage.style.color =
+          "#198CA7";
 
         newsletterEmail.value = "";
 
@@ -1808,6 +1829,9 @@ newsletterForm?.addEventListener(
         newsletterMessage.textContent =
           data.message ||
           "Une erreur est survenue.";
+
+        newsletterMessage.style.color =
+          "#B54747";
 
       }
 
@@ -1822,6 +1846,9 @@ newsletterForm?.addEventListener(
 
       newsletterMessage.textContent =
         "Impossible de vous inscrire pour le moment.";
+
+      newsletterMessage.style.color =
+        "#B54747";
 
     }
 
