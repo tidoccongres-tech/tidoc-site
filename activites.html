@@ -4,15 +4,22 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nos activités — Ti'Doc</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Nos activités — Ti'Doc
+</title>
+
 
 <style>
 
-/* =========================
-   BASE
-========================= */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 :root{
   --blue:#198CA7;
@@ -23,6 +30,11 @@
   --text:#153C46;
   --grey:#637D84;
 }
+
+
+/* =====================================================
+   BASE
+===================================================== */
 
 *{
   margin:0;
@@ -48,18 +60,21 @@ img{
 
 a{
   color:inherit;
+  text-decoration:none;
 }
 
 
-   /* =========================
-   HEADER
-========================= */
+/* =====================================================
+   HEADER — IDENTIQUE PARTOUT
+===================================================== */
 
 header{
   position:fixed;
   top:0;
   left:0;
+
   width:100%;
+
   z-index:1000;
 
   display:flex;
@@ -69,11 +84,6 @@ header{
   padding:22px 7%;
 
   background:transparent;
-
-  transition:
-    background .3s ease,
-    box-shadow .3s ease,
-    padding .3s ease;
 }
 
 
@@ -81,6 +91,7 @@ header{
 
 .logo img{
   width:82px;
+  height:auto;
 }
 
 
@@ -89,28 +100,25 @@ header{
 nav{
   display:flex;
   align-items:center;
+
   gap:36px;
-
-  background:rgba(255,255,255,.92);
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
 
   padding:15px 25px;
 
   border-radius:50px;
 
-  box-shadow:0 10px 35px rgba(0,0,0,.08);
+  background:
+    rgba(255,255,255,.92);
 
-  transition:
-    background .3s ease,
-    box-shadow .3s ease;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 10px 35px
+    rgba(0,0,0,.08);
 }
 
-
 nav a{
-  text-decoration:none;
-
   color:var(--blue-dark);
 
   font-size:15px;
@@ -119,90 +127,21 @@ nav a{
   transition:.25s;
 }
 
-
 nav a:hover{
   color:var(--blue);
 }
 
 
-/* =========================
-   HEADER QUAND ON DESCEND
-========================= */
-
-header.scrolled{
-  background:rgba(255,255,255,.96);
-
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-
-  box-shadow:0 5px 25px rgba(7,60,75,.10);
-
-  padding-top:12px;
-  padding-bottom:12px;
-}
-
-
-/* Le menu s'intègre dans la barre blanche */
-
-header.scrolled nav{
-  background:transparent;
-  box-shadow:none;
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media(max-width:900px){
-
-  header{
-    padding:18px 5%;
-  }
-
-  nav{
-    gap:15px;
-    padding:12px 16px;
-  }
-
-  nav a{
-    font-size:13px;
-  }
-
-}
-
-
-@media(max-width:650px){
-
-  header{
-    position:absolute;
-    align-items:flex-start;
-  }
-
-  .logo img{
-    width:62px;
-  }
-
-  nav{
-    gap:8px;
-    padding:10px 12px;
-  }
-
-  nav a{
-    font-size:11px;
-  }
-
-  nav a:nth-child(2){
-    display:none;
-  }
-
-}
-/* =========================
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
   min-height:620px;
 
-  padding:170px 8% 100px;
+  padding:
+    170px 8%
+    100px;
 
   display:flex;
   align-items:flex-end;
@@ -216,7 +155,8 @@ header.scrolled nav{
       rgba(5,52,65,.55),
       rgba(5,52,65,.12)
     ),
-    url("./files/IMG_3328_resultat.jpeg") center/cover;
+    url("./files/IMG_3328_resultat.jpeg")
+    center/cover;
 }
 
 .hero-content{
@@ -227,12 +167,17 @@ header.scrolled nav{
   display:inline-block;
 
   margin-bottom:22px;
+
   padding:9px 16px;
 
-  border:1px solid rgba(255,255,255,.5);
+  border:
+    1px solid
+    rgba(255,255,255,.5);
+
   border-radius:50px;
 
-  background:rgba(255,255,255,.12);
+  background:
+    rgba(255,255,255,.12);
 
   font-size:13px;
   font-weight:800;
@@ -242,7 +187,13 @@ header.scrolled nav{
 }
 
 .hero h1{
-  font-size:clamp(50px,7vw,85px);
+  font-size:
+    clamp(
+      50px,
+      7vw,
+      85px
+    );
+
   line-height:1;
 }
 
@@ -254,33 +205,45 @@ header.scrolled nav{
   font-size:20px;
   line-height:1.7;
 
-  color:rgba(255,255,255,.9);
+  color:
+    rgba(255,255,255,.9);
 }
 
 
-/* =========================
+/* =====================================================
    ONGLETS
-========================= */
+===================================================== */
 
 .tabs-wrapper{
   position:relative;
+
   z-index:20;
 
-  width:min(700px,90%);
+  width:
+    min(
+      700px,
+      90%
+    );
 
-  margin:-35px auto 0;
+  margin:
+    -35px auto 0;
 
   padding:8px;
 
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:8px;
 
   border-radius:50px;
 
   background:white;
 
-  box-shadow:0 18px 55px rgba(7,60,75,.15);
+  box-shadow:
+    0 18px 55px
+    rgba(7,60,75,.15);
 }
 
 .tab-button{
@@ -290,6 +253,7 @@ header.scrolled nav{
   border-radius:50px;
 
   background:transparent;
+
   color:var(--blue-dark);
 
   font-size:16px;
@@ -306,9 +270,9 @@ header.scrolled nav{
 }
 
 
-/* =========================
-   CONTENU EDITION
-========================= */
+/* =====================================================
+   CONTENU ÉDITION
+===================================================== */
 
 .edition-content{
   display:none;
@@ -319,12 +283,14 @@ header.scrolled nav{
 }
 
 
-/* =========================
+/* =====================================================
    INTRO
-========================= */
+===================================================== */
 
 .intro{
-  padding:120px 7% 70px;
+  padding:
+    120px 7%
+    70px;
 
   text-align:center;
 }
@@ -349,7 +315,13 @@ header.scrolled nav{
 
   color:var(--blue-deep);
 
-  font-size:clamp(40px,5vw,64px);
+  font-size:
+    clamp(
+      40px,
+      5vw,
+      64px
+    );
+
   line-height:1.05;
 }
 
@@ -363,16 +335,25 @@ header.scrolled nav{
 }
 
 
-/* =========================
+/* =====================================================
    CHIFFRES
-========================= */
+===================================================== */
 
 .stats{
-  width:min(1050px,86%);
-  margin:0 auto 120px;
+  width:
+    min(
+      1050px,
+      86%
+    );
+
+  margin:
+    0 auto
+    120px;
 
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
 
   overflow:hidden;
 
@@ -380,16 +361,22 @@ header.scrolled nav{
 
   background:white;
 
-  box-shadow:0 15px 45px rgba(7,60,75,.08);
+  box-shadow:
+    0 15px 45px
+    rgba(7,60,75,.08);
 }
 
 .stat{
-  padding:35px 25px;
+  padding:
+    35px 25px;
+
   text-align:center;
 }
 
 .stat + .stat{
-  border-left:1px solid #E2EEF0;
+  border-left:
+    1px solid
+    #E2EEF0;
 }
 
 .stat strong{
@@ -398,6 +385,7 @@ header.scrolled nav{
   margin-bottom:7px;
 
   color:var(--blue);
+
   font-size:34px;
 }
 
@@ -407,18 +395,22 @@ header.scrolled nav{
 }
 
 
-/* =========================
-   SECTIONS ACTIVITES
-========================= */
+/* =====================================================
+   SECTIONS PROGRAMME
+===================================================== */
 
 .program-section{
-  padding:0 7% 85px;
+  padding:
+    0 7%
+    85px;
 }
 
 .program-heading{
   max-width:1200px;
 
-  margin:0 auto 45px;
+  margin:
+    0 auto
+    45px;
 }
 
 .program-heading h2{
@@ -426,7 +418,12 @@ header.scrolled nav{
 
   color:var(--blue-deep);
 
-  font-size:clamp(34px,4vw,50px);
+  font-size:
+    clamp(
+      34px,
+      4vw,
+      50px
+    );
 }
 
 .program-heading p{
@@ -435,20 +432,25 @@ header.scrolled nav{
   margin-top:15px;
 
   color:var(--grey);
+
   line-height:1.7;
 }
 
 
-/* =========================
+/* =====================================================
    CARTES PROGRAMME
-========================= */
+===================================================== */
 
 .program-grid{
   max-width:1200px;
+
   margin:auto;
 
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:18px;
 }
 
@@ -460,25 +462,35 @@ header.scrolled nav{
   padding:30px;
 
   display:flex;
+
   gap:24px;
+
   align-items:flex-start;
 
   overflow:hidden;
 
-  border:1px solid #E3EFF1;
+  border:
+    1px solid
+    #E3EFF1;
+
   border-radius:24px;
 
   background:white;
 
-  box-shadow:0 10px 30px rgba(7,60,75,.05);
+  box-shadow:
+    0 10px 30px
+    rgba(7,60,75,.05);
 
   transition:.25s;
 }
 
 .program-card:hover{
-  transform:translateY(-4px);
+  transform:
+    translateY(-4px);
 
-  box-shadow:0 18px 38px rgba(7,60,75,.1);
+  box-shadow:
+    0 18px 38px
+    rgba(7,60,75,.10);
 }
 
 .type-badge{
@@ -486,16 +498,19 @@ header.scrolled nav{
   height:42px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   border-radius:50px;
 
   color:white;
+
   background:var(--blue);
 
   font-size:13px;
   font-weight:900;
+
   letter-spacing:1px;
 }
 
@@ -514,6 +529,7 @@ header.scrolled nav{
 
 .program-info p{
   color:var(--blue);
+
   font-weight:700;
 }
 
@@ -522,25 +538,28 @@ header.scrolled nav{
 
 .workshop-card .type-badge{
   color:var(--blue-dark);
+
   background:#DDF4F8;
 }
 
 
-/* EVENT */
+/* ÉVÉNEMENT */
 
 .event-card .type-badge{
   color:white;
+
   background:var(--blue-dark);
 }
 
 
-
-/* ==================================================
-   TEMOIGNAGES
-================================================== */
+/* =====================================================
+   TÉMOIGNAGES
+===================================================== */
 
 .testimonials{
-  padding:120px 7% 130px;
+  padding:
+    120px 7%
+    130px;
 
   background:
     linear-gradient(
@@ -558,7 +577,9 @@ header.scrolled nav{
 .testimonials-heading{
   max-width:750px;
 
-  margin:0 auto 55px;
+  margin:
+    0 auto
+    55px;
 
   text-align:center;
 }
@@ -568,25 +589,26 @@ header.scrolled nav{
 
   color:var(--blue-deep);
 
-  font-size:clamp(36px,4vw,52px);
+  font-size:
+    clamp(
+      36px,
+      4vw,
+      52px
+    );
+
   line-height:1.1;
 }
-
-
-/* 3 CARTES SUR UNE LIGNE */
 
 .testimonial-grid{
   display:grid;
 
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:
+    repeat(3,1fr);
 
   gap:22px;
 
   align-items:stretch;
 }
-
-
-/* CARTE */
 
 .testimonial{
   min-height:300px;
@@ -594,16 +616,20 @@ header.scrolled nav{
   padding:36px;
 
   display:flex;
+
   flex-direction:column;
+
+  border:
+    1px solid
+    #DFEEF0;
 
   border-radius:28px;
 
   background:white;
 
-  border:1px solid #DFEEF0;
-
   box-shadow:
-    0 15px 40px rgba(7,60,75,.06);
+    0 15px 40px
+    rgba(7,60,75,.06);
 
   transition:
     transform .25s ease,
@@ -611,14 +637,13 @@ header.scrolled nav{
 }
 
 .testimonial:hover{
-  transform:translateY(-5px);
+  transform:
+    translateY(-5px);
 
   box-shadow:
-    0 22px 48px rgba(7,60,75,.10);
+    0 22px 48px
+    rgba(7,60,75,.10);
 }
-
-
-/* GUILLEMETS */
 
 .quote{
   margin-bottom:25px;
@@ -627,11 +652,9 @@ header.scrolled nav{
 
   font-size:58px;
   line-height:.55;
+
   font-weight:900;
 }
-
-
-/* COMMENTAIRE */
 
 .testimonial blockquote{
   flex:1;
@@ -642,9 +665,6 @@ header.scrolled nav{
   line-height:1.7;
 }
 
-
-/* NOM */
-
 .testimonial strong{
   display:block;
 
@@ -652,7 +672,9 @@ header.scrolled nav{
 
   padding-top:18px;
 
-  border-top:1px solid #E4EFF1;
+  border-top:
+    1px solid
+    #E4EFF1;
 
   color:var(--blue-dark);
 
@@ -660,63 +682,24 @@ header.scrolled nav{
 }
 
 
-/* TABLETTE */
-
-@media(max-width:900px){
-
-  .testimonial-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-  }
-
-  .testimonial{
-    padding:28px;
-  }
-
-}
-
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-  .testimonials{
-    padding:90px 5%;
-  }
-
-  .testimonial-grid{
-    grid-template-columns:1fr;
-  }
-
-  .testimonial{
-    min-height:240px;
-  }
-
-}
-
-
-/* ==================================================
-   EDITION 2026
-================================================== */
+/* =====================================================
+   ÉDITION 2026
+===================================================== */
 
 #edition2026{
   background:#F8FCFD;
 }
 
-
-/* INTRO */
-
 #edition2026 .intro{
-  padding:110px 7% 70px;
+  padding:
+    110px 7%
+    70px;
 }
 
-
-/* =========================
-   PROGRAMME 2026
-========================= */
-
 #edition2026 .program-section{
-  padding:0 7% 90px;
+  padding:
+    0 7%
+    90px;
 }
 
 #edition2026 .program-grid{
@@ -737,11 +720,6 @@ header.scrolled nav{
   margin-top:8px;
 }
 
-
-/* =========================
-   GALERIES 2026
-========================= */
-
 #edition2026 .drive-gallery-section{
   padding-top:10px;
   padding-bottom:55px;
@@ -752,80 +730,34 @@ header.scrolled nav{
 }
 
 
-/* Quand il n'y a pas encore de photos,
-   évite un gros espace vide */
-
-#edition2026 .drive-gallery-section:not(:has(.drive-carousel)){
-  padding-bottom:25px;
-}
-
-
-
-/* =========================
-   TABLETTE
-========================= */
-
-@media(max-width:900px){
-
-  #edition2026 .program-card{
-    min-height:150px;
-  }
-
-  #edition2026 .program-info h3{
-    font-size:20px;
-  }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:650px){
-
-  #edition2026 .intro{
-    padding-top:85px;
-    padding-bottom:55px;
-  }
-
-  #edition2026 .program-section{
-    padding-left:5%;
-    padding-right:5%;
-    padding-bottom:70px;
-  }
-
-  #edition2026 .program-card{
-    min-height:auto;
-    padding:24px;
-  }
-
-  #edition2026 .program-info h3{
-    font-size:19px;
-  }
-
-  #edition2026 .drive-gallery-section{
-    padding-bottom:35px;
-  }
-
-}
-   
-/* ==================================================
-   GALERIE GOOGLE DRIVE
-================================================== */
+/* =====================================================
+   GALERIES GOOGLE DRIVE
+===================================================== */
 
 .drive-gallery-section{
-  padding:20px 7% 120px;
+  padding:
+    20px 7%
+    120px;
+
   overflow:hidden;
 }
 
 .drive-gallery-header{
-  width:min(1200px,100%);
-  margin:0 auto 40px;
+  width:
+    min(
+      1200px,
+      100%
+    );
+
+  margin:
+    0 auto
+    40px;
 
   display:flex;
+
   align-items:flex-end;
   justify-content:space-between;
+
   gap:30px;
 }
 
@@ -834,7 +766,13 @@ header.scrolled nav{
 
   color:var(--blue-deep);
 
-  font-size:clamp(34px,4vw,50px);
+  font-size:
+    clamp(
+      34px,
+      4vw,
+      50px
+    );
+
   line-height:1.1;
 }
 
@@ -842,6 +780,7 @@ header.scrolled nav{
   margin-top:14px;
 
   color:var(--grey);
+
   font-size:17px;
   line-height:1.7;
 }
@@ -859,47 +798,66 @@ header.scrolled nav{
   height:52px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
-  border:1px solid #D7E8EB;
+  border:
+    1px solid
+    #D7E8EB;
+
   border-radius:50%;
 
   background:white;
+
   color:var(--blue-dark);
 
   font-size:23px;
 
   cursor:pointer;
 
-  box-shadow:0 8px 25px rgba(7,60,75,.08);
+  box-shadow:
+    0 8px 25px
+    rgba(7,60,75,.08);
 
   transition:.25s;
 }
 
 .gallery-arrow:hover{
   color:white;
+
   background:var(--blue);
 
-  transform:translateY(-2px);
+  transform:
+    translateY(-2px);
 }
 
 
 /* CARROUSEL */
 
 .drive-carousel{
-  width:min(1200px,100%);
+  width:
+    min(
+      1200px,
+      100%
+    );
+
   margin:auto;
 
   display:flex;
+
   gap:18px;
 
   overflow-x:auto;
 
   scroll-behavior:smooth;
-  scroll-snap-type:x mandatory;
 
-  padding:5px 2px 18px;
+  scroll-snap-type:
+    x mandatory;
+
+  padding:
+    5px 2px
+    18px;
 
   scrollbar-width:none;
 }
@@ -914,7 +872,10 @@ header.scrolled nav{
 .drive-photo{
   position:relative;
 
-  flex:0 0 360px;
+  flex:
+    0 0
+    360px;
+
   height:440px;
 
   overflow:hidden;
@@ -925,7 +886,9 @@ header.scrolled nav{
 
   scroll-snap-align:start;
 
-  box-shadow:0 14px 35px rgba(7,60,75,.10);
+  box-shadow:
+    0 14px 35px
+    rgba(7,60,75,.10);
 }
 
 .drive-photo img{
@@ -934,11 +897,13 @@ header.scrolled nav{
 
   object-fit:cover;
 
-  transition:transform .4s ease;
+  transition:
+    transform .4s ease;
 }
 
 .drive-photo:hover img{
-  transform:scale(1.04);
+  transform:
+    scale(1.04);
 }
 
 
@@ -946,11 +911,14 @@ header.scrolled nav{
 
 .drive-photo-caption{
   position:absolute;
+
   left:0;
   right:0;
   bottom:0;
 
-  padding:70px 24px 24px;
+  padding:
+    70px 24px
+    24px;
 
   color:white;
 
@@ -997,54 +965,43 @@ header.scrolled nav{
 
   color:var(--grey);
 
-  box-shadow:0 10px 30px rgba(7,60,75,.05);
+  box-shadow:
+    0 10px 30px
+    rgba(7,60,75,.05);
 }
 
 
-/* MOBILE */
-
-@media(max-width:650px){
-
-  .drive-gallery-section{
-    padding-left:5%;
-    padding-right:5%;
-    padding-bottom:90px;
-  }
-
-  .drive-gallery-header{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .drive-photo{
-    flex-basis:82vw;
-    height:430px;
-  }
-
-  .gallery-arrow{
-    width:46px;
-    height:46px;
-  }
-
-}   
-   
-/* ==================================================
-   TRANSITIONS VISUELLES TI'DOC
-================================================== */
+/* =====================================================
+   TRANSITIONS VISUELLES
+===================================================== */
 
 .tidoc-transition{
-  width:min(1200px,86%);
+  width:
+    min(
+      1200px,
+      86%
+    );
+
   min-height:430px;
 
-  margin:0 auto 110px;
-  padding:45px 60px;
+  margin:
+    0 auto
+    110px;
+
+  padding:
+    45px 60px;
 
   display:grid;
-  grid-template-columns:1fr 380px;
+
+  grid-template-columns:
+    1fr 380px;
+
   align-items:center;
+
   gap:70px;
 
   position:relative;
+
   overflow:hidden;
 
   border-radius:38px;
@@ -1061,21 +1018,19 @@ header.scrolled nav{
       #FFFFFF
     );
 
-  border:1px solid #E1EFF1;
+  border:
+    1px solid
+    #E1EFF1;
 
   box-shadow:
-    0 24px 65px rgba(7,60,75,.08);
+    0 24px 65px
+    rgba(7,60,75,.08);
 }
-
-
-/* VERSION INVERSÉE */
 
 .tidoc-transition.reverse{
-  grid-template-columns:380px 1fr;
+  grid-template-columns:
+    380px 1fr;
 }
-
-
-/* PETIT TEXTE */
 
 .transition-text{
   max-width:570px;
@@ -1098,7 +1053,13 @@ header.scrolled nav{
 .transition-text h3{
   color:var(--blue-deep);
 
-  font-size:clamp(32px,4vw,48px);
+  font-size:
+    clamp(
+      32px,
+      4vw,
+      48px
+    );
+
   line-height:1.08;
 }
 
@@ -1129,12 +1090,15 @@ header.scrolled nav{
   overflow:hidden;
 
   box-shadow:
-    0 20px 55px rgba(7,60,75,.16);
+    0 20px 55px
+    rgba(7,60,75,.16);
 }
 
 .tidoc-animation video{
   width:100%;
-  aspect-ratio:4 / 5;
+
+  aspect-ratio:
+    4 / 5;
 
   display:block;
 
@@ -1144,13 +1108,13 @@ header.scrolled nav{
 }
 
 
-/* =========================
-   APPARITION AU SCROLL
-========================= */
+/* APPARITION AU SCROLL */
 
 .reveal-left{
   opacity:0;
-  transform:translateX(-35px);
+
+  transform:
+    translateX(-35px);
 
   transition:
     opacity .8s ease,
@@ -1159,7 +1123,9 @@ header.scrolled nav{
 
 .reveal-right{
   opacity:0;
-  transform:translateX(35px);
+
+  transform:
+    translateX(35px);
 
   transition:
     opacity .8s ease,
@@ -1169,18 +1135,27 @@ header.scrolled nav{
 .reveal-left.visible,
 .reveal-right.visible{
   opacity:1;
-  transform:translateX(0);
+
+  transform:
+    translateX(0);
 }
 
 
-/* ==================================================
-   ÉVÉNEMENTS — 3 ANIMATIONS
-================================================== */
+/* =====================================================
+   ÉVÉNEMENTS — ANIMATIONS
+===================================================== */
 
 .event-animation-section{
-  width:min(1200px,86%);
+  width:
+    min(
+      1200px,
+      86%
+    );
 
-  margin:0 auto 120px;
+  margin:
+    0 auto
+    120px;
+
   padding:60px;
 
   border-radius:38px;
@@ -1193,16 +1168,21 @@ header.scrolled nav{
     ),
     #F3FAFC;
 
-  border:1px solid #E1EFF1;
+  border:
+    1px solid
+    #E1EFF1;
 
   box-shadow:
-    0 24px 65px rgba(7,60,75,.07);
+    0 24px 65px
+    rgba(7,60,75,.07);
 }
 
 .event-animation-heading{
   max-width:680px;
 
-  margin:0 auto 45px;
+  margin:
+    0 auto
+    45px;
 
   text-align:center;
 }
@@ -1212,7 +1192,12 @@ header.scrolled nav{
 
   color:var(--blue-deep);
 
-  font-size:clamp(32px,4vw,46px);
+  font-size:
+    clamp(
+      32px,
+      4vw,
+      46px
+    );
 }
 
 .event-animation-heading p{
@@ -1225,10 +1210,11 @@ header.scrolled nav{
 
 .event-animations{
   width:100%;
-  margin:0;
 
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
 
   gap:25px;
 }
@@ -1237,7 +1223,8 @@ header.scrolled nav{
   width:100%;
   max-width:none;
 
-  aspect-ratio:1 / 1;
+  aspect-ratio:
+    1 / 1;
 
   border-radius:28px;
 }
@@ -1252,17 +1239,96 @@ header.scrolled nav{
 }
 
 
-/* ==================================================
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+  padding:
+    32px 7%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  background:var(--blue-deep);
+
+  color:
+    rgba(255,255,255,.8);
+
+  font-size:14px;
+}
+
+.footer-logo{
+  width:65px;
+}
+
+
+/* =====================================================
    TABLETTE
-================================================== */
+===================================================== */
 
 @media(max-width:900px){
+
+  header{
+    padding:
+      18px 5%;
+  }
+
+  nav{
+    gap:15px;
+
+    padding:
+      12px 16px;
+  }
+
+  nav a{
+    font-size:13px;
+  }
+
+
+  .hero{
+    min-height:550px;
+  }
+
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .stat + .stat{
+    border-left:0;
+
+    border-top:
+      1px solid
+      #E2EEF0;
+  }
+
+
+  .program-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  .testimonial-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+
+    gap:15px;
+  }
+
+  .testimonial{
+    padding:28px;
+  }
+
 
   .tidoc-transition,
   .tidoc-transition.reverse{
     width:90%;
 
-    grid-template-columns:1fr 300px;
+    grid-template-columns:
+      1fr 300px;
 
     gap:35px;
 
@@ -1270,22 +1336,174 @@ header.scrolled nav{
   }
 
   .tidoc-transition.reverse{
-    grid-template-columns:300px 1fr;
+    grid-template-columns:
+      300px 1fr;
   }
+
 
   .event-animation-section{
     width:90%;
-    padding:45px 35px;
+
+    padding:
+      45px 35px;
+  }
+
+
+  #edition2026 .program-card{
+    min-height:150px;
+  }
+
+  #edition2026 .program-info h3{
+    font-size:20px;
   }
 
 }
 
 
-/* ==================================================
-   MOBILE
-================================================== */
+/* =====================================================
+   TÉLÉPHONE
+===================================================== */
 
 @media(max-width:650px){
+
+  /* HEADER */
+
+  header{
+    position:fixed;
+
+    align-items:flex-start;
+
+    padding:
+      18px 5%;
+  }
+
+  .logo img{
+    width:62px;
+  }
+
+  nav{
+    gap:8px;
+
+    padding:
+      10px 12px;
+  }
+
+  nav a{
+    font-size:11px;
+  }
+
+  nav a:nth-child(2){
+    display:none;
+  }
+
+
+  /* HERO */
+
+  .hero{
+    min-height:500px;
+
+    padding:
+      140px 6%
+      70px;
+  }
+
+  .hero h1{
+    font-size:
+      clamp(
+        45px,
+        15vw,
+        65px
+      );
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+
+  /* ONGLETS */
+
+  .tabs-wrapper{
+    margin-top:-28px;
+  }
+
+  .tab-button{
+    min-height:52px;
+
+    font-size:14px;
+  }
+
+
+  /* INTRO */
+
+  .intro{
+    padding:
+      90px 5%
+      60px;
+  }
+
+
+  /* PROGRAMME */
+
+  .program-section{
+    padding-left:5%;
+    padding-right:5%;
+  }
+
+  .program-card{
+    flex-direction:column;
+
+    gap:15px;
+  }
+
+  .type-badge{
+    min-width:70px;
+  }
+
+
+  /* TÉMOIGNAGES */
+
+  .testimonials{
+    padding:
+      90px 5%;
+  }
+
+  .testimonial-grid{
+    grid-template-columns:1fr;
+  }
+
+  .testimonial{
+    min-height:240px;
+  }
+
+
+  /* GALERIES */
+
+  .drive-gallery-section{
+    padding-left:5%;
+    padding-right:5%;
+    padding-bottom:90px;
+  }
+
+  .drive-gallery-header{
+    align-items:flex-start;
+
+    flex-direction:column;
+  }
+
+  .drive-photo{
+    flex-basis:82vw;
+
+    height:430px;
+  }
+
+  .gallery-arrow{
+    width:46px;
+    height:46px;
+  }
+
+
+  /* TRANSITIONS */
 
   .tidoc-transition,
   .tidoc-transition.reverse{
@@ -1302,7 +1520,8 @@ header.scrolled nav{
     gap:28px;
   }
 
-  .tidoc-transition.reverse .tidoc-animation{
+  .tidoc-transition.reverse
+  .tidoc-animation{
     order:2;
   }
 
@@ -1312,143 +1531,64 @@ header.scrolled nav{
 
   .tidoc-animation{
     width:100%;
+
     max-width:none;
   }
+
+
+  /* ANIMATIONS ÉVÉNEMENTS */
 
   .event-animation-section{
     width:90%;
 
-    padding:35px 22px;
+    padding:
+      35px 22px;
   }
 
   .event-animations{
     grid-template-columns:1fr;
   }
 
-  .event-animations .tidoc-animation{
-    aspect-ratio:1 / 1;
+  .event-animations
+  .tidoc-animation{
+    aspect-ratio:
+      1 / 1;
   }
 
-} 
 
-/* =========================
-   FOOTER
-========================= */
+  /* ÉDITION 2026 */
 
-footer{
-  padding:32px 7%;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  background:var(--blue-deep);
-
-  color:rgba(255,255,255,.8);
-
-  font-size:14px;
-}
-
-.footer-logo{
-  width:65px;
-}
-
-
-/* =========================
-   TABLETTE
-========================= */
-
-@media(max-width:900px){
-
-  nav{
-    gap:16px;
+  #edition2026 .intro{
+    padding-top:85px;
+    padding-bottom:55px;
   }
 
-  nav a{
-    font-size:13px;
+  #edition2026 .program-section{
+    padding-left:5%;
+    padding-right:5%;
+    padding-bottom:70px;
   }
 
-  .hero{
-    min-height:550px;
+  #edition2026 .program-card{
+    min-height:auto;
+
+    padding:24px;
   }
 
-  .stats{
-    grid-template-columns:1fr;
+  #edition2026 .program-info h3{
+    font-size:19px;
   }
 
-  .stat + .stat{
-    border-left:0;
-    border-top:1px solid #E2EEF0;
+  #edition2026 .drive-gallery-section{
+    padding-bottom:35px;
   }
 
-  .program-grid{
-    grid-template-columns:1fr;
-  }
 
-}
-
-
-/* =========================
-   TELEPHONE
-========================= */
-
-@media(max-width:650px){
-
-  header{
-    padding:11px 4%;
-  }
-
-  .logo img{
-    width:55px;
-  }
-
-  nav{
-    gap:9px;
-    padding:10px;
-  }
-
-  nav a{
-    font-size:10px;
-  }
-
-  nav a:nth-child(2){
-    display:none;
-  }
-
-  .hero{
-    min-height:500px;
-
-    padding:140px 6% 70px;
-  }
-
-  .tabs-wrapper{
-    margin-top:-28px;
-  }
-
-  .tab-button{
-    min-height:52px;
-    font-size:14px;
-  }
-
-  .intro{
-    padding-top:90px;
-  }
-
-  .program-card{
-    flex-direction:column;
-    gap:15px;
-  }
-
-  .type-badge{
-    min-width:70px;
-  }
-
-  .testimonial-grid{
-    grid-template-columns:1fr;
-  }
+  /* FOOTER */
 
   footer{
     flex-direction:column;
+
     gap:20px;
   }
 
@@ -1462,29 +1602,56 @@ footer{
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+   HEADER
+===================================================== -->
 
 <header>
 
-  <a href="index.html#accueil" class="logo">
-    <img src="files/logo.png" alt="Logo Ti'Doc">
+  <a
+    href="index.html#accueil"
+    class="logo"
+  >
+
+    <img
+      src="files/logo.png"
+      alt="Logo Ti'Doc"
+    >
+
   </a>
 
+
   <nav>
-    <a href="index.html#accueil">Accueil</a>
-    <a href="index.html#apropos">À propos</a>
-    <a href="activites.html">Nos activités</a>
-    <a href="billetterie.html">Billetterie</a>
-    <a href="index.html#contact">Contact</a>
+
+    <a href="index.html#accueil">
+      Accueil
+    </a>
+
+    <a href="index.html#apropos">
+      À propos
+    </a>
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
   </nav>
 
 </header>
 
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- =====================================================
+   HERO
+===================================================== -->
 
 <section class="hero">
 
@@ -1510,35 +1677,33 @@ footer{
 
 
 
-<!-- =========================
-     ONGLETS 2025 / 2026
-========================= -->
+<!-- =====================================================
+   ONGLETS
+===================================================== -->
 
 <div class="tabs-wrapper">
 
   <button
     class="tab-button active"
-    data-tab="edition2025">
-
+    data-tab="edition2025"
+  >
     Édition 2025
-
   </button>
 
   <button
     class="tab-button"
-    data-tab="edition2026">
-
+    data-tab="edition2026"
+  >
     Édition 2026
-
   </button>
 
 </div>
 
 
 
-<!-- ==================================================
-     EDITION 2025
-================================================== -->
+<!-- =====================================================
+   ÉDITION 2025
+===================================================== -->
 
 <div
   class="edition-content active"
@@ -1588,6 +1753,7 @@ footer{
 
   </div>
 
+
   <div class="stat">
 
     <strong>
@@ -1599,6 +1765,7 @@ footer{
     </span>
 
   </div>
+
 
   <div class="stat">
 
@@ -1616,9 +1783,9 @@ footer{
 
 
 
-<!-- =========================
-     CONFERENCES
-========================= -->
+<!-- =====================================================
+   CONFÉRENCES 2025
+===================================================== -->
 
 <section class="program-section">
 
@@ -1640,270 +1807,148 @@ footer{
 
 
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
-        <h3>
-          Les lymphomes chez l'enfant
-        </h3>
-
-        <p>
-          Dr. Vannier
-        </p>
-
+        <h3>Les lymphomes chez l'enfant</h3>
+        <p>Dr. Vannier</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
-        <h3>
-          Médecine dentaire dans l'ère du numérique
-        </h3>
-
-        <p>
-          Dr. Mesaros
-        </p>
-
+        <h3>Médecine dentaire dans l'ère du numérique</h3>
+        <p>Dr. Mesaros</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           Les dessous de la gynécologie :
           prévention, action, réaction
         </h3>
 
-        <p>
-          Dr. Fried
-        </p>
-
+        <p>Dr. Fried</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           Les cellules souches primitives :
           rôle et implications dans les maladies
         </h3>
 
-        <p>
-          Dr. Cismaru
-        </p>
-
+        <p>Dr. Cismaru</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           La vitrectomie dans les traumatismes oculaires
         </h3>
 
-        <p>
-          Dr. Samoila
-        </p>
-
+        <p>Dr. Samoila</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           ARS et ANSM :
           deux institutions clefs pour la santé publique
         </h3>
 
-        <p>
-          Dr. Ratignier-Carbonneil
-        </p>
-
+        <p>Dr. Ratignier-Carbonneil</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
-        <h3>
-          Médicaments et grossesse
-        </h3>
-
-        <p>
-          Dr. Bouquet
-        </p>
-
+        <h3>Médicaments et grossesse</h3>
+        <p>Dr. Bouquet</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           Le tabagisme :
           généralités et prise en charge
         </h3>
 
-        <p>
-          Dr. Lemoine
-        </p>
-
+        <p>Dr. Lemoine</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
-        <h3>
-          VIH, où en est-on en 2025 ?
-        </h3>
-
-        <p>
-          Dr. Frentiu et Dr. Briciu
-        </p>
-
+        <h3>VIH, où en est-on en 2025 ?</h3>
+        <p>Dr. Frentiu et Dr. Briciu</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           De l'assiette à la peau :
           quand l'alimentation devient cosmétique
         </h3>
 
-        <p>
-          Dr. Cozma-Petrut
-        </p>
-
+        <p>Dr. Cozma-Petrut</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
-        <h3>
-          La chirurgie vasculaire en pratique
-        </h3>
-
-        <p>
-          Dr. Reny
-        </p>
-
+        <h3>La chirurgie vasculaire en pratique</h3>
+        <p>Dr. Reny</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
+      <span class="type-badge">CONF</span>
 
       <div class="program-info">
-
         <h3>
           Les troubles de la mémoire liés à l'anxiété
         </h3>
 
-        <p>
-          Dr. Livint-Popa
-        </p>
-
+        <p>Dr. Livint-Popa</p>
       </div>
-
     </div>
 
 
@@ -1911,9 +1956,9 @@ footer{
 
 </section>
 
-   <!-- ==================================================
-     PHOTOS DES CONFÉRENCES — GOOGLE DRIVE
-================================================== -->
+
+
+<!-- GALERIE CONFÉRENCES 2025 -->
 
 <section class="drive-gallery-section">
 
@@ -1926,8 +1971,7 @@ footer{
       </span>
 
       <h2>
-        Les conférences
-        en photos.
+        Les conférences en photos.
       </h2>
 
       <p>
@@ -1974,10 +2018,9 @@ footer{
 
 </section>
 
-   
-<!-- ==================================================
-     TRANSITION TI'DOC — CONFÉRENCES
-================================================== -->
+
+
+<!-- TRANSITION CONFÉRENCES 2025 -->
 
 <section class="tidoc-transition">
 
@@ -2020,9 +2063,11 @@ footer{
 
 </section>
 
-<!-- =========================
-     WORKSHOPS
-========================= -->
+
+
+<!-- =====================================================
+   WORKSHOPS 2025
+===================================================== -->
 
 <section class="program-section">
 
@@ -2049,81 +2094,47 @@ footer{
 
 
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
+      <span class="type-badge">WS</span>
 
       <div class="program-info">
-
-        <h3>
-          Échographie du pelvis
-        </h3>
-
-        <p>
-          Dr. Bouquet
-        </p>
-
+        <h3>Échographie du pelvis</h3>
+        <p>Dr. Bouquet</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
+      <span class="type-badge">WS</span>
 
       <div class="program-info">
-
         <h3>
           Échographie de l'épaule,
           du poumon et du canal carpien
         </h3>
 
-        <p>
-          Dr. Lemoine
-        </p>
-
+        <p>Dr. Lemoine</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
+      <span class="type-badge">WS</span>
 
       <div class="program-info">
-
         <h3>
           Intubation, ventilation,
           voie intraveineuse et perfusion
         </h3>
 
-        <p>
-          Dr. Challi
-        </p>
-
+        <p>Dr. Challi</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
+      <span class="type-badge">WS</span>
 
       <div class="program-info">
-
         <h3>
           Adaptation de la pratique médicale à l'autisme
         </h3>
@@ -2131,44 +2142,28 @@ footer{
         <p>
           Asociația Autism Transilvania
         </p>
-
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
+      <span class="type-badge">WS</span>
 
       <div class="program-info">
-
         <h3>
           Table ronde :
           Anatomie et innovations technologiques
         </h3>
 
-        <p>
-          CEFA
-        </p>
-
+        <p>CEFA</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
+      <span class="type-badge">WS</span>
 
       <div class="program-info">
-
         <h3>
           Table ronde :
           Éthique médicale
@@ -2177,9 +2172,7 @@ footer{
         <p>
           Cercle de sémiologie médicale
         </p>
-
       </div>
-
     </div>
 
 
@@ -2187,9 +2180,9 @@ footer{
 
 </section>
 
-<!-- ==================================================
-     PHOTOS DES WORKSHOPS — GOOGLE DRIVE
-================================================== -->
+
+
+<!-- GALERIE WORKSHOPS 2025 -->
 
 <section class="drive-gallery-section">
 
@@ -2202,8 +2195,7 @@ footer{
       </span>
 
       <h2>
-        Les workshops
-        en photos.
+        Les workshops en photos.
       </h2>
 
       <p>
@@ -2249,10 +2241,10 @@ footer{
   </div>
 
 </section>
-   
-<!-- ==================================================
-     TRANSITION TI'DOC — WORKSHOPS
-================================================== -->
+
+
+
+<!-- TRANSITION WORKSHOPS 2025 -->
 
 <section class="tidoc-transition reverse">
 
@@ -2295,9 +2287,11 @@ footer{
 
 </section>
 
-<!-- =========================
-     EVENEMENTS
-========================= -->
+
+
+<!-- =====================================================
+   ÉVÉNEMENTS 2025
+===================================================== -->
 
 <section class="program-section">
 
@@ -2319,81 +2313,40 @@ footer{
 
 
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
+      <span class="type-badge">EVENT</span>
 
       <div class="program-info">
-
-        <h3>
-          Cérémonie d'ouverture
-        </h3>
-
+        <h3>Cérémonie d'ouverture</h3>
       </div>
-
     </div>
 
 
-
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
+      <span class="type-badge">EVENT</span>
 
       <div class="program-info">
-
-        <h3>
-          Visite du musée de la pharmacie
-        </h3>
-
+        <h3>Visite du musée de la pharmacie</h3>
       </div>
-
     </div>
 
 
-
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
+      <span class="type-badge">EVENT</span>
 
       <div class="program-info">
-
-        <h3>
-          Trivia Night
-        </h3>
-
-        <p>
-          avec CMC Event
-        </p>
-
+        <h3>Trivia Night</h3>
+        <p>avec CMC Event</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
+      <span class="type-badge">EVENT</span>
 
       <div class="program-info">
-
-        <h3>
-          Scrub Party
-        </h3>
-
-        <p>
-          avec CMC Event
-        </p>
-
+        <h3>Scrub Party</h3>
+        <p>avec CMC Event</p>
       </div>
-
     </div>
 
 
@@ -2401,9 +2354,9 @@ footer{
 
 </section>
 
-<!-- ==================================================
-     PHOTOS DES ÉVÉNEMENTS — GOOGLE DRIVE
-================================================== -->
+
+
+<!-- GALERIE ÉVÉNEMENTS 2025 -->
 
 <section class="drive-gallery-section">
 
@@ -2416,8 +2369,7 @@ footer{
       </span>
 
       <h2>
-        Les événements
-        en photos.
+        Les événements en photos.
       </h2>
 
       <p>
@@ -2463,10 +2415,10 @@ footer{
   </div>
 
 </section>
-   
-<!-- ==================================================
-     ANIMATIONS TI'DOC — ÉVÉNEMENTS
-================================================== -->
+
+
+
+<!-- ANIMATIONS ÉVÉNEMENTS 2025 -->
 
 <section class="event-animation-section">
 
@@ -2493,16 +2445,9 @@ footer{
   <div class="event-animations">
 
 
-    <!-- MUSÉE -->
-
     <div class="tidoc-animation reveal-left">
 
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-      >
+      <video autoplay muted loop playsinline>
 
         <source
           src="files/pharma.MP4"
@@ -2514,16 +2459,9 @@ footer{
     </div>
 
 
-    <!-- FÊTE -->
-
     <div class="tidoc-animation reveal-left">
 
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-      >
+      <video autoplay muted loop playsinline>
 
         <source
           src="files/fete.MP4"
@@ -2535,16 +2473,9 @@ footer{
     </div>
 
 
-    <!-- PUPITRE -->
-
     <div class="tidoc-animation reveal-right">
 
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-      >
+      <video autoplay muted loop playsinline>
 
         <source
           src="files/Pupitre.mp4"
@@ -2561,9 +2492,8 @@ footer{
 </section>
 
 
-<!-- =========================
-     TEMOIGNAGES
-========================= -->
+
+<!-- TÉMOIGNAGES 2025 -->
 
 <section class="testimonials">
 
@@ -2604,21 +2534,23 @@ footer{
 
       </div>
 
-<div class="testimonial">
 
-  <div class="quote">
-    “
-  </div>
+      <div class="testimonial">
 
-  <blockquote>
-    Parfait.
-  </blockquote>
+        <div class="quote">
+          “
+        </div>
 
-  <strong>
-    Lea Bourgeois
-  </strong>
+        <blockquote>
+          Parfait.
+        </blockquote>
 
-</div>
+        <strong>
+          Lea Bourgeois
+        </strong>
+
+      </div>
+
 
       <div class="testimonial">
 
@@ -2649,9 +2581,9 @@ footer{
 
 
 
-<!-- ==================================================
-     EDITION 2026
-================================================== -->
+<!-- =====================================================
+   ÉDITION 2026
+===================================================== -->
 
 <div
   class="edition-content"
@@ -2659,9 +2591,7 @@ footer{
 >
 
 
-<!-- =========================
-     INTRO 2026
-========================= -->
+<!-- INTRO -->
 
 <section class="intro">
 
@@ -2687,55 +2617,32 @@ footer{
 
 
 
-<!-- =========================
-     CHIFFRES 2026
-========================= -->
+<!-- CHIFFRES -->
 
 <div class="stats">
 
   <div class="stat">
-
-    <strong>
-      CONF
-    </strong>
-
-    <span>
-      Conférences
-    </span>
-
+    <strong>CONF</strong>
+    <span>Conférences</span>
   </div>
 
   <div class="stat">
-
-    <strong>
-      WS
-    </strong>
-
-    <span>
-      Workshops
-    </span>
-
+    <strong>WS</strong>
+    <span>Workshops</span>
   </div>
 
   <div class="stat">
-
-    <strong>
-      EVENT
-    </strong>
-
-    <span>
-      Moments de partage
-    </span>
-
+    <strong>EVENT</strong>
+    <span>Moments de partage</span>
   </div>
 
 </div>
 
 
 
-<!-- ==================================================
-     CONFÉRENCES 2026
-================================================== -->
+<!-- =====================================================
+   CONFÉRENCES 2026
+===================================================== -->
 
 <section class="program-section">
 
@@ -2764,583 +2671,310 @@ footer{
 
 
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Quand le robot devient les mains du chirurgien :
           la chirurgie robotique en urologie
         </h3>
-
-        <p>
-          Ionuț-Andrei Furcoiu
-        </p>
-
+        <p>Ionuț-Andrei Furcoiu</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Médecine générale :
           définition et concepts à partir de stations ECOO
         </h3>
-
-        <p>
-          Dr. Hazard Emmanuel
-        </p>
-
+        <p>Dr. Hazard Emmanuel</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Chirurgie veineuse,
           indications et nouvelle technique endoveineuse :
           approche pratique
         </h3>
-
-        <p>
-          Dr. Reny Philippe
-        </p>
-
+        <p>Dr. Reny Philippe</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Traitement des lésions symptomatiques
           et asymptomatiques des carotides :
           indications et techniques chirurgicales
           ou endovasculaires
         </h3>
-
-        <p>
-          Dr. Reny Philippe
-        </p>
-
+        <p>Dr. Reny Philippe</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Pratiquer la psychiatrie en Suisse :
           aspects pratiques et légaux
         </h3>
-
-        <p>
-          Dr. Cicotti Andrei
-        </p>
-
+        <p>Dr. Cicotti Andrei</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Épilepsie du lobe frontal :
           de l'origine focale au dysfonctionnement
           des réseaux
         </h3>
-
-        <p>
-          Dr. Livint-Popa Livia
-        </p>
-
+        <p>Dr. Livint-Popa Livia</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Les complications du diabète sucré
           et du syndrome métabolique
           dans la pratique de la médecine interne
         </h3>
-
-        <p>
-          Dr. Milaciu Mircea Vasile
-        </p>
-
+        <p>Dr. Milaciu Mircea Vasile</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Innovations thérapeutiques
           dans la prise en charge
           de la douleur chronique
         </h3>
-
-        <p>
-          Dr. Challi Hassane
-        </p>
-
+        <p>Dr. Challi Hassane</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Chirurgie des grands brûlés :
           principes et stratégies thérapeutiques
         </h3>
-
-        <p>
-          Dr. Gluck Lemarchal Dylan
-        </p>
-
+        <p>Dr. Gluck Lemarchal Dylan</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           L'épopée de la chirurgie ophtalmique
         </h3>
-
-        <p>
-          Dr. Samoila Ovidiu
-        </p>
-
+        <p>Dr. Samoila Ovidiu</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Les interventions nutritionnelles
           de précision dans le cadre de l'obésité
         </h3>
-
-        <p>
-          Dr. Cozma-Petrut Anamaria
-        </p>
-
+        <p>Dr. Cozma-Petrut Anamaria</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           L'optimisation de l'utilisation
           des antibiotiques :
           Antimicrobial Stewardship
         </h3>
-
-        <p>
-          Dr. Rus Iulia
-        </p>
-
+        <p>Dr. Rus Iulia</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Les cellules souches cancéreuses
           et détournement des programmes
           de développement dans la tumorigénèse
         </h3>
-
-        <p>
-          Dr. Cismaru Andrei
-        </p>
-
+        <p>Dr. Cismaru Andrei</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Les cancers oraux :
           dépistage et prise en charge
         </h3>
-
-        <p>
-          Dr. Moldovan Madalina
-        </p>
-
+        <p>Dr. Moldovan Madalina</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
-        <h3>
-          L'autotransplantation dentaire
-        </h3>
-
-        <p>
-          Dr. Hamdani Adel
-        </p>
-
+        <h3>L'autotransplantation dentaire</h3>
+        <p>Dr. Hamdani Adel</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Nouvelles directives de prévention
           et de dépistage du HPV
         </h3>
-
-        <p>
-          Dr. Bouquet Sylvain
-        </p>
-
+        <p>Dr. Bouquet Sylvain</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           La cholécystectomie
           et l'appendicectomie en vidéo
         </h3>
-
-        <p>
-          Dr. Tedeschi Louise
-        </p>
-
+        <p>Dr. Tedeschi Louise</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Aide à l'arrêt du tabac
           et modalités de prise en charge
         </h3>
-
-        <p>
-          Dr. Lemoine Thierry
-        </p>
-
+        <p>Dr. Lemoine Thierry</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Hémoglobinopathies :
           drépanocytose et thalassémie
         </h3>
-
-        <p>
-          Dr. Vannier Jean-Pierre
-        </p>
-
+        <p>Dr. Vannier Jean-Pierre</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           La santé buccale appliquée
           à la santé générale
         </h3>
-
-        <p>
-          Dr. Deza Alexandre
-        </p>
-
+        <p>Dr. Deza Alexandre</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Rigidité artérielle :
           signification et traitements
         </h3>
-
-        <p>
-          Dr. Albu Adriana
-        </p>
-
+        <p>Dr. Albu Adriana</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           La fundoplicature de Nissen
           dans le traitement du RGO
           et de l'achalasie
         </h3>
-
-        <p>
-          Dr. Weerts Joseph
-        </p>
-
+        <p>Dr. Weerts Joseph</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Les réelles pathologies
           derrière la médecine humanitaire
         </h3>
-
-        <p>
-          La Caravane Médicale
-        </p>
-
+        <p>La Caravane Médicale</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card">
-
-      <span class="type-badge">
-        CONF
-      </span>
-
+      <span class="type-badge">CONF</span>
       <div class="program-info">
-
         <h3>
           Stratégie chirurgicale
           après immunothérapie néoadjuvante
           dans le cancer du sein
         </h3>
-
-        <p>
-          Dr. Fried Deborah
-        </p>
-
+        <p>Dr. Fried Deborah</p>
       </div>
-
     </div>
 
-     <div class="program-card">
 
-  <span class="type-badge">
-    CONF
-  </span>
+    <div class="program-card">
+      <span class="type-badge">CONF</span>
+      <div class="program-info">
+        <h3>
+          Présentation de recherche :
+          le traitement PRF dans la polypose nasale
+        </h3>
+        <p>Garris Roullet</p>
+      </div>
+    </div>
 
-  <div class="program-info">
-
-    <h3>
-      Présentation de recherche :
-      le traitement PRF dans la polypose nasale
-    </h3>
-
-    <p>
-      Garris Roullet
-    </p>
-
-  </div>
-
-</div>
 
   </div>
 
@@ -3348,30 +2982,16 @@ footer{
 
 
 
-<!-- ==================================================
-     PHOTOS DES CONFÉRENCES 2026
-================================================== -->
+<!-- GALERIE CONFÉRENCES 2026 -->
 
 <section class="drive-gallery-section">
 
   <div class="drive-gallery-header">
 
     <div>
-
-      <span class="section-tag">
-        En images
-      </span>
-
-      <h2>
-        Les conférences
-        en photos.
-      </h2>
-
-      <p>
-        Quelques souvenirs des conférences
-        de Ti'Doc 2026.
-      </p>
-
+      <span class="section-tag">En images</span>
+      <h2>Les conférences en photos.</h2>
+      <p>Quelques souvenirs des conférences de Ti'Doc 2026.</p>
     </div>
 
     <div class="drive-gallery-arrows">
@@ -3379,7 +2999,6 @@ footer{
       <button
         class="gallery-arrow"
         id="conference2026-prev"
-        aria-label="Photos précédentes"
       >
         ←
       </button>
@@ -3387,7 +3006,6 @@ footer{
       <button
         class="gallery-arrow"
         id="conference2026-next"
-        aria-label="Photos suivantes"
       >
         →
       </button>
@@ -3395,6 +3013,7 @@ footer{
     </div>
 
   </div>
+
 
   <div
     class="drive-carousel"
@@ -3411,9 +3030,7 @@ footer{
 
 
 
-<!-- ==================================================
-     TRANSITION TI'DOC — CONFÉRENCES 2026
-================================================== -->
+<!-- TRANSITION CONFÉRENCES 2026 -->
 
 <section class="tidoc-transition">
 
@@ -3438,12 +3055,7 @@ footer{
 
   <div class="tidoc-animation reveal-right">
 
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-    >
+    <video autoplay muted loop playsinline>
 
       <source
         src="files/Amphi.mp4"
@@ -3458,9 +3070,9 @@ footer{
 
 
 
-<!-- ==================================================
-     WORKSHOPS 2026
-================================================== -->
+<!-- =====================================================
+   WORKSHOPS 2026
+===================================================== -->
 
 <section class="program-section">
 
@@ -3488,139 +3100,72 @@ footer{
 
 
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
-
+      <span class="type-badge">WS</span>
       <div class="program-info">
-
         <h3>
           Conduire un entretien psychiatrique :
           jeux de rôle avec les médecins internes
         </h3>
-
-        <p>
-          Dr. Cicotti Andrei
-        </p>
-
+        <p>Dr. Cicotti Andrei</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
-
+      <span class="type-badge">WS</span>
       <div class="program-info">
-
         <h3>
           Techniques d'intubation,
           ventilation, pose de voie veineuse
           et perfusion
         </h3>
-
-        <p>
-          Dr. Challi Hassane et Dr. Challi Issam
-        </p>
-
+        <p>Dr. Challi Hassane et Dr. Challi Issam</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
-
+      <span class="type-badge">WS</span>
       <div class="program-info">
-
         <h3>
           Neurosciences computationnelles
           appliquées aux canalopathies
         </h3>
-
-        <p>
-          Jérémie Loquet
-        </p>
-
+        <p>Jérémie Loquet</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
-
+      <span class="type-badge">WS</span>
       <div class="program-info">
-
-        <h3>
-          Échographie du pelvis
-        </h3>
-
-        <p>
-          Dr. Bouquet Sylvain
-        </p>
-
+        <h3>Échographie du pelvis</h3>
+        <p>Dr. Bouquet Sylvain</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
-
+      <span class="type-badge">WS</span>
       <div class="program-info">
-
         <h3>
           Échographie de l'épaule,
           du poumon et du canal carpien
         </h3>
-
-        <p>
-          Dr. Lemoine Thierry
-        </p>
-
+        <p>Dr. Lemoine Thierry</p>
       </div>
-
     </div>
 
 
-
     <div class="program-card workshop-card">
-
-      <span class="type-badge">
-        WS
-      </span>
-
+      <span class="type-badge">WS</span>
       <div class="program-info">
-
         <h3>
           La gestion de l'autisme
           dans la pratique médicale courante
         </h3>
-
-        <p>
-          AAT
-        </p>
-
+        <p>AAT</p>
       </div>
-
     </div>
 
 
@@ -3630,30 +3175,16 @@ footer{
 
 
 
-<!-- ==================================================
-     PHOTOS DES WORKSHOPS 2026
-================================================== -->
+<!-- GALERIE WORKSHOPS 2026 -->
 
 <section class="drive-gallery-section">
 
   <div class="drive-gallery-header">
 
     <div>
-
-      <span class="section-tag">
-        En images
-      </span>
-
-      <h2>
-        Les workshops
-        en photos.
-      </h2>
-
-      <p>
-        Quelques souvenirs des workshops
-        de Ti'Doc 2026.
-      </p>
-
+      <span class="section-tag">En images</span>
+      <h2>Les workshops en photos.</h2>
+      <p>Quelques souvenirs des workshops de Ti'Doc 2026.</p>
     </div>
 
     <div class="drive-gallery-arrows">
@@ -3661,7 +3192,6 @@ footer{
       <button
         class="gallery-arrow"
         id="workshop2026-prev"
-        aria-label="Photos précédentes"
       >
         ←
       </button>
@@ -3669,7 +3199,6 @@ footer{
       <button
         class="gallery-arrow"
         id="workshop2026-next"
-        aria-label="Photos suivantes"
       >
         →
       </button>
@@ -3677,6 +3206,7 @@ footer{
     </div>
 
   </div>
+
 
   <div
     class="drive-carousel"
@@ -3693,20 +3223,13 @@ footer{
 
 
 
-<!-- ==================================================
-     TRANSITION TI'DOC — WORKSHOPS 2026
-================================================== -->
+<!-- TRANSITION WORKSHOPS 2026 -->
 
 <section class="tidoc-transition reverse">
 
   <div class="tidoc-animation reveal-left">
 
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-    >
+    <video autoplay muted loop playsinline>
 
       <source
         src="files/sutures.MP4"
@@ -3740,9 +3263,9 @@ footer{
 
 
 
-<!-- ==================================================
-     ÉVÉNEMENTS 2026
-================================================== -->
+<!-- =====================================================
+   ÉVÉNEMENTS 2026
+===================================================== -->
 
 <section class="program-section">
 
@@ -3769,71 +3292,32 @@ footer{
   <div class="program-grid">
 
 
-    <!-- CÉRÉMONIE D'OUVERTURE -->
-
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
-
+      <span class="type-badge">EVENT</span>
       <div class="program-info">
-
-        <h3>
-          Cérémonie d'ouverture
-        </h3>
-
+        <h3>Cérémonie d'ouverture</h3>
       </div>
-
     </div>
 
 
-
-    <!-- THE TI'RENDEZ-VOUS -->
-
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
-
+      <span class="type-badge">EVENT</span>
       <div class="program-info">
-
-        <h3>
-          The Ti'Rendez-vous
-        </h3>
-
-        <p>
-          avec Frenchy Accent
-        </p>
-
+        <h3>The Ti'Rendez-vous</h3>
+        <p>avec Frenchy Accent</p>
       </div>
-
     </div>
 
 
-
-    <!-- STANDS PARTENAIRES -->
-
     <div class="program-card event-card">
-
-      <span class="type-badge">
-        EVENT
-      </span>
-
+      <span class="type-badge">EVENT</span>
       <div class="program-info">
-
-        <h3>
-          Les stands de nos partenaires
-        </h3>
-
+        <h3>Les stands de nos partenaires</h3>
         <p>
           The Cow'kies • Burger Cluj •
           Les Psy Réunis • Eurocontacts
         </p>
-
       </div>
-
     </div>
 
 
@@ -3843,30 +3327,16 @@ footer{
 
 
 
-<!-- ==================================================
-     PHOTOS DES ÉVÉNEMENTS 2026
-================================================== -->
+<!-- GALERIE ÉVÉNEMENTS 2026 -->
 
 <section class="drive-gallery-section">
 
   <div class="drive-gallery-header">
 
     <div>
-
-      <span class="section-tag">
-        En images
-      </span>
-
-      <h2>
-        Les événements
-        en photos.
-      </h2>
-
-      <p>
-        Quelques souvenirs des moments forts
-        de Ti'Doc 2026.
-      </p>
-
+      <span class="section-tag">En images</span>
+      <h2>Les événements en photos.</h2>
+      <p>Quelques souvenirs des moments forts de Ti'Doc 2026.</p>
     </div>
 
     <div class="drive-gallery-arrows">
@@ -3874,7 +3344,6 @@ footer{
       <button
         class="gallery-arrow"
         id="event2026-prev"
-        aria-label="Photos précédentes"
       >
         ←
       </button>
@@ -3882,7 +3351,6 @@ footer{
       <button
         class="gallery-arrow"
         id="event2026-next"
-        aria-label="Photos suivantes"
       >
         →
       </button>
@@ -3890,6 +3358,7 @@ footer{
     </div>
 
   </div>
+
 
   <div
     class="drive-carousel"
@@ -3906,9 +3375,7 @@ footer{
 
 
 
-<!-- ==================================================
-     ANIMATIONS TI'DOC — ÉVÉNEMENTS 2026
-================================================== -->
+<!-- ANIMATIONS ÉVÉNEMENTS 2026 -->
 
 <section class="event-animation-section">
 
@@ -3933,6 +3400,7 @@ footer{
 
 
   <div class="event-animations">
+
 
     <div class="tidoc-animation reveal-left">
 
@@ -3975,15 +3443,14 @@ footer{
 
     </div>
 
+
   </div>
 
 </section>
 
 
 
-<!-- ==================================================
-     TEMOIGNAGES 2026
-================================================== -->
+<!-- TÉMOIGNAGES 2026 -->
 
 <section class="testimonials">
 
@@ -4008,9 +3475,7 @@ footer{
 
       <div class="testimonial">
 
-        <div class="quote">
-          “
-        </div>
+        <div class="quote">“</div>
 
         <blockquote>
           Merci pour toute l'organisation,
@@ -4026,9 +3491,7 @@ footer{
 
       <div class="testimonial">
 
-        <div class="quote">
-          “
-        </div>
+        <div class="quote">“</div>
 
         <blockquote>
           C'était très formateur :)
@@ -4044,9 +3507,7 @@ footer{
 
       <div class="testimonial">
 
-        <div class="quote">
-          “
-        </div>
+        <div class="quote">“</div>
 
         <blockquote>
           Merci à l'organisation pour l'invitation,
@@ -4069,16 +3530,13 @@ footer{
 </section>
 
 
-<!-- FIN EDITION 2026 -->
-
 </div>
 
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- =====================================================
+   FOOTER
+===================================================== -->
 
 <footer>
 
@@ -4096,46 +3554,72 @@ footer{
 
 
 
-<!-- =========================
-     SCRIPT ONGLETS
-========================= -->
+<!-- =====================================================
+   SCRIPT ONGLETS
+===================================================== -->
 
 <script>
 
 const buttons =
-  document.querySelectorAll(".tab-button");
+  document.querySelectorAll(
+    ".tab-button"
+  );
 
 const contents =
-  document.querySelectorAll(".edition-content");
+  document.querySelectorAll(
+    ".edition-content"
+  );
 
 
-buttons.forEach(button => {
+buttons.forEach(
+  button => {
 
-  button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-    buttons.forEach(btn =>
-      btn.classList.remove("active")
+        buttons.forEach(
+          btn =>
+            btn.classList.remove(
+              "active"
+            )
+        );
+
+
+        contents.forEach(
+          content =>
+            content.classList.remove(
+              "active"
+            )
+        );
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        document
+          .getElementById(
+            button.dataset.tab
+          )
+          .classList.add(
+            "active"
+          );
+
+      }
     );
 
-    contents.forEach(content =>
-      content.classList.remove("active")
-    );
-
-    button.classList.add("active");
-
-    document
-      .getElementById(button.dataset.tab)
-      .classList.add("active");
-
-  });
-
-});
+  }
+);
 
 </script>
 
-<!-- =========================
-     SCRIPT ANIMATIONS TI'DOC
-========================= -->
+
+
+<!-- =====================================================
+   SCRIPT ANIMATIONS
+===================================================== -->
 
 <script>
 
@@ -4144,539 +3628,350 @@ const animatedElements =
     ".reveal-left, .reveal-right"
   );
 
+
 const animationObserver =
-  new IntersectionObserver(entries => {
+  new IntersectionObserver(
+    entries => {
 
-    entries.forEach(entry => {
+      entries.forEach(
+        entry => {
 
-      if(entry.isIntersecting){
+          if(
+            entry.isIntersecting
+          ){
 
-        entry.target.classList.add("visible");
+            entry
+              .target
+              .classList
+              .add(
+                "visible"
+              );
 
-      }
+          }
 
-    });
+        }
+      );
 
-  },{
-    threshold:0.15
-  });
+    },
+    {
+      threshold:.15
+    }
+  );
 
 
-animatedElements.forEach(element => {
+animatedElements.forEach(
+  element => {
 
-  animationObserver.observe(element);
+    animationObserver.observe(
+      element
+    );
 
-});
+  }
+);
 
 </script>
 
-<!-- ==================================================
-     GOOGLE DRIVE → GALERIE CONFÉRENCES
-================================================== -->
+
+
+<!-- =====================================================
+   API GOOGLE DRIVE
+===================================================== -->
 
 <script>
 
 const TIDOC_DRIVE_API =
   "https://script.google.com/macros/s/AKfycbzc0sJmC0QQ1ZzF5Qh02bV-gCnFejaiaFJKv8xYh9uUTqjSel7xoWv5ZzMCxNdhq2J2/exec";
 
-const conferenceCarousel =
-  document.getElementById("conference-carousel");
 
+/* =====================================================
+   CRÉER UNE PHOTO
+===================================================== */
 
-async function loadConferencePhotos(){
+function createGalleryPhoto(
+  photo,
+  titleKey,
+  defaultTitle,
+  defaultDay
+){
 
-  if(!conferenceCarousel){
-    return;
-  }
-
-  conferenceCarousel.innerHTML = `
-    <div class="gallery-loading">
-      Chargement des photos...
-    </div>
-  `;
-
-  try{
-
-    const response = await fetch(
-      TIDOC_DRIVE_API,
-      {
-        method: "GET",
-        redirect: "follow"
-      }
+  const card =
+    document.createElement(
+      "div"
     );
 
-    if(!response.ok){
-      throw new Error(
-        "Erreur HTTP : " + response.status
-      );
-    }
+  card.className =
+    "drive-photo";
 
-    const text = await response.text();
 
-    console.log(
-      "Réponse Ti'Doc :",
-      text.substring(0,200)
+  const image =
+    document.createElement(
+      "img"
     );
 
-    const data = JSON.parse(text);
+  image.src =
+    photo.image || "";
 
-    if(
-      !data.success ||
-      !Array.isArray(data.photos)
-    ){
-      throw new Error(
-        "Format de données incorrect"
-      );
-    }
+  image.alt =
+    photo[titleKey] ||
+    defaultTitle;
 
-    if(data.photos.length === 0){
-
-      conferenceCarousel.innerHTML = `
-        <div class="gallery-loading">
-          Aucune photo disponible.
-        </div>
-      `;
-
-      return;
-    }
-
-    conferenceCarousel.innerHTML = "";
-
-    data.photos.forEach(photo => {
-
-      const card =
-        document.createElement("div");
-
-      card.className = "drive-photo";
-
-      const image =
-        document.createElement("img");
-
-      image.src = photo.image;
-      image.alt =
-        photo.conference || "Ti'Doc 2025";
-
-      image.loading = "lazy";
+  image.loading =
+    "lazy";
 
 
-      const caption =
-        document.createElement("div");
-
-      caption.className =
-        "drive-photo-caption";
-
-
-      const day =
-        document.createElement("span");
-
-      day.textContent =
-        photo.day || "";
-
-
-      const title =
-        document.createElement("strong");
-
-      title.textContent =
-        photo.conference || "";
-
-
-      caption.appendChild(day);
-      caption.appendChild(title);
-
-      card.appendChild(image);
-      card.appendChild(caption);
-
-      conferenceCarousel.appendChild(card);
-
-    });
-
-    console.log(
-      data.photos.length +
-      " photos Ti'Doc chargées."
+  const caption =
+    document.createElement(
+      "div"
     );
 
-  }
+  caption.className =
+    "drive-photo-caption";
 
-  catch(error){
 
-    console.error(
-      "ERREUR GALERIE TIDOC :",
-      error
+  const day =
+    document.createElement(
+      "span"
     );
 
-    conferenceCarousel.innerHTML = `
-      <div class="gallery-loading">
-        Impossible de charger les photos pour le moment.
-      </div>
-    `;
+  day.textContent =
+    photo.day ||
+    defaultDay ||
+    "";
 
-  }
+
+  const title =
+    document.createElement(
+      "strong"
+    );
+
+  title.textContent =
+    photo[titleKey] ||
+    photo.folder ||
+    defaultTitle;
+
+
+  caption.appendChild(
+    day
+  );
+
+  caption.appendChild(
+    title
+  );
+
+  card.appendChild(
+    image
+  );
+
+  card.appendChild(
+    caption
+  );
+
+
+  return card;
 
 }
 
 
-/* FLÈCHES */
+/* =====================================================
+   REMPLIR UNE GALERIE
+===================================================== */
 
-const conferenceNext =
-  document.getElementById("conference-next");
+function fillGallery(
+  carousel,
+  photos,
+  titleKey,
+  defaultTitle,
+  defaultDay
+){
 
-const conferencePrev =
-  document.getElementById("conference-prev");
-
-
-conferenceNext?.addEventListener(
-  "click",
-  () => {
-
-    conferenceCarousel.scrollBy({
-      left: 570,
-      behavior: "smooth"
-    });
-
-  }
-);
-
-
-conferencePrev?.addEventListener(
-  "click",
-  () => {
-
-    conferenceCarousel.scrollBy({
-      left: -570,
-      behavior: "smooth"
-    });
-
-  }
-);
-
-
-/* LANCEMENT */
-
-loadConferencePhotos();
-
-</script>
-
-<!-- ==================================================
-     GOOGLE DRIVE → GALERIE WORKSHOPS
-================================================== -->
-
-<script>
-
-const workshopCarousel =
-  document.getElementById("workshop-carousel");
-
-
-async function loadWorkshopPhotos(){
-
-  if(!workshopCarousel){
+  if(
+    !carousel
+  ){
     return;
   }
 
-  workshopCarousel.innerHTML = `
-    <div class="gallery-loading">
-      Chargement des photos...
-    </div>
-  `;
 
-  try{
-
-    const response = await fetch(
-      TIDOC_DRIVE_API,
-      {
-        method: "GET",
-        redirect: "follow"
-      }
-    );
-
-    if(!response.ok){
-      throw new Error(
-        "Erreur HTTP : " + response.status
-      );
-    }
-
-    const text = await response.text();
-
-    const data = JSON.parse(text);
+  carousel.innerHTML =
+    "";
 
 
-    if(
-      !data.success ||
-      !Array.isArray(data.workshops)
-    ){
-      throw new Error(
-        "Format de données workshops incorrect"
-      );
-    }
+  if(
+    !Array.isArray(photos) ||
+    photos.length === 0
+  ){
 
+    carousel.innerHTML = `
 
-    if(data.workshops.length === 0){
-
-      workshopCarousel.innerHTML = `
-        <div class="gallery-loading">
-          Aucune photo de workshop disponible.
-        </div>
-      `;
-
-      return;
-    }
-
-
-    workshopCarousel.innerHTML = "";
-
-
-    data.workshops.forEach(photo => {
-
-      const card =
-        document.createElement("div");
-
-      card.className = "drive-photo";
-
-
-      const image =
-        document.createElement("img");
-
-      image.src = photo.image;
-
-      image.alt =
-        photo.workshop || "Workshop Ti'Doc 2025";
-
-      image.loading = "lazy";
-
-
-      const caption =
-        document.createElement("div");
-
-      caption.className =
-        "drive-photo-caption";
-
-
-      const day =
-        document.createElement("span");
-
-      day.textContent =
-        photo.day || "";
-
-
-      const title =
-        document.createElement("strong");
-
-      title.textContent =
-        photo.workshop || "";
-
-
-      caption.appendChild(day);
-      caption.appendChild(title);
-
-      card.appendChild(image);
-      card.appendChild(caption);
-
-      workshopCarousel.appendChild(card);
-
-    });
-
-  }
-
-  catch(error){
-
-    console.error(
-      "ERREUR GALERIE WORKSHOPS :",
-      error
-    );
-
-    workshopCarousel.innerHTML = `
       <div class="gallery-loading">
-        Impossible de charger les photos des workshops.
+        Aucune photo disponible.
       </div>
+
     `;
 
+    return;
+
   }
+
+
+  photos.forEach(
+    photo => {
+
+      carousel.appendChild(
+        createGalleryPhoto(
+          photo,
+          titleKey,
+          defaultTitle,
+          defaultDay
+        )
+      );
+
+    }
+  );
 
 }
 
 
-/* =========================
-   FLÈCHES WORKSHOPS
-========================= */
+/* =====================================================
+   CHARGER TOUTES LES GALERIES
+===================================================== */
 
-const workshopNext =
-  document.getElementById("workshop-next");
+async function loadAllPhotos(){
 
-const workshopPrev =
-  document.getElementById("workshop-prev");
+  const galleries = [
 
+    document.getElementById(
+      "conference-carousel"
+    ),
 
-workshopNext?.addEventListener(
-  "click",
-  () => {
+    document.getElementById(
+      "workshop-carousel"
+    ),
 
-    workshopCarousel.scrollBy({
-      left:570,
-      behavior:"smooth"
-    });
+    document.getElementById(
+      "event-carousel"
+    ),
 
-  }
-);
+    document.getElementById(
+      "conference2026-carousel"
+    ),
 
+    document.getElementById(
+      "workshop2026-carousel"
+    ),
 
-workshopPrev?.addEventListener(
-  "click",
-  () => {
+    document.getElementById(
+      "event2026-carousel"
+    )
 
-    workshopCarousel.scrollBy({
-      left:-570,
-      behavior:"smooth"
-    });
-
-  }
-);
-
-
-/* LANCEMENT */
-
-loadWorkshopPhotos();
-
-</script>
-
-<!-- ==================================================
-     GOOGLE DRIVE → GALERIE ÉVÉNEMENTS
-================================================== -->
-
-<script>
-
-const eventCarousel =
-  document.getElementById("event-carousel");
-
-
-async function loadEventPhotos(){
-
-  if(!eventCarousel){
-    return;
-  }
-
-
-  eventCarousel.innerHTML = `
-    <div class="gallery-loading">
-      Chargement des photos...
-    </div>
-  `;
+  ];
 
 
   try{
 
-    const response = await fetch(
-      TIDOC_DRIVE_API,
-      {
-        method: "GET",
-        redirect: "follow"
-      }
-    );
+    const response =
+      await fetch(
+        TIDOC_DRIVE_API,
+        {
+          method:"GET",
+          redirect:"follow"
+        }
+      );
 
 
-    if(!response.ok){
+    if(
+      !response.ok
+    ){
 
       throw new Error(
-        "Erreur HTTP : " + response.status
+        "Erreur HTTP : " +
+        response.status
       );
 
     }
-
-
-    const text =
-      await response.text();
 
 
     const data =
-      JSON.parse(text);
+      await response.json();
 
 
     if(
-      !data.success ||
-      !Array.isArray(data.events)
+      !data.success
     ){
 
       throw new Error(
-        "Données événements incorrectes"
+        "Réponse Google Drive invalide."
       );
 
     }
 
 
-    if(data.events.length === 0){
+    /* 2025 */
 
-      eventCarousel.innerHTML = `
-        <div class="gallery-loading">
-          Aucune photo d'événement disponible.
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    eventCarousel.innerHTML = "";
+    fillGallery(
+      document.getElementById(
+        "conference-carousel"
+      ),
+      data.photos,
+      "conference",
+      "Conférence Ti'Doc 2025",
+      "Ti'Doc 2025"
+    );
 
 
-    data.events.forEach(photo => {
+    fillGallery(
+      document.getElementById(
+        "workshop-carousel"
+      ),
+      data.workshops,
+      "workshop",
+      "Workshop Ti'Doc 2025",
+      "Ti'Doc 2025"
+    );
 
 
-      const card =
-        document.createElement("div");
-
-      card.className =
-        "drive-photo";
-
-
-      const image =
-        document.createElement("img");
-
-      image.src =
-        photo.image;
-
-      image.alt =
-        photo.event || "Événement Ti'Doc 2025";
-
-      image.loading =
-        "lazy";
+    fillGallery(
+      document.getElementById(
+        "event-carousel"
+      ),
+      data.events,
+      "event",
+      "Événement Ti'Doc 2025",
+      "Ti'Doc 2025"
+    );
 
 
-      const caption =
-        document.createElement("div");
+    /* 2026 */
 
-      caption.className =
-        "drive-photo-caption";
-
-
-      const day =
-        document.createElement("span");
-
-      day.textContent =
-        photo.day || "Ti'Doc 2025";
-
-
-      const title =
-        document.createElement("strong");
-
-      title.textContent =
-        photo.event || "";
+    fillGallery(
+      document.getElementById(
+        "conference2026-carousel"
+      ),
+      data.photos2026,
+      "conference",
+      "Conférence Ti'Doc 2026",
+      "Ti'Doc 2026"
+    );
 
 
-      caption.appendChild(day);
-
-      caption.appendChild(title);
-
-      card.appendChild(image);
-
-      card.appendChild(caption);
-
-      eventCarousel.appendChild(card);
-
-    });
+    fillGallery(
+      document.getElementById(
+        "workshop2026-carousel"
+      ),
+      data.workshops2026,
+      "workshop",
+      "Workshop Ti'Doc 2026",
+      "Ti'Doc 2026"
+    );
 
 
-    console.log(
-      data.events.length +
-      " photos événements Ti'Doc chargées."
+    fillGallery(
+      document.getElementById(
+        "event2026-carousel"
+      ),
+      data.events2026,
+      "event",
+      "Événement Ti'Doc 2026",
+      "Ti'Doc 2026"
     );
 
   }
@@ -4685,367 +3980,39 @@ async function loadEventPhotos(){
   catch(error){
 
     console.error(
-      "ERREUR GALERIE ÉVÉNEMENTS :",
+      "ERREUR GALERIES TIDOC :",
       error
     );
 
 
-    eventCarousel.innerHTML = `
-      <div class="gallery-loading">
-        Impossible de charger les photos des événements.
-      </div>
-    `;
+    galleries.forEach(
+      carousel => {
+
+        if(
+          carousel
+        ){
+
+          carousel.innerHTML = `
+
+            <div class="gallery-loading">
+              Impossible de charger les photos pour le moment.
+            </div>
+
+          `;
+
+        }
+
+      }
+    );
 
   }
 
 }
 
 
-
-/* =========================
-   FLÈCHES ÉVÉNEMENTS
-========================= */
-
-const eventNext =
-  document.getElementById("event-next");
-
-const eventPrev =
-  document.getElementById("event-prev");
-
-
-eventNext?.addEventListener(
-  "click",
-  () => {
-
-    eventCarousel.scrollBy({
-      left:570,
-      behavior:"smooth"
-    });
-
-  }
-);
-
-
-eventPrev?.addEventListener(
-  "click",
-  () => {
-
-    eventCarousel.scrollBy({
-      left:-570,
-      behavior:"smooth"
-    });
-
-  }
-);
-
-
-
-/* =========================
-   LANCEMENT
-========================= */
-
-loadEventPhotos();
-
-</script>   
-
-<!-- ==================================================
-     GOOGLE DRIVE → GALERIES 2026
-================================================== -->
-
-<script>
-
-async function load2026Photos(){
-
-  const conferenceCarousel2026 =
-    document.getElementById("conference2026-carousel");
-
-  const workshopCarousel2026 =
-    document.getElementById("workshop2026-carousel");
-
-  const eventCarousel2026 =
-    document.getElementById("event2026-carousel");
-
-
-  try{
-
-    const response = await fetch(
-      TIDOC_DRIVE_API,
-      {
-        method:"GET",
-        redirect:"follow"
-      }
-    );
-
-    if(!response.ok){
-      throw new Error(
-        "Erreur HTTP : " + response.status
-      );
-    }
-
-    const data = await response.json();
-
-
-    /* =============================================
-       CONFÉRENCES 2026
-    ============================================= */
-
-    if(
-      conferenceCarousel2026 &&
-      Array.isArray(data.photos2026)
-    ){
-
-      conferenceCarousel2026.innerHTML = "";
-
-      if(data.photos2026.length === 0){
-
-        conferenceCarousel2026.innerHTML = `
-          <div class="gallery-loading">
-            Aucune photo disponible.
-          </div>
-        `;
-
-      }
-
-      data.photos2026.forEach(photo => {
-
-        const card =
-          document.createElement("div");
-
-        card.className = "drive-photo";
-
-
-        const image =
-          document.createElement("img");
-
-        image.src = photo.image;
-        image.alt =
-          photo.conference ||
-          "Conférence Ti'Doc 2026";
-
-        image.loading = "lazy";
-
-
-        const caption =
-          document.createElement("div");
-
-        caption.className =
-          "drive-photo-caption";
-
-
-        const day =
-          document.createElement("span");
-
-        day.textContent =
-          photo.day || "Ti'Doc 2026";
-
-
-        const title =
-          document.createElement("strong");
-
-        title.textContent =
-          photo.conference ||
-          photo.folder ||
-          "Conférence";
-
-
-        caption.appendChild(day);
-        caption.appendChild(title);
-
-        card.appendChild(image);
-        card.appendChild(caption);
-
-        conferenceCarousel2026.appendChild(card);
-
-      });
-
-    }
-
-
-    /* =============================================
-       WORKSHOPS 2026
-    ============================================= */
-
-    if(
-      workshopCarousel2026 &&
-      Array.isArray(data.workshops2026)
-    ){
-
-      workshopCarousel2026.innerHTML = "";
-
-      if(data.workshops2026.length === 0){
-
-        workshopCarousel2026.innerHTML = `
-          <div class="gallery-loading">
-            Aucune photo disponible.
-          </div>
-        `;
-
-      }
-
-      data.workshops2026.forEach(photo => {
-
-        const card =
-          document.createElement("div");
-
-        card.className = "drive-photo";
-
-
-        const image =
-          document.createElement("img");
-
-        image.src = photo.image;
-        image.alt =
-          photo.workshop ||
-          "Workshop Ti'Doc 2026";
-
-        image.loading = "lazy";
-
-
-        const caption =
-          document.createElement("div");
-
-        caption.className =
-          "drive-photo-caption";
-
-
-        const day =
-          document.createElement("span");
-
-        day.textContent =
-          photo.day || "Ti'Doc 2026";
-
-
-        const title =
-          document.createElement("strong");
-
-        title.textContent =
-          photo.workshop ||
-          photo.folder ||
-          "Workshop";
-
-
-        caption.appendChild(day);
-        caption.appendChild(title);
-
-        card.appendChild(image);
-        card.appendChild(caption);
-
-        workshopCarousel2026.appendChild(card);
-
-      });
-
-    }
-
-
-    /* =============================================
-       ÉVÉNEMENTS 2026
-    ============================================= */
-
-    if(
-      eventCarousel2026 &&
-      Array.isArray(data.events2026)
-    ){
-
-      eventCarousel2026.innerHTML = "";
-
-      if(data.events2026.length === 0){
-
-        eventCarousel2026.innerHTML = `
-          <div class="gallery-loading">
-            Aucune photo disponible.
-          </div>
-        `;
-
-      }
-
-      data.events2026.forEach(photo => {
-
-        const card =
-          document.createElement("div");
-
-        card.className = "drive-photo";
-
-
-        const image =
-          document.createElement("img");
-
-        image.src = photo.image;
-        image.alt =
-          photo.event ||
-          "Événement Ti'Doc 2026";
-
-        image.loading = "lazy";
-
-
-        const caption =
-          document.createElement("div");
-
-        caption.className =
-          "drive-photo-caption";
-
-
-        const day =
-          document.createElement("span");
-
-        day.textContent =
-          photo.day || "Ti'Doc 2026";
-
-
-        const title =
-          document.createElement("strong");
-
-        title.textContent =
-          photo.event ||
-          "Événement";
-
-
-        caption.appendChild(day);
-        caption.appendChild(title);
-
-        card.appendChild(image);
-        card.appendChild(caption);
-
-        eventCarousel2026.appendChild(card);
-
-      });
-
-    }
-
-  }
-
-  catch(error){
-
-    console.error(
-      "ERREUR GALERIES 2026 :",
-      error
-    );
-
-    [
-      conferenceCarousel2026,
-      workshopCarousel2026,
-      eventCarousel2026
-    ].forEach(carousel => {
-
-      if(carousel){
-
-        carousel.innerHTML = `
-          <div class="gallery-loading">
-            Impossible de charger les photos.
-          </div>
-        `;
-
-      }
-
-    });
-
-  }
-
-}
-
-
-/* ==================================================
-   FLÈCHES
-================================================== */
+/* =====================================================
+   FLÈCHES DES CARROUSELS
+===================================================== */
 
 function setupCarouselArrows(
   carouselId,
@@ -5054,38 +4021,71 @@ function setupCarouselArrows(
 ){
 
   const carousel =
-    document.getElementById(carouselId);
+    document.getElementById(
+      carouselId
+    );
 
   const previous =
-    document.getElementById(previousId);
+    document.getElementById(
+      previousId
+    );
 
   const next =
-    document.getElementById(nextId);
+    document.getElementById(
+      nextId
+    );
 
 
-  previous?.addEventListener("click", () => {
+  previous?.addEventListener(
+    "click",
+    () => {
 
-    carousel?.scrollBy({
-      left:-570,
-      behavior:"smooth"
-    });
+      carousel?.scrollBy({
+        left:-570,
+        behavior:"smooth"
+      });
 
-  });
+    }
+  );
 
 
-  next?.addEventListener("click", () => {
+  next?.addEventListener(
+    "click",
+    () => {
 
-    carousel?.scrollBy({
-      left:570,
-      behavior:"smooth"
-    });
+      carousel?.scrollBy({
+        left:570,
+        behavior:"smooth"
+      });
 
-  });
+    }
+  );
 
 }
 
 
-/* CONFÉRENCES */
+/* 2025 */
+
+setupCarouselArrows(
+  "conference-carousel",
+  "conference-prev",
+  "conference-next"
+);
+
+setupCarouselArrows(
+  "workshop-carousel",
+  "workshop-prev",
+  "workshop-next"
+);
+
+setupCarouselArrows(
+  "event-carousel",
+  "event-prev",
+  "event-next"
+);
+
+
+/* 2026 */
 
 setupCarouselArrows(
   "conference2026-carousel",
@@ -5093,17 +4093,11 @@ setupCarouselArrows(
   "conference2026-next"
 );
 
-
-/* WORKSHOPS */
-
 setupCarouselArrows(
   "workshop2026-carousel",
   "workshop2026-prev",
   "workshop2026-next"
 );
-
-
-/* ÉVÉNEMENTS */
 
 setupCarouselArrows(
   "event2026-carousel",
@@ -5112,11 +4106,15 @@ setupCarouselArrows(
 );
 
 
-/* LANCEMENT */
+/* =====================================================
+   LANCEMENT
+===================================================== */
 
-load2026Photos();
+loadAllPhotos();
 
 </script>
-   
+
+
 </body>
+
 </html>
