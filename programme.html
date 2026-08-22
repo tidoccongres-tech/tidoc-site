@@ -1505,7 +1505,7 @@ footer{
 ===================================================== */
 
 const BILLETTERIE_API =
-  "https://script.google.com/macros/s/AKfycbyqvpiD-w56XH_DGs2cZyZ41eEV8g4JpZArdI2IkmDKU_G0_rzwLsuW_Hq6pymAhhHQ/exec";
+  "https://script.google.com/macros/s/AKfycbyghq2sGZPEWBxzrqQMe5GAbckzxX17JgUo1a7pVbP4U0Z7T3adiRmcK0o7PPH19Rsm/exec";
 
 
 
@@ -3090,27 +3090,113 @@ function updateSelectionState(){
    ENREGISTRER LE PROGRAMME
 ===================================================== */
 
-function saveProgramme(){
+async function saveProgramme(){
 
-  alert(
+  const token =
+    getTokenFromUrl();
 
-    "Parfait 💙\n\n" +
 
-    "Vos choix sont prêts à être enregistrés.\n\n" +
+  const button =
+    document.getElementById(
+      "save-programme-button"
+    );
 
-    "Conférences : " +
-    selectedConferences.length +
 
-    "\n" +
+  if(!token){
 
-    "Workshops : " +
-    selectedWorkshops.length +
+    alert(
+      "Lien participant invalide."
+    );
 
-    "\n\n" +
+    return;
 
-    "À l'étape suivante, ce bouton enregistrera réellement vos réservations."
+  }
 
-  );
+
+  try{
+
+    if(button){
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        "Enregistrement...";
+
+    }
+
+
+    const url =
+      BILLETTERIE_API +
+      "?action=saveProgramme" +
+      "&token=" +
+      encodeURIComponent(token) +
+      "&conferences=" +
+      encodeURIComponent(
+        selectedConferences.join(",")
+      ) +
+      "&workshops=" +
+      encodeURIComponent(
+        selectedWorkshops.join(",")
+      );
+
+
+    const response =
+      await fetch(
+        url
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(
+      !result.success
+    ){
+
+      throw new Error(
+        result.message ||
+        "Impossible d'enregistrer votre programme."
+      );
+
+    }
+
+
+    alert(
+      "Votre programme Ti'Doc est enregistré 💙"
+    );
+
+
+  }
+
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "Impossible d'enregistrer votre programme.\n\n" +
+      error.message
+    );
+
+  }
+
+  finally{
+
+    if(button){
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "Valider mon programme →";
+
+    }
+
+  }
 
 }
 
