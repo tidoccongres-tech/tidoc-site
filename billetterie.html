@@ -22,23 +22,14 @@
 ===================================================== */
 
 :root{
-
   --blue:#198CA7;
-
   --blue-dark:#0B5367;
-
   --blue-deep:#073C4B;
-
   --blue-light:#E9F7FA;
-
   --white:#FFFFFF;
-
   --text:#153C46;
-
   --grey:#637D84;
-
   --light:#F8FCFD;
-
 }
 
 
@@ -47,51 +38,30 @@
 ===================================================== */
 
 *{
-
   margin:0;
-
   padding:0;
-
   box-sizing:border-box;
-
 }
-
 
 html{
-
   scroll-behavior:smooth;
-
 }
-
 
 body{
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  background:
-    #F7FBFC;
-
-  color:
-    var(--text);
-
+  font-family:Arial, Helvetica, sans-serif;
+  background:#F7FBFC;
+  color:var(--text);
   overflow-x:hidden;
-
 }
-
 
 a{
-
   text-decoration:none;
-
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* =====================================================
+   HEADER — IDENTIQUE À L'ACCUEIL
+===================================================== */
 
 header{
   position:fixed;
@@ -138,17 +108,16 @@ nav{
 
   border-radius:50px;
 
-  box-shadow:0 10px 35px rgba(0,0,0,.08);
+  box-shadow:
+    0 10px 35px
+    rgba(0,0,0,.08);
 
   transition:
     background .3s ease,
     box-shadow .3s ease;
 }
 
-
 nav a{
-  text-decoration:none;
-
   color:var(--blue-dark);
 
   font-size:15px;
@@ -157,15 +126,16 @@ nav a{
   transition:.25s;
 }
 
-
 nav a:hover{
   color:var(--blue);
 }
 
 
-/* =========================
-   HEADER QUAND ON DESCEND
-========================= */
+/* =====================================================
+   HEADER SCROLLED
+   Présent comme sur l'accueil,
+   mais aucun script ne l'active
+===================================================== */
 
 header.scrolled{
   background:rgba(255,255,255,.96);
@@ -173,14 +143,13 @@ header.scrolled{
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
 
-  box-shadow:0 5px 25px rgba(7,60,75,.10);
+  box-shadow:
+    0 5px 25px
+    rgba(7,60,75,.10);
 
   padding-top:12px;
   padding-bottom:12px;
 }
-
-
-/* Le menu s'intègre dans la barre blanche */
 
 header.scrolled nav{
   background:transparent;
@@ -193,7 +162,6 @@ header.scrolled nav{
 ===================================================== */
 
 .hero{
-
   padding:
     165px 7%
     95px;
@@ -203,16 +171,9 @@ header.scrolled nav{
   background:
 
     radial-gradient(
-      circle
-      at top right,
-      rgba(
-        25,
-        140,
-        167,
-        .13
-      ),
-      transparent
-      35%
+      circle at top right,
+      rgba(25,140,167,.13),
+      transparent 35%
     ),
 
     linear-gradient(
@@ -220,54 +181,34 @@ header.scrolled nav{
       #FFFFFF,
       #F1F9FA
     );
-
 }
-
 
 .hero-tag{
-
   display:inline-block;
 
-  margin-bottom:
-    18px;
+  margin-bottom:18px;
 
-  padding:
-    9px 16px;
+  padding:9px 16px;
 
-  border-radius:
-    50px;
+  border-radius:50px;
 
-  background:
-    var(--blue-light);
+  background:var(--blue-light);
 
-  color:
-    var(--blue);
+  color:var(--blue);
 
-  font-size:
-    12px;
+  font-size:12px;
+  font-weight:800;
 
-  font-weight:
-    800;
-
-  letter-spacing:
-    1.5px;
-
-  text-transform:
-    uppercase;
-
+  letter-spacing:1.5px;
+  text-transform:uppercase;
 }
 
-
 .hero h1{
+  max-width:850px;
 
-  max-width:
-    850px;
+  margin:0 auto;
 
-  margin:
-    0 auto;
-
-  color:
-    var(--blue-deep);
+  color:var(--blue-deep);
 
   font-size:
     clamp(
@@ -276,29 +217,18 @@ header.scrolled nav{
       72px
     );
 
-  line-height:
-    1.05;
-
+  line-height:1.05;
 }
 
-
 .hero p{
+  max-width:700px;
 
-  max-width:
-    700px;
+  margin:24px auto 0;
 
-  margin:
-    24px auto 0;
+  color:var(--grey);
 
-  color:
-    var(--grey);
-
-  font-size:
-    19px;
-
-  line-height:
-    1.7;
-
+  font-size:19px;
+  line-height:1.7;
 }
 
 
@@ -307,54 +237,35 @@ header.scrolled nav{
 ===================================================== */
 
 .packs-section{
-
   padding:
     95px 7%
     120px;
-
 }
-
 
 .section-heading{
-
-  max-width:
-    720px;
+  max-width:720px;
 
   margin:
-    0 auto 55px;
+    0 auto
+    55px;
 
   text-align:center;
-
 }
-
 
 .section-heading span{
+  color:var(--blue);
 
-  color:
-    var(--blue);
+  font-size:12px;
+  font-weight:800;
 
-  font-size:
-    12px;
-
-  font-weight:
-    800;
-
-  letter-spacing:
-    2px;
-
-  text-transform:
-    uppercase;
-
+  letter-spacing:2px;
+  text-transform:uppercase;
 }
 
-
 .section-heading h2{
+  margin-top:12px;
 
-  margin-top:
-    12px;
-
-  color:
-    var(--blue-deep);
+  color:var(--blue-deep);
 
   font-size:
     clamp(
@@ -362,24 +273,15 @@ header.scrolled nav{
       5vw,
       52px
     );
-
 }
 
-
 .section-heading p{
+  margin-top:17px;
 
-  margin-top:
-    17px;
+  color:var(--grey);
 
-  color:
-    var(--grey);
-
-  font-size:
-    17px;
-
-  line-height:
-    1.7;
-
+  font-size:17px;
+  line-height:1.7;
 }
 
 
@@ -388,27 +290,20 @@ header.scrolled nav{
 ===================================================== */
 
 .pack-grid{
-
   width:
     min(
       1200px,
       100%
     );
 
-  margin:
-    auto;
+  margin:auto;
 
   display:grid;
 
   grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
+    repeat(3,1fr);
 
-  gap:
-    25px;
-
+  gap:25px;
 }
 
 
@@ -417,259 +312,152 @@ header.scrolled nav{
 ===================================================== */
 
 .pack-card{
-
-  position:
-    relative;
+  position:relative;
 
   display:flex;
 
-  flex-direction:
-    column;
+  flex-direction:column;
 
-  padding:
-    38px;
+  padding:38px;
 
-  background:
-    white;
+  background:white;
 
   border:
     1px solid
     #E0EEF1;
 
-  border-radius:
-    28px;
+  border-radius:28px;
 
   box-shadow:
     0 15px 40px
-    rgba(
-      7,
-      60,
-      75,
-      .08
-    );
+    rgba(7,60,75,.08);
 
-  transition:
-    .25s ease;
-
+  transition:.25s ease;
 }
 
-
 .pack-card:hover{
-
   transform:
-    translateY(
-      -5px
-    );
+    translateY(-5px);
 
   box-shadow:
     0 22px 50px
-    rgba(
-      7,
-      60,
-      75,
-      .12
-    );
-
+    rgba(7,60,75,.12);
 }
-
 
 .pack-name{
+  color:var(--blue-deep);
 
-  color:
-    var(--blue-deep);
-
-  font-size:
-    28px;
-
-  font-weight:
-    800;
-
+  font-size:28px;
+  font-weight:800;
 }
-
 
 .pack-price{
+  margin-top:18px;
 
-  margin-top:
-    18px;
+  color:var(--blue);
 
-  color:
-    var(--blue);
-
-  font-size:
-    42px;
-
-  font-weight:
-    900;
-
+  font-size:42px;
+  font-weight:900;
 }
-
 
 .pack-price span{
+  margin-left:4px;
 
-  margin-left:
-    4px;
+  color:var(--grey);
 
-  color:
-    var(--grey);
-
-  font-size:
-    14px;
-
-  font-weight:
-    600;
-
+  font-size:14px;
+  font-weight:600;
 }
-
 
 .pack-description{
+  margin-top:18px;
 
-  margin-top:
-    18px;
+  min-height:55px;
 
-  min-height:
-    55px;
+  color:var(--grey);
 
-  color:
-    var(--grey);
-
-  font-size:
-    15px;
-
-  line-height:
-    1.6;
-
+  font-size:15px;
+  line-height:1.6;
 }
-
 
 .pack-details{
-
-  margin-top:
-    28px;
+  margin-top:28px;
 
   display:flex;
 
-  flex-direction:
-    column;
+  flex-direction:column;
 
-  gap:
-    13px;
-
+  gap:13px;
 }
-
 
 .pack-detail{
-
   display:flex;
 
   align-items:center;
 
-  gap:
-    11px;
+  gap:11px;
 
-  color:
-    var(--text);
+  color:var(--text);
 
-  font-size:
-    15px;
-
+  font-size:15px;
 }
-
 
 .check{
+  width:25px;
+  height:25px;
 
-  width:
-    25px;
-
-  height:
-    25px;
-
-  min-width:
-    25px;
+  min-width:25px;
 
   display:flex;
 
   align-items:center;
+  justify-content:center;
 
-  justify-content:
-    center;
+  border-radius:50%;
 
-  border-radius:
-    50%;
+  background:var(--blue-light);
 
-  background:
-    var(--blue-light);
+  color:var(--blue);
 
-  color:
-    var(--blue);
-
-  font-size:
-    13px;
-
-  font-weight:
-    900;
-
+  font-size:13px;
+  font-weight:900;
 }
 
-
 .pack-button{
-
   width:100%;
 
-  min-height:
-    52px;
+  min-height:52px;
 
-  margin-top:
-    34px;
+  margin-top:34px;
 
   display:flex;
 
   align-items:center;
+  justify-content:center;
 
-  justify-content:
-    center;
+  border:0;
 
-  border:
-    0;
+  border-radius:50px;
 
-  border-radius:
-    50px;
+  background:var(--blue);
 
-  background:
-    var(--blue);
+  color:white;
 
-  color:
-    white;
-
-  font-size:
-    15px;
-
-  font-weight:
-    800;
+  font-size:15px;
+  font-weight:800;
 
   cursor:pointer;
 
-  transition:
-    .25s ease;
-
+  transition:.25s ease;
 }
-
 
 .pack-button:hover{
-
-  background:
-    var(--blue-dark);
-
+  background:var(--blue-dark);
 }
 
-
 .pack-button:disabled{
-
-  opacity:
-    .45;
-
-  cursor:
-    not-allowed;
-
+  opacity:.45;
+  cursor:not-allowed;
 }
 
 
@@ -678,40 +466,27 @@ header.scrolled nav{
 ===================================================== */
 
 .status-message{
-
   width:
     min(
       800px,
       100%
     );
 
-  margin:
-    0 auto;
+  margin:0 auto;
 
-  padding:
-    25px;
+  padding:25px;
 
-  text-align:
-    center;
+  text-align:center;
 
-  border-radius:
-    20px;
+  border-radius:20px;
 
-  color:
-    var(--grey);
+  color:var(--grey);
 
-  background:
-    white;
+  background:white;
 
   box-shadow:
     0 10px 30px
-    rgba(
-      7,
-      60,
-      75,
-      .07
-    );
-
+    rgba(7,60,75,.07);
 }
 
 
@@ -720,67 +495,41 @@ header.scrolled nav{
 ===================================================== */
 
 .info-section{
-
   padding:
     0 7%
     120px;
-
 }
 
-
 .info-box{
-
   width:
     min(
       1000px,
       100%
     );
 
-  margin:
-    auto;
+  margin:auto;
 
-  padding:
-    42px;
+  padding:42px;
 
-  border-radius:
-    30px;
+  border-radius:30px;
 
-  background:
-    var(--blue-deep);
+  background:var(--blue-deep);
 
-  color:
-    white;
-
+  color:white;
 }
-
 
 .info-box h3{
-
-  font-size:
-    28px;
-
+  font-size:28px;
 }
 
-
 .info-box p{
-
-  margin-top:
-    14px;
+  margin-top:14px;
 
   color:
-    rgba(
-      255,
-      255,
-      255,
-      .82
-    );
+    rgba(255,255,255,.82);
 
-  font-size:
-    16px;
-
-  line-height:
-    1.7;
-
+  font-size:16px;
+  line-height:1.7;
 }
 
 
@@ -789,47 +538,36 @@ header.scrolled nav{
 ===================================================== */
 
 footer{
-
-  padding:
-    35px 7%;
+  padding:35px 7%;
 
   display:flex;
 
   align-items:center;
+  justify-content:space-between;
 
-  justify-content:
-    space-between;
-
-  background:
-    var(--blue-deep);
+  background:var(--blue-deep);
 
   color:
-    rgba(
-      255,
-      255,
-      255,
-      .75
-    );
+    rgba(255,255,255,.75);
 
-  font-size:
-    13px;
-
+  font-size:13px;
 }
 
-
 footer img{
-
-  width:
-    60px;
-
+  width:60px;
 }
 
 
 /* =====================================================
-   RESPONSIVE
+   TABLETTE
 ===================================================== */
 
 @media(max-width:900px){
+
+  .pack-grid{
+    grid-template-columns:1fr;
+    max-width:600px;
+  }
 
   header{
     padding:18px 5%;
@@ -846,6 +584,10 @@ footer img{
 
 }
 
+
+/* =====================================================
+   TÉLÉPHONE
+===================================================== */
 
 @media(max-width:650px){
 
@@ -871,60 +613,37 @@ footer img{
     display:none;
   }
 
-}
-
-
   .hero{
-
     padding:
       135px 6%
       75px;
-
   }
 
-
   .packs-section{
-
     padding:
       75px 5%
       90px;
-
   }
-
 
   .pack-card{
-
     padding:
       30px 24px;
-
   }
 
-
   .info-section{
-
     padding:
       0 5%
       90px;
-
   }
-
 
   .info-box{
-
     padding:
       32px 25px;
-
   }
 
-
   footer{
-
-    flex-direction:
-      column;
-
-    gap:
-      17px;
-
+    flex-direction:column;
+    gap:17px;
   }
 
 }
@@ -937,7 +656,50 @@ footer img{
 <body>
 
 
+<!-- ==================================================
+     HEADER
+================================================== -->
 
+<header>
+
+  <a
+    href="index.html#accueil"
+    class="logo"
+  >
+
+    <img
+      src="files/logo.png"
+      alt="Logo Ti'Doc"
+    >
+
+  </a>
+
+
+  <nav>
+
+    <a href="index.html#accueil">
+      Accueil
+    </a>
+
+    <a href="index.html#apropos">
+      À propos
+    </a>
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+  </nav>
+
+</header>
 
 
 
@@ -1079,9 +841,9 @@ const packsContainer =
    CHARGER LA BILLETTERIE
 ===================================================== */
 
-async function loadBilletterie() {
+async function loadBilletterie(){
 
-  try {
+  try{
 
     const response =
       await fetch(
@@ -1089,9 +851,7 @@ async function loadBilletterie() {
       );
 
 
-    if (
-      !response.ok
-    ) {
+    if(!response.ok){
 
       throw new Error(
         "Impossible de récupérer la billetterie."
@@ -1104,9 +864,7 @@ async function loadBilletterie() {
       await response.json();
 
 
-    if (
-      !data.success
-    ) {
+    if(!data.success){
 
       throw new Error(
         data.message ||
@@ -1123,9 +881,7 @@ async function loadBilletterie() {
   }
 
 
-  catch (
-    error
-  ) {
+  catch(error){
 
     console.error(
       error
@@ -1159,8 +915,7 @@ async function loadBilletterie() {
 
 function displayPacks(
   packs
-) {
-
+){
 
   const openedPacks =
     packs.filter(
@@ -1183,9 +938,9 @@ function displayPacks(
     );
 
 
-  if (
+  if(
     openedPacks.length === 0
-  ) {
+  ){
 
     packsContainer.innerHTML = `
 
@@ -1228,8 +983,7 @@ function displayPacks(
 
 function createPackCard(
   pack
-) {
-
+){
 
   const id =
     escapeHtml(
@@ -1288,30 +1042,22 @@ function createPackCard(
       data-pack-id="${id}"
     >
 
-
       <div class="pack-name">
-
         ${name}
-
       </div>
 
 
       <div class="pack-price">
-
         ${displayedPrice}
-
       </div>
 
 
       <div class="pack-description">
-
         ${description}
-
       </div>
 
 
       <div class="pack-details">
-
 
         <div class="pack-detail">
 
@@ -1342,7 +1088,6 @@ function createPackCard(
 
         </div>
 
-
       </div>
 
 
@@ -1351,11 +1096,8 @@ function createPackCard(
         type="button"
         onclick="choosePack('${id}')"
       >
-
         Choisir ce pack
-
       </button>
-
 
     </article>
 
@@ -1371,9 +1113,9 @@ function createPackCard(
 
 async function choosePack(
   packId
-) {
+){
 
-  try {
+  try{
 
     const buttons =
       document.querySelectorAll(
@@ -1409,9 +1151,7 @@ async function choosePack(
       await response.json();
 
 
-    if (
-      !data.success
-    ) {
+    if(!data.success){
 
       throw new Error(
         data.message ||
@@ -1421,9 +1161,7 @@ async function choosePack(
     }
 
 
-    if (
-      !data.redirectUrl
-    ) {
+    if(!data.redirectUrl){
 
       throw new Error(
         "HelloAsso n'a pas renvoyé de page de paiement."
@@ -1438,9 +1176,7 @@ async function choosePack(
   }
 
 
-  catch (
-    error
-  ) {
+  catch(error){
 
     console.error(
       error
@@ -1480,7 +1216,7 @@ async function choosePack(
 
 function escapeHtml(
   value
-) {
+){
 
   return String(
     value || ""
