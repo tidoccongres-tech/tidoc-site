@@ -124,31 +124,6 @@ nav a:hover{
 
 
 /* =========================
-   HEADER QUAND ON DESCEND
-========================= */
-
-header.scrolled{
-  background:rgba(255,255,255,.96);
-
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-
-  box-shadow:0 5px 25px rgba(7,60,75,.10);
-
-  padding-top:12px;
-  padding-bottom:12px;
-}
-
-
-/* Le menu s'intègre dans la barre blanche */
-
-header.scrolled nav{
-  background:transparent;
-  box-shadow:none;
-}
-
-
-/* =========================
    HERO
 ========================= */
 
@@ -1098,7 +1073,7 @@ footer{
 @media(max-width:650px){
 
   header{
-    position:absolute;
+    position:fixed;
     align-items:flex-start;
   }
 
