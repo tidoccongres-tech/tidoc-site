@@ -152,18 +152,29 @@ header.scrolled nav{
 /* =========================
    MOBILE
 ========================= */
+@media(max-width:900px){
+
+  header{
+    padding:18px 5%;
+  }
+
+  nav{
+    gap:15px;
+    padding:12px 16px;
+  }
+
+  nav a{
+    font-size:13px;
+  }
+
+}
+
 
 @media(max-width:650px){
 
   header{
     position:absolute;
-
-    padding:18px 5%;
-
     align-items:flex-start;
-
-    /* toujours transparent */
-    background:transparent;
   }
 
   .logo img{
@@ -172,18 +183,18 @@ header.scrolled nav{
 
   nav{
     gap:8px;
-
     padding:10px 12px;
-
-    border-radius:50px;
   }
 
   nav a{
     font-size:11px;
   }
 
-}
+  nav a:nth-child(2){
+    display:none;
+  }
 
+}
 /* =========================
    HERO
 ========================= */
