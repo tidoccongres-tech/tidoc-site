@@ -913,11 +913,16 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .contact-video,
-  .contact-video video{
-    min-height:400px;
-    height:400px;
-  }
+  .contact-video{
+  width:min(520px,100%);
+  aspect-ratio:1 / 1;
+  margin:auto;
+}
+
+.contact-video video{
+  width:100%;
+  height:100%;
+}
 
 }
 
