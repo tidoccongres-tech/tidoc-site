@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Mon billet — Ti'Doc 2027
+</title>
+
+
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+  --blue:#198CA7;
+  --blue-dark:#0B5367;
+  --blue-deep:#073C4B;
+  --blue-light:#E9F7FA;
+  --text:#153C46;
+  --grey:#637D84;
+  --white:#FFFFFF;
+  --light:#F5FAFB;
+}
+
+
+/* =====================================================
+   BASE
+===================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+
+html{
+  scroll-behavior:smooth;
+}
+
+
+body{
+
+  min-height:100vh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:
+    var(--text);
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(25,140,167,.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 25%,
+      rgba(25,140,167,.09),
+      transparent 30%
+    ),
+    #F5FAFB;
+
+  overflow-x:hidden;
+
+}
+
+
+a{
+  text-decoration:none;
+}
+
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+
+  z-index:1000;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  padding:
+    22px 7%;
+
+  background:
+    transparent;
+
+}
+
+
+.logo img{
+  width:82px;
+}
+
+
+nav{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:36px;
+
+  padding:
+    15px 25px;
+
+  border-radius:
+    50px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  box-shadow:
+    0 10px 35px
+    rgba(0,0,0,.08);
+
+}
+
+
+nav a{
+
+  color:
+    var(--blue-dark);
+
+  font-size:
+    15px;
+
+  font-weight:
+    600;
+
+}
+
+
+nav a:hover{
+  color:var(--blue);
+}
+
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+
+  min-height:100vh;
+
+  padding:
+    165px 7%
+    100px;
+
+}
+
+
+.container{
+
+  width:
+    min(
+      1050px,
+      100%
+    );
+
+  margin:auto;
+
+}
+
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.page-heading{
+
+  margin-bottom:
+    42px;
+
+  text-align:center;
+
+}
+
+
+.page-tag{
+
+  display:inline-block;
+
+  padding:
+    9px 16px;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.6px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.page-heading h1{
+
+  margin-top:
+    16px;
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    clamp(
+      38px,
+      6vw,
+      62px
+    );
+
+}
+
+
+.page-heading p{
+
+  max-width:
+    650px;
+
+  margin:
+    16px auto 0;
+
+  color:
+    var(--grey);
+
+  font-size:
+    16px;
+
+  line-height:
+    1.7;
+
+}
+
+
+
+/* =====================================================
+   CHARGEMENT
+===================================================== */
+
+.loading,
+.error-box{
+
+  padding:
+    35px;
+
+  border-radius:
+    28px;
+
+  background:
+    white;
+
+  text-align:center;
+
+  color:
+    var(--grey);
+
+  box-shadow:
+    0 18px 50px
+    rgba(7,60,75,.10);
+
+}
+
+
+.error-box{
+
+  color:#963F4A;
+
+  background:#FFF7F7;
+
+}
+
+
+
+/* =====================================================
+   BILLET
+===================================================== */
+
+.ticket{
+
+  position:relative;
+
+  overflow:hidden;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 330px;
+
+  min-height:
+    510px;
+
+  border-radius:
+    36px;
+
+  background:
+    white;
+
+  box-shadow:
+    0 28px 80px
+    rgba(7,60,75,.16);
+
+}
+
+
+
+/* =====================================================
+   PARTIE GAUCHE
+===================================================== */
+
+.ticket-main{
+
+  position:relative;
+
+  padding:
+    52px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:
+    space-between;
+
+}
+
+
+.ticket-main::before{
+
+  content:"2027";
+
+  position:absolute;
+
+  right:-30px;
+
+  bottom:-65px;
+
+  color:
+    rgba(25,140,167,.055);
+
+  font-size:
+    185px;
+
+  font-weight:
+    900;
+
+  pointer-events:none;
+
+}
+
+
+
+/* =====================================================
+   HAUT BILLET
+===================================================== */
+
+.ticket-brand{
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+
+.ticket-logo{
+
+  width:
+    100px;
+
+  margin-bottom:
+    30px;
+
+}
+
+
+.official-pass{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:
+    8px;
+
+  padding:
+    8px 13px;
+
+  border-radius:
+    50px;
+
+  color:
+    var(--blue);
+
+  background:
+    var(--blue-light);
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    1.5px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+
+/* =====================================================
+   IDENTITÉ
+===================================================== */
+
+.ticket-name{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-top:
+    28px;
+
+}
+
+
+.ticket-name small{
+
+  display:block;
+
+  margin-bottom:
+    8px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.4px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.ticket-name h2{
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    clamp(
+      34px,
+      5vw,
+      54px
+    );
+
+  line-height:
+    1.05;
+
+}
+
+
+
+/* =====================================================
+   INFOS
+===================================================== */
+
+.ticket-information{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-top:
+    40px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:
+    15px;
+
+}
+
+
+.ticket-info{
+
+  padding:
+    16px 18px;
+
+  border-radius:
+    17px;
+
+  background:
+    #F2F9FA;
+
+}
+
+
+.ticket-info small{
+
+  display:block;
+
+  color:
+    var(--grey);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.2px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.ticket-info strong{
+
+  display:block;
+
+  margin-top:
+    6px;
+
+  color:
+    var(--blue-dark);
+
+  font-size:
+    15px;
+
+  overflow-wrap:
+    anywhere;
+
+}
+
+
+
+/* =====================================================
+   QR
+===================================================== */
+
+.ticket-qr{
+
+  position:relative;
+
+  padding:
+    42px 35px;
+
+  display:flex;
+
+  flex-direction:
+    column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      155deg,
+      #073C4B,
+      #0B6479 55%,
+      #198CA7
+    );
+
+}
+
+
+.ticket-qr::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:-17px;
+
+  top:-17px;
+
+  width:
+    34px;
+
+  height:
+    34px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--light);
+
+}
+
+
+.ticket-qr::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:-17px;
+
+  bottom:-17px;
+
+  width:
+    34px;
+
+  height:
+    34px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--light);
+
+}
+
+
+.qr-box{
+
+  width:
+    230px;
+
+  height:
+    230px;
+
+  padding:
+    15px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:
+    28px;
+
+  background:
+    white;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.14);
+
+}
+
+
+.qr-box img{
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    contain;
+
+}
+
+
+.valid-badge{
+
+  margin-top:
+    25px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:
+    8px;
+
+  padding:
+    10px 16px;
+
+  border-radius:
+    50px;
+
+  background:
+    rgba(255,255,255,.14);
+
+  border:
+    1px solid
+    rgba(255,255,255,.22);
+
+  font-size:
+    13px;
+
+  font-weight:
+    800;
+
+}
+
+
+.ticket-qr p{
+
+  max-width:
+    230px;
+
+  margin-top:
+    15px;
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.5;
+
+}
+
+
+
+/* =====================================================
+   PROGRAMME
+===================================================== */
+
+.programme-card{
+
+  margin-top:
+    30px;
+
+  padding:
+    35px;
+
+  border-radius:
+    30px;
+
+  background:
+    white;
+
+  box-shadow:
+    0 18px 50px
+    rgba(7,60,75,.08);
+
+}
+
+
+.programme-title{
+
+  margin-bottom:
+    22px;
+
+}
+
+
+.programme-title span{
+
+  color:
+    var(--blue);
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    1.5px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.programme-title h3{
+
+  margin-top:
+    7px;
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    27px;
+
+}
+
+
+.reservation-list{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap:
+    12px;
+
+}
+
+
+.reservation{
+
+  padding:
+    18px;
+
+  border:
+    1px solid
+    #E1EFF1;
+
+  border-radius:
+    18px;
+
+  background:
+    #FAFDFD;
+
+}
+
+
+.reservation-type{
+
+  color:
+    var(--blue);
+
+  font-size:
+    9px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    1.3px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.reservation strong{
+
+  display:block;
+
+  margin-top:
+    7px;
+
+  color:
+    var(--blue-deep);
+
+  line-height:
+    1.4;
+
+}
+
+
+.no-reservation{
+
+  padding:
+    20px;
+
+  border-radius:
+    18px;
+
+  color:
+    var(--grey);
+
+  background:
+    #F5FAFB;
+
+}
+
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.ticket-note{
+
+  margin-top:
+    22px;
+
+  text-align:center;
+
+  color:
+    var(--grey);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.6;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+  padding:
+    35px 7%;
+
+  text-align:center;
+
+  color:
+    rgba(255,255,255,.72);
+
+  background:
+    var(--blue-deep);
+
+  font-size:
+    12px;
+
+}
+
+
+
+/* =====================================================
+   TABLETTE
+===================================================== */
+
+@media(max-width:850px){
+
+  .ticket{
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .ticket-qr::before,
+  .ticket-qr::after{
+
+    display:none;
+
+  }
+
+
+  .ticket-qr{
+
+    padding:
+      45px 25px;
+
+  }
+
+
+  .reservation-list{
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:650px){
+
+  header{
+
+    padding:
+      17px 5%;
+
+  }
+
+
+  .logo img{
+
+    width:
+      62px;
+
+  }
+
+
+  nav{
+
+    gap:
+      8px;
+
+    padding:
+      10px 12px;
+
+  }
+
+
+  nav a{
+
+    font-size:
+      11px;
+
+  }
+
+
+  nav a:nth-child(2){
+
+    display:none;
+
+  }
+
+
+  .page{
+
+    padding:
+      135px 5%
+      80px;
+
+  }
+
+
+  .ticket{
+
+    border-radius:
+      28px;
+
+  }
+
+
+  .ticket-main{
+
+    padding:
+      32px 25px;
+
+  }
+
+
+  .ticket-logo{
+
+    width:
+      80px;
+
+  }
+
+
+  .ticket-information{
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .qr-box{
+
+    width:
+      min(
+        230px,
+        80vw
+      );
+
+    height:
+      min(
+        230px,
+        80vw
+      );
+
+  }
+
+
+  .programme-card{
+
+    padding:
+      27px 22px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+  <a
+    href="index.html#accueil"
+    class="logo"
+  >
+
+    <img
+      src="files/logo.png"
+      alt="Ti'Doc"
+    >
+
+  </a>
+
+
+  <nav>
+
+    <a href="index.html#accueil">
+      Accueil
+    </a>
+
+    <a href="index.html#apropos">
+      À propos
+    </a>
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<main class="page">
+
+  <div class="container">
+
+
+    <div class="page-heading">
+
+      <span class="page-tag">
+        Ti'Doc 2027
+      </span>
+
+      <h1>
+        Mon billet
+      </h1>
+
+      <p>
+        Présentez ce billet et son QR code
+        lors de votre arrivée au congrès.
+      </p>
+
+    </div>
+
+
+    <div id="ticket-container">
+
+      <div class="loading">
+        Chargement de votre billet Ti'Doc...
+      </div>
+
+    </div>
+
+
+  </div>
+
+</main>
+
+
+
+<footer>
+  © Ti'Doc 2027 — Cluj-Napoca
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   API
+===================================================== */
+
+const BILLETTERIE_API =
+  "METTRE_ICI_LA_MEME_URL_QUE_DANS_PROGRAMME_HTML";
+
+
+/* =====================================================
+   TOKEN
+===================================================== */
+
+function getTokenFromUrl(){
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  return String(
+    params.get("token") || ""
+  ).trim();
+
+}
+
+
+
+/* =====================================================
+   CHARGER LE BILLET
+===================================================== */
+
+async function loadTicket(){
+
+  const container =
+    document.getElementById(
+      "ticket-container"
+    );
+
+
+  const token =
+    getTokenFromUrl();
+
+
+  if(!token){
+
+    container.innerHTML = `
+
+      <div class="error-box">
+
+        Ce lien de billet n'est pas valide.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+
+        BILLETTERIE_API +
+        "?action=billet&token=" +
+        encodeURIComponent(
+          token
+        )
+
+      );
+
+
+    const result =
+      await response.json();
+
+
+    if(!result.success){
+
+      throw new Error(
+        result.message ||
+        "Impossible de charger ce billet."
+      );
+
+    }
+
+
+    renderTicket(
+      result.data
+    );
+
+  }
+
+
+  catch(error){
+
+    console.error(error);
+
+
+    container.innerHTML = `
+
+      <div class="error-box">
+
+        Impossible de charger votre billet.
+
+        <br><br>
+
+        ${escapeHtml(error.message)}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   AFFICHER LE BILLET
+===================================================== */
+
+function renderTicket(
+  data
+){
+
+  const container =
+    document.getElementById(
+      "ticket-container"
+    );
+
+
+  const participant =
+    data.participant;
+
+
+  const pack =
+    data.pack;
+
+
+  const ticket =
+    data.ticket;
+
+
+  const reservations =
+    data.reservations || [];
+
+
+  const reservationHtml =
+
+    reservations.length
+
+      ? reservations
+          .map(
+            item => `
+
+              <div class="reservation">
+
+                <span class="reservation-type">
+
+                  ${escapeHtml(
+                    item.type
+                  )}
+
+                </span>
+
+                <strong>
+
+                  ${escapeHtml(
+                    item.name
+                  )}
+
+                </strong>
+
+              </div>
+
+            `
+          )
+          .join("")
+
+      : `
+
+          <div class="no-reservation">
+
+            Aucun choix d'activité
+            n'a encore été enregistré.
+
+          </div>
+
+        `;
+
+
+
+  container.innerHTML = `
+
+
+    <section class="ticket">
+
+
+      <div class="ticket-main">
+
+
+        <div class="ticket-brand">
+
+          <img
+            src="files/logo.png"
+            alt="Ti'Doc"
+            class="ticket-logo"
+          >
+
+
+          <span class="official-pass">
+
+            Pass officiel • Ti'Doc 2027
+
+          </span>
+
+        </div>
+
+
+
+        <div class="ticket-name">
+
+          <small>
+            Participant
+          </small>
+
+
+          <h2>
+
+            ${escapeHtml(
+              participant.firstName
+            )}
+
+            ${escapeHtml(
+              participant.lastName
+            )}
+
+          </h2>
+
+        </div>
+
+
+
+        <div class="ticket-information">
+
+
+          <div class="ticket-info">
+
+            <small>
+              Pack
+            </small>
+
+            <strong>
+
+              ${escapeHtml(
+                pack.name
+              )}
+
+            </strong>
+
+          </div>
+
+
+
+          <div class="ticket-info">
+
+            <small>
+              Numéro de billet
+            </small>
+
+            <strong>
+
+              ${escapeHtml(
+                ticket.id
+              )}
+
+            </strong>
+
+          </div>
+
+
+
+          <div class="ticket-info">
+
+            <small>
+              Événement
+            </small>
+
+            <strong>
+              Ti'Doc 2027
+            </strong>
+
+          </div>
+
+
+
+          <div class="ticket-info">
+
+            <small>
+              Lieu
+            </small>
+
+            <strong>
+              Cluj-Napoca
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <aside class="ticket-qr">
+
+
+        <div class="qr-box">
+
+          <img
+            src="${escapeAttribute(ticket.qrUrl)}"
+            alt="QR code du billet"
+          >
+
+        </div>
+
+
+        <div class="valid-badge">
+
+          ✓ Billet valide
+
+        </div>
+
+
+        <p>
+
+          Présentez ce QR code
+          à l'équipe Ti'Doc lors de votre arrivée.
+
+        </p>
+
+
+      </aside>
+
+
+    </section>
+
+
+
+    <section class="programme-card">
+
+
+      <div class="programme-title">
+
+        <span>
+          Votre sélection
+        </span>
+
+        <h3>
+          Mon programme
+        </h3>
+
+      </div>
+
+
+      <div class="reservation-list">
+
+        ${reservationHtml}
+
+      </div>
+
+
+    </section>
+
+
+
+    <p class="ticket-note">
+
+      Ce billet est personnel.
+      Conservez votre lien privé et ne le partagez pas.
+
+    </p>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   SÉCURITÉ
+===================================================== */
+
+function escapeHtml(
+  value
+){
+
+  return String(
+    value || ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(
+  value
+){
+
+  return escapeHtml(
+    value
+  );
+
+}
+
+
+
+/* =====================================================
+   LANCEMENT
+===================================================== */
+
+loadTicket();
+
+</script>
+
+
+</body>
+
+</html>
