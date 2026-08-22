@@ -820,4 +820,1047 @@ async function loadProgramme(){
 
       throw new Error(
         result.message ||
-        "Impossible
+        "Impossible de charger votre programme."
+      );
+
+    }
+
+
+    programmeData =
+      result.data;
+
+
+    renderProgramme();
+
+  }
+
+
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    container.innerHTML = `
+
+      <div class="error-box">
+
+        Impossible d'ouvrir votre espace Ti'Doc.
+
+        <br><br>
+
+        ${escapeHtml(error.message)}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   AFFICHAGE PRINCIPAL
+===================================================== */
+
+function renderProgramme(){
+
+  const container =
+    document.getElementById(
+      "programme-container"
+    );
+
+
+  const participant =
+    programmeData.participant;
+
+  const pack =
+    programmeData.pack;
+
+  const config =
+    programmeData.config;
+
+
+  let html = `
+
+    <div class="profile-card">
+
+      <div>
+
+        <h2>
+          Bonjour ${escapeHtml(participant.firstName)} 👋
+        </h2>
+
+        <p>
+          ${escapeHtml(participant.email)}
+        </p>
+
+      </div>
+
+
+      <div class="pack-badge">
+
+        <small>
+          Votre pack
+        </small>
+
+        <strong>
+          ${escapeHtml(pack.name)}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="quota-box">
+
+      <div class="quota">
+
+        <div class="quota-number">
+          ${pack.conferencesAllowed}
+        </div>
+
+        <div class="quota-label">
+          conférence(s) incluse(s)
+        </div>
+
+      </div>
+
+
+      <div class="quota">
+
+        <div class="quota-number">
+          ${pack.workshopsAllowed}
+        </div>
+
+        <div class="quota-label">
+          workshop(s) inclus
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  /* =============================================
+     RÉSERVATIONS FERMÉES
+  ============================================= */
+
+  if(
+    !config.reservationsOpen
+  ){
+
+    html += `
+
+      <div class="closed-box">
+
+        <div class="closed-icon">
+          🔒
+        </div>
+
+        <h3>
+          Les réservations ne sont pas encore ouvertes
+        </h3>
+
+        <p>
+          ${escapeHtml(config.closedMessage)}
+        </p>
+
+      </div>
+
+    `;
+
+
+    container.innerHTML =
+      html;
+
+
+    return;
+
+  }
+
+
+  /* =============================================
+     CONFÉRENCES
+  ============================================= */
+
+  html += `
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <div>
+
+          <span>
+            Conférences
+          </span>
+
+          <h2>
+            Choisissez vos conférences
+          </h2>
+
+        </div>
+
+        <div
+          id="conference-counter"
+          class="section-counter"
+        >
+          0 / ${pack.conferencesAllowed} sélectionnée(s)
+        </div>
+
+      </div>
+
+
+      <div
+        id="conference-grid"
+        class="activity-grid"
+      >
+
+        ${renderConferenceCards()}
+
+      </div>
+
+    </section>
+
+  `;
+
+
+  /* =============================================
+     WORKSHOPS
+  ============================================= */
+
+  if(
+    pack.workshopsAllowed > 0
+  ){
+
+    html += `
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span>
+              Workshops
+            </span>
+
+            <h2>
+              Choisissez vos workshops
+            </h2>
+
+          </div>
+
+          <div
+            id="workshop-counter"
+            class="section-counter"
+          >
+            0 / ${pack.workshopsAllowed} sélectionné(s)
+          </div>
+
+        </div>
+
+
+        <div
+          id="workshop-grid"
+          class="activity-grid"
+        >
+
+          ${renderWorkshopCards()}
+
+        </div>
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =============================================
+     BARRE DE VALIDATION
+  ============================================= */
+
+  html += `
+
+    <div class="save-zone">
+
+      <div
+        id="selection-summary"
+        class="selection-summary"
+      >
+        Faites vos choix puis validez votre programme.
+      </div>
+
+      <button
+        id="save-programme-button"
+        class="save-button"
+        type="button"
+        onclick="saveProgramme()"
+      >
+        Valider mon programme →
+      </button>
+
+    </div>
+
+  `;
+
+
+  container.innerHTML =
+    html;
+
+
+  updateSelectionState();
+
+}
+
+
+/* =====================================================
+   CARTES CONFÉRENCES
+===================================================== */
+
+function renderConferenceCards(){
+
+  const conferences =
+    programmeData.conferences ||
+    [];
+
+
+  if(
+    conferences.length === 0
+  ){
+
+    return `
+
+      <div class="loading">
+        Aucune conférence n'est disponible pour le moment.
+      </div>
+
+    `;
+
+  }
+
+
+  return conferences
+    .map(
+      function(item){
+
+        const id =
+          String(
+            item["ID conférence"] ||
+            item["ID activite"] ||
+            item["ID activité"] ||
+            ""
+          ).trim();
+
+
+        const title =
+          item["Nom"] ||
+          item["Titre"] ||
+          item["Nom conférence"] ||
+          "Conférence";
+
+
+        const description =
+          item["Description"] ||
+          "";
+
+
+        const speaker =
+          item["Intervenant"] ||
+          "";
+
+
+        const day =
+          item["Jour"] ||
+          "";
+
+
+        const time =
+          item["Horaire"] ||
+          "";
+
+
+        const room =
+          item["Salle"] ||
+          "";
+
+
+        return `
+
+          <article
+            class="activity-card conference-card"
+            data-id="${escapeHtml(id)}"
+            onclick="toggleConference('${escapeJs(id)}')"
+          >
+
+            <div class="activity-top">
+
+              <div>
+
+                <div class="activity-type">
+                  Conférence
+                </div>
+
+                <h3 class="activity-title">
+                  ${escapeHtml(title)}
+                </h3>
+
+              </div>
+
+              <div class="activity-check">
+                ✓
+              </div>
+
+            </div>
+
+
+            ${
+              description
+                ? `
+                  <p class="activity-description">
+                    ${escapeHtml(description)}
+                  </p>
+                `
+                : ""
+            }
+
+
+            <div class="activity-meta">
+
+              ${
+                speaker
+                  ? `
+                    <span class="meta-pill">
+                      🎤 ${escapeHtml(speaker)}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                day
+                  ? `
+                    <span class="meta-pill">
+                      📅 ${escapeHtml(day)}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                time
+                  ? `
+                    <span class="meta-pill">
+                      🕒 ${escapeHtml(time)}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                room
+                  ? `
+                    <span class="meta-pill">
+                      📍 ${escapeHtml(room)}
+                    </span>
+                  `
+                  : ""
+              }
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+/* =====================================================
+   CARTES WORKSHOPS
+===================================================== */
+
+function renderWorkshopCards(){
+
+  const workshops =
+    programmeData.workshops ||
+    [];
+
+
+  if(
+    workshops.length === 0
+  ){
+
+    return `
+
+      <div class="loading">
+        Aucun workshop n'est disponible pour le moment.
+      </div>
+
+    `;
+
+  }
+
+
+  return workshops
+    .map(
+      function(item){
+
+        const id =
+          String(
+            item["ID workshop"] ||
+            item["ID activite"] ||
+            item["ID activité"] ||
+            ""
+          ).trim();
+
+
+        const title =
+          item["Nom"] ||
+          item["Titre"] ||
+          item["Nom workshop"] ||
+          "Workshop";
+
+
+        const description =
+          item["Description"] ||
+          "";
+
+
+        const day =
+          item["Jour"] ||
+          "";
+
+
+        const time =
+          item["Horaire"] ||
+          "";
+
+
+        const room =
+          item["Salle"] ||
+          "";
+
+
+        const remaining =
+          parseRemainingPlaces(
+            item
+          );
+
+
+        const full =
+          remaining !== null &&
+          remaining <= 0;
+
+
+        return `
+
+          <article
+            class="
+              activity-card
+              workshop-card
+              ${full ? "disabled" : ""}
+            "
+            data-id="${escapeHtml(id)}"
+            ${
+              full
+                ? ""
+                : `onclick="toggleWorkshop('${escapeJs(id)}')"`
+            }
+          >
+
+            <div class="activity-top">
+
+              <div>
+
+                <div class="activity-type">
+                  Workshop
+                </div>
+
+                <h3 class="activity-title">
+                  ${escapeHtml(title)}
+                </h3>
+
+              </div>
+
+              <div class="activity-check">
+                ✓
+              </div>
+
+            </div>
+
+
+            ${
+              description
+                ? `
+                  <p class="activity-description">
+                    ${escapeHtml(description)}
+                  </p>
+                `
+                : ""
+            }
+
+
+            <div class="activity-meta">
+
+              ${
+                day
+                  ? `
+                    <span class="meta-pill">
+                      📅 ${escapeHtml(day)}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                time
+                  ? `
+                    <span class="meta-pill">
+                      🕒 ${escapeHtml(time)}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                room
+                  ? `
+                    <span class="meta-pill">
+                      📍 ${escapeHtml(room)}
+                    </span>
+                  `
+                  : ""
+              }
+
+              ${
+                remaining !== null
+                  ? `
+                    <span class="
+                      meta-pill
+                      ${full ? "full-pill" : ""}
+                    ">
+                      ${
+                        full
+                          ? "Complet"
+                          : remaining +
+                            " place(s) restante(s)"
+                      }
+                    </span>
+                  `
+                  : ""
+              }
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+/* =====================================================
+   PLACES RESTANTES
+===================================================== */
+
+function parseRemainingPlaces(
+  item
+){
+
+  const possibleKeys = [
+    "Places restantes",
+    "Places restantes calculées",
+    "Places disponibles"
+  ];
+
+
+  for(
+    const key of possibleKeys
+  ){
+
+    if(
+      item[key] !== undefined &&
+      item[key] !== ""
+    ){
+
+      const cleaned =
+        String(
+          item[key]
+        )
+          .replace(
+            /\s/g,
+            ""
+          )
+          .replace(
+            ",",
+            "."
+          );
+
+
+      const number =
+        Number(
+          cleaned
+        );
+
+
+      if(
+        !Number.isNaN(number)
+      ){
+        return number;
+      }
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =====================================================
+   SÉLECTION CONFÉRENCE
+===================================================== */
+
+function toggleConference(
+  id
+){
+
+  const max =
+    programmeData
+      .pack
+      .conferencesAllowed;
+
+
+  const index =
+    selectedConferences
+      .indexOf(
+        id
+      );
+
+
+  if(
+    index !== -1
+  ){
+
+    selectedConferences.splice(
+      index,
+      1
+    );
+
+  }
+
+  else{
+
+    if(
+      selectedConferences.length >=
+      max
+    ){
+
+      alert(
+        "Votre pack permet de sélectionner " +
+        max +
+        " conférence(s) maximum."
+      );
+
+      return;
+
+    }
+
+
+    selectedConferences.push(
+      id
+    );
+
+  }
+
+
+  updateSelectionState();
+
+}
+
+
+/* =====================================================
+   SÉLECTION WORKSHOP
+===================================================== */
+
+function toggleWorkshop(
+  id
+){
+
+  const max =
+    programmeData
+      .pack
+      .workshopsAllowed;
+
+
+  const index =
+    selectedWorkshops
+      .indexOf(
+        id
+      );
+
+
+  if(
+    index !== -1
+  ){
+
+    selectedWorkshops.splice(
+      index,
+      1
+    );
+
+  }
+
+  else{
+
+    if(
+      selectedWorkshops.length >=
+      max
+    ){
+
+      alert(
+        "Votre pack permet de sélectionner " +
+        max +
+        " workshop(s) maximum."
+      );
+
+      return;
+
+    }
+
+
+    selectedWorkshops.push(
+      id
+    );
+
+  }
+
+
+  updateSelectionState();
+
+}
+
+
+/* =====================================================
+   METTRE À JOUR L'INTERFACE
+===================================================== */
+
+function updateSelectionState(){
+
+  document
+    .querySelectorAll(
+      ".conference-card"
+    )
+    .forEach(
+      function(card){
+
+        card
+          .classList
+          .toggle(
+            "selected",
+            selectedConferences.includes(
+              card.dataset.id
+            )
+          );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".workshop-card"
+    )
+    .forEach(
+      function(card){
+
+        card
+          .classList
+          .toggle(
+            "selected",
+            selectedWorkshops.includes(
+              card.dataset.id
+            )
+          );
+
+      }
+    );
+
+
+  const conferenceCounter =
+    document.getElementById(
+      "conference-counter"
+    );
+
+
+  if(
+    conferenceCounter
+  ){
+
+    conferenceCounter.textContent =
+      selectedConferences.length +
+      " / " +
+      programmeData.pack.conferencesAllowed +
+      " sélectionnée(s)";
+
+  }
+
+
+  const workshopCounter =
+    document.getElementById(
+      "workshop-counter"
+    );
+
+
+  if(
+    workshopCounter
+  ){
+
+    workshopCounter.textContent =
+      selectedWorkshops.length +
+      " / " +
+      programmeData.pack.workshopsAllowed +
+      " sélectionné(s)";
+
+  }
+
+
+  const summary =
+    document.getElementById(
+      "selection-summary"
+    );
+
+
+  if(
+    summary
+  ){
+
+    summary.textContent =
+      selectedConferences.length +
+      " conférence(s) · " +
+      selectedWorkshops.length +
+      " workshop(s) sélectionné(s)";
+
+  }
+
+}
+
+
+/* =====================================================
+   ENREGISTRER LE PROGRAMME
+===================================================== */
+
+function saveProgramme(){
+
+  alert(
+
+    "Parfait 💙\n\n" +
+
+    "Vos choix sont prêts à être enregistrés.\n\n" +
+
+    "Conférences : " +
+    selectedConferences.length +
+    "\n" +
+
+    "Workshops : " +
+    selectedWorkshops.length +
+    "\n\n" +
+
+    "À l'étape suivante, ce bouton enregistrera réellement vos réservations."
+
+  );
+
+}
+
+
+/* =====================================================
+   SÉCURITÉ HTML
+===================================================== */
+
+function escapeHtml(
+  value
+){
+
+  return String(
+    value || ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   SÉCURITÉ JAVASCRIPT DANS HTML
+===================================================== */
+
+function escapeJs(
+  value
+){
+
+  return String(
+    value || ""
+  )
+    .replace(
+      /\\/g,
+      "\\\\"
+    )
+    .replace(
+      /'/g,
+      "\\'"
+    );
+
+}
+
+
+/* =====================================================
+   LANCEMENT
+===================================================== */
+
+loadProgramme();
+
+</script>
+
+</body>
+</html>
