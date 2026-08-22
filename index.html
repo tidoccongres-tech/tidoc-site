@@ -614,12 +614,13 @@ header.scrolled nav{
 
 
 /* =========================
-   CONTACT — VERSION COMPACTE
+   CONTACT — VERSION CORRIGÉE
 ========================= */
 
 .contact{
   padding:90px 7%;
   background:var(--blue-light);
+  overflow:hidden;
 }
 
 .contact-container{
@@ -627,39 +628,63 @@ header.scrolled nav{
   margin:auto;
 
   display:grid;
-  grid-template-columns:.9fr 1.1fr;
+
+  /* IMPORTANT :
+     empêche les colonnes de déborder */
+  grid-template-columns:
+    minmax(0, .9fr)
+    minmax(0, 1.1fr);
+
   gap:35px;
 
   align-items:stretch;
 }
 
 
-/* VIDEO */
+/* =========================
+   VIDEO
+========================= */
 
 .contact-video{
+  width:100%;
+  min-width:0;
+
   aspect-ratio:1 / 1;
+
+  position:relative;
 
   border-radius:32px;
   overflow:hidden;
 
-  background:#dceff3;
+  background:#DCEFF3;
 
-  box-shadow:0 20px 50px rgba(8,67,80,.13);
+  box-shadow:
+    0 20px 50px rgba(8,67,80,.13);
 }
 
 .contact-video video{
+  position:absolute;
+  inset:0;
+
   width:100%;
   height:100%;
 
   display:block;
 
   object-fit:cover;
+
+  max-width:100%;
 }
 
 
-/* CARTE CONTACT */
+/* =========================
+   CARTE CONTACT
+========================= */
 
 .contact-card{
+  width:100%;
+  min-width:0;
+
   padding:45px;
 
   display:flex;
@@ -670,13 +695,18 @@ header.scrolled nav{
 
   background:white;
 
-  box-shadow:0 20px 50px rgba(8,67,80,.10);
+  box-shadow:
+    0 20px 50px rgba(8,67,80,.10);
+
+  overflow:hidden;
 }
+
 
 .contact-card .section-tag{
   display:block;
   margin-bottom:10px;
 }
+
 
 .contact-card h2{
   margin-bottom:24px;
@@ -687,9 +717,14 @@ header.scrolled nav{
   line-height:1.05;
 }
 
-/* EMAIL */
+
+/* =========================
+   EMAIL
+========================= */
 
 .contact-email{
+  width:100%;
+
   display:flex;
   align-items:center;
   gap:14px;
@@ -701,31 +736,57 @@ header.scrolled nav{
   border-radius:16px;
 
   text-decoration:none;
-  color:var(--blue-dark);
 
+  color:var(--blue-dark);
   background:#F2FAFB;
 
   font-weight:600;
+
+  overflow-wrap:anywhere;
 }
 
-/* RESEAUX */
+
+.contact-email .icon{
+  width:22px;
+  height:22px;
+
+  min-width:22px;
+
+  fill:none;
+  stroke:#198CA7;
+
+  flex-shrink:0;
+}
+
+
+/* =========================
+   RESEAUX SOCIAUX
+========================= */
 
 .social-title{
   margin:8px 0 15px;
+
   color:var(--grey);
+
   font-size:14px;
 }
-   
+
+
 .social-icons{
   display:flex;
   align-items:center;
+
   gap:14px;
+
   flex-wrap:wrap;
 }
+
 
 .social-icon{
   width:52px;
   height:52px;
+
+  flex:0 0 52px;
 
   display:flex;
   align-items:center;
@@ -736,18 +797,22 @@ header.scrolled nav{
   color:#198CA7;
   background:#EAF7F9;
 
-  border:1px solid rgba(25,140,167,.15);
+  border:
+    1px solid rgba(25,140,167,.15);
 
   text-decoration:none;
 
   transition:.25s ease;
 }
 
+
 .social-icon .icon{
   width:24px;
   height:24px;
+
   fill:currentColor;
 }
+
 
 .social-icon:hover{
   color:white;
@@ -756,76 +821,175 @@ header.scrolled nav{
   transform:translateY(-3px);
 }
 
-/* SVG mail */
 
-.contact-email .icon{
-  width:22px;
-  height:22px;
-
-  fill:none;
-  stroke:#198CA7;
-
-  flex-shrink:0;
-}
-
-/* NEWSLETTER */
+/* =========================
+   NEWSLETTER
+========================= */
 
 .newsletter{
+  width:100%;
+
   margin-top:28px;
   padding-top:28px;
 
-  border-top:1px solid #E1ECEE;
+  border-top:
+    1px solid #E1ECEE;
 }
+
 
 .newsletter h3{
   margin-bottom:10px;
 
   color:var(--blue-deep);
+
   font-size:25px;
+  line-height:1.25;
 }
+
 
 .newsletter p{
   margin-bottom:22px;
 
   color:var(--grey);
+
   line-height:1.6;
 }
 
+
 .newsletter-form{
+  width:100%;
+
   display:flex;
+
+  min-width:0;
 }
 
+
 .newsletter input{
-  flex:1;
+  flex:1 1 auto;
+
+  width:100%;
   min-width:0;
 
   padding:16px 18px;
 
-  border:1px solid #CFE1E5;
-  border-radius:12px 0 0 12px;
+  border:
+    1px solid #CFE1E5;
+
+  border-radius:
+    12px 0 0 12px;
 
   outline:none;
 
   font-size:15px;
 }
 
+
 .newsletter input:focus{
   border-color:var(--blue);
 }
 
+
 .newsletter button{
-  padding:0 22px;
+  flex:0 0 auto;
+
+  min-width:110px;
+
+  padding:0 20px;
 
   border:0;
-  border-radius:0 12px 12px 0;
+
+  border-radius:
+    0 12px 12px 0;
 
   color:white;
   background:var(--blue);
 
   font-weight:700;
+
   cursor:pointer;
 }
 
+
+/* =========================
+   TABLETTE
+========================= */
+
+@media(max-width:900px){
+
+  .contact-container{
+    grid-template-columns:1fr;
+
+    gap:30px;
+  }
+
+
+  .contact-video{
+    width:min(520px,100%);
+
+    margin:auto;
+
+    aspect-ratio:1 / 1;
+  }
+
+
+  .contact-card{
+    width:100%;
+  }
+
+}
+
+
+/* =========================
+   TELEPHONE
+========================= */
+
+@media(max-width:650px){
+
+  .contact{
+    padding:
+      75px 5%;
+  }
+
+
+  .contact-container{
+    gap:25px;
+  }
+
+
+  .contact-video{
+    width:100%;
+  }
+
+
+  .contact-card{
+    padding:
+      35px 24px;
+  }
+
+
+  .contact-card h2{
+    font-size:36px;
+  }
+
+
+  .newsletter-form{
+    flex-direction:column;
+
+    gap:10px;
+  }
+
+
+  .newsletter input,
+  .newsletter button{
+    width:100%;
+    min-width:0;
+    min-height:50px;
+
+    border-radius:12px;
+  }
+
+}
 
 /* =========================
    FOOTER
