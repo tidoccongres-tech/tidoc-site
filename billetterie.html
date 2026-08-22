@@ -1,1 +1,1518 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Billetterie — Ti'Doc 2027
+</title>
+
+
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+
+  --blue:#198CA7;
+
+  --blue-dark:#0B5367;
+
+  --blue-deep:#073C4B;
+
+  --blue-light:#E9F7FA;
+
+  --white:#FFFFFF;
+
+  --text:#153C46;
+
+  --grey:#637D84;
+
+  --light:#F8FCFD;
+
+}
+
+
+/* =====================================================
+   BASE
+===================================================== */
+
+*{
+
+  margin:0;
+
+  padding:0;
+
+  box-sizing:border-box;
+
+}
+
+
+html{
+
+  scroll-behavior:smooth;
+
+}
+
+
+body{
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    #F7FBFC;
+
+  color:
+    var(--text);
+
+}
+
+
+a{
+
+  text-decoration:none;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+
+  position:fixed;
+
+  top:0;
+
+  left:0;
+
+  width:100%;
+
+  z-index:1000;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  padding:
+    16px 7%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .96
+    );
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+  box-shadow:
+    0 5px 25px
+    rgba(
+      7,
+      60,
+      75,
+      .08
+    );
+
+}
+
+
+.logo img{
+
+  width:72px;
+
+}
+
+
+nav{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:28px;
+
+}
+
+
+nav a{
+
+  color:
+    var(--blue-dark);
+
+  font-size:
+    14px;
+
+  font-weight:
+    700;
+
+}
+
+
+nav a:hover{
+
+  color:
+    var(--blue);
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+  padding:
+    165px 7%
+    95px;
+
+  text-align:center;
+
+  background:
+
+    radial-gradient(
+      circle
+      at top right,
+      rgba(
+        25,
+        140,
+        167,
+        .13
+      ),
+      transparent
+      35%
+    ),
+
+    linear-gradient(
+      180deg,
+      #FFFFFF,
+      #F1F9FA
+    );
+
+}
+
+
+.hero-tag{
+
+  display:inline-block;
+
+  margin-bottom:
+    18px;
+
+  padding:
+    9px 16px;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.5px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.hero h1{
+
+  max-width:
+    850px;
+
+  margin:
+    0 auto;
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    clamp(
+      42px,
+      6vw,
+      72px
+    );
+
+  line-height:
+    1.05;
+
+}
+
+
+.hero p{
+
+  max-width:
+    700px;
+
+  margin:
+    24px auto 0;
+
+  color:
+    var(--grey);
+
+  font-size:
+    19px;
+
+  line-height:
+    1.7;
+
+}
+
+
+/* =====================================================
+   PACKS
+===================================================== */
+
+.packs-section{
+
+  padding:
+    95px 7%
+    120px;
+
+}
+
+
+.section-heading{
+
+  max-width:
+    720px;
+
+  margin:
+    0 auto 55px;
+
+  text-align:center;
+
+}
+
+
+.section-heading span{
+
+  color:
+    var(--blue);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.section-heading h2{
+
+  margin-top:
+    12px;
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    clamp(
+      34px,
+      5vw,
+      52px
+    );
+
+}
+
+
+.section-heading p{
+
+  margin-top:
+    17px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    17px;
+
+  line-height:
+    1.7;
+
+}
+
+
+/* =====================================================
+   GRILLE
+===================================================== */
+
+.pack-grid{
+
+  width:
+    min(
+      1200px,
+      100%
+    );
+
+  margin:
+    auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:
+    25px;
+
+}
+
+
+/* =====================================================
+   CARTE PACK
+===================================================== */
+
+.pack-card{
+
+  position:
+    relative;
+
+  display:flex;
+
+  flex-direction:
+    column;
+
+  padding:
+    38px;
+
+  background:
+    white;
+
+  border:
+    1px solid
+    #E0EEF1;
+
+  border-radius:
+    28px;
+
+  box-shadow:
+    0 15px 40px
+    rgba(
+      7,
+      60,
+      75,
+      .08
+    );
+
+  transition:
+    .25s ease;
+
+}
+
+
+.pack-card:hover{
+
+  transform:
+    translateY(
+      -5px
+    );
+
+  box-shadow:
+    0 22px 50px
+    rgba(
+      7,
+      60,
+      75,
+      .12
+    );
+
+}
+
+
+.pack-name{
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    28px;
+
+  font-weight:
+    800;
+
+}
+
+
+.pack-price{
+
+  margin-top:
+    18px;
+
+  color:
+    var(--blue);
+
+  font-size:
+    42px;
+
+  font-weight:
+    900;
+
+}
+
+
+.pack-price span{
+
+  margin-left:
+    4px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    14px;
+
+  font-weight:
+    600;
+
+}
+
+
+.pack-description{
+
+  margin-top:
+    18px;
+
+  min-height:
+    55px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    15px;
+
+  line-height:
+    1.6;
+
+}
+
+
+.pack-details{
+
+  margin-top:
+    28px;
+
+  display:flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    13px;
+
+}
+
+
+.pack-detail{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:
+    11px;
+
+  color:
+    var(--text);
+
+  font-size:
+    15px;
+
+}
+
+
+.check{
+
+  width:
+    25px;
+
+  height:
+    25px;
+
+  min-width:
+    25px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+  font-size:
+    13px;
+
+  font-weight:
+    900;
+
+}
+
+
+.pack-button{
+
+  width:100%;
+
+  min-height:
+    52px;
+
+  margin-top:
+    34px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    center;
+
+  border:
+    0;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue);
+
+  color:
+    white;
+
+  font-size:
+    15px;
+
+  font-weight:
+    800;
+
+  cursor:pointer;
+
+  transition:
+    .25s ease;
+
+}
+
+
+.pack-button:hover{
+
+  background:
+    var(--blue-dark);
+
+}
+
+
+.pack-button:disabled{
+
+  opacity:
+    .45;
+
+  cursor:
+    not-allowed;
+
+}
+
+
+/* =====================================================
+   MESSAGE CHARGEMENT / ERREUR
+===================================================== */
+
+.status-message{
+
+  width:
+    min(
+      800px,
+      100%
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    25px;
+
+  text-align:
+    center;
+
+  border-radius:
+    20px;
+
+  color:
+    var(--grey);
+
+  background:
+    white;
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      7,
+      60,
+      75,
+      .07
+    );
+
+}
+
+
+/* =====================================================
+   INFOS
+===================================================== */
+
+.info-section{
+
+  padding:
+    0 7%
+    120px;
+
+}
+
+
+.info-box{
+
+  width:
+    min(
+      1000px,
+      100%
+    );
+
+  margin:
+    auto;
+
+  padding:
+    42px;
+
+  border-radius:
+    30px;
+
+  background:
+    var(--blue-deep);
+
+  color:
+    white;
+
+}
+
+
+.info-box h3{
+
+  font-size:
+    28px;
+
+}
+
+
+.info-box p{
+
+  margin-top:
+    14px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      .82
+    );
+
+  font-size:
+    16px;
+
+  line-height:
+    1.7;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+  padding:
+    35px 7%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  background:
+    var(--blue-deep);
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      .75
+    );
+
+  font-size:
+    13px;
+
+}
+
+
+footer img{
+
+  width:
+    60px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(
+  max-width:900px
+){
+
+  .pack-grid{
+
+    grid-template-columns:
+      1fr;
+
+    max-width:
+      600px;
+
+  }
+
+
+  header{
+
+    padding:
+      14px 5%;
+
+  }
+
+
+  nav{
+
+    gap:
+      14px;
+
+  }
+
+
+  nav a{
+
+    font-size:
+      12px;
+
+  }
+
+}
+
+
+@media(
+  max-width:600px
+){
+
+  .logo img{
+
+    width:
+      58px;
+
+  }
+
+
+  nav a:nth-child(2){
+
+    display:none;
+
+  }
+
+
+  .hero{
+
+    padding:
+      135px 6%
+      75px;
+
+  }
+
+
+  .packs-section{
+
+    padding:
+      75px 5%
+      90px;
+
+  }
+
+
+  .pack-card{
+
+    padding:
+      30px 24px;
+
+  }
+
+
+  .info-section{
+
+    padding:
+      0 5%
+      90px;
+
+  }
+
+
+  .info-box{
+
+    padding:
+      32px 25px;
+
+  }
+
+
+  footer{
+
+    flex-direction:
+      column;
+
+    gap:
+      17px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+  <a
+    href="index.html"
+    class="logo"
+  >
+
+    <img
+      src="files/logo.png"
+      alt="Ti'Doc"
+    >
+
+  </a>
+
+
+  <nav>
+
+    <a href="index.html">
+      Accueil
+    </a>
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+
+  <span class="hero-tag">
+    Ti'Doc 2027
+  </span>
+
+  <h1>
+    Choisissez votre pack.
+  </h1>
+
+  <p>
+    Réservez votre place pour Ti'Doc 2027.
+    Après votre achat, vous pourrez sélectionner
+    vos conférences et workshops directement
+    depuis notre site.
+  </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     PACKS
+================================================== -->
+
+<section class="packs-section">
+
+  <div class="section-heading">
+
+    <span>
+      Billetterie
+    </span>
+
+    <h2>
+      Les packs Ti'Doc
+    </h2>
+
+    <p>
+      Choisissez la formule qui vous correspond.
+      Le contenu et les tarifs sont mis à jour
+      automatiquement par l'équipe Ti'Doc.
+    </p>
+
+  </div>
+
+
+  <div
+    id="packs-container"
+    class="pack-grid"
+  >
+
+    <div class="status-message">
+      Chargement de la billetterie...
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     INFO
+================================================== -->
+
+<section class="info-section">
+
+  <div class="info-box">
+
+    <h3>
+      Et après l'achat ?
+    </h3>
+
+    <p>
+      Une fois votre pack acheté, vous recevrez
+      les informations nécessaires pour choisir
+      vos conférences et workshops.
+      Les places disponibles dans les workshops
+      seront mises à jour automatiquement.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+  <img
+    src="files/logo.png"
+    alt="Ti'Doc"
+  >
+
+  <span>
+    © Ti'Doc 2027 — Cluj-Napoca
+  </span>
+
+</footer>
+
+
+
+<!-- ==================================================
+     SCRIPT BILLETTERIE
+================================================== -->
+
+<script>
+
+/* =====================================================
+   API
+===================================================== */
+
+const BILLETTERIE_API =
+  "https://script.google.com/macros/s/AKfycbyzqMAgWgfVSJBu6w-G_li-zHShT_1XLnbMBtgNzYgPT0Bo6j2izIIwHphSVT2DT8pW/exec";
+
+
+/* =====================================================
+   CONTENEUR
+===================================================== */
+
+const packsContainer =
+  document.getElementById(
+    "packs-container"
+  );
+
+
+/* =====================================================
+   CHARGER LA BILLETTERIE
+===================================================== */
+
+async function loadBilletterie() {
+
+  try {
+
+    const response =
+      await fetch(
+        BILLETTERIE_API
+      );
+
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "Impossible de récupérer la billetterie."
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !data.success
+    ) {
+
+      throw new Error(
+        data.message ||
+        "Erreur API."
+      );
+
+    }
+
+
+    displayPacks(
+      data.packs || []
+    );
+
+  }
+
+
+  catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    packsContainer.innerHTML = `
+
+      <div class="status-message">
+
+        La billetterie est momentanément
+        indisponible.
+
+        <br><br>
+
+        Réessayez dans quelques instants.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   AFFICHER LES PACKS
+===================================================== */
+
+function displayPacks(
+  packs
+) {
+
+
+  /*
+    On affiche uniquement
+    les packs ouverts
+  */
+
+  const openedPacks =
+    packs.filter(
+      pack => {
+
+        const status =
+          String(
+            pack["Statut"] || ""
+          )
+            .trim()
+            .toLowerCase();
+
+
+        return (
+          status ===
+          "ouvert"
+        );
+
+      }
+    );
+
+
+  /*
+    Aucun pack ouvert
+  */
+
+  if (
+    openedPacks.length === 0
+  ) {
+
+    packsContainer.innerHTML = `
+
+      <div class="status-message">
+
+        💙 La billetterie Ti'Doc 2027
+        n'est pas encore ouverte.
+
+        <br><br>
+
+        Revenez bientôt !
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  /*
+    Créer les cartes
+  */
+
+  packsContainer.innerHTML =
+    openedPacks
+      .map(
+        pack =>
+          createPackCard(
+            pack
+          )
+      )
+      .join("");
+
+}
+
+
+
+/* =====================================================
+   CRÉER UNE CARTE PACK
+===================================================== */
+
+function createPackCard(
+  pack
+) {
+
+
+  const id =
+    escapeHtml(
+      pack["ID pack"] || ""
+    );
+
+
+  const name =
+    escapeHtml(
+      pack["Nom du pack"] ||
+      "Pack Ti'Doc"
+    );
+
+
+  const price =
+    escapeHtml(
+      pack["Prix (€)"] ||
+      ""
+    );
+
+
+  const conferences =
+    escapeHtml(
+      pack[
+        "Conférences incluses"
+      ] || "0"
+    );
+
+
+  const workshops =
+    escapeHtml(
+      pack[
+        "Workshops inclus"
+      ] || "0"
+    );
+
+
+  const description =
+    escapeHtml(
+      pack[
+        "Description courte"
+      ] || ""
+    );
+
+
+  const displayedPrice =
+    price
+      ? `${price} €`
+      : "À venir";
+
+
+  return `
+
+    <article
+      class="pack-card"
+      data-pack-id="${id}"
+    >
+
+
+      <div class="pack-name">
+
+        ${name}
+
+      </div>
+
+
+      <div class="pack-price">
+
+        ${displayedPrice}
+
+      </div>
+
+
+      <div class="pack-description">
+
+        ${description}
+
+      </div>
+
+
+      <div class="pack-details">
+
+
+        <div class="pack-detail">
+
+          <span class="check">
+            ✓
+          </span>
+
+          <span>
+            ${conferences}
+            conférence(s)
+            incluse(s)
+          </span>
+
+        </div>
+
+
+        <div class="pack-detail">
+
+          <span class="check">
+            ✓
+          </span>
+
+          <span>
+            ${workshops}
+            workshop(s)
+            inclus
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+        class="pack-button"
+        type="button"
+        onclick="choosePack('${id}')"
+      >
+
+        Choisir ce pack
+
+      </button>
+
+
+    </article>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   CHOISIR UN PACK
+===================================================== */
+
+function choosePack(
+  packId
+) {
+
+
+  /*
+    Pour l'instant,
+    on vérifie simplement
+    que le bouton fonctionne.
+
+    À l'étape suivante :
+    → formulaire participant
+    → paiement HelloAsso
+  */
+
+
+  console.log(
+    "Pack choisi :",
+    packId
+  );
+
+
+  alert(
+
+    "Pack sélectionné : " +
+    packId +
+    "\n\n" +
+
+    "Le paiement sera connecté à la prochaine étape. 💙"
+
+  );
+
+}
+
+
+
+/* =====================================================
+   SÉCURITÉ HTML
+===================================================== */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value || ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+
+/* =====================================================
+   LANCEMENT
+===================================================== */
+
+loadBilletterie();
+
+</script>
+
+
+</body>
+
+</html>
