@@ -89,169 +89,102 @@ a{
 }
 
 
-/* =====================================================
-   HEADER — MÊME STYLE QUE L'ACCUEIL
-===================================================== */
+/* =========================
+   HEADER
+========================= */
 
 header{
-
   position:fixed;
-
   top:0;
-
   left:0;
-
   width:100%;
-
   z-index:1000;
 
   display:flex;
-
   align-items:center;
+  justify-content:space-between;
 
-  justify-content:
-    space-between;
+  padding:22px 7%;
 
-  padding:
-    22px 7%;
-
-  background:
-    transparent;
+  background:transparent;
 
   transition:
     background .3s ease,
     box-shadow .3s ease,
     padding .3s ease;
-
 }
 
+
+/* LOGO */
 
 .logo img{
-
   width:82px;
-
-  height:auto;
-
-  display:block;
-
 }
 
 
+/* MENU */
+
 nav{
-
   display:flex;
-
   align-items:center;
-
   gap:36px;
 
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .92
-    );
+  background:rgba(255,255,255,.92);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 
-  -webkit-backdrop-filter:
-    blur(12px);
+  padding:15px 25px;
 
-  padding:
-    15px 25px;
+  border-radius:50px;
 
-  border-radius:
-    50px;
-
-  box-shadow:
-    0 10px 35px
-    rgba(
-      0,
-      0,
-      0,
-      .08
-    );
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
 
   transition:
     background .3s ease,
     box-shadow .3s ease;
-
 }
 
 
 nav a{
+  text-decoration:none;
 
-  color:
-    var(--blue-dark);
+  color:var(--blue-dark);
 
-  font-size:
-    15px;
+  font-size:15px;
+  font-weight:600;
 
-  font-weight:
-    600;
-
-  transition:
-    .25s;
-
+  transition:.25s;
 }
 
 
 nav a:hover{
-
-  color:
-    var(--blue);
-
+  color:var(--blue);
 }
 
 
-/* =====================================================
-   HEADER APRÈS SCROLL
-===================================================== */
+/* =========================
+   HEADER QUAND ON DESCEND
+========================= */
 
 header.scrolled{
+  background:rgba(255,255,255,.96);
 
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .96
-    );
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
 
-  backdrop-filter:
-    blur(14px);
+  box-shadow:0 5px 25px rgba(7,60,75,.10);
 
-  -webkit-backdrop-filter:
-    blur(14px);
-
-  box-shadow:
-    0 5px 25px
-    rgba(
-      7,
-      60,
-      75,
-      .10
-    );
-
-  padding-top:
-    12px;
-
-  padding-bottom:
-    12px;
-
+  padding-top:12px;
+  padding-bottom:12px;
 }
 
 
+/* Le menu s'intègre dans la barre blanche */
+
 header.scrolled nav{
-
-  background:
-    transparent;
-
-  box-shadow:
-    none;
-
+  background:transparent;
+  box-shadow:none;
 }
 
 
@@ -1054,50 +987,7 @@ footer img{
 <body>
 
 
-<!-- ==================================================
-     HEADER
-================================================== -->
 
-<header>
-
-  <a
-    href="index.html#accueil"
-    class="logo"
-  >
-
-    <img
-      src="files/logo.png"
-      alt="Logo Ti'Doc"
-    >
-
-  </a>
-
-
-  <nav>
-
-    <a href="index.html#accueil">
-      Accueil
-    </a>
-
-    <a href="index.html#apropos">
-      À propos
-    </a>
-
-    <a href="activites.html">
-      Nos activités
-    </a>
-
-    <a href="billetterie.html">
-      Billetterie
-    </a>
-
-    <a href="index.html#contact">
-      Contact
-    </a>
-
-  </nav>
-
-</header>
 
 
 
