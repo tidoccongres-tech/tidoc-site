@@ -1415,37 +1415,106 @@ function createPackCard(
    CHOISIR UN PACK
 ===================================================== */
 
-function choosePack(
+async function choosePack(
   packId
 ) {
 
+  try {
 
-  /*
-    Pour l'instant,
-    on vérifie simplement
-    que le bouton fonctionne.
-
-    À l'étape suivante :
-    → formulaire participant
-    → paiement HelloAsso
-  */
+    const buttons =
+      document.querySelectorAll(
+        ".pack-button"
+      );
 
 
-  console.log(
-    "Pack choisi :",
-    packId
-  );
+    buttons.forEach(
+      button => {
+
+        button.disabled =
+          true;
+
+      }
+    );
 
 
-  alert(
+    const url =
+      BILLETTERIE_API +
+      "?action=createCheckout&packId=" +
+      encodeURIComponent(
+        packId
+      );
 
-    "Pack sélectionné : " +
-    packId +
-    "\n\n" +
 
-    "Le paiement sera connecté à la prochaine étape. 💙"
+    const response =
+      await fetch(
+        url
+      );
 
-  );
+
+    const data =
+      await response.json();
+
+
+    if (
+      !data.success
+    ) {
+
+      throw new Error(
+        data.message ||
+        "Impossible de créer le paiement."
+      );
+
+    }
+
+
+    if (
+      !data.redirectUrl
+    ) {
+
+      throw new Error(
+        "HelloAsso n'a pas renvoyé de page de paiement."
+      );
+
+    }
+
+
+    window.location.href =
+      data.redirectUrl;
+
+  }
+
+
+  catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "Impossible de démarrer le paiement.\n\n" +
+      error.message
+    );
+
+
+    const buttons =
+      document.querySelectorAll(
+        ".pack-button"
+      );
+
+
+    buttons.forEach(
+      button => {
+
+        button.disabled =
+          false;
+
+      }
+    );
+
+  }
 
 }
 
