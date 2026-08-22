@@ -2166,9 +2166,7 @@ function renderConferenceCards(){
               conference-card
             "
 
-            data-id="
-              ${escapeHtml(id)}
-            "
+            data-id="${escapeHtml(id)}"
 
             onclick="
               toggleConference(
@@ -2516,9 +2514,7 @@ function renderWorkshopCards(){
               ${full ? "disabled" : ""}
             "
 
-            data-id="
-              ${escapeHtml(id)}
-            "
+            data-id="${escapeHtml(id)}"
 
             ${
               full
@@ -2969,10 +2965,9 @@ function updateSelectionState(){
 
             "selected",
 
-            selectedConferences
-              .includes(
-                card.dataset.id
-              )
+            selectedConferences.includes(
+  String(card.dataset.id || "").trim()
+)
 
           );
 
@@ -2995,10 +2990,9 @@ function updateSelectionState(){
 
             "selected",
 
-            selectedWorkshops
-              .includes(
-                card.dataset.id
-              )
+            selectedWorkshops.includes(
+  String(card.dataset.id || "").trim()
+)
 
           );
 
