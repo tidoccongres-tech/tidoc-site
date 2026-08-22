@@ -77,6 +77,8 @@ body{
   color:
     var(--text);
 
+  overflow-x:hidden;
+
 }
 
 
@@ -88,7 +90,7 @@ a{
 
 
 /* =====================================================
-   HEADER
+   HEADER — MÊME STYLE QUE L'ACCUEIL
 ===================================================== */
 
 header{
@@ -111,7 +113,104 @@ header{
     space-between;
 
   padding:
-    16px 7%;
+    22px 7%;
+
+  background:
+    transparent;
+
+  transition:
+    background .3s ease,
+    box-shadow .3s ease,
+    padding .3s ease;
+
+}
+
+
+.logo img{
+
+  width:82px;
+
+  height:auto;
+
+  display:block;
+
+}
+
+
+nav{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:36px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .92
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  padding:
+    15px 25px;
+
+  border-radius:
+    50px;
+
+  box-shadow:
+    0 10px 35px
+    rgba(
+      0,
+      0,
+      0,
+      .08
+    );
+
+  transition:
+    background .3s ease,
+    box-shadow .3s ease;
+
+}
+
+
+nav a{
+
+  color:
+    var(--blue-dark);
+
+  font-size:
+    15px;
+
+  font-weight:
+    600;
+
+  transition:
+    .25s;
+
+}
+
+
+nav a:hover{
+
+  color:
+    var(--blue);
+
+}
+
+
+/* =====================================================
+   HEADER APRÈS SCROLL
+===================================================== */
+
+header.scrolled{
 
   background:
     rgba(
@@ -133,48 +232,25 @@ header{
       7,
       60,
       75,
-      .08
+      .10
     );
 
-}
+  padding-top:
+    12px;
 
-
-.logo img{
-
-  width:72px;
-
-}
-
-
-nav{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:28px;
+  padding-bottom:
+    12px;
 
 }
 
 
-nav a{
+header.scrolled nav{
 
-  color:
-    var(--blue-dark);
+  background:
+    transparent;
 
-  font-size:
-    14px;
-
-  font-weight:
-    700;
-
-}
-
-
-nav a:hover{
-
-  color:
-    var(--blue);
+  box-shadow:
+    none;
 
 }
 
@@ -838,7 +914,7 @@ footer img{
   header{
 
     padding:
-      14px 5%;
+      18px 5%;
 
   }
 
@@ -846,7 +922,10 @@ footer img{
   nav{
 
     gap:
-      14px;
+      15px;
+
+    padding:
+      12px 16px;
 
   }
 
@@ -854,7 +933,7 @@ footer img{
   nav a{
 
     font-size:
-      12px;
+      13px;
 
   }
 
@@ -865,10 +944,42 @@ footer img{
   max-width:600px
 ){
 
+  header{
+
+    position:absolute;
+
+    align-items:
+      flex-start;
+
+    padding:
+      18px 5%;
+
+  }
+
+
   .logo img{
 
     width:
-      58px;
+      62px;
+
+  }
+
+
+  nav{
+
+    gap:
+      8px;
+
+    padding:
+      10px 12px;
+
+  }
+
+
+  nav a{
+
+    font-size:
+      11px;
 
   }
 
@@ -950,25 +1061,41 @@ footer img{
 <header>
 
   <a
-    href="index.html"
+    href="index.html#accueil"
     class="logo"
   >
 
     <img
       src="files/logo.png"
-      alt="Ti'Doc"
+      alt="Logo Ti'Doc"
     >
 
   </a>
 
 
   <nav>
-  <a href="index.html#accueil">Accueil</a>
-  <a href="index.html#apropos">À propos</a>
-  <a href="activites.html">Nos activités</a>
-  <a href="billetterie.html">Billetterie</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
+
+    <a href="index.html#accueil">
+      Accueil
+    </a>
+
+    <a href="index.html#apropos">
+      À propos
+    </a>
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+  </nav>
 
 </header>
 
@@ -1195,11 +1322,6 @@ function displayPacks(
 ) {
 
 
-  /*
-    On affiche uniquement
-    les packs ouverts
-  */
-
   const openedPacks =
     packs.filter(
       pack => {
@@ -1220,10 +1342,6 @@ function displayPacks(
       }
     );
 
-
-  /*
-    Aucun pack ouvert
-  */
 
   if (
     openedPacks.length === 0
@@ -1249,10 +1367,6 @@ function displayPacks(
 
   }
 
-
-  /*
-    Créer les cartes
-  */
 
   packsContainer.innerHTML =
     openedPacks
@@ -1559,6 +1673,47 @@ function escapeHtml(
 
 }
 
+
+
+/* =====================================================
+   HEADER AU SCROLL
+===================================================== */
+
+window.addEventListener(
+  "scroll",
+  function(){
+
+    const header =
+      document.querySelector(
+        "header"
+      );
+
+
+    if(!header){
+      return;
+    }
+
+
+    if(
+      window.scrollY > 20
+    ){
+
+      header.classList.add(
+        "scrolled"
+      );
+
+    }
+
+    else{
+
+      header.classList.remove(
+        "scrolled"
+      );
+
+    }
+
+  }
+);
 
 
 /* =====================================================
