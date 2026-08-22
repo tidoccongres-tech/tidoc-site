@@ -3,831 +3,1444 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-  <title>
-    Mon programme — Ti'Doc 2027
-  </title>
-
-
-  <style>
-
-    :root{
-      --blue:#198CA7;
-      --blue-dark:#0B5367;
-      --blue-deep:#073C4B;
-      --blue-light:#E9F7FA;
-      --text:#153C46;
-      --grey:#637D84;
-      --white:#FFFFFF;
-      --light:#F7FBFC;
-      --border:#DCECEF;
-    }
+<title>
+  Mon programme — Ti'Doc 2027
+</title>
 
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+
+  --blue:#198CA7;
+  --blue-dark:#0B5367;
+  --blue-deep:#073C4B;
+  --blue-light:#E9F7FA;
+
+  --text:#153C46;
+  --grey:#637D84;
+
+  --white:#FFFFFF;
+  --light:#F7FBFC;
+  --border:#DCECEF;
+
+}
 
 
-    html{
-      scroll-behavior:smooth;
-    }
+/* =====================================================
+   BASE
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:var(--light);
-      color:var(--text);
-      overflow-x:hidden;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
 
-    a{
-      text-decoration:none;
-    }
+body{
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    var(--light);
+
+  color:
+    var(--text);
+
+  overflow-x:hidden;
+
+}
 
 
-    /* =========================
+a{
+  text-decoration:none;
+}
+
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
+
   position:fixed;
+
   top:0;
   left:0;
+
   width:100%;
+
   z-index:1000;
 
   display:flex;
+
   align-items:center;
-  justify-content:space-between;
 
-  padding:22px 7%;
+  justify-content:
+    space-between;
 
-  background:transparent;
+  padding:
+    22px 7%;
 
-  transition:
-    background .3s ease,
-    box-shadow .3s ease,
-    padding .3s ease;
+  background:
+    transparent;
+
 }
 
 
-/* LOGO */
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo img{
-  width:82px;
+
+  width:
+    82px;
+
 }
 
 
-/* MENU */
+/* =====================================================
+   MENU
+===================================================== */
 
 nav{
+
   display:flex;
+
   align-items:center;
-  gap:36px;
 
-  background:rgba(255,255,255,.92);
+  gap:
+    36px;
 
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+  padding:
+    15px 25px;
 
-  padding:15px 25px;
+  border-radius:
+    50px;
 
-  border-radius:50px;
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .92
+    );
 
-  box-shadow:0 10px 35px rgba(0,0,0,.08);
+  backdrop-filter:
+    blur(12px);
 
-  transition:
-    background .3s ease,
-    box-shadow .3s ease;
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  box-shadow:
+    0 10px 35px
+    rgba(
+      0,
+      0,
+      0,
+      .08
+    );
+
 }
 
 
 nav a{
-  text-decoration:none;
 
-  color:var(--blue-dark);
+  color:
+    var(--blue-dark);
 
-  font-size:15px;
-  font-weight:600;
+  font-size:
+    15px;
 
-  transition:.25s;
+  font-weight:
+    600;
+
+  transition:
+    color .25s ease;
+
 }
 
 
 nav a:hover{
-  color:var(--blue);
+
+  color:
+    var(--blue);
+
 }
 
 
-/* =========================
-   HEADER QUAND ON DESCEND
-========================= */
 
-header.scrolled{
-  background:rgba(255,255,255,.96);
+/* =====================================================
+   HERO
+===================================================== */
 
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+.hero{
 
-  box-shadow:0 5px 25px rgba(7,60,75,.10);
+  padding:
+    165px 7%
+    65px;
 
-  padding-top:12px;
-  padding-bottom:12px;
+  text-align:
+    center;
+
+  background:
+
+    radial-gradient(
+      circle
+      at top right,
+      rgba(
+        25,
+        140,
+        167,
+        .12
+      ),
+      transparent
+      40%
+    ),
+
+    linear-gradient(
+      180deg,
+      #FFFFFF,
+      #EEF8FA
+    );
+
 }
 
 
-/* Le menu s'intègre dans la barre blanche */
+.hero-tag{
 
-header.scrolled nav{
-  background:transparent;
-  box-shadow:none;
+  display:inline-block;
+
+  padding:
+    9px 16px;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.5px;
+
+  text-transform:
+    uppercase;
+
 }
 
 
-    /* =========================
-       HERO
-    ========================= */
+.hero h1{
 
-    .hero{
-      padding:
-        145px 7%
-        45px;
+  margin-top:
+    18px;
 
-      text-align:center;
+  color:
+    var(--blue-deep);
 
-      background:
-        linear-gradient(
-          180deg,
-          #FFFFFF,
-          #EEF8FA
-        );
-    }
+  font-size:
+    clamp(
+      40px,
+      6vw,
+      68px
+    );
 
+  line-height:
+    1.05;
 
-    .hero-tag{
-      display:inline-block;
+}
 
-      padding:8px 15px;
 
-      border-radius:50px;
+.hero p{
 
-      background:var(--blue-light);
+  max-width:
+    700px;
 
-      color:var(--blue);
+  margin:
+    20px auto 0;
 
-      font-size:11px;
-      font-weight:800;
+  color:
+    var(--grey);
 
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-    }
+  font-size:
+    17px;
 
+  line-height:
+    1.7;
 
-    .hero h1{
-      margin-top:18px;
+}
 
-      color:var(--blue-deep);
 
-      font-size:
-        clamp(
-          40px,
-          6vw,
-          68px
-        );
 
-      line-height:1.05;
-    }
+/* =====================================================
+   CONTENU PRINCIPAL
+===================================================== */
 
+.main{
 
-    .hero p{
-      max-width:700px;
+  padding:
+    55px 7%
+    110px;
 
-      margin:
-        20px auto 0;
+}
 
-      color:var(--grey);
 
-      font-size:17px;
-      line-height:1.7;
-    }
+.container{
 
+  width:
+    min(
+      1120px,
+      100%
+    );
 
-    /* =========================
-       CONTENU PRINCIPAL
-    ========================= */
+  margin:
+    auto;
 
-    .main{
-      padding:
-        55px 7%
-        110px;
-    }
+}
 
 
-    .container{
-      width:min(1120px,100%);
-      margin:auto;
-    }
 
+/* =====================================================
+   CHARGEMENT / ERREUR
+===================================================== */
 
-    .loading,
-    .error-box{
-      padding:30px;
+.loading,
+.error-box{
 
-      border-radius:24px;
+  padding:
+    30px;
 
-      background:white;
+  border-radius:
+    24px;
 
-      text-align:center;
+  background:
+    white;
 
-      box-shadow:
-        0 12px 35px
-        rgba(7,60,75,.08);
+  text-align:
+    center;
 
-      color:var(--grey);
-    }
+  box-shadow:
+    0 12px 35px
+    rgba(
+      7,
+      60,
+      75,
+      .08
+    );
 
+  color:
+    var(--grey);
 
-    .error-box{
-      color:#8B3D46;
-      background:#FFF7F7;
-    }
+}
 
 
-    /* =========================
-       PARTICIPANT
-    ========================= */
+.error-box{
 
-    .profile-card{
-      padding:28px;
+  color:
+    #8B3D46;
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+  background:
+    #FFF7F7;
 
-      gap:20px;
+}
 
-      border-radius:26px;
 
-      background:white;
 
-      box-shadow:
-        0 14px 40px
-        rgba(7,60,75,.08);
-    }
+/* =====================================================
+   PARTICIPANT
+===================================================== */
 
+.profile-card{
 
-    .profile-card h2{
-      color:var(--blue-deep);
-      font-size:27px;
-    }
+  padding:
+    28px;
 
+  display:flex;
 
-    .profile-card p{
-      margin-top:7px;
+  align-items:center;
 
-      color:var(--grey);
+  justify-content:
+    space-between;
 
-      font-size:14px;
-    }
+  gap:
+    20px;
 
+  border-radius:
+    26px;
 
-    .pack-badge{
-      padding:15px 19px;
+  background:
+    white;
 
-      border-radius:18px;
+  box-shadow:
+    0 14px 40px
+    rgba(
+      7,
+      60,
+      75,
+      .08
+    );
 
-      background:var(--blue-light);
+}
 
-      text-align:right;
-    }
 
+.profile-card h2{
 
-    .pack-badge small{
-      display:block;
+  color:
+    var(--blue-deep);
 
-      color:var(--grey);
+  font-size:
+    27px;
 
-      font-size:10px;
+}
 
-      text-transform:uppercase;
 
-      letter-spacing:1px;
-    }
+.profile-card p{
 
+  margin-top:
+    7px;
 
-    .pack-badge strong{
-      display:block;
+  color:
+    var(--grey);
 
-      margin-top:5px;
+  font-size:
+    14px;
 
-      color:var(--blue-deep);
+}
 
-      font-size:18px;
-    }
 
 
-    /* =========================
-       QUOTAS
-    ========================= */
+/* =====================================================
+   BADGE PACK
+===================================================== */
 
-    .quota-box{
-      margin-top:22px;
+.pack-badge{
 
-      display:grid;
+  padding:
+    15px 19px;
 
-      grid-template-columns:
-        repeat(2,1fr);
+  border-radius:
+    18px;
 
-      gap:16px;
-    }
+  background:
+    var(--blue-light);
 
+  text-align:
+    right;
 
-    .quota{
-      padding:22px;
+}
 
-      border-radius:22px;
 
-      background:white;
+.pack-badge small{
 
-      box-shadow:
-        0 10px 30px
-        rgba(7,60,75,.06);
-    }
+  display:block;
 
+  color:
+    var(--grey);
 
-    .quota-number{
-      color:var(--blue);
+  font-size:
+    10px;
 
-      font-size:32px;
-      font-weight:900;
-    }
+  text-transform:
+    uppercase;
 
+  letter-spacing:
+    1px;
 
-    .quota-label{
-      margin-top:5px;
+}
 
-      color:var(--grey);
 
-      font-size:13px;
-    }
+.pack-badge strong{
 
+  display:block;
 
-    /* =========================
-       RÉSERVATIONS FERMÉES
-    ========================= */
+  margin-top:
+    5px;
 
-    .closed-box{
-      margin-top:30px;
+  color:
+    var(--blue-deep);
 
-      padding:35px;
+  font-size:
+    18px;
 
-      border-radius:26px;
+}
 
-      background:var(--blue-deep);
 
-      color:white;
 
-      text-align:center;
-    }
+/* =====================================================
+   QUOTAS
+===================================================== */
 
+.quota-box{
 
-    .closed-icon{
-      font-size:35px;
-    }
+  margin-top:
+    22px;
 
+  display:grid;
 
-    .closed-box h3{
-      margin-top:13px;
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
 
-      font-size:25px;
-    }
+  gap:
+    16px;
 
+}
 
-    .closed-box p{
-      max-width:650px;
 
-      margin:
-        12px auto 0;
+.quota{
 
-      color:
-        rgba(255,255,255,.78);
+  padding:
+    22px;
 
-      line-height:1.65;
-    }
+  border-radius:
+    22px;
 
+  background:
+    white;
 
-    /* =========================
-       SECTIONS ACTIVITÉS
-    ========================= */
+  box-shadow:
+    0 10px 30px
+    rgba(
+      7,
+      60,
+      75,
+      .06
+    );
 
-    .section{
-      margin-top:50px;
-    }
+}
 
 
-    .section-header{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
+.quota-number{
 
-      gap:20px;
+  color:
+    var(--blue);
 
-      margin-bottom:22px;
-    }
+  font-size:
+    32px;
 
+  font-weight:
+    900;
 
-    .section-header span{
-      color:var(--blue);
+}
 
-      font-size:11px;
-      font-weight:800;
 
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-    }
+.quota-label{
 
+  margin-top:
+    5px;
 
-    .section-header h2{
-      margin-top:7px;
+  color:
+    var(--grey);
 
-      color:var(--blue-deep);
+  font-size:
+    13px;
 
-      font-size:34px;
-    }
+}
 
 
-    .section-counter{
-      color:var(--grey);
 
-      font-size:13px;
-      font-weight:700;
-    }
+/* =====================================================
+   RÉSERVATIONS FERMÉES
+===================================================== */
 
+.closed-box{
 
-    /* =========================
-       CARTES ACTIVITÉS
-    ========================= */
+  margin-top:
+    30px;
 
-    .activity-grid{
-      display:grid;
+  padding:
+    35px;
 
-      grid-template-columns:
-        repeat(2,1fr);
+  border-radius:
+    26px;
 
-      gap:20px;
-    }
+  background:
+    var(--blue-deep);
 
+  color:
+    white;
 
-    .activity-card{
-      position:relative;
+  text-align:
+    center;
 
-      padding:26px;
+}
 
-      border:
-        2px solid
-        transparent;
 
-      border-radius:24px;
+.closed-icon{
 
-      background:white;
+  font-size:
+    35px;
 
-      box-shadow:
-        0 10px 30px
-        rgba(7,60,75,.07);
+}
 
-      cursor:pointer;
 
-      transition:.2s ease;
-    }
+.closed-box h3{
 
+  margin-top:
+    13px;
 
-    .activity-card:hover{
-      transform:
-        translateY(-3px);
-    }
+  font-size:
+    25px;
 
+}
 
-    .activity-card.selected{
-      border-color:
-        var(--blue);
 
-      background:
-        #F3FBFC;
-    }
+.closed-box p{
 
+  max-width:
+    650px;
 
-    .activity-card.disabled{
-      opacity:.5;
-      cursor:not-allowed;
-      transform:none;
-    }
+  margin:
+    12px auto 0;
 
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      .78
+    );
 
-    .activity-top{
-      display:flex;
-      justify-content:space-between;
+  line-height:
+    1.65;
 
-      gap:18px;
-    }
+}
 
 
-    .activity-type{
-      color:var(--blue);
 
-      font-size:10px;
-      font-weight:800;
+/* =====================================================
+   SECTIONS
+===================================================== */
 
-      letter-spacing:1.3px;
-      text-transform:uppercase;
-    }
+.section{
 
+  margin-top:
+    50px;
 
-    .activity-title{
-      margin-top:7px;
+}
 
-      color:var(--blue-deep);
 
-      font-size:21px;
-      line-height:1.3;
-    }
+.section-header{
 
+  display:flex;
 
-    .activity-check{
-      width:30px;
-      height:30px;
+  align-items:flex-end;
 
-      min-width:30px;
+  justify-content:
+    space-between;
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+  gap:
+    20px;
 
-      border-radius:50%;
+  margin-bottom:
+    22px;
 
-      border:
-        1px solid
-        var(--border);
+}
 
-      color:white;
 
-      background:white;
-    }
+.section-header span{
 
+  color:
+    var(--blue);
 
-    .activity-card.selected
-    .activity-check{
-      border-color:var(--blue);
-      background:var(--blue);
-    }
+  font-size:
+    11px;
 
+  font-weight:
+    800;
 
-    .activity-description{
-      margin-top:13px;
+  letter-spacing:
+    1.5px;
 
-      color:var(--grey);
+  text-transform:
+    uppercase;
 
-      font-size:14px;
-      line-height:1.6;
-    }
+}
 
 
-    .activity-meta{
-      margin-top:18px;
+.section-header h2{
 
-      display:flex;
-      flex-wrap:wrap;
+  margin-top:
+    7px;
 
-      gap:8px;
-    }
+  color:
+    var(--blue-deep);
 
+  font-size:
+    34px;
 
-    .meta-pill{
-      padding:
-        7px 10px;
+}
 
-      border-radius:50px;
 
-      background:var(--blue-light);
+.section-counter{
 
-      color:var(--blue-dark);
+  color:
+    var(--grey);
 
-      font-size:11px;
-      font-weight:700;
-    }
+  font-size:
+    13px;
 
+  font-weight:
+    700;
 
-    .full-pill{
-      background:#FFF0F0;
-      color:#A14A4A;
-    }
+}
 
 
-    /* =========================
-       VALIDATION
-    ========================= */
 
-    .save-zone{
-      position:sticky;
+/* =====================================================
+   GRILLE ACTIVITÉS
+===================================================== */
 
-      bottom:18px;
+.activity-grid{
 
-      margin-top:35px;
+  display:grid;
 
-      padding:18px;
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+  gap:
+    20px;
 
-      gap:20px;
+}
 
-      border-radius:24px;
 
-      background:
-        rgba(255,255,255,.96);
 
-      box-shadow:
-        0 18px 50px
-        rgba(7,60,75,.16);
+/* =====================================================
+   CARTE ACTIVITÉ
+===================================================== */
 
-      backdrop-filter:blur(10px);
-    }
+.activity-card{
 
+  position:
+    relative;
 
-    .selection-summary{
-      color:var(--grey);
-      font-size:13px;
-      line-height:1.6;
-    }
+  padding:
+    26px;
 
+  border:
+    2px solid
+    transparent;
 
-    .save-button{
-      padding:
-        15px 24px;
+  border-radius:
+    24px;
 
-      border:0;
+  background:
+    white;
 
-      border-radius:50px;
+  box-shadow:
+    0 10px 30px
+    rgba(
+      7,
+      60,
+      75,
+      .07
+    );
 
-      background:var(--blue);
+  cursor:
+    pointer;
 
-      color:white;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
 
-      font-size:14px;
-      font-weight:800;
+}
 
-      cursor:pointer;
-    }
 
+.activity-card:hover{
 
-    .save-button:disabled{
-      opacity:.45;
-      cursor:not-allowed;
-    }
+  transform:
+    translateY(
+      -3px
+    );
 
+}
 
-    /* =========================
-       FOOTER
-    ========================= */
 
-    footer{
-      padding:35px 7%;
+.activity-card.selected{
 
-      text-align:center;
+  border-color:
+    var(--blue);
 
-      background:var(--blue-deep);
+  background:
+    #F3FBFC;
 
-      color:
-        rgba(255,255,255,.72);
+}
 
-      font-size:12px;
-    }
 
+.activity-card.disabled{
 
-    /* =========================
-       TABLETTE
-    ========================= */
+  opacity:
+    .5;
 
-   @media(max-width:900px){
+  cursor:
+    not-allowed;
+
+  transform:
+    none;
+
+}
+
+
+
+/* =====================================================
+   CONTENU CARTE
+===================================================== */
+
+.activity-top{
+
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+}
+
+
+.activity-type{
+
+  color:
+    var(--blue);
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1.3px;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.activity-title{
+
+  margin-top:
+    7px;
+
+  color:
+    var(--blue-deep);
+
+  font-size:
+    21px;
+
+  line-height:
+    1.3;
+
+}
+
+
+
+/* =====================================================
+   CHECK
+===================================================== */
+
+.activity-check{
+
+  width:
+    30px;
+
+  height:
+    30px;
+
+  min-width:
+    30px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:
+    50%;
+
+  border:
+    1px solid
+    var(--border);
+
+  color:
+    white;
+
+  background:
+    white;
+
+}
+
+
+.activity-card.selected
+.activity-check{
+
+  border-color:
+    var(--blue);
+
+  background:
+    var(--blue);
+
+}
+
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.activity-description{
+
+  margin-top:
+    13px;
+
+  color:
+    var(--grey);
+
+  font-size:
+    14px;
+
+  line-height:
+    1.6;
+
+}
+
+
+
+/* =====================================================
+   INFORMATIONS ACTIVITÉ
+===================================================== */
+
+.activity-meta{
+
+  margin-top:
+    18px;
+
+  display:flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px;
+
+}
+
+
+.meta-pill{
+
+  padding:
+    7px 10px;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue-dark);
+
+  font-size:
+    11px;
+
+  font-weight:
+    700;
+
+}
+
+
+.full-pill{
+
+  background:
+    #FFF0F0;
+
+  color:
+    #A14A4A;
+
+}
+
+
+
+/* =====================================================
+   VALIDATION
+===================================================== */
+
+.save-zone{
+
+  position:
+    sticky;
+
+  bottom:
+    18px;
+
+  margin-top:
+    35px;
+
+  padding:
+    18px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    20px;
+
+  border-radius:
+    24px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .96
+    );
+
+  box-shadow:
+    0 18px 50px
+    rgba(
+      7,
+      60,
+      75,
+      .16
+    );
+
+  backdrop-filter:
+    blur(10px);
+
+}
+
+
+.selection-summary{
+
+  color:
+    var(--grey);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.6;
+
+}
+
+
+.save-button{
+
+  padding:
+    15px 24px;
+
+  border:
+    0;
+
+  border-radius:
+    50px;
+
+  background:
+    var(--blue);
+
+  color:
+    white;
+
+  font-size:
+    14px;
+
+  font-weight:
+    800;
+
+  cursor:
+    pointer;
+
+  transition:
+    .2s ease;
+
+}
+
+
+.save-button:hover{
+
+  background:
+    var(--blue-dark);
+
+}
+
+
+.save-button:disabled{
+
+  opacity:
+    .45;
+
+  cursor:
+    not-allowed;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+  padding:
+    35px 7%;
+
+  text-align:
+    center;
+
+  background:
+    var(--blue-deep);
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      .72
+    );
+
+  font-size:
+    12px;
+
+}
+
+
+
+/* =====================================================
+   TABLETTE
+===================================================== */
+
+@media(max-width:900px){
 
   header{
-    padding:18px 5%;
+
+    padding:
+      18px 5%;
+
   }
+
 
   nav{
-    gap:15px;
-    padding:12px 16px;
+
+    gap:
+      15px;
+
+    padding:
+      12px 16px;
+
   }
 
+
   nav a{
-    font-size:13px;
+
+    font-size:
+      13px;
+
+  }
+
+
+  .activity-grid{
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .profile-card{
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+  }
+
+
+  .pack-badge{
+
+    width:
+      100%;
+
+    text-align:
+      left;
+
   }
 
 }
 
+
+
+/* =====================================================
+   TÉLÉPHONE
+===================================================== */
 
 @media(max-width:650px){
 
   header{
-    position:absolute;
-    align-items:flex-start;
+
+    position:
+      fixed;
+
+    align-items:
+      flex-start;
+
+    padding:
+      18px 5%;
+
   }
+
 
   .logo img{
-    width:62px;
+
+    width:
+      62px;
+
   }
+
 
   nav{
-    gap:8px;
-    padding:10px 12px;
+
+    gap:
+      8px;
+
+    padding:
+      10px 12px;
+
   }
+
 
   nav a{
-    font-size:11px;
+
+    font-size:
+      11px;
+
   }
 
+
   nav a:nth-child(2){
-    display:none;
+
+    display:
+      none;
+
+  }
+
+
+  .hero{
+
+    padding:
+      135px 5%
+      45px;
+
+  }
+
+
+  .hero h1{
+
+    font-size:
+      42px;
+
+  }
+
+
+  .hero p{
+
+    font-size:
+      15px;
+
+  }
+
+
+  .main{
+
+    padding:
+      40px 5%
+      90px;
+
+  }
+
+
+  .profile-card{
+
+    padding:
+      23px;
+
+  }
+
+
+  .quota-box{
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .section-header{
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+  }
+
+
+  .section-header h2{
+
+    font-size:
+      28px;
+
+  }
+
+
+  .activity-grid{
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .activity-card{
+
+    padding:
+      22px;
+
+  }
+
+
+  .save-zone{
+
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+
+  }
+
+
+  .save-button{
+
+    width:
+      100%;
+
   }
 
 }
 
-
-      .hero{
-        padding:
-          125px 5%
-          35px;
-      }
-
-
-      .main{
-        padding:
-          40px 5%
-          90px;
-      }
-
-
-      .quota-box{
-        grid-template-columns:1fr;
-      }
-
-
-      .section-header{
-        align-items:flex-start;
-        flex-direction:column;
-      }
-
-
-      .save-zone{
-        align-items:stretch;
-        flex-direction:column;
-      }
-
-
-      .save-button{
-        width:100%;
-      }
-
-    }
-
-  </style>
+</style>
 
 </head>
+
 
 
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- ==================================================
+     HEADER
+================================================== -->
 
 <header>
 
-  <a href="index.html#accueil" class="logo">
-    <img src="files/logo.png" alt="Logo Ti'Doc">
+  <a
+    href="index.html#accueil"
+    class="logo"
+  >
+
+    <img
+      src="files/logo.png"
+      alt="Logo Ti'Doc"
+    >
+
   </a>
 
+
   <nav>
-    <a href="index.html#accueil">Accueil</a>
-    <a href="index.html#apropos">À propos</a>
-    <a href="activites.html">Nos activités</a>
-    <a href="billetterie.html">Billetterie</a>
-    <a href="index.html#contact">Contact</a>
+
+    <a href="index.html#accueil">
+      Accueil
+    </a>
+
+    <a href="index.html#apropos">
+      À propos
+    </a>
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
   </nav>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
+
+<!-- ==================================================
+     HERO
+================================================== -->
 
 <section class="hero">
 
@@ -835,9 +1448,11 @@ header.scrolled nav{
     Ti'Doc 2027
   </span>
 
+
   <h1>
     Mon programme
   </h1>
+
 
   <p>
     Retrouvez votre pack et choisissez vos conférences
@@ -847,7 +1462,10 @@ header.scrolled nav{
 </section>
 
 
-<!-- ================= PROGRAMME ================= -->
+
+<!-- ==================================================
+     PROGRAMME
+================================================== -->
 
 <main class="main">
 
@@ -857,7 +1475,9 @@ header.scrolled nav{
   >
 
     <div class="loading">
+
       Chargement de votre espace Ti'Doc...
+
     </div>
 
   </div>
@@ -865,11 +1485,17 @@ header.scrolled nav{
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
 
 <footer>
+
   © Ti'Doc 2027 — Cluj-Napoca
+
 </footer>
+
 
 
 <script>
@@ -882,6 +1508,7 @@ const BILLETTERIE_API =
   "https://script.google.com/macros/s/AKfycbyqvpiD-w56XH_DGs2cZyZ41eEV8g4JpZArdI2IkmDKU_G0_rzwLsuW_Hq6pymAhhHQ/exec";
 
 
+
 /* =====================================================
    ÉTAT LOCAL
 ===================================================== */
@@ -889,15 +1516,18 @@ const BILLETTERIE_API =
 let programmeData =
   null;
 
+
 let selectedConferences =
   [];
+
 
 let selectedWorkshops =
   [];
 
 
+
 /* =====================================================
-   TOKEN DANS L'URL
+   TOKEN
 ===================================================== */
 
 function getTokenFromUrl(){
@@ -907,11 +1537,13 @@ function getTokenFromUrl(){
       window.location.search
     );
 
+
   return String(
     params.get("token") || ""
   ).trim();
 
 }
+
 
 
 /* =====================================================
@@ -924,6 +1556,7 @@ async function loadProgramme(){
     document.getElementById(
       "programme-container"
     );
+
 
   const token =
     getTokenFromUrl();
@@ -939,11 +1572,13 @@ async function loadProgramme(){
 
         <br><br>
 
-        Utilisez le lien personnel reçu après votre inscription.
+        Utilisez le lien personnel reçu
+        après votre inscription.
 
       </div>
 
     `;
+
 
     return;
 
@@ -951,6 +1586,7 @@ async function loadProgramme(){
 
 
   try{
+
 
     const url =
       BILLETTERIE_API +
@@ -966,13 +1602,20 @@ async function loadProgramme(){
       );
 
 
+    if(!response.ok){
+
+      throw new Error(
+        "Impossible de joindre la billetterie."
+      );
+
+    }
+
+
     const result =
       await response.json();
 
 
-    if(
-      !result.success
-    ){
+    if(!result.success){
 
       throw new Error(
         result.message ||
@@ -988,10 +1631,12 @@ async function loadProgramme(){
 
     renderProgramme();
 
+
   }
 
 
   catch(error){
+
 
     console.error(
       error
@@ -1002,11 +1647,14 @@ async function loadProgramme(){
 
       <div class="error-box">
 
-        Impossible d'ouvrir votre espace Ti'Doc.
+        Impossible d'ouvrir
+        votre espace Ti'Doc.
 
         <br><br>
 
-        ${escapeHtml(error.message)}
+        ${escapeHtml(
+          error.message
+        )}
 
       </div>
 
@@ -1015,6 +1663,7 @@ async function loadProgramme(){
   }
 
 }
+
 
 
 /* =====================================================
@@ -1032,8 +1681,10 @@ function renderProgramme(){
   const participant =
     programmeData.participant;
 
+
   const pack =
     programmeData.pack;
+
 
   const config =
     programmeData.config;
@@ -1046,11 +1697,22 @@ function renderProgramme(){
       <div>
 
         <h2>
-          Bonjour ${escapeHtml(participant.firstName)} 👋
+
+          Bonjour
+          ${escapeHtml(
+            participant.firstName
+          )}
+          👋
+
         </h2>
 
+
         <p>
-          ${escapeHtml(participant.email)}
+
+          ${escapeHtml(
+            participant.email
+          )}
+
         </p>
 
       </div>
@@ -1063,7 +1725,11 @@ function renderProgramme(){
         </small>
 
         <strong>
-          ${escapeHtml(pack.name)}
+
+          ${escapeHtml(
+            pack.name
+          )}
+
         </strong>
 
       </div>
@@ -1071,41 +1737,56 @@ function renderProgramme(){
     </div>
 
 
+
     <div class="quota-box">
 
+
       <div class="quota">
 
         <div class="quota-number">
+
           ${pack.conferencesAllowed}
+
         </div>
 
+
         <div class="quota-label">
+
           conférence(s) incluse(s)
+
         </div>
 
       </div>
+
 
 
       <div class="quota">
 
         <div class="quota-number">
+
           ${pack.workshopsAllowed}
+
         </div>
 
+
         <div class="quota-label">
+
           workshop(s) inclus
+
         </div>
 
       </div>
+
 
     </div>
 
   `;
 
 
-  /* =============================================
+
+  /* ==================================================
      RÉSERVATIONS FERMÉES
-  ============================================= */
+  ================================================== */
 
   if(
     !config.reservationsOpen
@@ -1116,15 +1797,26 @@ function renderProgramme(){
       <div class="closed-box">
 
         <div class="closed-icon">
+
           🔒
+
         </div>
 
+
         <h3>
-          Les réservations ne sont pas encore ouvertes
+
+          Les réservations ne sont
+          pas encore ouvertes
+
         </h3>
 
+
         <p>
-          ${escapeHtml(config.closedMessage)}
+
+          ${escapeHtml(
+            config.closedMessage
+          )}
+
         </p>
 
       </div>
@@ -1141,9 +1833,10 @@ function renderProgramme(){
   }
 
 
-  /* =============================================
+
+  /* ==================================================
      CONFÉRENCES
-  ============================================= */
+  ================================================== */
 
   html += `
 
@@ -1157,17 +1850,25 @@ function renderProgramme(){
             Conférences
           </span>
 
+
           <h2>
+
             Choisissez vos conférences
+
           </h2>
 
         </div>
+
 
         <div
           id="conference-counter"
           class="section-counter"
         >
-          0 / ${pack.conferencesAllowed} sélectionnée(s)
+
+          0 /
+          ${pack.conferencesAllowed}
+          sélectionnée(s)
+
         </div>
 
       </div>
@@ -1187,12 +1888,15 @@ function renderProgramme(){
   `;
 
 
-  /* =============================================
+
+  /* ==================================================
      WORKSHOPS
-  ============================================= */
+  ================================================== */
 
   if(
-    pack.workshopsAllowed > 0
+    Number(
+      pack.workshopsAllowed
+    ) > 0
   ){
 
     html += `
@@ -1207,17 +1911,25 @@ function renderProgramme(){
               Workshops
             </span>
 
+
             <h2>
+
               Choisissez vos workshops
+
             </h2>
 
           </div>
+
 
           <div
             id="workshop-counter"
             class="section-counter"
           >
-            0 / ${pack.workshopsAllowed} sélectionné(s)
+
+            0 /
+            ${pack.workshopsAllowed}
+            sélectionné(s)
+
           </div>
 
         </div>
@@ -1239,9 +1951,10 @@ function renderProgramme(){
   }
 
 
-  /* =============================================
-     BARRE DE VALIDATION
-  ============================================= */
+
+  /* ==================================================
+     VALIDATION
+  ================================================== */
 
   html += `
 
@@ -1251,8 +1964,12 @@ function renderProgramme(){
         id="selection-summary"
         class="selection-summary"
       >
-        Faites vos choix puis validez votre programme.
+
+        Faites vos choix puis
+        validez votre programme.
+
       </div>
+
 
       <button
         id="save-programme-button"
@@ -1260,7 +1977,9 @@ function renderProgramme(){
         type="button"
         onclick="saveProgramme()"
       >
+
         Valider mon programme →
+
       </button>
 
     </div>
@@ -1275,6 +1994,7 @@ function renderProgramme(){
   updateSelectionState();
 
 }
+
 
 
 /* =====================================================
@@ -1295,7 +2015,10 @@ function renderConferenceCards(){
     return `
 
       <div class="loading">
-        Aucune conférence n'est disponible pour le moment.
+
+        Aucune conférence n'est
+        disponible pour le moment.
+
       </div>
 
     `;
@@ -1304,55 +2027,116 @@ function renderConferenceCards(){
 
 
   return conferences
+
     .map(
       function(item){
 
+
         const id =
           String(
-            item["ID conférence"] ||
-            item["ID activite"] ||
-            item["ID activité"] ||
+
+            item[
+              "ID activité"
+            ] ||
+
+            item[
+              "ID activite"
+            ] ||
+
+            item[
+              "ID conférence"
+            ] ||
+
             ""
+
           ).trim();
 
 
+
         const title =
-          item["Nom"] ||
-          item["Titre"] ||
-          item["Nom conférence"] ||
-          item["Nom de la conférence"] ||
+
+          item[
+            "Nom de la conférence"
+          ] ||
+
+          item[
+            "Nom conférence"
+          ] ||
+
+          item[
+            "Nom"
+          ] ||
+
+          item[
+            "Titre"
+          ] ||
+
           "Conférence";
 
 
+
         const description =
-          item["Description"] ||
+
+          item[
+            "Description"
+          ] ||
+
           "";
+
 
 
         const speaker =
-          item["Intervenant"] ||
+
+          item[
+            "Intervenant"
+          ] ||
+
           "";
+
 
 
         const day =
-          item["Jour"] ||
+
+          item[
+            "Jour"
+          ] ||
+
           "";
+
 
 
         const startTime =
-          item["Heure début"] ||
-          item["Horaire"] ||
+
+          item[
+            "Heure début"
+          ] ||
+
+          item[
+            "Horaire"
+          ] ||
+
           "";
+
 
 
         const endTime =
-          item["Heure fin"] ||
+
+          item[
+            "Heure fin"
+          ] ||
+
           "";
+
 
 
         const room =
-          item["Salle"] ||
+
+          item[
+            "Salle"
+          ] ||
+
           "";
+
 
 
         let timeText =
@@ -1372,99 +2156,181 @@ function renderConferenceCards(){
         }
 
 
+
         return `
 
           <article
-            class="activity-card conference-card"
-            data-id="${escapeHtml(id)}"
-            onclick="toggleConference('${escapeJs(id)}')"
+
+            class="
+              activity-card
+              conference-card
+            "
+
+            data-id="
+              ${escapeHtml(id)}
+            "
+
+            onclick="
+              toggleConference(
+                '${escapeJs(id)}'
+              )
+            "
+
           >
 
+
             <div class="activity-top">
+
 
               <div>
 
                 <div class="activity-type">
+
                   Conférence
+
                 </div>
 
+
                 <h3 class="activity-title">
-                  ${escapeHtml(title)}
+
+                  ${escapeHtml(
+                    title
+                  )}
+
                 </h3>
 
               </div>
 
+
               <div class="activity-check">
+
                 ✓
+
               </div>
 
+
             </div>
+
 
 
             ${
               description
+
                 ? `
+
                   <p class="activity-description">
-                    ${escapeHtml(description)}
+
+                    ${escapeHtml(
+                      description
+                    )}
+
                   </p>
+
                 `
+
                 : ""
             }
 
 
+
             <div class="activity-meta">
+
 
               ${
                 speaker
+
                   ? `
+
                     <span class="meta-pill">
-                      🎤 ${escapeHtml(speaker)}
+
+                      🎤
+                      ${escapeHtml(
+                        speaker
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
+
 
               ${
                 day
+
                   ? `
+
                     <span class="meta-pill">
-                      📅 ${escapeHtml(day)}
+
+                      📅
+                      ${escapeHtml(
+                        day
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
+
 
               ${
                 timeText
+
                   ? `
+
                     <span class="meta-pill">
-                      🕒 ${escapeHtml(timeText)}
+
+                      🕒
+                      ${escapeHtml(
+                        timeText
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
+
 
               ${
                 room
+
                   ? `
+
                     <span class="meta-pill">
-                      📍 ${escapeHtml(room)}
+
+                      📍
+                      ${escapeHtml(
+                        room
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
 
+
             </div>
+
 
           </article>
 
         `;
 
       }
+
     )
+
     .join("");
 
 }
+
 
 
 /* =====================================================
@@ -1485,7 +2351,10 @@ function renderWorkshopCards(){
     return `
 
       <div class="loading">
-        Aucun workshop n'est disponible pour le moment.
+
+        Aucun workshop n'est
+        disponible pour le moment.
+
       </div>
 
     `;
@@ -1494,50 +2363,116 @@ function renderWorkshopCards(){
 
 
   return workshops
+
     .map(
       function(item){
 
+
         const id =
           String(
-            item["ID workshop"] ||
-            item["ID activite"] ||
-            item["ID activité"] ||
+
+            item[
+              "ID activité"
+            ] ||
+
+            item[
+              "ID activite"
+            ] ||
+
+            item[
+              "ID workshop"
+            ] ||
+
             ""
+
           ).trim();
 
 
+
         const title =
-          item["Nom"] ||
-          item["Titre"] ||
-          item["Nom workshop"] ||
-          item["Nom du workshop"] ||
+
+          item[
+            "Nom du workshop"
+          ] ||
+
+          item[
+            "Nom workshop"
+          ] ||
+
+          item[
+            "Nom"
+          ] ||
+
+          item[
+            "Titre"
+          ] ||
+
           "Workshop";
 
 
+
         const description =
-          item["Description"] ||
+
+          item[
+            "Description"
+          ] ||
+
           "";
+
+
+
+        const speaker =
+
+          item[
+            "Intervenant"
+          ] ||
+
+          "";
+
 
 
         const day =
-          item["Jour"] ||
+
+          item[
+            "Jour"
+          ] ||
+
           "";
+
 
 
         const startTime =
-          item["Heure début"] ||
-          item["Horaire"] ||
+
+          item[
+            "Heure début"
+          ] ||
+
+          item[
+            "Horaire"
+          ] ||
+
           "";
+
 
 
         const endTime =
-          item["Heure fin"] ||
+
+          item[
+            "Heure fin"
+          ] ||
+
           "";
+
 
 
         const room =
-          item["Salle"] ||
+
+          item[
+            "Salle"
+          ] ||
+
           "";
+
 
 
         let timeText =
@@ -1557,6 +2492,7 @@ function renderWorkshopCards(){
         }
 
 
+
         const remaining =
           parseRemainingPlaces(
             item
@@ -1564,119 +2500,224 @@ function renderWorkshopCards(){
 
 
         const full =
+
           remaining !== null &&
           remaining <= 0;
+
 
 
         return `
 
           <article
+
             class="
               activity-card
               workshop-card
               ${full ? "disabled" : ""}
             "
-            data-id="${escapeHtml(id)}"
+
+            data-id="
+              ${escapeHtml(id)}
+            "
+
             ${
               full
+
                 ? ""
-                : `onclick="toggleWorkshop('${escapeJs(id)}')"`
+
+                : `
+                  onclick="
+                    toggleWorkshop(
+                      '${escapeJs(id)}'
+                    )
+                  "
+                `
             }
+
           >
 
+
             <div class="activity-top">
+
 
               <div>
 
                 <div class="activity-type">
+
                   Workshop
+
                 </div>
 
+
                 <h3 class="activity-title">
-                  ${escapeHtml(title)}
+
+                  ${escapeHtml(
+                    title
+                  )}
+
                 </h3>
 
               </div>
 
+
               <div class="activity-check">
+
                 ✓
+
               </div>
 
+
             </div>
+
 
 
             ${
               description
+
                 ? `
+
                   <p class="activity-description">
-                    ${escapeHtml(description)}
+
+                    ${escapeHtml(
+                      description
+                    )}
+
                   </p>
+
                 `
+
                 : ""
             }
 
 
+
             <div class="activity-meta">
+
+
+              ${
+                speaker
+
+                  ? `
+
+                    <span class="meta-pill">
+
+                      🎤
+                      ${escapeHtml(
+                        speaker
+                      )}
+
+                    </span>
+
+                  `
+
+                  : ""
+              }
+
 
               ${
                 day
+
                   ? `
+
                     <span class="meta-pill">
-                      📅 ${escapeHtml(day)}
+
+                      📅
+                      ${escapeHtml(
+                        day
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
+
 
               ${
                 timeText
+
                   ? `
+
                     <span class="meta-pill">
-                      🕒 ${escapeHtml(timeText)}
+
+                      🕒
+                      ${escapeHtml(
+                        timeText
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
+
 
               ${
                 room
+
                   ? `
+
                     <span class="meta-pill">
-                      📍 ${escapeHtml(room)}
+
+                      📍
+                      ${escapeHtml(
+                        room
+                      )}
+
                     </span>
+
                   `
+
                   : ""
               }
+
 
               ${
                 remaining !== null
+
                   ? `
-                    <span class="
-                      meta-pill
-                      ${full ? "full-pill" : ""}
-                    ">
+
+                    <span
+                      class="
+                        meta-pill
+                        ${full ? "full-pill" : ""}
+                      "
+                    >
+
                       ${
                         full
+
                           ? "Complet"
+
                           : remaining +
                             " place(s) restante(s)"
                       }
+
                     </span>
+
                   `
+
                   : ""
               }
 
+
             </div>
+
 
           </article>
 
         `;
 
       }
+
     )
+
     .join("");
 
 }
+
 
 
 /* =====================================================
@@ -1688,29 +2729,41 @@ function parseRemainingPlaces(
 ){
 
   const possibleKeys = [
+
     "Places restantes",
+
     "Places restantes calculées",
+
     "Places disponibles"
+
   ];
 
 
   for(
-    const key of possibleKeys
+    const key
+    of possibleKeys
   ){
 
     if(
-      item[key] !== undefined &&
-      item[key] !== ""
+
+      item[key] !==
+      undefined &&
+
+      item[key] !==
+      ""
+
     ){
 
       const cleaned =
         String(
           item[key]
         )
+
           .replace(
             /\s/g,
             ""
           )
+
           .replace(
             ",",
             "."
@@ -1724,9 +2777,13 @@ function parseRemainingPlaces(
 
 
       if(
-        !Number.isNaN(number)
+        !Number.isNaN(
+          number
+        )
       ){
+
         return number;
+
       }
 
     }
@@ -1739,6 +2796,7 @@ function parseRemainingPlaces(
 }
 
 
+
 /* =====================================================
    SÉLECTION CONFÉRENCE
 ===================================================== */
@@ -1747,10 +2805,17 @@ function toggleConference(
   id
 ){
 
+  if(!id){
+    return;
+  }
+
+
   const max =
-    programmeData
-      .pack
-      .conferencesAllowed;
+    Number(
+      programmeData
+        .pack
+        .conferencesAllowed
+    );
 
 
   const index =
@@ -1761,7 +2826,8 @@ function toggleConference(
 
 
   if(
-    index !== -1
+    index !==
+    -1
   ){
 
     selectedConferences.splice(
@@ -1771,7 +2837,9 @@ function toggleConference(
 
   }
 
+
   else{
+
 
     if(
       selectedConferences.length >=
@@ -1779,10 +2847,13 @@ function toggleConference(
     ){
 
       alert(
+
         "Votre pack permet de sélectionner " +
         max +
         " conférence(s) maximum."
+
       );
+
 
       return;
 
@@ -1801,6 +2872,7 @@ function toggleConference(
 }
 
 
+
 /* =====================================================
    SÉLECTION WORKSHOP
 ===================================================== */
@@ -1809,10 +2881,17 @@ function toggleWorkshop(
   id
 ){
 
+  if(!id){
+    return;
+  }
+
+
   const max =
-    programmeData
-      .pack
-      .workshopsAllowed;
+    Number(
+      programmeData
+        .pack
+        .workshopsAllowed
+    );
 
 
   const index =
@@ -1823,7 +2902,8 @@ function toggleWorkshop(
 
 
   if(
-    index !== -1
+    index !==
+    -1
   ){
 
     selectedWorkshops.splice(
@@ -1833,7 +2913,9 @@ function toggleWorkshop(
 
   }
 
+
   else{
+
 
     if(
       selectedWorkshops.length >=
@@ -1841,10 +2923,13 @@ function toggleWorkshop(
     ){
 
       alert(
+
         "Votre pack permet de sélectionner " +
         max +
         " workshop(s) maximum."
+
       );
+
 
       return;
 
@@ -1863,11 +2948,13 @@ function toggleWorkshop(
 }
 
 
+
 /* =====================================================
    METTRE À JOUR L'INTERFACE
 ===================================================== */
 
 function updateSelectionState(){
+
 
   document
     .querySelectorAll(
@@ -1879,14 +2966,20 @@ function updateSelectionState(){
         card
           .classList
           .toggle(
+
             "selected",
-            selectedConferences.includes(
-              card.dataset.id
-            )
+
+            selectedConferences
+              .includes(
+                card.dataset.id
+              )
+
           );
 
       }
+
     );
+
 
 
   document
@@ -1899,14 +2992,20 @@ function updateSelectionState(){
         card
           .classList
           .toggle(
+
             "selected",
-            selectedWorkshops.includes(
-              card.dataset.id
-            )
+
+            selectedWorkshops
+              .includes(
+                card.dataset.id
+              )
+
           );
 
       }
+
     );
+
 
 
   const conferenceCounter =
@@ -1920,12 +3019,19 @@ function updateSelectionState(){
   ){
 
     conferenceCounter.textContent =
+
       selectedConferences.length +
+
       " / " +
-      programmeData.pack.conferencesAllowed +
+
+      programmeData
+        .pack
+        .conferencesAllowed +
+
       " sélectionnée(s)";
 
   }
+
 
 
   const workshopCounter =
@@ -1939,12 +3045,19 @@ function updateSelectionState(){
   ){
 
     workshopCounter.textContent =
+
       selectedWorkshops.length +
+
       " / " +
-      programmeData.pack.workshopsAllowed +
+
+      programmeData
+        .pack
+        .workshopsAllowed +
+
       " sélectionné(s)";
 
   }
+
 
 
   const summary =
@@ -1958,14 +3071,19 @@ function updateSelectionState(){
   ){
 
     summary.textContent =
+
       selectedConferences.length +
+
       " conférence(s) · " +
+
       selectedWorkshops.length +
+
       " workshop(s) sélectionné(s)";
 
   }
 
 }
+
 
 
 /* =====================================================
@@ -1982,10 +3100,12 @@ function saveProgramme(){
 
     "Conférences : " +
     selectedConferences.length +
+
     "\n" +
 
     "Workshops : " +
     selectedWorkshops.length +
+
     "\n\n" +
 
     "À l'étape suivante, ce bouton enregistrera réellement vos réservations."
@@ -1993,6 +3113,7 @@ function saveProgramme(){
   );
 
 }
+
 
 
 /* =====================================================
@@ -2035,8 +3156,9 @@ function escapeHtml(
 }
 
 
+
 /* =====================================================
-   SÉCURITÉ JAVASCRIPT DANS HTML
+   SÉCURITÉ JS
 ===================================================== */
 
 function escapeJs(
@@ -2046,17 +3168,18 @@ function escapeJs(
   return String(
     value || ""
   )
+
     .replace(
       /\\/g,
       "\\\\"
     )
+
     .replace(
       /'/g,
       "\\'"
     );
 
 }
-
 
 
 
