@@ -1492,37 +1492,46 @@ footer{
 
       <!-- NEWSLETTER -->
 
-      <div class="newsletter">
+<div class="newsletter">
 
-        <h3>
-          Ne manquez rien de Ti'Doc 2027
-        </h3>
+  <h3>
+    Ne manquez rien de Ti'Doc 2027
+  </h3>
 
-        <p>
-          Dates, programme, inscriptions et actualités
-          directement dans votre boîte mail.
-        </p>
+  <p>
+    Dates, programme, inscriptions et actualités
+    directement dans votre boîte mail.
+  </p>
 
-        <div class="newsletter-form">
+  <form
+    class="newsletter-form"
+    id="newsletter-form"
+  >
 
-          <input
-            type="email"
-            placeholder="Votre adresse e-mail"
-          >
+    <input
+      type="email"
+      id="newsletter-email"
+      placeholder="Votre adresse e-mail"
+      required
+    >
 
-          <button>
-            S'inscrire
-          </button>
+    <button type="submit">
+      S'inscrire
+    </button>
 
-        </div>
+  </form>
 
-      </div>
+  <p
+    id="newsletter-message"
+    style="
+      margin-top:12px;
+      margin-bottom:0;
+      font-size:14px;
+      font-weight:600;
+    "
+  ></p>
 
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 
 
@@ -1542,6 +1551,48 @@ footer{
 
 </footer>
 
+<!-- NEWSLETTER -->
 
+<div class="newsletter">
+
+  <h3>
+    Ne manquez rien de Ti'Doc 2027
+  </h3>
+
+  <p>
+    Dates, programme, inscriptions et actualités
+    directement dans votre boîte mail.
+  </p>
+
+  <form
+    class="newsletter-form"
+    id="newsletter-form"
+  >
+
+    <input
+      type="email"
+      id="newsletter-email"
+      placeholder="Votre adresse e-mail"
+      required
+    >
+
+    <button type="submit">
+      S'inscrire
+    </button>
+
+  </form>
+
+  <p
+    id="newsletter-message"
+    style="
+      margin-top:12px;
+      margin-bottom:0;
+      font-size:14px;
+      font-weight:600;
+    "
+  ></p>
+
+</div>
+       
 </body>
 </html>
