@@ -18,6 +18,48 @@
 <style>
 
 /* =====================================================
+   CARTES PROGRAMME CLIQUABLES
+===================================================== */
+
+.program-card[data-gallery-target]{
+  cursor:pointer;
+}
+
+.program-card[data-gallery-target]::after{
+  content:"Voir les photos →";
+
+  position:absolute;
+  right:24px;
+  bottom:18px;
+
+  color:var(--blue);
+
+  font-size:12px;
+  font-weight:800;
+
+  opacity:0;
+  transform:translateY(5px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.program-card[data-gallery-target]:hover::after{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.program-card[data-gallery-target]:hover{
+  border-color:rgba(25,140,167,.35);
+}
+
+.drive-photo.gallery-selected{
+  outline:4px solid var(--blue);
+  outline-offset:-4px;
+}
+  
+/* =====================================================
    VARIABLES
 ===================================================== */
 
