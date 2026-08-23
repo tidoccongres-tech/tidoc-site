@@ -990,7 +990,32 @@ footer{
   opacity:1;
 }
 
+.staff-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
 
+  padding:7px 12px;
+
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50px;
+
+  color:rgba(255,255,255,.48);
+  text-decoration:none;
+
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.3px;
+
+  transition:.25s ease;
+}
+
+.staff-link:hover{
+  color:white;
+  border-color:rgba(255,255,255,.4);
+  background:rgba(255,255,255,.06);
+}
+   
 /* =========================
    TABLETTE / MOBILE
 ========================= */
@@ -1709,6 +1734,14 @@ footer{
   <span>
     © Ti'Doc 2027 — Cluj-Napoca
   </span>
+
+  <a
+    href="staff.html"
+    class="staff-link"
+    aria-label="Accéder à l'espace staff"
+  >
+    Espace staff
+  </a>
 
 </footer>
 
