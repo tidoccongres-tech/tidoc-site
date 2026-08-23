@@ -1,1 +1,2145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#073C4B">
+
+  <title>Scanner — Staff Ti'Doc 2027</title>
+
+  <!-- Librairie QR -->
+  <script
+    src="https://unpkg.com/html5-qrcode"
+    type="text/javascript">
+  </script>
+
+  <style>
+
+    :root {
+      --blue: #198CA7;
+      --blue-dark: #0B5367;
+      --blue-deep: #073C4B;
+      --blue-light: #E9F7FA;
+
+      --text: #153C46;
+      --grey: #637D84;
+
+      --green: #16865C;
+      --green-light: #EAF8F1;
+
+      --red: #C94C4C;
+      --red-light: #FFF0F0;
+
+      --orange: #C57A18;
+      --orange-light: #FFF7E8;
+
+      --white: #FFFFFF;
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background:
+        linear-gradient(
+          180deg,
+          #073C4B 0,
+          #0B5367 250px,
+          #F2F8F9 250px,
+          #F2F8F9 100%
+        );
+
+      color: var(--text);
+    }
+
+
+    button,
+    input {
+      font: inherit;
+    }
+
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      max-width: 620px;
+      margin: auto;
+
+      padding:
+        calc(22px + env(safe-area-inset-top))
+        20px
+        32px;
+
+      color: white;
+    }
+
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+
+    .brand-small {
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 1.7px;
+
+      opacity: .75;
+    }
+
+
+    .logout {
+      border: 1px solid rgba(255,255,255,.25);
+
+      background: rgba(255,255,255,.08);
+
+      color: white;
+
+      border-radius: 999px;
+
+      padding: 9px 14px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    .header h1 {
+      margin: 25px 0 8px;
+
+      font-size: 32px;
+      line-height: 1.08;
+
+      letter-spacing: -.7px;
+    }
+
+
+    .header p {
+      margin: 0;
+
+      max-width: 430px;
+
+      color: #D5E9ED;
+
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================
+       PAGE
+    ========================================= */
+
+    .page {
+      width: 100%;
+      max-width: 620px;
+
+      margin: auto;
+
+      padding:
+        0
+        16px
+        calc(35px + env(safe-area-inset-bottom));
+    }
+
+
+    /* =========================================
+       CARTE
+    ========================================= */
+
+    .card {
+      background: white;
+
+      border-radius: 28px;
+
+      padding: 20px;
+
+      box-shadow:
+        0 18px 55px rgba(7,60,75,.13);
+
+      margin-bottom: 16px;
+    }
+
+
+    /* =========================================
+       SCANNER
+    ========================================= */
+
+    .scanner-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 16px;
+    }
+
+
+    .scanner-title h2 {
+      margin: 0;
+
+      color: var(--blue-deep);
+
+      font-size: 18px;
+    }
+
+
+    .status-dot {
+      display: flex;
+      align-items: center;
+
+      gap: 7px;
+
+      color: var(--grey);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    .dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 0 5px rgba(22,134,92,.12);
+    }
+
+
+    #reader {
+      width: 100%;
+
+      overflow: hidden;
+
+      border-radius: 22px;
+
+      background: #071F26;
+    }
+
+
+    #reader video {
+      border-radius: 22px;
+    }
+
+
+    /* Cache certains éléments moches générés
+       automatiquement par la librairie */
+
+    #reader img {
+      display: none;
+    }
+
+
+    #reader__dashboard_section_swaplink {
+      color: var(--blue) !important;
+    }
+
+
+    #reader__scan_region {
+      background: #071F26;
+    }
+
+
+    /* =========================================
+       MESSAGE CAMÉRA
+    ========================================= */
+
+    .camera-message {
+      margin-top: 14px;
+
+      color: var(--grey);
+
+      text-align: center;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================
+       SAISIE MANUELLE
+    ========================================= */
+
+    .manual {
+      margin-top: 20px;
+
+      padding-top: 18px;
+
+      border-top: 1px solid #E5EEF0;
+    }
+
+
+    .manual summary {
+      cursor: pointer;
+
+      color: var(--grey);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      text-align: center;
+    }
+
+
+    .manual-content {
+      padding-top: 15px;
+    }
+
+
+    .manual input {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border:
+        1px solid
+        #D7E6E9;
+
+      border-radius: 14px;
+
+      outline: none;
+
+      color: var(--text);
+
+      background: #F9FCFC;
+    }
+
+
+    .manual input:focus {
+      border-color: var(--blue);
+
+      box-shadow:
+        0 0 0 3px rgba(25,140,167,.10);
+    }
+
+
+    .manual button {
+      width: 100%;
+
+      margin-top: 10px;
+
+      border: 0;
+
+      border-radius: 14px;
+
+      padding: 14px;
+
+      background: var(--blue-light);
+
+      color: var(--blue-dark);
+
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================================
+       LOADING
+    ========================================= */
+
+    #loading {
+      display: none;
+
+      padding: 30px 20px;
+
+      text-align: center;
+    }
+
+
+    .spinner {
+      width: 38px;
+      height: 38px;
+
+      margin: auto;
+
+      border:
+        4px solid
+        #E4F1F3;
+
+      border-top-color:
+        var(--blue);
+
+      border-radius: 50%;
+
+      animation:
+        spin .8s linear infinite;
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    #loading p {
+      margin: 14px 0 0;
+
+      color: var(--grey);
+
+      font-size: 13px;
+    }
+
+
+    /* =========================================
+       RÉSULTAT
+    ========================================= */
+
+    #result {
+      display: none;
+    }
+
+
+    .result-status {
+      padding: 25px 20px;
+
+      border-radius: 22px;
+
+      text-align: center;
+    }
+
+
+    .result-status.valid {
+      background: var(--green-light);
+
+      color: var(--green);
+    }
+
+
+    .result-status.already {
+      background: var(--orange-light);
+
+      color: var(--orange);
+    }
+
+
+    .result-status.invalid {
+      background: var(--red-light);
+
+      color: var(--red);
+    }
+
+
+    .result-icon {
+      font-size: 44px;
+      line-height: 1;
+    }
+
+
+    .result-status h2 {
+      margin: 12px 0 5px;
+
+      font-size: 23px;
+    }
+
+
+    .result-status p {
+      margin: 0;
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================
+       PARTICIPANT
+    ========================================= */
+
+    .participant {
+      padding: 25px 4px 5px;
+
+      text-align: center;
+    }
+
+
+    .participant-name {
+      color: var(--blue-deep);
+
+      font-size: 27px;
+      font-weight: 850;
+
+      line-height: 1.15;
+    }
+
+
+    .participant-email {
+      margin-top: 7px;
+
+      color: var(--grey);
+
+      font-size: 13px;
+
+      word-break: break-word;
+    }
+
+
+    .pack {
+      display: inline-block;
+
+      margin-top: 14px;
+
+      padding: 8px 13px;
+
+      border-radius: 999px;
+
+      background: var(--blue-light);
+
+      color: var(--blue-dark);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+
+    /* =========================================
+       INFOS
+    ========================================= */
+
+    .ticket-info {
+      margin-top: 20px;
+
+      border-top: 1px solid #E5EEF0;
+
+      padding-top: 10px;
+    }
+
+
+    .info-row {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 10px 2px;
+
+      font-size: 13px;
+    }
+
+
+    .info-label {
+      color: var(--grey);
+    }
+
+
+    .info-value {
+      color: var(--blue-deep);
+
+      text-align: right;
+
+      font-weight: 750;
+    }
+
+
+    /* =========================================
+       BOUTONS
+    ========================================= */
+
+    .actions {
+      margin-top: 20px;
+    }
+
+
+    .btn {
+      width: 100%;
+
+      border: 0;
+
+      border-radius: 17px;
+
+      padding: 17px 20px;
+
+      font-weight: 850;
+
+      cursor: pointer;
+
+      transition:
+        transform .15s ease,
+        opacity .15s ease;
+    }
+
+
+    .btn:active {
+      transform: scale(.98);
+    }
+
+
+    .btn-checkin {
+      background: var(--green);
+
+      color: white;
+
+      font-size: 15px;
+
+      box-shadow:
+        0 10px 25px rgba(22,134,92,.20);
+    }
+
+
+    .btn-next {
+      margin-top: 10px;
+
+      background: var(--blue-light);
+
+      color: var(--blue-dark);
+    }
+
+
+    /* =========================================
+       SESSION ERROR
+    ========================================= */
+
+    #sessionError {
+      display: none;
+
+      padding: 28px;
+
+      text-align: center;
+    }
+
+
+    #sessionError .icon {
+      font-size: 42px;
+    }
+
+
+    #sessionError h2 {
+      color: var(--blue-deep);
+    }
+
+
+    #sessionError p {
+      color: var(--grey);
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    #sessionError a {
+      display: inline-block;
+
+      margin-top: 10px;
+
+      padding: 14px 20px;
+
+      border-radius: 999px;
+
+      background: var(--blue);
+
+      color: white;
+
+      text-decoration: none;
+
+      font-weight: 800;
+    }
+
+
+    /* =========================================
+       DESKTOP
+    ========================================= */
+
+    @media (min-width: 700px) {
+
+      .header {
+        padding-top: 35px;
+      }
+
+
+      .header h1 {
+        font-size: 38px;
+      }
+
+
+      .card {
+        padding: 25px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+
+  <header class="header">
+
+    <div class="header-top">
+
+      <div class="brand-small">
+        TI'DOC 2027 • STAFF
+      </div>
+
+      <button
+        class="logout"
+        id="logoutButton"
+      >
+        Déconnexion
+      </button>
+
+    </div>
+
+
+    <h1>
+      Scanner les billets
+    </h1>
+
+    <p>
+      Scannez le QR code présenté par le participant
+      avant de valider son entrée.
+    </p>
+
+  </header>
+
+
+
+  <!-- =========================================
+       CONTENU
+  ========================================== -->
+
+  <main class="page">
+
+
+    <!-- SESSION INVALIDE -->
+
+    <section
+      class="card"
+      id="sessionError"
+    >
+
+      <div class="icon">
+        🔐
+      </div>
+
+      <h2>
+        Session staff expirée
+      </h2>
+
+      <p>
+        Reconnectez-vous à l'espace staff
+        pour accéder au scanner.
+      </p>
+
+      <a href="staff.html">
+        Se reconnecter
+      </a>
+
+    </section>
+
+
+
+    <!-- SCANNER -->
+
+    <section
+      class="card"
+      id="scannerCard"
+    >
+
+      <div class="scanner-title">
+
+        <h2>
+          Scanner
+        </h2>
+
+        <div class="status-dot">
+
+          <span class="dot"></span>
+
+          PRÊT
+
+        </div>
+
+      </div>
+
+
+      <div id="reader"></div>
+
+
+      <div class="camera-message">
+
+        Placez le QR code du billet
+        dans le cadre.
+
+      </div>
+
+
+      <!-- SAISIE MANUELLE POUR TEST + SECOURS -->
+
+      <details class="manual">
+
+        <summary>
+          Problème avec la caméra ?
+        </summary>
+
+
+        <div class="manual-content">
+
+          <input
+            type="text"
+            id="manualQr"
+            placeholder="TIDOC2027|CTRL-..."
+            autocomplete="off"
+          >
+
+          <button
+            id="manualButton"
+          >
+            Vérifier ce billet
+          </button>
+
+        </div>
+
+      </details>
+
+    </section>
+
+
+
+    <!-- LOADING -->
+
+    <section
+      class="card"
+      id="loading"
+    >
+
+      <div class="spinner"></div>
+
+      <p>
+        Vérification du billet…
+      </p>
+
+    </section>
+
+
+
+    <!-- RESULTAT -->
+
+    <section
+      class="card"
+      id="result"
+    >
+
+      <div
+        class="result-status"
+        id="resultStatus"
+      >
+
+        <div
+          class="result-icon"
+          id="resultIcon"
+        ></div>
+
+        <h2 id="resultTitle"></h2>
+
+        <p id="resultMessage"></p>
+
+      </div>
+
+
+      <div
+        class="participant"
+        id="participantBlock"
+      >
+
+        <div
+          class="participant-name"
+          id="participantName"
+        ></div>
+
+        <div
+          class="participant-email"
+          id="participantEmail"
+        ></div>
+
+        <div
+          class="pack"
+          id="participantPack"
+        ></div>
+
+      </div>
+
+
+      <div
+        class="ticket-info"
+        id="ticketInfo"
+      >
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Billet
+          </span>
+
+          <span
+            class="info-value"
+            id="ticketId"
+          ></span>
+
+        </div>
+
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Check-in
+          </span>
+
+          <span
+            class="info-value"
+            id="checkInStatus"
+          ></span>
+
+        </div>
+
+
+        <div
+          class="info-row"
+          id="checkInTimeRow"
+          style="display:none;"
+        >
+
+          <span class="info-label">
+            Heure d'entrée
+          </span>
+
+          <span
+            class="info-value"
+            id="checkInTime"
+          ></span>
+
+        </div>
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          class="btn btn-checkin"
+          id="checkInButton"
+        >
+          ✓ Valider l'entrée
+        </button>
+
+        <button
+          class="btn btn-next"
+          id="nextButton"
+        >
+          Scanner le suivant
+        </button>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <script>
+
+    /* ============================================
+       CONFIGURATION
+    ============================================ */
+
+    const API_URL =
+  "https://script.google.com/macros/s/AKfycbydNvMucCm41NTIwpRHgkJUmrerz9LmNrKPReLFnuBs2FBoT0rNPIZZPwJItRmQYh5C/exec";
+
+    /*
+      IMPORTANT :
+
+      Si ton staff.html utilise une autre clé
+      localStorage, remplace uniquement cette valeur.
+
+      Je pars ici sur :
+      tidoc_staff_session
+    */
+
+    const SESSION_STORAGE_KEY =
+      "tidoc_staff_session";
+
+
+    let sessionToken = "";
+
+    let currentQr = "";
+
+    let scanner = null;
+
+    let scannerRunning = false;
+
+    let processing = false;
+
+
+
+    /* ============================================
+       ÉLÉMENTS
+    ============================================ */
+
+    const scannerCard =
+      document.getElementById(
+        "scannerCard"
+      );
+
+
+    const loading =
+      document.getElementById(
+        "loading"
+      );
+
+
+    const result =
+      document.getElementById(
+        "result"
+      );
+
+
+    const sessionError =
+      document.getElementById(
+        "sessionError"
+      );
+
+
+    const checkInButton =
+      document.getElementById(
+        "checkInButton"
+      );
+
+
+    const nextButton =
+      document.getElementById(
+        "nextButton"
+      );
+
+
+
+    /* ============================================
+       APPEL API
+    ============================================ */
+
+    async function apiCall(params) {
+
+      const url =
+        new URL(
+          API_URL
+        );
+
+
+      Object.entries(
+        params
+      ).forEach(
+        ([key, value]) => {
+
+          url.searchParams.set(
+            key,
+            value
+          );
+
+        }
+      );
+
+
+      const response =
+        await fetch(
+          url.toString(),
+          {
+            method: "GET",
+            redirect: "follow"
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Impossible de contacter le serveur."
+        );
+
+      }
+
+
+      const data =
+        await response.json();
+
+
+      if (
+        data.success === false
+      ) {
+
+        throw new Error(
+          data.message ||
+          "Une erreur est survenue."
+        );
+
+      }
+
+
+      return data;
+
+    }
+
+
+
+    /* ============================================
+       INITIALISATION
+    ============================================ */
+
+    async function init() {
+
+      sessionToken =
+        localStorage.getItem(
+          SESSION_STORAGE_KEY
+        ) || "";
+
+
+      if (!sessionToken) {
+
+        showSessionError();
+
+        return;
+
+      }
+
+
+      try {
+
+        const response =
+          await apiCall({
+
+            action:
+              "staffSession",
+
+            session:
+              sessionToken
+
+          });
+
+
+        if (!response.valid) {
+
+          localStorage.removeItem(
+            SESSION_STORAGE_KEY
+          );
+
+
+          showSessionError();
+
+          return;
+
+        }
+
+
+        await startScanner();
+
+      }
+
+
+      catch (error) {
+
+        console.error(
+          error
+        );
+
+
+        showSessionError();
+
+      }
+
+    }
+
+
+
+    /* ============================================
+       SESSION ERROR
+    ============================================ */
+
+    function showSessionError() {
+
+      scannerCard.style.display =
+        "none";
+
+      loading.style.display =
+        "none";
+
+      result.style.display =
+        "none";
+
+      sessionError.style.display =
+        "block";
+
+    }
+
+
+
+    /* ============================================
+       DÉMARRER CAMÉRA
+    ============================================ */
+
+    async function startScanner() {
+
+      scannerCard.style.display =
+        "block";
+
+      loading.style.display =
+        "none";
+
+      result.style.display =
+        "none";
+
+      sessionError.style.display =
+        "none";
+
+
+      processing =
+        false;
+
+      currentQr =
+        "";
+
+
+      if (!scanner) {
+
+        scanner =
+          new Html5Qrcode(
+            "reader"
+          );
+
+      }
+
+
+      if (scannerRunning) {
+
+        return;
+
+      }
+
+
+      try {
+
+        await scanner.start(
+
+          {
+            facingMode:
+              "environment"
+          },
+
+          {
+
+            fps:
+              10,
+
+            qrbox:
+              function(
+                viewfinderWidth,
+                viewfinderHeight
+              ) {
+
+                const size =
+                  Math.floor(
+                    Math.min(
+                      viewfinderWidth,
+                      viewfinderHeight
+                    ) * .72
+                  );
+
+
+                return {
+
+                  width:
+                    size,
+
+                  height:
+                    size
+
+                };
+
+              }
+
+          },
+
+          onScanSuccess,
+
+          function() {
+            /*
+              Erreurs de lecture normales :
+              on ne fait rien.
+            */
+          }
+
+        );
+
+
+        scannerRunning =
+          true;
+
+      }
+
+
+      catch (error) {
+
+        console.error(
+          "Caméra :",
+          error
+        );
+
+
+        document.querySelector(
+          ".camera-message"
+        ).innerHTML =
+          "Impossible d'ouvrir automatiquement la caméra.<br>" +
+          "Autorisez l'accès à la caméra ou utilisez la saisie manuelle ci-dessous.";
+
+      }
+
+    }
+
+
+
+    /* ============================================
+       ARRÊTER CAMÉRA
+    ============================================ */
+
+    async function stopScanner() {
+
+      if (
+        !scanner ||
+        !scannerRunning
+      ) {
+
+        return;
+
+      }
+
+
+      try {
+
+        await scanner.stop();
+
+      }
+
+
+      catch (error) {
+
+        console.warn(
+          error
+        );
+
+      }
+
+
+      scannerRunning =
+        false;
+
+    }
+
+
+
+    /* ============================================
+       QR DÉTECTÉ
+    ============================================ */
+
+    async function onScanSuccess(
+      decodedText
+    ) {
+
+      if (processing) {
+        return;
+      }
+
+
+      processing =
+        true;
+
+
+      await verifyTicket(
+        decodedText
+      );
+
+    }
+
+
+
+    /* ============================================
+       VÉRIFIER BILLET
+    ============================================ */
+
+    async function verifyTicket(
+      qrValue
+    ) {
+
+      currentQr =
+        String(
+          qrValue || ""
+        ).trim();
+
+
+      if (!currentQr) {
+
+        processing =
+          false;
+
+        return;
+
+      }
+
+
+      await stopScanner();
+
+
+      scannerCard.style.display =
+        "none";
+
+      result.style.display =
+        "none";
+
+      loading.style.display =
+        "block";
+
+
+      try {
+
+        const response =
+          await apiCall({
+
+            action:
+              "staffTicket",
+
+            session:
+              sessionToken,
+
+            qr:
+              currentQr
+
+          });
+
+
+        showTicketResult(
+          response.data
+        );
+
+      }
+
+
+      catch (error) {
+
+        console.error(
+          error
+        );
+
+
+        showErrorResult(
+          error.message
+        );
+
+      }
+
+    }
+
+
+
+    /* ============================================
+       AFFICHER RÉSULTAT
+    ============================================ */
+
+    function showTicketResult(
+      data
+    ) {
+
+      loading.style.display =
+        "none";
+
+      result.style.display =
+        "block";
+
+
+      const statusBox =
+        document.getElementById(
+          "resultStatus"
+        );
+
+
+      const icon =
+        document.getElementById(
+          "resultIcon"
+        );
+
+
+      const title =
+        document.getElementById(
+          "resultTitle"
+        );
+
+
+      const message =
+        document.getElementById(
+          "resultMessage"
+        );
+
+
+      statusBox.className =
+        "result-status";
+
+
+      /* ========================================
+         VALIDE
+      ======================================== */
+
+      if (
+        data.status ===
+        "valid"
+      ) {
+
+        statusBox.classList.add(
+          "valid"
+        );
+
+
+        icon.textContent =
+          "✓";
+
+
+        title.textContent =
+          "Billet valide";
+
+
+        message.textContent =
+          "Vous pouvez valider l'entrée du participant.";
+
+
+        checkInButton.style.display =
+          "block";
+
+      }
+
+
+      /* ========================================
+         DÉJÀ SCANNÉ
+      ======================================== */
+
+      else if (
+        data.status ===
+        "already_checked_in"
+      ) {
+
+        statusBox.classList.add(
+          "already"
+        );
+
+
+        icon.textContent =
+          "⚠️";
+
+
+        title.textContent =
+          "Billet déjà scanné";
+
+
+        message.textContent =
+          "Ce participant a déjà effectué son check-in.";
+
+
+        checkInButton.style.display =
+          "none";
+
+      }
+
+
+      /* ========================================
+         INVALIDE
+      ======================================== */
+
+      else {
+
+        statusBox.classList.add(
+          "invalid"
+        );
+
+
+        icon.textContent =
+          "✕";
+
+
+        title.textContent =
+          "Billet invalide";
+
+
+        if (
+          data.reason ===
+          "payment"
+        ) {
+
+          message.textContent =
+            "Le paiement associé à ce billet n'est pas valide.";
+
+        }
+
+        else if (
+          data.reason ===
+          "ticket"
+        ) {
+
+          message.textContent =
+            "Ce billet a été invalidé.";
+
+        }
+
+        else {
+
+          message.textContent =
+            "Ce billet ne peut pas être accepté.";
+
+        }
+
+
+        checkInButton.style.display =
+          "none";
+
+      }
+
+
+      fillParticipant(
+        data.participant
+      );
+
+    }
+
+
+
+    /* ============================================
+       INFOS PARTICIPANT
+    ============================================ */
+
+    function fillParticipant(
+      participant
+    ) {
+
+      if (!participant) {
+
+        document.getElementById(
+          "participantBlock"
+        ).style.display =
+          "none";
+
+
+        document.getElementById(
+          "ticketInfo"
+        ).style.display =
+          "none";
+
+
+        return;
+
+      }
+
+
+      document.getElementById(
+        "participantBlock"
+      ).style.display =
+        "block";
+
+
+      document.getElementById(
+        "ticketInfo"
+      ).style.display =
+        "block";
+
+
+      document.getElementById(
+        "participantName"
+      ).textContent =
+
+        (
+          participant.firstName +
+          " " +
+          participant.lastName
+        ).trim();
+
+
+      document.getElementById(
+        "participantEmail"
+      ).textContent =
+        participant.email || "";
+
+
+      document.getElementById(
+        "participantPack"
+      ).textContent =
+        participant.packName ||
+        participant.packId ||
+        "";
+
+
+      document.getElementById(
+        "ticketId"
+      ).textContent =
+        participant.ticketId ||
+        "—";
+
+
+      document.getElementById(
+        "checkInStatus"
+      ).textContent =
+        participant.checkIn ||
+        "Non";
+
+
+      const timeRow =
+        document.getElementById(
+          "checkInTimeRow"
+        );
+
+
+      const time =
+        participant.checkInTime;
+
+
+      if (time) {
+
+        timeRow.style.display =
+          "flex";
+
+
+        document.getElementById(
+          "checkInTime"
+        ).textContent =
+          time;
+
+      }
+
+      else {
+
+        timeRow.style.display =
+          "none";
+
+      }
+
+    }
+
+
+
+    /* ============================================
+       ERREUR BILLET
+    ============================================ */
+
+    function showErrorResult(
+      errorMessage
+    ) {
+
+      loading.style.display =
+        "none";
+
+      result.style.display =
+        "block";
+
+
+      const statusBox =
+        document.getElementById(
+          "resultStatus"
+        );
+
+
+      statusBox.className =
+        "result-status invalid";
+
+
+      document.getElementById(
+        "resultIcon"
+      ).textContent =
+        "✕";
+
+
+      document.getElementById(
+        "resultTitle"
+      ).textContent =
+        "Billet non reconnu";
+
+
+      document.getElementById(
+        "resultMessage"
+      ).textContent =
+        errorMessage ||
+        "Impossible de vérifier ce billet.";
+
+
+      document.getElementById(
+        "participantBlock"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "ticketInfo"
+      ).style.display =
+        "none";
+
+
+      checkInButton.style.display =
+        "none";
+
+    }
+
+
+
+    /* ============================================
+       VALIDER CHECK-IN
+    ============================================ */
+
+    async function confirmCheckIn() {
+
+      if (
+        !currentQr ||
+        processing === "checkin"
+      ) {
+
+        return;
+
+      }
+
+
+      processing =
+        "checkin";
+
+
+      checkInButton.disabled =
+        true;
+
+
+      checkInButton.textContent =
+        "Validation…";
+
+
+      try {
+
+        const response =
+          await apiCall({
+
+            action:
+              "staffCheckIn",
+
+            session:
+              sessionToken,
+
+            qr:
+              currentQr
+
+          });
+
+
+        const data =
+          response.data;
+
+
+        if (
+          data.success &&
+          data.checkedIn
+        ) {
+
+          const statusBox =
+            document.getElementById(
+              "resultStatus"
+            );
+
+
+          statusBox.className =
+            "result-status valid";
+
+
+          document.getElementById(
+            "resultIcon"
+          ).textContent =
+            "✓";
+
+
+          document.getElementById(
+            "resultTitle"
+          ).textContent =
+            "Entrée validée";
+
+
+          document.getElementById(
+            "resultMessage"
+          ).textContent =
+            "Le check-in a bien été enregistré.";
+
+
+          fillParticipant(
+            data.participant
+          );
+
+
+          checkInButton.style.display =
+            "none";
+
+
+          /*
+            Petit retour haptique sur téléphone
+            si disponible.
+          */
+
+          if (
+            navigator.vibrate
+          ) {
+
+            navigator.vibrate(
+              80
+            );
+
+          }
+
+        }
+
+
+        else if (
+          data.alreadyCheckedIn
+        ) {
+
+          showTicketResult({
+
+            status:
+              "already_checked_in",
+
+            participant:
+              data.participant
+
+          });
+
+        }
+
+      }
+
+
+      catch (error) {
+
+        console.error(
+          error
+        );
+
+
+        showErrorResult(
+          error.message
+        );
+
+      }
+
+
+      finally {
+
+        checkInButton.disabled =
+          false;
+
+
+        checkInButton.textContent =
+          "✓ Valider l'entrée";
+
+
+        processing =
+          false;
+
+      }
+
+    }
+
+
+
+    /* ============================================
+       SCANNER SUIVANT
+    ============================================ */
+
+    async function scanNext() {
+
+      currentQr =
+        "";
+
+      processing =
+        false;
+
+
+      document.getElementById(
+        "manualQr"
+      ).value =
+        "";
+
+
+      checkInButton.style.display =
+        "block";
+
+
+      await startScanner();
+
+    }
+
+
+
+    /* ============================================
+       SAISIE MANUELLE
+    ============================================ */
+
+    document.getElementById(
+      "manualButton"
+    ).addEventListener(
+      "click",
+      async function() {
+
+        if (processing) {
+          return;
+        }
+
+
+        const value =
+          document.getElementById(
+            "manualQr"
+          ).value.trim();
+
+
+        if (!value) {
+
+          alert(
+            "Collez le contenu du QR code."
+          );
+
+          return;
+
+        }
+
+
+        processing =
+          true;
+
+
+        await verifyTicket(
+          value
+        );
+
+      }
+    );
+
+
+
+    /* ============================================
+       CHECK-IN
+    ============================================ */
+
+    checkInButton.addEventListener(
+      "click",
+      confirmCheckIn
+    );
+
+
+
+    /* ============================================
+       SUIVANT
+    ============================================ */
+
+    nextButton.addEventListener(
+      "click",
+      scanNext
+    );
+
+
+
+    /* ============================================
+       DÉCONNEXION
+    ============================================ */
+
+    document.getElementById(
+      "logoutButton"
+    ).addEventListener(
+      "click",
+      async function() {
+
+        try {
+
+          if (sessionToken) {
+
+            await apiCall({
+
+              action:
+                "staffLogout",
+
+              session:
+                sessionToken
+
+            });
+
+          }
+
+        }
+
+        catch (error) {
+
+          console.warn(
+            error
+          );
+
+        }
+
+
+        localStorage.removeItem(
+          SESSION_STORAGE_KEY
+        );
+
+
+        window.location.href =
+          "staff.html";
+
+      }
+    );
+
+
+
+    /* ============================================
+       LANCEMENT
+    ============================================ */
+
+    init();
+
+  </script>
+
+</body>
+</html>
