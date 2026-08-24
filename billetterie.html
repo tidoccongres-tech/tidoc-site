@@ -52,25 +52,31 @@
   box-sizing:border-box;
 }
 
+
 html{
   scroll-behavior:smooth;
 }
 
+
 body{
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background:#F7FBFC;
+
   color:var(--text);
+
   overflow-x:hidden;
 }
+
 
 a{
   text-decoration:none;
 }
 
 
-/* =====================================================
-   HERO
-===================================================== */
 
 /* =====================================================
    HERO BILLETTERIE
@@ -88,6 +94,7 @@ a{
   align-items:flex-end;
 
   position:relative;
+
   overflow:hidden;
 
   text-align:left;
@@ -95,12 +102,14 @@ a{
   color:white;
 
   background:
+
     linear-gradient(
       90deg,
       rgba(7,60,75,.92) 0%,
       rgba(11,83,103,.72) 48%,
       rgba(25,140,167,.30) 100%
     ),
+
     url("files/D31D01CC-A1E4-4FB1-A8B4-6810DEB4CFFD.png");
 
   background-size:cover;
@@ -139,6 +148,7 @@ a{
 .hero-inner{
 
   position:relative;
+
   z-index:2;
 
   width:
@@ -171,14 +181,17 @@ a{
     rgba(255,255,255,.11);
 
   backdrop-filter:blur(8px);
+
   -webkit-backdrop-filter:blur(8px);
 
   color:white;
 
   font-size:12px;
+
   font-weight:800;
 
   letter-spacing:1.6px;
+
   text-transform:uppercase;
 
 }
@@ -215,9 +228,11 @@ a{
     rgba(255,255,255,.86);
 
   font-size:19px;
+
   line-height:1.75;
 
 }
+
 
 
 /* =====================================================
@@ -227,6 +242,7 @@ a{
 .packs-section{
 
   position:relative;
+
   z-index:10;
 
   margin-top:-55px;
@@ -236,6 +252,7 @@ a{
     120px;
 
 }
+
 
 .section-heading{
 
@@ -261,17 +278,24 @@ a{
 
 }
 
+
 .section-heading span{
+
   color:var(--blue);
 
   font-size:12px;
+
   font-weight:800;
 
   letter-spacing:2px;
+
   text-transform:uppercase;
+
 }
 
+
 .section-heading h2{
+
   margin-top:12px;
 
   color:var(--blue-deep);
@@ -282,23 +306,32 @@ a{
       5vw,
       52px
     );
+
 }
 
+
 .section-heading p{
+
   margin-top:17px;
 
   color:var(--grey);
 
   font-size:17px;
+
   line-height:1.7;
+
 }
 
 
+
 /* =====================================================
-   GRILLE
+   ZONE PACKS + RGPD
 ===================================================== */
 
-.pack-grid{
+.packs-wrapper{
+
+  position:relative;
+
   width:
     min(
       1200px,
@@ -307,13 +340,58 @@ a{
 
   margin:auto;
 
+}
+
+
+
+/* =====================================================
+   GRILLE
+===================================================== */
+
+.pack-grid{
+
+  width:100%;
+
   display:grid;
 
   grid-template-columns:
-    repeat(3,1fr);
+    repeat(
+      3,
+      1fr
+    );
 
   gap:25px;
+
+  transition:
+    filter .35s ease,
+    opacity .35s ease,
+    transform .35s ease;
+
 }
+
+
+
+/* =====================================================
+   PACKS BLOQUÉS AVANT RGPD
+===================================================== */
+
+body.privacy-locked
+.pack-grid{
+
+  filter:
+    blur(4px);
+
+  opacity:.38;
+
+  transform:
+    scale(.99);
+
+  pointer-events:none;
+
+  user-select:none;
+
+}
+
 
 
 /* =====================================================
@@ -321,6 +399,7 @@ a{
 ===================================================== */
 
 .pack-card{
+
   position:relative;
 
   display:flex;
@@ -342,43 +421,61 @@ a{
     rgba(7,60,75,.08);
 
   transition:.25s ease;
+
 }
 
+
 .pack-card:hover{
+
   transform:
     translateY(-5px);
 
   box-shadow:
     0 22px 50px
     rgba(7,60,75,.12);
+
 }
 
+
 .pack-name{
+
   color:var(--blue-deep);
 
   font-size:28px;
+
   font-weight:800;
+
 }
 
+
 .pack-price{
+
   margin-top:18px;
 
   color:var(--blue);
 
   font-size:42px;
+
   font-weight:900;
+
 }
 
+
 .pack-price span{
+
   margin-left:4px;
 
   color:var(--grey);
 
   font-size:14px;
+
   font-weight:600;
+
 }
 
+
 .pack-description{
+
   margin-top:18px;
 
   min-height:55px;
@@ -386,10 +483,14 @@ a{
   color:var(--grey);
 
   font-size:15px;
+
   line-height:1.6;
+
 }
 
+
 .pack-details{
+
   margin-top:28px;
 
   display:flex;
@@ -397,9 +498,12 @@ a{
   flex-direction:column;
 
   gap:13px;
+
 }
 
+
 .pack-detail{
+
   display:flex;
 
   align-items:center;
@@ -409,9 +513,12 @@ a{
   color:var(--text);
 
   font-size:15px;
+
 }
 
+
 .check{
+
   width:25px;
   height:25px;
 
@@ -429,10 +536,14 @@ a{
   color:var(--blue);
 
   font-size:13px;
+
   font-weight:900;
+
 }
 
+
 .pack-button{
+
   width:100%;
 
   min-height:52px;
@@ -442,6 +553,7 @@ a{
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   border:0;
@@ -453,21 +565,31 @@ a{
   color:white;
 
   font-size:15px;
+
   font-weight:800;
 
   cursor:pointer;
 
   transition:.25s ease;
+
 }
+
 
 .pack-button:hover{
+
   background:var(--blue-dark);
+
 }
 
+
 .pack-button:disabled{
+
   opacity:.45;
+
   cursor:not-allowed;
+
 }
+
 
 
 /* =====================================================
@@ -475,6 +597,7 @@ a{
 ===================================================== */
 
 .status-message{
+
   width:
     min(
       800px,
@@ -496,52 +619,104 @@ a{
   box-shadow:
     0 10px 30px
     rgba(7,60,75,.07);
+
 }
 
+
+
 /* =====================================================
-   PROTECTION DES DONNÉES
+   POPUP RGPD
 ===================================================== */
 
-.privacy-box{
+.privacy-gate{
 
-  width:min(900px,100%);
+  position:absolute;
 
-  margin:
-    45px auto 0;
+  inset:0;
 
-  padding:
-    26px 30px;
+  z-index:50;
 
   display:flex;
-  align-items:flex-start;
 
-  gap:18px;
+  align-items:center;
+
+  justify-content:center;
+
+  padding:25px;
+
+  border-radius:30px;
+
+  background:
+    rgba(247,251,252,.25);
+
+  backdrop-filter:
+    blur(2px);
+
+  -webkit-backdrop-filter:
+    blur(2px);
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+
+}
+
+
+.privacy-gate.hidden{
+
+  opacity:0;
+
+  visibility:hidden;
+
+  pointer-events:none;
+
+}
+
+
+.privacy-gate-card{
+
+  width:
+    min(
+      560px,
+      94%
+    );
+
+  padding:
+    34px;
+
+  position:relative;
+
+  text-align:center;
 
   border:
     1px solid
-    #DCECEF;
+    rgba(25,140,167,.18);
 
-  border-radius:24px;
+  border-radius:28px;
 
   background:
-    rgba(255,255,255,.85);
+    rgba(255,255,255,.97);
 
   box-shadow:
-    0 12px 35px
-    rgba(7,60,75,.06);
+    0 25px 80px
+    rgba(7,60,75,.22);
 
 }
 
 
 .privacy-icon{
 
-  width:42px;
-  height:42px;
+  width:48px;
+  height:48px;
 
-  min-width:42px;
+  margin:
+    0 auto
+    15px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   border-radius:50%;
@@ -549,49 +724,79 @@ a{
   background:
     var(--blue-light);
 
-  font-size:18px;
+  font-size:20px;
 
 }
 
 
-.privacy-content strong{
+.privacy-tag{
 
   display:block;
 
-  color:
-    var(--blue-deep);
+  color:var(--blue);
 
-  font-size:16px;
+  font-size:10px;
+
+  font-weight:900;
+
+  letter-spacing:1.6px;
+
+  text-transform:uppercase;
 
 }
 
 
-.privacy-content p{
+.privacy-gate-card h3{
 
-  margin-top:7px;
+  margin-top:8px;
 
-  color:
-    var(--grey);
+  color:var(--blue-deep);
+
+  font-size:28px;
+
+}
+
+
+.privacy-gate-card p{
+
+  max-width:480px;
+
+  margin:
+    14px auto 0;
+
+  color:var(--grey);
 
   font-size:13px;
-  line-height:1.6;
+
+  line-height:1.7;
 
 }
 
 
 .privacy-check{
 
-  margin-top:16px;
+  margin-top:22px;
+
+  padding:
+    15px 17px;
 
   display:flex;
+
   align-items:flex-start;
 
-  gap:10px;
+  gap:11px;
 
-  color:
-    var(--text);
+  text-align:left;
+
+  border-radius:17px;
+
+  background:
+    #F2F9FA;
+
+  color:var(--text);
 
   font-size:13px;
+
   line-height:1.5;
 
   cursor:pointer;
@@ -601,13 +806,14 @@ a{
 
 .privacy-check input{
 
-  width:17px;
-  height:17px;
+  width:18px;
+  height:18px;
+
+  min-width:18px;
 
   margin-top:1px;
 
-  accent-color:
-    var(--blue);
+  accent-color:var(--blue);
 
   cursor:pointer;
 
@@ -616,7 +822,7 @@ a{
 
 .privacy-more{
 
-  margin-top:11px;
+  margin-top:16px;
 
   padding:0;
 
@@ -624,12 +830,12 @@ a{
 
   background:transparent;
 
-  color:
-    var(--blue);
+  color:var(--blue);
 
   font-family:inherit;
 
   font-size:12px;
+
   font-weight:800;
 
   cursor:pointer;
@@ -639,228 +845,27 @@ a{
 
 .privacy-more:hover{
 
-  color:
-    var(--blue-dark);
+  color:var(--blue-dark);
 
 }
 
 
-@media(max-width:650px){
 
-  .privacy-box{
-
-    margin-top:30px;
-
-    padding:22px;
-
-  }
-
-}
-  
-/* =====================================================
-   MODALE PROTECTION DES DONNÉES
-===================================================== */
-
-.privacy-modal{
-
-  position:fixed;
-  inset:0;
-
-  z-index:5000;
-
-  padding:25px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  opacity:0;
-  visibility:hidden;
-
-  background:
-    rgba(3,30,38,.88);
-
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-
-  transition:
-    opacity .25s ease,
-    visibility .25s ease;
-
-}
-
-
-.privacy-modal.open{
-
-  opacity:1;
-  visibility:visible;
-
-}
-
-
-.privacy-modal-box{
-
-  position:relative;
-
-  width:min(680px,100%);
-  max-height:85vh;
-
-  padding:40px;
-
-  overflow-y:auto;
-
-  border-radius:30px;
-
-  background:white;
-
-  box-shadow:
-    0 30px 100px
-    rgba(0,0,0,.30);
-
-}
-
-
-.privacy-modal-close{
-
-  position:absolute;
-
-  top:18px;
-  right:18px;
-
-  width:42px;
-  height:42px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border:0;
-  border-radius:50%;
-
-  background:
-    var(--blue-light);
-
-  color:
-    var(--blue-dark);
-
-  font-size:24px;
-
-  cursor:pointer;
-
-}
-
-
-.privacy-modal-tag{
-
-  display:block;
-
-  padding-right:55px;
-
-  color:var(--blue);
-
-  font-size:11px;
-  font-weight:900;
-
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-
-}
-
-
-.privacy-modal-box h2{
-
-  margin-top:9px;
-
-  padding-right:45px;
-
-  color:
-    var(--blue-deep);
-
-  font-size:31px;
-
-}
-
-
-.privacy-modal-box p{
-
-  margin-top:18px;
-
-  color:
-    var(--grey);
-
-  font-size:14px;
-  line-height:1.75;
-
-}
-
-
-.privacy-modal-box strong{
-
-  color:
-    var(--blue-dark);
-
-}
-
-
-.privacy-modal-contact{
-
-  margin-top:22px;
-
-  padding:17px 19px;
-
-  border-radius:16px;
-
-  background:
-    var(--blue-light);
-
-}
-
-
-.privacy-modal-contact p{
-
-  margin:0;
-
-}
-
-
-@media(max-width:650px){
-
-  .privacy-modal{
-
-    padding:15px;
-
-  }
-
-
-  .privacy-modal-box{
-
-    padding:
-      34px 23px;
-
-    border-radius:24px;
-
-  }
-
-
-  .privacy-modal-box h2{
-
-    font-size:26px;
-
-  }
-
-}
-  
 /* =====================================================
    INFOS
 ===================================================== */
 
 .info-section{
+
   padding:
     0 7%
     120px;
+
 }
 
+
 .info-box{
+
   width:
     min(
       1000px,
@@ -876,46 +881,30 @@ a{
   background:var(--blue-deep);
 
   color:white;
+
 }
+
 
 .info-box h3{
+
   font-size:28px;
+
 }
 
+
 .info-box p{
+
   margin-top:14px;
 
   color:
     rgba(255,255,255,.82);
 
   font-size:16px;
+
   line-height:1.7;
+
 }
 
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-  padding:35px 7%;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  background:var(--blue-deep);
-
-  color:
-    rgba(255,255,255,.75);
-
-  font-size:13px;
-}
-
-footer img{
-  width:60px;
-}
 
 
 /* =====================================================
@@ -925,12 +914,17 @@ footer img{
 @media(max-width:900px){
 
   .pack-grid{
+
     grid-template-columns:1fr;
+
     max-width:600px;
+
+    margin:auto;
+
   }
 
-
 }
+
 
 
 /* =====================================================
@@ -940,6 +934,7 @@ footer img{
 @media(max-width:650px){
 
   .hero{
+
     min-height:560px;
 
     padding:
@@ -947,78 +942,117 @@ footer img{
       90px;
 
     background-position:center;
+
   }
 
 
   .hero h1{
+
     font-size:
       clamp(
         44px,
         13vw,
         62px
       );
+
   }
 
 
   .hero p{
+
     font-size:16px;
+
   }
 
 
   .packs-section{
+
     margin-top:-38px;
 
     padding:
       0 5%
       90px;
+
   }
 
 
   .section-heading{
+
     padding:
       25px 20px;
 
     margin-bottom:30px;
 
     border-radius:24px;
+
   }
 
 
   .pack-card{
+
     padding:
       30px 24px;
+
+  }
+
+
+  .privacy-gate{
+
+    padding:14px;
+
+    align-items:flex-start;
+
+    padding-top:80px;
+
+  }
+
+
+  .privacy-gate-card{
+
+    padding:
+      27px 22px;
+
+    border-radius:24px;
+
+  }
+
+
+  .privacy-gate-card h3{
+
+    font-size:24px;
+
   }
 
 
   .info-section{
+
     padding:
       0 5%
       90px;
+
   }
 
 
   .info-box{
+
     padding:
       32px 25px;
-  }
 
-
-  footer{
-    flex-direction:column;
-    gap:17px;
   }
 
 }
-
 
 </style>
 
 </head>
 
 
-<body>
+
+<body class="privacy-locked">
+
 
 <div id="header-container"></div>
+
 
 
 <!-- ==================================================
@@ -1056,6 +1090,7 @@ footer img{
 
 <section class="packs-section">
 
+
   <div class="section-heading">
 
     <span>
@@ -1075,184 +1110,94 @@ footer img{
   </div>
 
 
-  <div
-    id="packs-container"
-    class="pack-grid"
-  >
 
-    <div class="status-message">
-      Chargement de la billetterie...
+  <div class="packs-wrapper">
+
+
+    <div
+      id="packs-container"
+      class="pack-grid"
+    >
+
+      <div class="status-message">
+        Chargement de la billetterie...
+      </div>
+
     </div>
 
-  </div>
 
-  
-<!-- ==================================================
-     PROTECTION DES DONNÉES
-================================================== -->
 
-<div class="privacy-box">
+    <!-- ==================================================
+         POPUP PROTECTION DES DONNÉES
+    ================================================== -->
 
-  <div class="privacy-icon">
-    🔒
-  </div>
-
-  <div class="privacy-content">
-
-    <strong>
-      Protection de vos données
-    </strong>
-
-    <p>
-      Les informations recueillies lors de votre inscription
-      sont utilisées pour gérer votre inscription,
-      votre billet et votre participation à Ti'Doc 2027.
-    </p>
-
-    <label class="privacy-check">
-
-      <input
-        type="checkbox"
-        id="privacy-consent"
-      >
-
-      <span>
-        J'ai pris connaissance des informations relatives
-        au traitement de mes données personnelles.
-      </span>
-
-    </label>
-
-    <button
-      type="button"
-      class="privacy-more"
-      onclick="openPrivacyModal()"
+    <div
+      class="privacy-gate"
+      id="privacy-gate"
     >
-      En savoir plus sur la protection de mes données
-    </button>
+
+      <div class="privacy-gate-card">
+
+
+        <div class="privacy-icon">
+          🔒
+        </div>
+
+
+        <span class="privacy-tag">
+          Avant de continuer
+        </span>
+
+
+        <h3>
+          Protection de vos données
+        </h3>
+
+
+        <p>
+          Les informations recueillies lors de votre
+          inscription sont utilisées afin de gérer
+          votre inscription, votre billet et votre
+          participation à Ti'Doc 2027.
+        </p>
+
+
+        <label class="privacy-check">
+
+          <input
+            type="checkbox"
+            id="privacy-consent"
+          >
+
+          <span>
+            J'ai pris connaissance des informations
+            relatives au traitement de mes données
+            personnelles.
+          </span>
+
+        </label>
+
+
+        <button
+          type="button"
+          class="privacy-more"
+          onclick="openPrivacyModal()"
+        >
+          En savoir plus sur la protection de mes données
+        </button>
+
+
+      </div>
+
+    </div>
+
 
   </div>
-
-</div>
 
 
 </section>
 
-<!-- ==================================================
-     MODALE PROTECTION DES DONNÉES
-================================================== -->
 
-<div
-  class="privacy-modal"
-  id="privacy-modal"
-  aria-hidden="true"
->
-
-  <div class="privacy-modal-box">
-
-    <button
-      class="privacy-modal-close"
-      type="button"
-      onclick="closePrivacyModal()"
-      aria-label="Fermer"
-    >
-      ×
-    </button>
-
-
-    <span class="privacy-modal-tag">
-      Données personnelles
-    </span>
-
-
-    <h2>
-      Protection de vos données
-    </h2>
-
-
-    <p>
-      Les informations personnelles recueillies
-      lors de votre inscription sont traitées
-      par <strong>Ti'Doc</strong> afin d'assurer
-      la gestion de votre inscription au congrès,
-      de votre billet, de votre programme
-      et de votre participation à Ti'Doc 2027.
-    </p>
-
-
-    <p>
-      Seules les informations nécessaires
-      au fonctionnement de l'inscription
-      et à l'organisation de l'événement
-      sont utilisées.
-    </p>
-
-
-    <p>
-      Elles peuvent être accessibles aux membres
-      de l'équipe Ti'Doc habilités à gérer
-      les inscriptions ainsi qu'aux prestataires
-      techniques nécessaires au fonctionnement
-      du service, notamment pour le paiement
-      et les outils utilisés pour la gestion
-      des inscriptions.
-    </p>
-
-
-    <p>
-      Ti'Doc met en œuvre des mesures adaptées
-      afin de protéger les données personnelles
-      contre l'accès, la modification,
-      la perte ou la divulgation non autorisés.
-    </p>
-
-
-    <p>
-      Les informations recueillies ne sont pas
-      vendues par Ti'Doc et ne sont pas utilisées
-      à des fins commerciales indépendantes
-      de l'organisation du congrès.
-    </p>
-
-
-    <p>
-      Les données sont conservées pendant
-      la durée nécessaire à la gestion
-      de l'inscription et de l'événement,
-      ainsi que pendant toute durée supplémentaire
-      rendue nécessaire par les obligations
-      administratives ou légales applicables.
-    </p>
-
-
-    <p>
-      Conformément à la réglementation
-      relative à la protection des données,
-      vous pouvez notamment demander l'accès,
-      la rectification ou, lorsque les conditions
-      sont réunies, l'effacement de vos données.
-    </p>
-
-
-    <div class="privacy-modal-contact">
-
-      <p>
-        Pour toute demande concernant vos données :
-        <strong>tidoc.congres@gmail.com</strong>
-      </p>
-
-    </div>
-
-
-    <p>
-      Vous disposez également du droit
-      d'introduire une réclamation
-      auprès de la CNIL.
-    </p>
-
-  </div>
-
-</div>
 
 <!-- ==================================================
      INFO
@@ -1267,9 +1212,9 @@ footer img{
     </h3>
 
     <p>
-      Une fois votre pack acheté, vous recevrez
-      les informations nécessaires pour choisir
-      vos conférences et workshops.
+      Une fois votre pack acheté,
+      vous recevrez les informations nécessaires
+      pour choisir vos conférences et workshops.
       Les places disponibles dans les workshops
       seront mises à jour automatiquement.
     </p>
@@ -1298,6 +1243,7 @@ const BILLETTERIE_API =
   "https://script.google.com/macros/s/AKfycbzHniBRivQnmnxUnEmCFDZqYmKmepn2b57NHtRGgSh1cdWu9Nf-KHNFrHxQndbW3BG1/exec";
 
 
+
 /* =====================================================
    CONTENEUR
 ===================================================== */
@@ -1306,6 +1252,7 @@ const packsContainer =
   document.getElementById(
     "packs-container"
   );
+
 
 
 /* =====================================================
@@ -1530,6 +1477,7 @@ function createPackCard(
 
       <div class="pack-details">
 
+
         <div class="pack-detail">
 
           <span class="check">
@@ -1559,6 +1507,7 @@ function createPackCard(
 
         </div>
 
+
       </div>
 
 
@@ -1579,6 +1528,51 @@ function createPackCard(
 
 
 /* =====================================================
+   RGPD — DÉVERROUILLER LES PACKS
+===================================================== */
+
+const privacyConsent =
+  document.getElementById(
+    "privacy-consent"
+  );
+
+
+const privacyGate =
+  document.getElementById(
+    "privacy-gate"
+  );
+
+
+privacyConsent
+  ?.addEventListener(
+    "change",
+    function(){
+
+      if(
+        privacyConsent.checked
+      ){
+
+        document.body
+          .classList
+          .remove(
+            "privacy-locked"
+          );
+
+
+        privacyGate
+          ?.classList
+          .add(
+            "hidden"
+          );
+
+      }
+
+    }
+  );
+
+
+
+/* =====================================================
    CHOISIR UN PACK
 ===================================================== */
 
@@ -1586,22 +1580,24 @@ async function choosePack(
   packId
 ){
 
-  const privacyConsent =
+  const consent =
     document.getElementById(
       "privacy-consent"
     );
 
 
   if(
-    !privacyConsent ||
-    !privacyConsent.checked
+    !consent ||
+    !consent.checked
   ){
 
     alert(
       "Veuillez prendre connaissance des informations relatives à la protection de vos données avant de poursuivre."
     );
 
-    privacyConsent?.focus();
+
+    consent?.focus();
+
 
     return;
 
@@ -1704,6 +1700,24 @@ async function choosePack(
 
 
 
+/* =====================================================
+   EN SAVOIR PLUS
+===================================================== */
+
+function openPrivacyModal(){
+
+  alert(
+
+    "Les données personnelles renseignées lors de votre inscription sont utilisées uniquement pour la gestion de votre inscription, de votre billet et de votre participation au congrès Ti'Doc 2027.\n\n" +
+
+    "Elles ne sont pas utilisées à des fins commerciales par Ti'Doc.\n\n" +
+
+    "Vous pouvez contacter Ti'Doc pour toute question relative à vos données personnelles."
+
+  );
+
+}
+
 
 
 /* =====================================================
@@ -1745,110 +1759,7 @@ function escapeHtml(
 
 }
 
-/* =====================================================
-   MODALE PROTECTION DES DONNÉES
-===================================================== */
 
-function openPrivacyModal(){
-
-  const modal =
-    document.getElementById(
-      "privacy-modal"
-    );
-
-
-  modal
-    ?.classList
-    .add(
-      "open"
-    );
-
-
-  modal
-    ?.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-
-function closePrivacyModal(){
-
-  const modal =
-    document.getElementById(
-      "privacy-modal"
-    );
-
-
-  modal
-    ?.classList
-    .remove(
-      "open"
-    );
-
-
-  modal
-    ?.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-
-  document.body.style.overflow =
-    "";
-
-}
-
-
-
-/* Fermer en cliquant sur le fond */
-
-document.addEventListener(
-  "click",
-  function(event){
-
-    const modal =
-      document.getElementById(
-        "privacy-modal"
-      );
-
-
-    if(
-      modal &&
-      event.target === modal
-    ){
-
-      closePrivacyModal();
-
-    }
-
-  }
-);
-
-
-
-/* Fermer avec Échap */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(
-      event.key === "Escape"
-    ){
-
-      closePrivacyModal();
-
-    }
-
-  }
-);
 
 /* =====================================================
    LANCEMENT
@@ -1858,10 +1769,14 @@ loadBilletterie();
 
 </script>
 
+
 <script src="header.js"></script>
+
 <script src="footer.js"></script>
 
+
 </body>
+
 </html>
 
 
