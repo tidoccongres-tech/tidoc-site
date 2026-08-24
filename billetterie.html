@@ -585,21 +585,55 @@ footer img{
 @media(max-width:650px){
 
   .hero{
+    min-height:560px;
+
     padding:
-      135px 6%
-      75px;
+      135px 5%
+      90px;
+
+    background-position:center;
   }
 
+
+  .hero h1{
+    font-size:
+      clamp(
+        44px,
+        13vw,
+        62px
+      );
+  }
+
+
+  .hero p{
+    font-size:16px;
+  }
+
+
   .packs-section{
+    margin-top:-38px;
+
     padding:
-      75px 5%
+      0 5%
       90px;
   }
+
+
+  .section-heading{
+    padding:
+      25px 20px;
+
+    margin-bottom:30px;
+
+    border-radius:24px;
+  }
+
 
   .pack-card{
     padding:
       30px 24px;
   }
+
 
   .info-section{
     padding:
@@ -607,10 +641,12 @@ footer img{
       90px;
   }
 
+
   .info-box{
     padding:
       32px 25px;
   }
+
 
   footer{
     flex-direction:column;
@@ -618,6 +654,7 @@ footer img{
   }
 
 }
+
 
 </style>
 
