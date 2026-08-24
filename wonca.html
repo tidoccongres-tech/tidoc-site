@@ -17,6 +17,11 @@
   WONCA Europe 2026 — Ti'Doc
 </title>
 
+<link
+  rel="stylesheet"
+  href="header.css"
+>
+  
 
 <style>
 
@@ -101,291 +106,6 @@ a{
 
 }
 
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-header{
-
-  position:fixed;
-
-  top:0;
-
-  left:0;
-
-  width:100%;
-
-  z-index:1000;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  padding:
-    22px 7%;
-
-  background:
-    transparent;
-
-}
-
-
-.logo img{
-
-  width:82px;
-
-}
-
-
-/* =====================================================
-   NAV
-===================================================== */
-
-nav{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:36px;
-
-  padding:
-    15px 25px;
-
-  border-radius:
-    50px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .92
-    );
-
-  backdrop-filter:
-    blur(12px);
-
-  -webkit-backdrop-filter:
-    blur(12px);
-
-  box-shadow:
-    0 10px 35px
-    rgba(
-      0,
-      0,
-      0,
-      .08
-    );
-
-}
-
-
-nav a{
-
-  color:
-    var(--blue-dark);
-
-  font-size:
-    15px;
-
-  font-weight:
-    600;
-
-  transition:
-    .25s;
-
-}
-
-
-nav a:hover{
-
-  color:
-    var(--blue);
-
-}
-
-
-/* =====================================================
-   DROPDOWN
-===================================================== */
-
-.nav-dropdown{
-
-  position:relative;
-
-  display:flex;
-
-  align-items:center;
-
-}
-
-
-.nav-dropdown-button{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:6px;
-
-  padding:0;
-
-  border:0;
-
-  background:
-    transparent;
-
-  color:
-    var(--blue-dark);
-
-  font-family:
-    inherit;
-
-  font-size:
-    15px;
-
-  font-weight:
-    600;
-
-  cursor:pointer;
-
-}
-
-
-.nav-chevron{
-
-  transition:
-    transform .25s ease;
-
-}
-
-
-.nav-dropdown-menu{
-
-  position:absolute;
-
-  top:
-    calc(
-      100% + 22px
-    );
-
-  left:50%;
-
-  min-width:
-    190px;
-
-  padding:
-    9px;
-
-  opacity:0;
-
-  visibility:hidden;
-
-  transform:
-    translate(
-      -50%,
-      -8px
-    );
-
-  border-radius:
-    18px;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .98
-    );
-
-  box-shadow:
-    0 18px 45px
-    rgba(
-      7,
-      60,
-      75,
-      .15
-    );
-
-  transition:
-    .22s ease;
-
-}
-
-
-.nav-dropdown-menu::before{
-
-  content:"";
-
-  position:absolute;
-
-  left:0;
-
-  right:0;
-
-  top:-24px;
-
-  height:24px;
-
-}
-
-
-.nav-dropdown-menu a{
-
-  display:block;
-
-  padding:
-    12px 14px;
-
-  border-radius:
-    12px;
-
-  white-space:
-    nowrap;
-
-}
-
-
-.nav-dropdown-menu a:hover{
-
-  background:
-    var(--blue-light);
-
-}
-
-
-.nav-dropdown:hover
-.nav-dropdown-menu,
-.nav-dropdown.open
-.nav-dropdown-menu{
-
-  opacity:1;
-
-  visibility:visible;
-
-  transform:
-    translate(
-      -50%,
-      0
-    );
-
-}
-
-
-.nav-dropdown:hover
-.nav-chevron,
-.nav-dropdown.open
-.nav-chevron{
-
-  transform:
-    rotate(180deg);
-
-}
 
 
 
@@ -1160,26 +880,6 @@ footer{
   max-width:900px
 ){
 
-  nav{
-
-    gap:
-      15px;
-
-    padding:
-      12px 16px;
-
-  }
-
-
-  nav a,
-  .nav-dropdown-button{
-
-    font-size:
-      13px;
-
-  }
-
-
   .wonca-hero-inner{
 
     grid-template-columns:
@@ -1217,41 +917,6 @@ footer{
 @media(
   max-width:650px
 ){
-
-  header{
-
-    padding:
-      18px 5%;
-
-  }
-
-
-  .logo img{
-
-    width:
-      62px;
-
-  }
-
-
-  nav{
-
-    gap:
-      8px;
-
-    padding:
-      10px 12px;
-
-  }
-
-
-  nav a,
-  .nav-dropdown-button{
-
-    font-size:
-      11px;
-
-  }
 
 
   .wonca-hero{
@@ -1319,91 +984,7 @@ footer{
 
 
 
-<!-- =====================================================
-   HEADER
-===================================================== -->
-
-<header>
-
-
-  <a
-    href="index.html#accueil"
-    class="logo"
-  >
-
-    <img
-      src="files/logo.png"
-      alt="Logo Ti'Doc"
-    >
-
-  </a>
-
-
-  <nav>
-
-
-    <a href="index.html#accueil">
-      Accueil
-    </a>
-
-
-    <div class="nav-dropdown">
-
-
-      <button
-        class="nav-dropdown-button"
-        type="button"
-      >
-
-        À propos
-
-        <span class="nav-chevron">
-          ⌄
-        </span>
-
-      </button>
-
-
-      <div class="nav-dropdown-menu">
-
-  <a href="index.html#apropos">
-    Notre histoire
-  </a>
-
-  <a href="equipe.html">
-    L'équipe
-  </a>
-
-  <a href="wonca.html">
-    WONCA 2026
-  </a>
-
-</div>
-
-
-    </div>
-
-
-    <a href="activites.html">
-      Nos activités
-    </a>
-
-
-    <a href="billetterie.html">
-      Billetterie
-    </a>
-
-
-    <a href="index.html#contact">
-      Contact
-    </a>
-
-
-  </nav>
-
-
-</header>
-
+<div id="header-container"></div>
 
 
 <!-- =====================================================
@@ -1738,63 +1319,8 @@ footer{
 
 
 
-<!-- =====================================================
-   DROPDOWN MOBILE / TABLETTE
-===================================================== -->
 
 <script>
-
-
-const aboutDropdown =
-  document.querySelector(
-    ".nav-dropdown"
-  );
-
-
-const aboutDropdownButton =
-  document.querySelector(
-    ".nav-dropdown-button"
-  );
-
-
-aboutDropdownButton?.addEventListener(
-  "click",
-  function(event){
-
-    event.stopPropagation();
-
-
-    aboutDropdown
-      ?.classList
-      .toggle(
-        "open"
-      );
-
-  }
-);
-
-
-document.addEventListener(
-  "click",
-  function(event){
-
-    if(
-      aboutDropdown &&
-      !aboutDropdown.contains(
-        event.target
-      )
-    ){
-
-      aboutDropdown
-        .classList
-        .remove(
-          "open"
-        );
-
-    }
-
-  }
-);
 
 
 /* =====================================================
@@ -1913,6 +1439,7 @@ document.addEventListener(
   
 </script>
 
+<script src="header.js"></script>  
 
 </body>
 
