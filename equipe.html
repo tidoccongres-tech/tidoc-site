@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  L'équipe — Ti'Doc
+</title>
+
+
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+  --blue:#198CA7;
+  --blue-dark:#0B5367;
+  --blue-deep:#073C4B;
+  --blue-light:#E9F7FA;
+  --white:#FFFFFF;
+  --text:#153C46;
+  --grey:#637D84;
+}
+
+
+/* =====================================================
+   BASE
+===================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:var(--text);
+
+  background:#F8FCFD;
+
+  overflow-x:hidden;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+
+  z-index:1000;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  padding:
+    22px 7%;
+
+  background:transparent;
+}
+
+
+/* LOGO */
+
+.logo img{
+  width:82px;
+  height:auto;
+}
+
+
+/* =====================================================
+   NAV
+===================================================== */
+
+nav{
+  display:flex;
+
+  align-items:center;
+
+  gap:36px;
+
+  padding:
+    15px 25px;
+
+  border-radius:50px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 10px 35px
+    rgba(0,0,0,.08);
+}
+
+nav a{
+  color:var(--blue-dark);
+
+  font-size:15px;
+  font-weight:600;
+
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--blue);
+}
+
+
+/* =====================================================
+   DROPDOWN
+===================================================== */
+
+.nav-dropdown{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+}
+
+
+.nav-dropdown-button{
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  padding:0;
+
+  border:0;
+
+  background:transparent;
+
+  color:var(--blue-dark);
+
+  font-family:inherit;
+
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+
+.nav-dropdown-button:hover{
+  color:var(--blue);
+}
+
+
+.nav-chevron{
+  display:inline-block;
+
+  font-size:14px;
+
+  transition:
+    transform .25s ease;
+}
+
+
+.nav-dropdown-menu{
+  position:absolute;
+
+  top:calc(100% + 22px);
+  left:50%;
+
+  min-width:190px;
+
+  padding:9px;
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:
+    translate(-50%, -8px);
+
+  border:
+    1px solid
+    rgba(25,140,167,.12);
+
+  border-radius:18px;
+
+  background:
+    rgba(255,255,255,.98);
+
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  box-shadow:
+    0 18px 45px
+    rgba(7,60,75,.15);
+
+  transition:
+    opacity .22s ease,
+    transform .22s ease,
+    visibility .22s ease;
+
+  z-index:1200;
+}
+
+
+.nav-dropdown-menu::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+
+  top:-24px;
+
+  height:24px;
+}
+
+
+.nav-dropdown-menu a{
+  display:block;
+
+  padding:12px 14px;
+
+  border-radius:12px;
+
+  color:var(--blue-dark);
+
+  font-size:14px;
+
+  white-space:nowrap;
+
+  transition:.2s;
+}
+
+
+.nav-dropdown-menu a:hover{
+  background:var(--blue-light);
+}
+
+
+.nav-dropdown:hover
+.nav-dropdown-menu,
+.nav-dropdown.open
+.nav-dropdown-menu{
+  opacity:1;
+  visibility:visible;
+
+  transform:
+    translate(-50%,0);
+}
+
+
+.nav-dropdown:hover
+.nav-chevron,
+.nav-dropdown.open
+.nav-chevron{
+  transform:rotate(180deg);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.team-hero{
+  min-height:600px;
+
+  padding:
+    165px 7%
+    95px;
+
+  display:flex;
+  align-items:flex-end;
+
+  color:white;
+
+  background:
+
+    radial-gradient(
+      circle at 82% 20%,
+      rgba(25,140,167,.28),
+      transparent 36%
+    ),
+
+    linear-gradient(
+      130deg,
+      #073C4B,
+      #0B5367
+    );
+}
+
+
+.team-hero-inner{
+  width:min(1200px,100%);
+  margin:auto;
+}
+
+
+.hero-tag{
+  display:inline-block;
+
+  margin-bottom:20px;
+
+  padding:
+    9px 16px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.38);
+
+  border-radius:50px;
+
+  background:
+    rgba(255,255,255,.10);
+
+  font-size:12px;
+  font-weight:800;
+
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+
+
+.team-hero h1{
+  max-width:850px;
+
+  font-size:
+    clamp(
+      50px,
+      7vw,
+      85px
+    );
+
+  line-height:1;
+}
+
+
+.team-hero p{
+  max-width:700px;
+
+  margin-top:24px;
+
+  color:
+    rgba(255,255,255,.85);
+
+  font-size:19px;
+  line-height:1.75;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.team-intro{
+  padding:
+    120px 7%
+    80px;
+
+  background:white;
+}
+
+
+.team-intro-inner{
+  width:min(900px,100%);
+  margin:auto;
+
+  text-align:center;
+}
+
+
+.section-tag{
+  color:var(--blue);
+
+  font-size:13px;
+  font-weight:800;
+
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+
+.team-intro h2{
+  margin-top:14px;
+
+  color:var(--blue-deep);
+
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      60px
+    );
+
+  line-height:1.08;
+}
+
+
+.team-intro p{
+  margin-top:22px;
+
+  color:var(--grey);
+
+  font-size:18px;
+  line-height:1.8;
+}
+
+
+/* =====================================================
+   BUREAU
+===================================================== */
+
+.office-section{
+  padding:
+    60px 7%
+    130px;
+
+  background:white;
+}
+
+
+.office-inner{
+  width:min(1200px,100%);
+  margin:auto;
+}
+
+
+.office-heading{
+  max-width:700px;
+
+  margin-bottom:50px;
+}
+
+
+.office-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      58px
+    );
+}
+
+
+.office-heading p{
+  margin-top:16px;
+
+  color:var(--grey);
+
+  line-height:1.7;
+}
+
+
+/* =====================================================
+   CARTES BUREAU
+===================================================== */
+
+.office-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:24px;
+}
+
+
+.office-card{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:330px;
+
+  padding:34px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #FFFFFF,
+      #F2FAFB
+    );
+
+  border:
+    1px solid
+    #E0EEF1;
+
+  box-shadow:
+    0 18px 45px
+    rgba(7,60,75,.08);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.office-card:hover{
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+    0 25px 60px
+    rgba(7,60,75,.12);
+}
+
+
+.office-card::before{
+  content:"";
+
+  position:absolute;
+
+  top:-70px;
+  right:-70px;
+
+  width:180px;
+  height:180px;
+
+  border-radius:50%;
+
+  background:
+    rgba(25,140,167,.08);
+}
+
+
+.office-role{
+  position:relative;
+  z-index:2;
+
+  color:var(--blue);
+
+  font-size:12px;
+  font-weight:900;
+
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+}
+
+
+.office-card h3{
+  position:relative;
+  z-index:2;
+
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:30px;
+
+  line-height:1.2;
+}
+
+
+.office-card h3 span{
+  display:block;
+
+  margin-top:5px;
+
+  color:var(--blue-dark);
+
+  font-size:22px;
+
+  font-weight:600;
+}
+
+
+/* =====================================================
+   FONDATEURS
+===================================================== */
+
+.founders-section{
+  padding:
+    120px 7%;
+
+  background:
+    var(--blue-light);
+}
+
+
+.founders-inner{
+  width:min(1100px,100%);
+  margin:auto;
+}
+
+
+.founders-heading{
+  max-width:760px;
+
+  margin:
+    0 auto
+    50px;
+
+  text-align:center;
+}
+
+
+.founders-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      58px
+    );
+}
+
+
+.founders-heading p{
+  margin-top:18px;
+
+  color:var(--grey);
+
+  font-size:17px;
+  line-height:1.7;
+}
+
+
+.founders-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:20px;
+}
+
+
+.founder-card{
+  padding:
+    34px 24px;
+
+  text-align:center;
+
+  border-radius:26px;
+
+  background:white;
+
+  border:
+    1px solid
+    rgba(25,140,167,.12);
+
+  box-shadow:
+    0 12px 35px
+    rgba(7,60,75,.06);
+}
+
+
+.founder-icon{
+  width:62px;
+  height:62px;
+
+  margin:
+    0 auto
+    20px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:var(--blue-light);
+
+  color:var(--blue);
+
+  font-size:24px;
+  font-weight:900;
+}
+
+
+.founder-card h3{
+  color:var(--blue-deep);
+
+  font-size:23px;
+}
+
+
+.founder-card p{
+  margin-top:6px;
+
+  color:var(--grey);
+
+  font-size:14px;
+}
+
+
+/* =====================================================
+   PETIT BLOC HISTOIRE
+===================================================== */
+
+.story-strip{
+  margin:
+    0 7%
+    120px;
+
+  padding:
+    70px 8%;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:38px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #073C4B,
+      #198CA7
+    );
+
+  color:white;
+}
+
+
+.story-strip::after{
+  content:"Ti'Doc";
+
+  position:absolute;
+
+  right:-20px;
+  bottom:-45px;
+
+  font-size:150px;
+  font-weight:900;
+
+  color:
+    rgba(255,255,255,.05);
+}
+
+
+.story-strip-inner{
+  position:relative;
+
+  z-index:2;
+
+  max-width:760px;
+}
+
+
+.story-strip h2{
+  font-size:
+    clamp(
+      36px,
+      5vw,
+      56px
+    );
+
+  line-height:1.05;
+}
+
+
+.story-strip p{
+  margin-top:18px;
+
+  max-width:680px;
+
+  color:
+    rgba(255,255,255,.82);
+
+  font-size:18px;
+  line-height:1.7;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+  padding:
+    35px 7%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  background:var(--blue-deep);
+
+  color:
+    rgba(255,255,255,.78);
+
+  font-size:14px;
+}
+
+
+.footer-logo{
+  width:65px;
+}
+
+
+/* =====================================================
+   TABLETTE
+===================================================== */
+
+@media(max-width:900px){
+
+  header{
+    padding:
+      18px 5%;
+  }
+
+
+  nav{
+    gap:15px;
+
+    padding:
+      12px 16px;
+  }
+
+
+  nav a,
+  .nav-dropdown-button{
+    font-size:13px;
+  }
+
+
+  .office-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+
+    gap:15px;
+  }
+
+
+  .office-card{
+    padding:26px;
+
+    min-height:300px;
+  }
+
+
+  .office-card h3{
+    font-size:25px;
+  }
+
+
+  .founders-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:650px){
+
+  header{
+    padding:
+      18px 5%;
+
+    align-items:flex-start;
+  }
+
+
+  .logo img{
+    width:62px;
+  }
+
+
+  nav{
+    gap:8px;
+
+    padding:
+      10px 12px;
+  }
+
+
+  nav a,
+  .nav-dropdown-button{
+    font-size:11px;
+  }
+
+
+  .team-hero{
+    min-height:540px;
+
+    padding:
+      135px 5%
+      70px;
+  }
+
+
+  .team-hero h1{
+    font-size:
+      clamp(
+        45px,
+        14vw,
+        65px
+      );
+  }
+
+
+  .team-hero p{
+    font-size:17px;
+  }
+
+
+  .team-intro{
+    padding:
+      90px 5%
+      60px;
+  }
+
+
+  .office-section{
+    padding:
+      40px 5%
+      90px;
+  }
+
+
+  .office-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  .office-card{
+    min-height:240px;
+  }
+
+
+  .founders-section{
+    padding:
+      90px 5%;
+  }
+
+
+  .founders-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  .story-strip{
+    margin:
+      0 5%
+      90px;
+
+    padding:
+      55px 28px;
+  }
+
+
+  .story-strip::after{
+    font-size:90px;
+  }
+
+
+  footer{
+    flex-direction:column;
+
+    gap:20px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+   HEADER
+===================================================== -->
+
+<header>
+
+  <a
+    href="index.html#accueil"
+    class="logo"
+  >
+
+    <img
+      src="files/logo.png"
+      alt="Logo Ti'Doc"
+    >
+
+  </a>
+
+
+  <nav>
+
+    <a href="index.html#accueil">
+      Accueil
+    </a>
+
+
+    <div class="nav-dropdown">
+
+      <button
+        class="nav-dropdown-button"
+        type="button"
+      >
+
+        À propos
+
+        <span class="nav-chevron">
+          ⌄
+        </span>
+
+      </button>
+
+
+      <div class="nav-dropdown-menu">
+
+        <a href="index.html#apropos">
+          Notre histoire
+        </a>
+
+        <a href="equipe.html">
+          L'équipe
+        </a>
+
+        <a href="wonca.html">
+          WONCA 2026
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <a href="activites.html">
+      Nos activités
+    </a>
+
+    <a href="billetterie.html">
+      Billetterie
+    </a>
+
+    <a href="index.html#contact">
+      Contact
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+   HERO
+===================================================== -->
+
+<section class="team-hero">
+
+  <div class="team-hero-inner">
+
+    <span class="hero-tag">
+      Derrière Ti'Doc
+    </span>
+
+    <h1>
+      Une équipe étudiante engagée.
+    </h1>
+
+    <p>
+      Ti'Doc est porté par des étudiants qui
+      imaginent, organisent et font vivre chaque
+      édition du congrès avec la même envie :
+      créer un événement utile, humain et accessible.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+   INTRO
+===================================================== -->
+
+<section class="team-intro">
+
+  <div class="team-intro-inner">
+
+    <span class="section-tag">
+      L'équipe
+    </span>
+
+    <h2>
+      Les visages derrière le projet.
+    </h2>
+
+    <p>
+      De sa création à aujourd'hui, Ti'Doc grandit
+      grâce à l'investissement d'étudiants qui donnent
+      de leur temps, de leur énergie et leurs idées
+      pour faire évoluer le congrès.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+   BUREAU
+===================================================== -->
+
+<section class="office-section">
+
+  <div class="office-inner">
+
+    <div class="office-heading">
+
+      <span class="section-tag">
+        Bureau 2027
+      </span>
+
+      <h2>
+        Le bureau Ti'Doc.
+      </h2>
+
+      <p>
+        L'équipe chargée de coordonner l'association
+        et de porter la préparation de la prochaine édition.
+      </p>
+
+    </div>
+
+
+    <div class="office-grid">
+
+
+      <!-- PRÉSIDENTE -->
+
+      <article class="office-card">
+
+        <span class="office-role">
+          Présidente
+        </span>
+
+        <h3>
+          BOUQUET
+          <span>Aurore</span>
+        </h3>
+
+      </article>
+
+
+
+      <!-- VICE-PRÉSIDENT -->
+
+      <article class="office-card">
+
+        <span class="office-role">
+          Vice-président
+        </span>
+
+        <h3>
+          BORDAGE
+          <span>Clarence</span>
+        </h3>
+
+      </article>
+
+
+
+      <!-- TRÉSORIÈRE -->
+
+      <article class="office-card">
+
+        <span class="office-role">
+          Trésorière
+        </span>
+
+        <h3>
+          ALEXANDRE
+          <span>Marine</span>
+        </h3>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+   FONDATEURS
+===================================================== -->
+
+<section class="founders-section">
+
+  <div class="founders-inner">
+
+    <div class="founders-heading">
+
+      <span class="section-tag">
+        À l'origine de Ti'Doc
+      </span>
+
+      <h2>
+        Les membres fondateurs.
+      </h2>
+
+      <p>
+        Ti'Doc est né d'une idée portée par trois
+        étudiantes souhaitant créer un congrès pensé
+        par les étudiants et pour les étudiants.
+      </p>
+
+    </div>
+
+
+    <div class="founders-grid">
+
+
+      <div class="founder-card">
+
+        <div class="founder-icon">
+          01
+        </div>
+
+        <h3>
+          BOUQUET Aurore
+        </h3>
+
+        <p>
+          Membre fondatrice
+        </p>
+
+      </div>
+
+
+
+      <div class="founder-card">
+
+        <div class="founder-icon">
+          02
+        </div>
+
+        <h3>
+          ETIENNE Elise
+        </h3>
+
+        <p>
+          Membre fondatrice
+        </p>
+
+      </div>
+
+
+
+      <div class="founder-card">
+
+        <div class="founder-icon">
+          03
+        </div>
+
+        <h3>
+          ALEXANDRE Marine
+        </h3>
+
+        <p>
+          Membre fondatrice
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+   HISTOIRE
+===================================================== -->
+
+<section class="story-strip">
+
+  <div class="story-strip-inner">
+
+    <h2>
+      Une idée étudiante devenue une aventure collective.
+    </h2>
+
+    <p>
+      Depuis sa création, Ti'Doc continue de grandir
+      grâce aux membres qui rejoignent le projet,
+      aux intervenants, aux partenaires et aux étudiants
+      qui participent à chaque nouvelle édition.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+   FOOTER
+===================================================== -->
+
+<footer>
+
+  <img
+    src="files/logo.png"
+    alt="Ti'Doc"
+    class="footer-logo"
+  >
+
+  <span>
+    © Ti'Doc 2027 — Cluj-Napoca
+  </span>
+
+</footer>
+
+
+
+<!-- =====================================================
+   DROPDOWN
+===================================================== -->
+
+<script>
+
+const aboutDropdown =
+  document.querySelector(
+    ".nav-dropdown"
+  );
+
+
+const aboutDropdownButton =
+  document.querySelector(
+    ".nav-dropdown-button"
+  );
+
+
+aboutDropdownButton?.addEventListener(
+  "click",
+  function(event){
+
+    event.stopPropagation();
+
+
+    aboutDropdown
+      ?.classList
+      .toggle(
+        "open"
+      );
+
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      aboutDropdown &&
+      !aboutDropdown.contains(
+        event.target
+      )
+    ){
+
+      aboutDropdown
+        .classList
+        .remove(
+          "open"
+        );
+
+    }
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
