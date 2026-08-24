@@ -174,14 +174,17 @@ nav a:hover{
 
   nav{
     gap:15px;
-
-    padding:
-      12px 16px;
+    padding:12px 16px;
   }
 
   nav a,
-  .nav-dropdown-button{
+  .nav-main-link{
     font-size:13px;
+  }
+
+  .nav-dropdown-toggle{
+    width:22px;
+    height:22px;
   }
 
 }
@@ -195,59 +198,40 @@ nav a:hover{
 
   header{
     align-items:flex-start;
-
-    padding:
-      18px 5%;
+    padding:18px 5%;
   }
-
 
   .logo img{
     width:62px;
   }
 
-
   nav{
     gap:8px;
-
-    padding:
-      10px 12px;
+    padding:10px 12px;
   }
-
 
   nav a,
-  .nav-dropdown-button{
-    font-size:11px;
-  }
-
-
-  .nav-dropdown-menu{
-    top:
-      calc(100% + 17px);
-
-    min-width:165px;
-
-    padding:7px;
-  }
-
-
-  .nav-dropdown-menu a{
-    padding:
-      10px 11px;
-
-    font-size:
-
   .nav-main-link{
     font-size:11px;
   }
-
 
   .nav-dropdown-toggle{
     width:18px;
     height:18px;
   }
 
-
   .nav-chevron{
+    font-size:11px;
+  }
+
+  .nav-dropdown-menu{
+    top:calc(100% + 17px);
+    min-width:165px;
+    padding:7px;
+  }
+
+  .nav-dropdown-menu a{
+    padding:10px 11px;
     font-size:11px;
   }
 
