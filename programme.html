@@ -1956,19 +1956,27 @@ const full =
           <article
 
             class="
-              activity-card
-              conference-card
-            "
+  activity-card
+  conference-card
+  ${full ? "disabled" : ""}
+"
 
-            data-id="${escapeHtml(id)}"
+data-id="${escapeHtml(id)}"
 
-            onclick="
-              toggleConference(
-                '${escapeJs(id)}'
-              )
-            "
+${
+  full
 
-          >
+    ? ""
+
+    : `
+      onclick="
+        toggleConference(
+          '${escapeJs(id)}'
+        )
+      "
+    `
+}
+>
 
 
             <div class="activity-top">
