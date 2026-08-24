@@ -1916,7 +1916,7 @@ footer{
 </style>
 
 </head>
-
+  
 
 <body>
 
@@ -5190,5 +5190,64 @@ loadAllPhotos();
 
 </script>
 
+<!-- =====================================================
+   MENU DÉROULANT À PROPOS
+===================================================== -->
+
+<script>
+
+const aboutDropdown =
+  document.querySelector(
+    ".nav-dropdown"
+  );
+
+
+const aboutDropdownButton =
+  document.querySelector(
+    ".nav-dropdown-button"
+  );
+
+
+aboutDropdownButton?.addEventListener(
+  "click",
+  function(event){
+
+    event.stopPropagation();
+
+
+    aboutDropdown
+      ?.classList
+      .toggle(
+        "open"
+      );
+
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      aboutDropdown &&
+      !aboutDropdown.contains(
+        event.target
+      )
+    ){
+
+      aboutDropdown
+        .classList
+        .remove(
+          "open"
+        );
+
+    }
+
+  }
+);
+
+</script>
+  
 </body>
 </html>
