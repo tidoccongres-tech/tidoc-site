@@ -4854,7 +4854,35 @@ else{
 
 }
 
+/*
+  Retirer le contour bleu après 3 secondes
+*/
 
+setTimeout(
+  () => {
+
+    targetPhoto
+      .classList
+      .remove(
+        "gallery-selected"
+      );
+
+  },
+  3000
+);
+
+
+/*
+  FIN DU CLIC SUR LA CARTE
+*/
+
+      }
+    );
+
+  });
+
+}
+        
 /* =====================================================
    CHARGER TOUTES LES GALERIES
 ===================================================== */
