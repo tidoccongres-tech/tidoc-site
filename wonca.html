@@ -973,7 +973,145 @@ nav a:hover{
 
 }
 
+/* =====================================================
+   AFFICHE PLEIN ÉCRAN
+===================================================== */
 
+.poster-lightbox{
+  position:fixed;
+
+  inset:0;
+
+  z-index:5000;
+
+  padding:35px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(3,30,38,.94);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+
+.poster-lightbox.open{
+  opacity:1;
+  visibility:visible;
+}
+
+
+.poster-lightbox img{
+  width:auto;
+  height:auto;
+
+  max-width:
+    min(
+      1100px,
+      92vw
+    );
+
+  max-height:
+    92vh;
+
+  object-fit:contain;
+
+  border-radius:18px;
+
+  box-shadow:
+    0 30px 100px
+    rgba(0,0,0,.45);
+}
+
+
+.poster-lightbox-close{
+  position:absolute;
+
+  top:24px;
+  right:30px;
+
+  width:50px;
+  height:50px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:0;
+  border-radius:50%;
+
+  color:white;
+
+  background:
+    rgba(255,255,255,.14);
+
+  font-size:32px;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+
+.poster-lightbox-close:hover{
+  background:
+    rgba(255,255,255,.25);
+
+  transform:
+    scale(1.05);
+}
+
+
+@media(max-width:650px){
+
+  .poster-lightbox{
+    padding:18px;
+  }
+
+
+  .poster-lightbox img{
+    max-width:95vw;
+    max-height:88vh;
+
+    border-radius:12px;
+  }
+
+
+  .poster-lightbox-close{
+    top:15px;
+    right:15px;
+
+    width:44px;
+    height:44px;
+  }
+
+
+  .participation-image::after{
+    opacity:1;
+
+    right:20px;
+    bottom:20px;
+
+    transform:none;
+  }
+
+}
 
 /* =====================================================
    FOOTER
