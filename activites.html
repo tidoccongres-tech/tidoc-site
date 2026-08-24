@@ -4263,305 +4263,393 @@ function setupActivityGalleryLinks(){
     );
 
 
-  cards.forEach(
-    card => {
+  cards.forEach(card => {
 
-      card.addEventListener(
-        "click",
-        () => {
+    /*
+      Évite d'ajouter deux fois le même clic
+    */
 
-          const carouselId =
-            card.dataset.galleryTarget;
+    if(card.dataset.galleryReady === "yes"){
+      return;
+    }
 
-
-          const activity =
-            card.dataset.activity;
+    card.dataset.galleryReady = "yes";
 
 
-          const photoKey =
-            normalizeGalleryText(
-              card.dataset.photoKey || ""
+    card.addEventListener(
+      "click",
+      async () => {
+
+        const carouselId =
+          card.dataset.galleryTarget;
+
+
+        const activity =
+          card.dataset.activity;
+
+
+        const photoKey =
+          normalizeGalleryText(
+            card.dataset.photoKey || ""
+          );
+
+
+        const carousel =
+          document.getElementById(
+            carouselId
+          );
+
+
+        if(!carousel){
+          return;
+        }
+
+
+        const gallerySection =
+          carousel.closest(
+            ".drive-gallery-section"
+          );
+
+
+        if(!gallerySection){
+          return;
+        }
+
+
+        /* ==========================================
+           CRÉER / AFFICHER LE MESSAGE
+        ========================================== */
+
+        let loadingMessage =
+          gallerySection.querySelector(
+            ".activity-loading-message"
+          );
+
+
+        if(!loadingMessage){
+
+          loadingMessage =
+            document.createElement(
+              "div"
             );
 
 
-          const carousel =
-            document.getElementById(
-              carouselId
-            );
+          loadingMessage.className =
+            "activity-loading-message";
 
 
-          if(!carousel){
-            return;
-          }
+          loadingMessage.innerHTML = `
 
+            <div class="activity-loading-spinner"></div>
 
-          const gallerySection =
-            carousel.closest(
-              ".drive-gallery-section"
-            );
-
-
-          /* ==========================================
-             MESSAGE TEMPORAIRE DE CHARGEMENT
-          ========================================== */
-
-          let loadingMessage =
-            gallerySection.querySelector(
-              ".activity-loading-message"
-            );
-
-
-          if(!loadingMessage){
-
-            loadingMessage =
-              document.createElement(
-                "div"
-              );
-
-            loadingMessage.className =
-              "activity-loading-message";
-
-            loadingMessage.innerHTML = `
-              <div class="activity-loading-spinner"></div>
+            <div>
 
               <strong>
                 Chargement des photos…
               </strong>
 
+              <br>
+
               <span>
-                Quelques secondes, la galerie arrive 💙
+                On recherche les photos de cette activité 💙
               </span>
-            `;
+
+            </div>
+
+          `;
 
 
-            gallerySection.insertBefore(
-              loadingMessage,
-              carousel
-            );
+          gallerySection.insertBefore(
+            loadingMessage,
+            carousel
+          );
 
-          }
+        }
 
 
-          loadingMessage.classList.add(
-            "visible"
+        loadingMessage.innerHTML = `
+
+          <div class="activity-loading-spinner"></div>
+
+          <div>
+
+            <strong>
+              Chargement des photos…
+            </strong>
+
+            <br>
+
+            <span>
+              On recherche les photos de cette activité 💙
+            </span>
+
+          </div>
+
+        `;
+
+
+        loadingMessage.classList.add(
+          "visible"
+        );
+
+
+        /* ==========================================
+           DESCENDRE VERS LA GALERIE
+        ========================================== */
+
+        gallerySection.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+
+        /* ==========================================
+           ATTENDRE QUE LES PHOTOS SOIENT CHARGÉES
+           
+           Maximum environ 10 secondes
+        ========================================== */
+
+        let attempts =
+          0;
+
+
+        while(
+          carousel.querySelectorAll(
+            ".drive-photo"
+          ).length === 0
+          &&
+          attempts < 40
+        ){
+
+          await new Promise(
+            resolve =>
+              setTimeout(
+                resolve,
+                250
+              )
           );
 
 
-          /* ==========================================
-             DESCENDRE VERS LA GALERIE
-          ========================================== */
+          attempts++;
 
-          gallerySection?.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-          });
+        }
 
 
-          /* ==========================================
-             ENLEVER L'ANCIEN CONTOUR
-          ========================================== */
+        /* ==========================================
+           SUPPRIMER ANCIEN CONTOUR
+        ========================================== */
 
-          document
-            .querySelectorAll(
-              ".drive-photo.gallery-selected"
-            )
-            .forEach(
-              photo =>
-                photo.classList.remove(
-                  "gallery-selected"
-                )
+        document
+          .querySelectorAll(
+            ".drive-photo.gallery-selected"
+          )
+          .forEach(
+            photo =>
+              photo.classList.remove(
+                "gallery-selected"
+              )
+          );
+
+
+        /* ==========================================
+           RECHERCHE AVEC LA CLÉ PHOTO
+        ========================================== */
+
+        let targetPhoto =
+          null;
+
+
+        if(photoKey){
+
+          const photos =
+            Array.from(
+              carousel.querySelectorAll(
+                ".drive-photo"
+              )
             );
 
 
-          /* ==========================================
-             CHERCHER AVEC LA CLÉ SIMPLE
-          ========================================== */
+          targetPhoto =
+            photos.find(
+              photo => {
 
-          let targetPhoto =
-            null;
-
-
-          if(photoKey){
-
-            const photos =
-              Array.from(
-                carousel.querySelectorAll(
-                  ".drive-photo"
-                )
-              );
-
-
-            targetPhoto =
-              photos.find(
-                photo => {
-
-                  const search =
-                    normalizeGalleryText(
-                      [
-                        photo.dataset.search,
-                        photo.dataset.activity
-                      ]
-                        .filter(Boolean)
-                        .join(" ")
-                    );
-
-
-                  const words =
-                    photoKey
-                      .split(" ")
-                      .filter(Boolean);
-
-
-                  return words.every(
-                    word =>
-                      search.includes(
-                        word
-                      )
+                const search =
+                  normalizeGalleryText(
+                    [
+                      photo.dataset.search,
+                      photo.dataset.activity
+                    ]
+                      .filter(Boolean)
+                      .join(" ")
                   );
 
-                }
-              );
 
-          }
-
-
-          /* ==========================================
-             SINON AVEC LE TITRE COMPLET
-          ========================================== */
-
-          if(!targetPhoto){
-
-            targetPhoto =
-              findActivityPhoto(
-                carousel,
-                activity
-              );
-
-          }
+                const words =
+                  photoKey
+                    .split(" ")
+                    .filter(Boolean);
 
 
-          if(!targetPhoto){
-
-            console.warn(
-              "Photo introuvable pour :",
-              activity,
-              "clé :",
-              photoKey
-            );
-
-
-            loadingMessage.innerHTML = `
-              <strong>
-                Photos en cours de chargement…
-              </strong>
-
-              <span>
-                La galerie n'est pas encore prête.
-                Réessayez dans quelques secondes 💙
-              </span>
-            `;
-
-
-            setTimeout(
-              () => {
-
-                loadingMessage.classList.remove(
-                  "visible"
+                return words.every(
+                  word =>
+                    search.includes(
+                      word
+                    )
                 );
 
-              },
-              2500
+              }
             );
 
-
-            return;
-
-          }
+        }
 
 
-          /* ==========================================
-             CENTRER LA BONNE PHOTO
-          ========================================== */
+        /* ==========================================
+           SINON RECHERCHE AVEC LE TITRE
+        ========================================== */
+
+        if(!targetPhoto){
+
+          targetPhoto =
+            findActivityPhoto(
+              carousel,
+              activity
+            );
+
+        }
+
+
+        /* ==========================================
+           AUCUNE PHOTO TROUVÉE
+        ========================================== */
+
+        if(!targetPhoto){
+
+          loadingMessage.innerHTML = `
+
+            <div>
+
+              <strong>
+                Les photos sont encore en cours de chargement…
+              </strong>
+
+              <br>
+
+              <span>
+                Réessayez dans quelques secondes 💙
+              </span>
+
+            </div>
+
+          `;
+
 
           setTimeout(
             () => {
 
-              const carouselRect =
-                carousel
-                  .getBoundingClientRect();
-
-
-              const photoRect =
-                targetPhoto
-                  .getBoundingClientRect();
-
-
-              const targetScroll =
-                carousel.scrollLeft
-                +
-                photoRect.left
-                -
-                carouselRect.left
-                -
-                (
-                  carousel.clientWidth
-                  -
-                  targetPhoto.clientWidth
-                ) / 2;
-
-
-              carousel.scrollTo({
-
-                left:
-                  Math.max(
-                    0,
-                    targetScroll
-                  ),
-
-                behavior:
-                  "smooth"
-
-              });
-
-
-              targetPhoto
+              loadingMessage
                 .classList
-                .add(
-                  "gallery-selected"
+                .remove(
+                  "visible"
                 );
 
+            },
+            3000
+          );
 
-              /* ======================================
-                 CACHER LE MESSAGE
-              ====================================== */
 
-              loadingMessage.classList.remove(
+          return;
+
+        }
+
+
+        /* ==========================================
+           CENTRER LA BONNE PHOTO
+        ========================================== */
+
+        const carouselRect =
+          carousel
+            .getBoundingClientRect();
+
+
+        const photoRect =
+          targetPhoto
+            .getBoundingClientRect();
+
+
+        const targetScroll =
+          carousel.scrollLeft
+          +
+          photoRect.left
+          -
+          carouselRect.left
+          -
+          (
+            carousel.clientWidth
+            -
+            targetPhoto.clientWidth
+          ) / 2;
+
+
+        carousel.scrollTo({
+
+          left:
+            Math.max(
+              0,
+              targetScroll
+            ),
+
+          behavior:
+            "smooth"
+
+        });
+
+
+        /* ==========================================
+           METTRE EN ÉVIDENCE LA PHOTO
+        ========================================== */
+
+        targetPhoto
+          .classList
+          .add(
+            "gallery-selected"
+          );
+
+
+        /* ==========================================
+           PETIT DÉLAI AVANT DE CACHER LE MESSAGE
+        ========================================== */
+
+        setTimeout(
+          () => {
+
+            loadingMessage
+              .classList
+              .remove(
                 "visible"
               );
 
+          },
+          900
+        );
 
-              setTimeout(
-                () => {
 
-                  targetPhoto
-                    .classList
-                    .remove(
-                      "gallery-selected"
-                    );
+        setTimeout(
+          () => {
 
-                },
-                3000
+            targetPhoto
+              .classList
+              .remove(
+                "gallery-selected"
               );
 
-            },
-            1200
-          );
+          },
+          3000
+        );
 
-        }
-      );
+      }
+    );
 
-    }
-  );
+  });
 
 }
 
@@ -4732,13 +4820,6 @@ async function loadAllPhotos(){
       "Ti'Doc 2026"
     );
 
-
-    /*
-      IMPORTANT :
-      les cartes sont activées seulement
-      APRÈS le chargement des photos.
-    */
-
     setupActivityGalleryLinks();
 
   }
@@ -4892,6 +4973,17 @@ setupCarouselArrows(
 /* =====================================================
    LANCEMENT
 ===================================================== */
+
+/*
+  On rend les cartes cliquables TOUT DE SUITE
+*/
+
+setupActivityGalleryLinks();
+
+
+/*
+  Puis on commence à charger les photos
+*/
 
 loadAllPhotos();
 
