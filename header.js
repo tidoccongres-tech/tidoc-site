@@ -54,6 +54,10 @@ async function loadHeader(){
 
 
 
+/* =====================================================
+   MENUS DÉROULANTS
+===================================================== */
+
 function setupHeaderDropdowns(){
 
   const dropdowns =
@@ -65,42 +69,110 @@ function setupHeaderDropdowns(){
   dropdowns.forEach(
     dropdown => {
 
-      const button =
+      const toggle =
         dropdown.querySelector(
-          ".nav-dropdown-button"
+          ".nav-dropdown-toggle"
         );
 
 
-      button?.addEventListener(
+      if(!toggle){
+        return;
+      }
+
+
+      toggle.addEventListener(
         "click",
         function(event){
 
+          event.preventDefault();
           event.stopPropagation();
 
+
+          const isOpen =
+            dropdown.classList.contains(
+              "open"
+            );
+
+
+          /*
+            Fermer tous les autres menus
+          */
 
           dropdowns.forEach(
             otherDropdown => {
 
-              if(
-                otherDropdown !==
-                dropdown
-              ){
-
-                otherDropdown
-                  .classList
-                  .remove(
-                    "open"
-                  );
-
-              }
+              otherDropdown
+                .classList
+                .remove(
+                  "open"
+                );
 
             }
           );
 
 
+          /*
+            Si celui-ci était fermé,
+            on l'ouvre.
+            S'il était déjà ouvert,
+            il reste fermé.
+          */
+
+          if(!isOpen){
+
+            dropdown
+              .classList
+              .add(
+                "open"
+              );
+
+          }
+
+        }
+      );
+
+
+
+      /*
+        Empêche un clic à l'intérieur
+        du sous-menu de déclencher
+        la fermeture immédiatement.
+      */
+
+      const menu =
+        dropdown.querySelector(
+          ".nav-dropdown-menu"
+        );
+
+
+      menu?.addEventListener(
+        "click",
+        function(event){
+
+          event.stopPropagation();
+
+        }
+      );
+
+    }
+  );
+
+
+
+  /* ===================================================
+     CLIC EN DEHORS = FERMER TOUS LES MENUS
+  =================================================== */
+
+  document.addEventListener(
+    "click",
+    function(){
+
+      dropdowns.forEach(
+        dropdown => {
+
           dropdown
             .classList
-            .toggle(
+            .remove(
               "open"
             );
 
@@ -111,18 +183,33 @@ function setupHeaderDropdowns(){
   );
 
 
-  document.addEventListener(
-    "click",
-    function(){
 
-      dropdowns.forEach(
-        dropdown =>
-          dropdown
-            .classList
-            .remove(
-              "open"
-            )
-      );
+  /* ===================================================
+     TOUCHE ÉCHAP = FERMER
+  =================================================== */
+
+  document.addEventListener(
+    "keydown",
+    function(event){
+
+      if(
+        event.key ===
+        "Escape"
+      ){
+
+        dropdowns.forEach(
+          dropdown => {
+
+            dropdown
+              .classList
+              .remove(
+                "open"
+              );
+
+          }
+        );
+
+      }
 
     }
   );
@@ -130,5 +217,9 @@ function setupHeaderDropdowns(){
 }
 
 
+
+/* =====================================================
+   CHARGEMENT DU HEADER
+===================================================== */
 
 loadHeader();
