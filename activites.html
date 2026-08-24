@@ -4294,6 +4294,22 @@ const TIDOC_DRIVE_API =
   "https://script.google.com/macros/s/AKfycbzc0sJmC0QQ1ZzF5Qh02bV-gCnFejaiaFJKv8xYh9uUTqjSel7xoWv5ZzMCxNdhq2J2/exec";
 
 
+<script>
+
+function normalizeGalleryText(value){
+
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[’']/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+}
+
+
 /* =====================================================
    CRÉER UNE PHOTO
 ===================================================== */
@@ -4314,6 +4330,34 @@ function createGalleryPhoto(
     "drive-photo";
 
 
+  const activityTitle =
+    photo[titleKey] ||
+    photo.folder ||
+    defaultTitle ||
+    "";
+
+
+  /*
+    On stocke les informations de la photo
+    pour pouvoir ensuite retrouver l'activité
+    lorsqu'on clique sur une carte.
+  */
+
+  card.dataset.activity =
+    activityTitle;
+
+  card.dataset.search =
+    normalizeGalleryText(
+      [
+        photo[titleKey],
+        photo.folder,
+        defaultTitle
+      ]
+        .filter(Boolean)
+        .join(" ")
+    );
+
+
   const image =
     document.createElement(
       "img"
@@ -4323,8 +4367,7 @@ function createGalleryPhoto(
     photo.image || "";
 
   image.alt =
-    photo[titleKey] ||
-    defaultTitle;
+    activityTitle;
 
   image.loading =
     "lazy";
@@ -4356,9 +4399,7 @@ function createGalleryPhoto(
     );
 
   title.textContent =
-    photo[titleKey] ||
-    photo.folder ||
-    defaultTitle;
+    activityTitle;
 
 
   caption.appendChild(
@@ -4381,6 +4422,339 @@ function createGalleryPhoto(
   return card;
 
 }
+
+
+/* =====================================================
+   TROUVER LA PHOTO D'UNE ACTIVITÉ
+===================================================== */
+
+function findActivityPhoto(
+  carousel,
+  activityName
+){
+
+  const wanted =
+    normalizeGalleryText(
+      activityName
+    );
+
+
+  const photos =
+    Array.from(
+      carousel.querySelectorAll(
+        ".drive-photo"
+      )
+    );
+
+
+  if(
+    photos.length === 0
+  ){
+    return null;
+  }
+
+
+  /*
+    1 — correspondance exacte
+  */
+
+  let result =
+    photos.find(
+      photo =>
+        normalizeGalleryText(
+          photo.dataset.activity
+        ) === wanted
+    );
+
+
+  if(result){
+    return result;
+  }
+
+
+  /*
+    2 — une chaîne contient l'autre
+  */
+
+  result =
+    photos.find(
+      photo => {
+
+        const value =
+          photo.dataset.search || "";
+
+        return (
+          value.includes(wanted) ||
+          wanted.includes(value)
+        );
+
+      }
+    );
+
+
+  if(result){
+    return result;
+  }
+
+
+  /*
+    3 — recherche par mots principaux
+    Utile si le nom du dossier Drive
+    n'est pas exactement identique au site.
+  */
+
+  const ignoredWords =
+    new Set([
+      "de",
+      "du",
+      "des",
+      "la",
+      "le",
+      "les",
+      "un",
+      "une",
+      "et",
+      "dans",
+      "en",
+      "a",
+      "au",
+      "aux",
+      "pour",
+      "sur",
+      "avec",
+      "d",
+      "l"
+    ]);
+
+
+  const wantedWords =
+    wanted
+      .split(" ")
+      .filter(
+        word =>
+          word.length > 2 &&
+          !ignoredWords.has(word)
+      );
+
+
+  let bestPhoto =
+    null;
+
+  let bestScore =
+    0;
+
+
+  photos.forEach(
+    photo => {
+
+      const search =
+        photo.dataset.search || "";
+
+
+      let score =
+        0;
+
+
+      wantedWords.forEach(
+        word => {
+
+          if(
+            search.includes(word)
+          ){
+            score++;
+          }
+
+        }
+      );
+
+
+      if(
+        score > bestScore
+      ){
+
+        bestScore =
+          score;
+
+        bestPhoto =
+          photo;
+
+      }
+
+    }
+  );
+
+
+  /*
+    Il faut au moins deux mots communs
+    pour éviter d'ouvrir une mauvaise photo.
+  */
+
+  if(
+    bestScore >= 2
+  ){
+    return bestPhoto;
+  }
+
+
+  return null;
+
+}
+
+
+/* =====================================================
+   CLIQUER SUR UNE ACTIVITÉ
+===================================================== */
+
+function setupActivityGalleryLinks(){
+
+  const cards =
+    document.querySelectorAll(
+      ".program-card[data-gallery-target]"
+    );
+
+
+  cards.forEach(
+    card => {
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          const carouselId =
+            card.dataset.galleryTarget;
+
+
+          const activity =
+            card.dataset.activity;
+
+
+          const carousel =
+            document.getElementById(
+              carouselId
+            );
+
+
+          if(
+            !carousel
+          ){
+            return;
+          }
+
+
+          /*
+            On descend d'abord jusqu'à
+            toute la section galerie.
+          */
+
+          const gallerySection =
+            carousel.closest(
+              ".drive-gallery-section"
+            );
+
+
+          gallerySection?.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+
+
+          /*
+            On cherche ensuite la photo
+            correspondant à l'activité.
+          */
+
+          const targetPhoto =
+            findActivityPhoto(
+              carousel,
+              activity
+            );
+
+
+          /*
+            On enlève l'ancienne sélection.
+          */
+
+          document
+            .querySelectorAll(
+              ".drive-photo.gallery-selected"
+            )
+            .forEach(
+              photo =>
+                photo.classList.remove(
+                  "gallery-selected"
+                )
+            );
+
+
+          if(
+            !targetPhoto
+          ){
+
+            console.warn(
+              "Photo introuvable pour :",
+              activity
+            );
+
+            return;
+
+          }
+
+
+          /*
+            Petite attente :
+            le scroll vertical démarre d'abord,
+            puis le carrousel se positionne.
+          */
+
+          setTimeout(
+            () => {
+
+              targetPhoto
+                .scrollIntoView({
+                  behavior:"smooth",
+                  block:"nearest",
+                  inline:"center"
+                });
+
+
+              targetPhoto
+                .classList
+                .add(
+                  "gallery-selected"
+                );
+
+
+              /*
+                On retire le contour bleu
+                après quelques secondes.
+              */
+
+              setTimeout(
+                () => {
+
+                  targetPhoto
+                    .classList
+                    .remove(
+                      "gallery-selected"
+                    );
+
+                },
+                3000
+              );
+
+            },
+            450
+          );
+
+        }
+      );
+
+    }
+  );
+
+}
+
+</script>
 
 
 /* =====================================================
