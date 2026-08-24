@@ -18,6 +18,72 @@
 <style>
 
 /* =====================================================
+   MESSAGE DE CHARGEMENT DES PHOTOS
+===================================================== */
+
+.activity-loading-message{
+  display:none;
+
+  width:min(1200px,100%);
+  margin:0 auto 22px;
+
+  padding:18px 24px;
+
+  align-items:center;
+  gap:14px;
+
+  border-radius:18px;
+
+  background:#E9F7FA;
+
+  color:var(--blue-dark);
+
+  font-size:14px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(7,60,75,.07);
+}
+
+.activity-loading-message.visible{
+  display:flex;
+}
+
+.activity-loading-message strong{
+  font-weight:800;
+}
+
+.activity-loading-message span{
+  color:var(--grey);
+}
+
+.activity-loading-spinner{
+  width:22px;
+  height:22px;
+
+  flex:0 0 22px;
+
+  border:3px solid
+    rgba(25,140,167,.20);
+
+  border-top-color:
+    var(--blue);
+
+  border-radius:50%;
+
+  animation:
+    tidocSpin .8s linear infinite;
+}
+
+@keyframes tidocSpin{
+
+  to{
+    transform:rotate(360deg);
+  }
+
+}  
+  
+/* =====================================================
    CARTES PROGRAMME CLIQUABLES
 ===================================================== */
 
@@ -4185,7 +4251,6 @@ function findActivityPhoto(
 
 }
 
-
 /* =====================================================
    CLIQUER SUR UNE ACTIVITÉ
 ===================================================== */
@@ -4236,9 +4301,55 @@ function setupActivityGalleryLinks(){
             );
 
 
-          /*
-            DESCENDRE VERS LA GALERIE
-          */
+          /* ==========================================
+             MESSAGE TEMPORAIRE DE CHARGEMENT
+          ========================================== */
+
+          let loadingMessage =
+            gallerySection.querySelector(
+              ".activity-loading-message"
+            );
+
+
+          if(!loadingMessage){
+
+            loadingMessage =
+              document.createElement(
+                "div"
+              );
+
+            loadingMessage.className =
+              "activity-loading-message";
+
+            loadingMessage.innerHTML = `
+              <div class="activity-loading-spinner"></div>
+
+              <strong>
+                Chargement des photos…
+              </strong>
+
+              <span>
+                Quelques secondes, la galerie arrive 💙
+              </span>
+            `;
+
+
+            gallerySection.insertBefore(
+              loadingMessage,
+              carousel
+            );
+
+          }
+
+
+          loadingMessage.classList.add(
+            "visible"
+          );
+
+
+          /* ==========================================
+             DESCENDRE VERS LA GALERIE
+          ========================================== */
 
           gallerySection?.scrollIntoView({
             behavior:"smooth",
@@ -4246,9 +4357,9 @@ function setupActivityGalleryLinks(){
           });
 
 
-          /*
-            ENLEVER L'ANCIEN CONTOUR
-          */
+          /* ==========================================
+             ENLEVER L'ANCIEN CONTOUR
+          ========================================== */
 
           document
             .querySelectorAll(
@@ -4262,10 +4373,9 @@ function setupActivityGalleryLinks(){
             );
 
 
-          /*
-            CHERCHER D'ABORD
-            GRÂCE À LA CLÉ SIMPLE
-          */
+          /* ==========================================
+             CHERCHER AVEC LA CLÉ SIMPLE
+          ========================================== */
 
           let targetPhoto =
             null;
@@ -4315,10 +4425,9 @@ function setupActivityGalleryLinks(){
           }
 
 
-          /*
-            SI PAS TROUVÉ :
-            RECHERCHE AVEC LE TITRE COMPLET
-          */
+          /* ==========================================
+             SINON AVEC LE TITRE COMPLET
+          ========================================== */
 
           if(!targetPhoto){
 
@@ -4340,14 +4449,39 @@ function setupActivityGalleryLinks(){
               photoKey
             );
 
+
+            loadingMessage.innerHTML = `
+              <strong>
+                Photos en cours de chargement…
+              </strong>
+
+              <span>
+                La galerie n'est pas encore prête.
+                Réessayez dans quelques secondes 💙
+              </span>
+            `;
+
+
+            setTimeout(
+              () => {
+
+                loadingMessage.classList.remove(
+                  "visible"
+                );
+
+              },
+              2500
+            );
+
+
             return;
 
           }
 
 
-          /*
-            CENTRER LA PHOTO
-          */
+          /* ==========================================
+             CENTRER LA BONNE PHOTO
+          ========================================== */
 
           setTimeout(
             () => {
@@ -4390,15 +4524,20 @@ function setupActivityGalleryLinks(){
               });
 
 
-              /*
-                CONTOUR BLEU
-              */
-
               targetPhoto
                 .classList
                 .add(
                   "gallery-selected"
                 );
+
+
+              /* ======================================
+                 CACHER LE MESSAGE
+              ====================================== */
+
+              loadingMessage.classList.remove(
+                "visible"
+              );
 
 
               setTimeout(
