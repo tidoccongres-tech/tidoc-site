@@ -122,6 +122,168 @@ nav a:hover{
   color:var(--blue);
 }
 
+/* =========================
+   MENU DÉROULANT À PROPOS
+========================= */
+
+.nav-dropdown{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+}
+
+
+.nav-dropdown-button{
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  padding:0;
+
+  border:0;
+
+  background:transparent;
+
+  color:var(--blue-dark);
+
+  font-family:inherit;
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+
+.nav-dropdown-button:hover{
+  color:var(--blue);
+}
+
+
+.nav-chevron{
+  display:inline-block;
+
+  font-size:14px;
+
+  transition:
+    transform .25s ease;
+}
+
+
+/* MENU CACHÉ */
+
+.nav-dropdown-menu{
+  position:absolute;
+
+  top:calc(100% + 22px);
+  left:50%;
+
+  min-width:190px;
+
+  padding:9px;
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:
+    translate(-50%, -8px);
+
+  border:
+    1px solid
+    rgba(25,140,167,.12);
+
+  border-radius:18px;
+
+  background:
+    rgba(255,255,255,.98);
+
+  backdrop-filter:
+    blur(16px);
+
+  -webkit-backdrop-filter:
+    blur(16px);
+
+  box-shadow:
+    0 18px 45px
+    rgba(7,60,75,.15);
+
+  transition:
+    opacity .22s ease,
+    transform .22s ease,
+    visibility .22s ease;
+
+  z-index:1200;
+}
+
+
+/* Petit pont invisible :
+   évite que le menu se ferme
+   quand la souris descend */
+
+.nav-dropdown-menu::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+
+  top:-24px;
+
+  height:24px;
+}
+
+
+/* LIENS DU SOUS-MENU */
+
+.nav-dropdown-menu a{
+  display:block;
+
+  padding:12px 14px;
+
+  border-radius:12px;
+
+  color:var(--blue-dark);
+
+  font-size:14px;
+
+  white-space:nowrap;
+
+  transition:.2s;
+}
+
+
+.nav-dropdown-menu a:hover{
+  color:var(--blue-dark);
+
+  background:
+    var(--blue-light);
+}
+
+
+/* OUVERTURE */
+
+.nav-dropdown:hover
+.nav-dropdown-menu,
+.nav-dropdown.open
+.nav-dropdown-menu{
+  opacity:1;
+  visibility:visible;
+
+  transform:
+    translate(-50%, 0);
+}
+
+
+.nav-dropdown:hover
+.nav-chevron,
+.nav-dropdown.open
+.nav-chevron{
+  transform:
+    rotate(180deg);
+}   
 
 /* =========================
    HERO
@@ -1231,11 +1393,50 @@ footer{
   </a>
 
   <nav>
-  <a href="index.html#accueil">Accueil</a>
-  <a href="index.html#apropos">À propos</a>
-  <a href="activites.html">Nos activités</a>
-  <a href="billetterie.html">Billetterie</a>
-  <a href="index.html#contact">Contact</a>
+
+  <a href="index.html#accueil">
+    Accueil
+  </a>
+
+
+  <div class="nav-dropdown">
+
+    <button
+      class="nav-dropdown-button"
+      type="button"
+    >
+      À propos
+      <span class="nav-chevron">⌄</span>
+    </button>
+
+
+    <div class="nav-dropdown-menu">
+
+      <a href="index.html#apropos">
+        Notre histoire
+      </a>
+
+      <a href="wonca.html">
+        WONCA 2026
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <a href="activites.html">
+    Nos activités
+  </a>
+
+  <a href="billetterie.html">
+    Billetterie
+  </a>
+
+  <a href="index.html#contact">
+    Contact
+  </a>
+
 </nav>
 
 </header>
@@ -1866,6 +2067,58 @@ newsletterForm?.addEventListener(
 
 </script>
 
+<script>
 
+const aboutDropdown =
+  document.querySelector(
+    ".nav-dropdown"
+  );
+
+const aboutDropdownButton =
+  document.querySelector(
+    ".nav-dropdown-button"
+  );
+
+
+aboutDropdownButton?.addEventListener(
+  "click",
+  function(event){
+
+    event.stopPropagation();
+
+    aboutDropdown
+      ?.classList
+      .toggle(
+        "open"
+      );
+
+  }
+);
+
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      aboutDropdown &&
+      !aboutDropdown.contains(
+        event.target
+      )
+    ){
+
+      aboutDropdown
+        .classList
+        .remove(
+          "open"
+        );
+
+    }
+
+  }
+);
+
+</script>
+   
 </body>
 </html>
