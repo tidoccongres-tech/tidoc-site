@@ -4294,7 +4294,9 @@ const TIDOC_DRIVE_API =
   "https://script.google.com/macros/s/AKfycbzc0sJmC0QQ1ZzF5Qh02bV-gCnFejaiaFJKv8xYh9uUTqjSel7xoWv5ZzMCxNdhq2J2/exec";
 
 
-<script>
+/* =====================================================
+   NORMALISER LES NOMS
+===================================================== */
 
 function normalizeGalleryText(value){
 
@@ -4337,14 +4339,9 @@ function createGalleryPhoto(
     "";
 
 
-  /*
-    On stocke les informations de la photo
-    pour pouvoir ensuite retrouver l'activité
-    lorsqu'on clique sur une carte.
-  */
-
   card.dataset.activity =
     activityTitle;
+
 
   card.dataset.search =
     normalizeGalleryText(
@@ -4410,6 +4407,7 @@ function createGalleryPhoto(
     title
   );
 
+
   card.appendChild(
     image
   );
@@ -4422,339 +4420,6 @@ function createGalleryPhoto(
   return card;
 
 }
-
-
-/* =====================================================
-   TROUVER LA PHOTO D'UNE ACTIVITÉ
-===================================================== */
-
-function findActivityPhoto(
-  carousel,
-  activityName
-){
-
-  const wanted =
-    normalizeGalleryText(
-      activityName
-    );
-
-
-  const photos =
-    Array.from(
-      carousel.querySelectorAll(
-        ".drive-photo"
-      )
-    );
-
-
-  if(
-    photos.length === 0
-  ){
-    return null;
-  }
-
-
-  /*
-    1 — correspondance exacte
-  */
-
-  let result =
-    photos.find(
-      photo =>
-        normalizeGalleryText(
-          photo.dataset.activity
-        ) === wanted
-    );
-
-
-  if(result){
-    return result;
-  }
-
-
-  /*
-    2 — une chaîne contient l'autre
-  */
-
-  result =
-    photos.find(
-      photo => {
-
-        const value =
-          photo.dataset.search || "";
-
-        return (
-          value.includes(wanted) ||
-          wanted.includes(value)
-        );
-
-      }
-    );
-
-
-  if(result){
-    return result;
-  }
-
-
-  /*
-    3 — recherche par mots principaux
-    Utile si le nom du dossier Drive
-    n'est pas exactement identique au site.
-  */
-
-  const ignoredWords =
-    new Set([
-      "de",
-      "du",
-      "des",
-      "la",
-      "le",
-      "les",
-      "un",
-      "une",
-      "et",
-      "dans",
-      "en",
-      "a",
-      "au",
-      "aux",
-      "pour",
-      "sur",
-      "avec",
-      "d",
-      "l"
-    ]);
-
-
-  const wantedWords =
-    wanted
-      .split(" ")
-      .filter(
-        word =>
-          word.length > 2 &&
-          !ignoredWords.has(word)
-      );
-
-
-  let bestPhoto =
-    null;
-
-  let bestScore =
-    0;
-
-
-  photos.forEach(
-    photo => {
-
-      const search =
-        photo.dataset.search || "";
-
-
-      let score =
-        0;
-
-
-      wantedWords.forEach(
-        word => {
-
-          if(
-            search.includes(word)
-          ){
-            score++;
-          }
-
-        }
-      );
-
-
-      if(
-        score > bestScore
-      ){
-
-        bestScore =
-          score;
-
-        bestPhoto =
-          photo;
-
-      }
-
-    }
-  );
-
-
-  /*
-    Il faut au moins deux mots communs
-    pour éviter d'ouvrir une mauvaise photo.
-  */
-
-  if(
-    bestScore >= 2
-  ){
-    return bestPhoto;
-  }
-
-
-  return null;
-
-}
-
-
-/* =====================================================
-   CLIQUER SUR UNE ACTIVITÉ
-===================================================== */
-
-function setupActivityGalleryLinks(){
-
-  const cards =
-    document.querySelectorAll(
-      ".program-card[data-gallery-target]"
-    );
-
-
-  cards.forEach(
-    card => {
-
-      card.addEventListener(
-        "click",
-        () => {
-
-          const carouselId =
-            card.dataset.galleryTarget;
-
-
-          const activity =
-            card.dataset.activity;
-
-
-          const carousel =
-            document.getElementById(
-              carouselId
-            );
-
-
-          if(
-            !carousel
-          ){
-            return;
-          }
-
-
-          /*
-            On descend d'abord jusqu'à
-            toute la section galerie.
-          */
-
-          const gallerySection =
-            carousel.closest(
-              ".drive-gallery-section"
-            );
-
-
-          gallerySection?.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
-          });
-
-
-          /*
-            On cherche ensuite la photo
-            correspondant à l'activité.
-          */
-
-          const targetPhoto =
-            findActivityPhoto(
-              carousel,
-              activity
-            );
-
-
-          /*
-            On enlève l'ancienne sélection.
-          */
-
-          document
-            .querySelectorAll(
-              ".drive-photo.gallery-selected"
-            )
-            .forEach(
-              photo =>
-                photo.classList.remove(
-                  "gallery-selected"
-                )
-            );
-
-
-          if(
-            !targetPhoto
-          ){
-
-            console.warn(
-              "Photo introuvable pour :",
-              activity
-            );
-
-            return;
-
-          }
-
-
-          /*
-            Petite attente :
-            le scroll vertical démarre d'abord,
-            puis le carrousel se positionne.
-          */
-
-          setTimeout(
-            () => {
-
-              targetPhoto
-                .scrollIntoView({
-                  behavior:"smooth",
-                  block:"nearest",
-                  inline:"center"
-                });
-
-
-              targetPhoto
-                .classList
-                .add(
-                  "gallery-selected"
-                );
-
-
-              /*
-                On retire le contour bleu
-                après quelques secondes.
-              */
-
-              setTimeout(
-                () => {
-
-                  targetPhoto
-                    .classList
-                    .remove(
-                      "gallery-selected"
-                    );
-
-                },
-                3000
-              );
-
-            },
-            450
-          );
-
-        }
-      );
-
-    }
-  );
-
-}
-
-</script>
 
 
 /* =====================================================
@@ -4817,6 +4482,338 @@ function fillGallery(
 
 
 /* =====================================================
+   TROUVER LA PHOTO D'UNE ACTIVITÉ
+===================================================== */
+
+function findActivityPhoto(
+  carousel,
+  activityName
+){
+
+  const wanted =
+    normalizeGalleryText(
+      activityName
+    );
+
+
+  const photos =
+    Array.from(
+      carousel.querySelectorAll(
+        ".drive-photo"
+      )
+    );
+
+
+  if(
+    photos.length === 0
+  ){
+    return null;
+  }
+
+
+  /*
+    1 — correspondance exacte
+  */
+
+  let result =
+    photos.find(
+      photo =>
+        normalizeGalleryText(
+          photo.dataset.activity
+        ) === wanted
+    );
+
+
+  if(
+    result
+  ){
+    return result;
+  }
+
+
+  /*
+    2 — l'un contient l'autre
+  */
+
+  result =
+    photos.find(
+      photo => {
+
+        const value =
+          photo.dataset.search || "";
+
+        return (
+          value.includes(wanted) ||
+          wanted.includes(value)
+        );
+
+      }
+    );
+
+
+  if(
+    result
+  ){
+    return result;
+  }
+
+
+  /*
+    3 — recherche par mots importants
+  */
+
+  const ignoredWords =
+    new Set([
+      "de",
+      "du",
+      "des",
+      "la",
+      "le",
+      "les",
+      "un",
+      "une",
+      "et",
+      "dans",
+      "en",
+      "a",
+      "au",
+      "aux",
+      "pour",
+      "sur",
+      "avec",
+      "d",
+      "l"
+    ]);
+
+
+  const wantedWords =
+    wanted
+      .split(" ")
+      .filter(
+        word =>
+          word.length > 2 &&
+          !ignoredWords.has(
+            word
+          )
+      );
+
+
+  let bestPhoto =
+    null;
+
+  let bestScore =
+    0;
+
+
+  photos.forEach(
+    photo => {
+
+      const search =
+        photo.dataset.search || "";
+
+
+      let score =
+        0;
+
+
+      wantedWords.forEach(
+        word => {
+
+          if(
+            search.includes(
+              word
+            )
+          ){
+
+            score++;
+
+          }
+
+        }
+      );
+
+
+      if(
+        score >
+        bestScore
+      ){
+
+        bestScore =
+          score;
+
+        bestPhoto =
+          photo;
+
+      }
+
+    }
+  );
+
+
+  if(
+    bestScore >= 2
+  ){
+
+    return bestPhoto;
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =====================================================
+   CLIQUER SUR UNE ACTIVITÉ
+===================================================== */
+
+function setupActivityGalleryLinks(){
+
+  const cards =
+    document.querySelectorAll(
+      ".program-card[data-gallery-target]"
+    );
+
+
+  cards.forEach(
+    card => {
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          const carouselId =
+            card.dataset.galleryTarget;
+
+
+          const activity =
+            card.dataset.activity;
+
+
+          const carousel =
+            document.getElementById(
+              carouselId
+            );
+
+
+          if(
+            !carousel
+          ){
+            return;
+          }
+
+
+          const gallerySection =
+            carousel.closest(
+              ".drive-gallery-section"
+            );
+
+
+          const targetPhoto =
+            findActivityPhoto(
+              carousel,
+              activity
+            );
+
+
+          document
+            .querySelectorAll(
+              ".drive-photo.gallery-selected"
+            )
+            .forEach(
+              photo =>
+                photo.classList.remove(
+                  "gallery-selected"
+                )
+            );
+
+
+          /*
+            On descend jusqu'à la galerie
+          */
+
+          gallerySection?.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+
+
+          if(
+            !targetPhoto
+          ){
+
+            console.warn(
+              "Photo introuvable pour :",
+              activity
+            );
+
+            return;
+
+          }
+
+
+          /*
+            Puis on décale horizontalement
+            vers la bonne activité
+          */
+
+          setTimeout(
+            () => {
+
+              const left =
+                targetPhoto.offsetLeft -
+                (
+                  carousel.clientWidth -
+                  targetPhoto.clientWidth
+                ) / 2;
+
+
+              carousel.scrollTo({
+                left:
+                  Math.max(
+                    0,
+                    left
+                  ),
+                behavior:
+                  "smooth"
+              });
+
+
+              targetPhoto
+                .classList
+                .add(
+                  "gallery-selected"
+                );
+
+
+              setTimeout(
+                () => {
+
+                  targetPhoto
+                    .classList
+                    .remove(
+                      "gallery-selected"
+                    );
+
+                },
+                3000
+              );
+
+            },
+            450
+          );
+
+        }
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
    CHARGER TOUTES LES GALERIES
 ===================================================== */
 
@@ -4857,8 +4854,11 @@ async function loadAllPhotos(){
       await fetch(
         TIDOC_DRIVE_API,
         {
-          method:"GET",
-          redirect:"follow"
+          method:
+            "GET",
+
+          redirect:
+            "follow"
         }
       );
 
@@ -4890,7 +4890,9 @@ async function loadAllPhotos(){
     }
 
 
-    /* 2025 */
+    /* =================================================
+       2025 — CONFÉRENCES
+    ================================================= */
 
     fillGallery(
       document.getElementById(
@@ -4903,6 +4905,10 @@ async function loadAllPhotos(){
     );
 
 
+    /* =================================================
+       2025 — WORKSHOPS
+    ================================================= */
+
     fillGallery(
       document.getElementById(
         "workshop-carousel"
@@ -4913,6 +4919,10 @@ async function loadAllPhotos(){
       "Ti'Doc 2025"
     );
 
+
+    /* =================================================
+       2025 — ÉVÉNEMENTS
+    ================================================= */
 
     fillGallery(
       document.getElementById(
@@ -4925,7 +4935,9 @@ async function loadAllPhotos(){
     );
 
 
-    /* 2026 */
+    /* =================================================
+       2026 — CONFÉRENCES
+    ================================================= */
 
     fillGallery(
       document.getElementById(
@@ -4938,6 +4950,10 @@ async function loadAllPhotos(){
     );
 
 
+    /* =================================================
+       2026 — WORKSHOPS
+    ================================================= */
+
     fillGallery(
       document.getElementById(
         "workshop2026-carousel"
@@ -4949,6 +4965,10 @@ async function loadAllPhotos(){
     );
 
 
+    /* =================================================
+       2026 — ÉVÉNEMENTS
+    ================================================= */
+
     fillGallery(
       document.getElementById(
         "event2026-carousel"
@@ -4958,6 +4978,15 @@ async function loadAllPhotos(){
       "Événement Ti'Doc 2026",
       "Ti'Doc 2026"
     );
+
+
+    /*
+      IMPORTANT :
+      les cartes sont activées seulement
+      APRÈS le chargement des photos.
+    */
+
+    setupActivityGalleryLinks();
 
   }
 
@@ -5010,10 +5039,12 @@ function setupCarouselArrows(
       carouselId
     );
 
+
   const previous =
     document.getElementById(
       previousId
     );
+
 
   const next =
     document.getElementById(
@@ -5026,8 +5057,11 @@ function setupCarouselArrows(
     () => {
 
       carousel?.scrollBy({
-        left:-570,
-        behavior:"smooth"
+        left:
+          -570,
+
+        behavior:
+          "smooth"
       });
 
     }
@@ -5039,8 +5073,11 @@ function setupCarouselArrows(
     () => {
 
       carousel?.scrollBy({
-        left:570,
-        behavior:"smooth"
+        left:
+          570,
+
+        behavior:
+          "smooth"
       });
 
     }
@@ -5049,7 +5086,9 @@ function setupCarouselArrows(
 }
 
 
-/* 2025 */
+/* =====================================================
+   FLÈCHES 2025
+===================================================== */
 
 setupCarouselArrows(
   "conference-carousel",
@@ -5057,11 +5096,13 @@ setupCarouselArrows(
   "conference-next"
 );
 
+
 setupCarouselArrows(
   "workshop-carousel",
   "workshop-prev",
   "workshop-next"
 );
+
 
 setupCarouselArrows(
   "event-carousel",
@@ -5070,7 +5111,9 @@ setupCarouselArrows(
 );
 
 
-/* 2026 */
+/* =====================================================
+   FLÈCHES 2026
+===================================================== */
 
 setupCarouselArrows(
   "conference2026-carousel",
@@ -5078,11 +5121,13 @@ setupCarouselArrows(
   "conference2026-next"
 );
 
+
 setupCarouselArrows(
   "workshop2026-carousel",
   "workshop2026-prev",
   "workshop2026-next"
 );
+
 
 setupCarouselArrows(
   "event2026-carousel",
