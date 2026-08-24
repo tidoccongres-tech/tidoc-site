@@ -1,0 +1,150 @@
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer{
+
+  padding:
+    35px 7%;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items:center;
+
+  gap:30px;
+
+  background:
+    var(--blue-deep, #073C4B);
+
+  color:
+    rgba(255,255,255,.75);
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.footer-logo{
+
+  width:60px;
+  height:auto;
+
+  justify-self:start;
+
+}
+
+
+/* =====================================================
+   CENTRE
+===================================================== */
+
+.footer-center{
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:5px;
+
+  text-align:center;
+
+}
+
+
+.footer-copyright{
+
+  font-size:13px;
+
+}
+
+
+/* =====================================================
+   CRÉDIT DU SITE
+===================================================== */
+
+.site-credit{
+
+  font-size:9px;
+
+  font-weight:400;
+
+  letter-spacing:.4px;
+
+  color:
+    rgba(255,255,255,.28);
+
+}
+
+
+/* =====================================================
+   ESPACE STAFF
+===================================================== */
+
+.staff-link{
+
+  justify-self:end;
+
+  color:
+    rgba(255,255,255,.50);
+
+  font-size:11px;
+
+  text-decoration:none;
+
+  transition:
+    color .25s ease;
+
+}
+
+
+.staff-link:hover{
+
+  color:white;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:650px){
+
+  .site-footer{
+
+    grid-template-columns:1fr;
+
+    justify-items:center;
+
+    gap:18px;
+
+    padding:
+      32px 5%;
+
+    text-align:center;
+
+  }
+
+
+  .footer-logo,
+  .staff-link{
+
+    justify-self:center;
+
+  }
+
+
+  .footer-logo{
+
+    width:55px;
+
+  }
+
+}
