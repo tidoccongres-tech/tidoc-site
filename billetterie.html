@@ -68,74 +68,151 @@ a{
    HERO
 ===================================================== */
 
-.hero{
-  padding:
-    165px 7%
-    95px;
+/* =====================================================
+   HERO BILLETTERIE
+===================================================== */
 
-  text-align:center;
+.hero{
+
+  min-height:620px;
+
+  padding:
+    170px 7%
+    110px;
+
+  display:flex;
+  align-items:flex-end;
+
+  position:relative;
+  overflow:hidden;
+
+  text-align:left;
+
+  color:white;
 
   background:
-
-    radial-gradient(
-      circle at top right,
-      rgba(25,140,167,.13),
-      transparent 35%
-    ),
-
     linear-gradient(
-      180deg,
-      #FFFFFF,
-      #F1F9FA
-    );
+      90deg,
+      rgba(7,60,75,.92) 0%,
+      rgba(11,83,103,.72) 48%,
+      rgba(25,140,167,.30) 100%
+    ),
+    url("files/TA-PHOTO-BILLETTERIE.jpeg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
 }
 
+
+.hero::after{
+
+  content:"2027";
+
+  position:absolute;
+
+  right:-25px;
+  bottom:-75px;
+
+  color:
+    rgba(255,255,255,.055);
+
+  font-size:
+    clamp(
+      150px,
+      22vw,
+      300px
+    );
+
+  font-weight:900;
+
+  pointer-events:none;
+
+}
+
+
+.hero-inner{
+
+  position:relative;
+  z-index:2;
+
+  width:
+    min(
+      1200px,
+      100%
+    );
+
+  margin:auto;
+
+}
+
+
 .hero-tag{
+
   display:inline-block;
 
-  margin-bottom:18px;
+  margin-bottom:20px;
 
-  padding:9px 16px;
+  padding:
+    9px 16px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.40);
 
   border-radius:50px;
 
-  background:var(--blue-light);
+  background:
+    rgba(255,255,255,.11);
 
-  color:var(--blue);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+
+  color:white;
 
   font-size:12px;
   font-weight:800;
 
-  letter-spacing:1.5px;
+  letter-spacing:1.6px;
   text-transform:uppercase;
+
 }
 
+
 .hero h1{
+
   max-width:850px;
 
-  margin:0 auto;
+  margin:0;
 
-  color:var(--blue-deep);
+  color:white;
 
   font-size:
     clamp(
-      42px,
-      6vw,
-      72px
+      52px,
+      7vw,
+      86px
     );
 
-  line-height:1.05;
+  line-height:1;
+
 }
 
+
 .hero p{
-  max-width:700px;
 
-  margin:24px auto 0;
+  max-width:680px;
 
-  color:var(--grey);
+  margin:
+    25px 0 0;
+
+  color:
+    rgba(255,255,255,.86);
 
   font-size:19px;
-  line-height:1.7;
+  line-height:1.75;
+
 }
 
 
@@ -144,19 +221,40 @@ a{
 ===================================================== */
 
 .packs-section{
+
+  position:relative;
+  z-index:10;
+
+  margin-top:-55px;
+
   padding:
-    95px 7%
+    0 7%
     120px;
+
 }
 
 .section-heading{
-  max-width:720px;
+
+  max-width:760px;
 
   margin:
     0 auto
-    55px;
+    45px;
+
+  padding:
+    30px 35px;
 
   text-align:center;
+
+  border-radius:28px;
+
+  background:
+    rgba(255,255,255,.97);
+
+  box-shadow:
+    0 18px 50px
+    rgba(7,60,75,.10);
+
 }
 
 .section-heading span{
@@ -537,20 +635,24 @@ footer img{
 
 <section class="hero">
 
-  <span class="hero-tag">
-    Ti'Doc 2027
-  </span>
+  <div class="hero-inner">
 
-  <h1>
-    Choisissez votre pack.
-  </h1>
+    <span class="hero-tag">
+      Billetterie • Ti'Doc 2027
+    </span>
 
-  <p>
-    Réservez votre place pour Ti'Doc 2027.
-    Après votre achat, vous pourrez sélectionner
-    vos conférences et workshops directement
-    depuis notre site.
-  </p>
+    <h1>
+      Votre aventure Ti'Doc commence ici.
+    </h1>
+
+    <p>
+      Choisissez votre formule,
+      réservez votre place et composez ensuite
+      votre programme parmi les conférences
+      et workshops proposés.
+    </p>
+
+  </div>
 
 </section>
 
