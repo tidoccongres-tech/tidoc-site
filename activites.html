@@ -1558,7 +1558,155 @@ nav a:hover{
   object-fit:cover;
 }
 
+/* =====================================================
+   PARTENAIRES
+===================================================== */
 
+.partners-section{
+  padding:110px 7% 130px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #F8FCFD,
+      #FFFFFF
+    );
+}
+
+.partners-inner{
+  width:min(1200px,100%);
+  margin:auto;
+}
+
+.partners-heading{
+  max-width:720px;
+  margin-bottom:50px;
+}
+
+.partners-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      58px
+    );
+
+  line-height:1.08;
+}
+
+.partners-heading p{
+  margin-top:18px;
+
+  color:var(--grey);
+
+  font-size:17px;
+  line-height:1.7;
+}
+
+.partners-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
+}
+
+.partner-card{
+  min-height:155px;
+
+  padding:28px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid
+    #E1EEF0;
+
+  border-radius:24px;
+
+  background:white;
+
+  box-shadow:
+    0 10px 30px
+    rgba(7,60,75,.05);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.partner-card:hover{
+  transform:translateY(-5px);
+
+  border-color:
+    rgba(25,140,167,.30);
+
+  box-shadow:
+    0 20px 45px
+    rgba(7,60,75,.10);
+}
+
+.partner-card img{
+  width:auto;
+  height:auto;
+
+  max-width:170px;
+  max-height:80px;
+
+  object-fit:contain;
+}
+
+
+/* TABLETTE */
+
+@media(max-width:900px){
+
+  .partners-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  .partners-section{
+    padding:
+      80px 5%
+      90px;
+  }
+
+  .partners-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:12px;
+  }
+
+  .partner-card{
+    min-height:120px;
+    padding:20px;
+
+    border-radius:20px;
+  }
+
+  .partner-card img{
+    max-width:125px;
+    max-height:65px;
+  }
+
+}
 /* =====================================================
    FOOTER
 ===================================================== */
@@ -1779,7 +1927,7 @@ footer{
     min-width:70px;
   }
 
-
+  
   /* TÉMOIGNAGES */
 
   .testimonials{
@@ -2941,7 +3089,83 @@ footer{
 
 </section>
 
+<!-- =====================================================
+   PARTENAIRES 2025
+===================================================== -->
 
+<section class="partners-section">
+
+  <div class="partners-inner">
+
+    <div class="partners-heading">
+
+      <span class="section-tag">
+        Nos partenaires
+      </span>
+
+      <h2>
+        Ils ont rendu cette première édition possible.
+      </h2>
+
+      <p>
+        Nous remercions chaleureusement les partenaires
+        qui nous ont accompagnés et soutenus lors
+        de la première édition de Ti'Doc.
+      </p>
+
+    </div>
+
+
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <img
+          src="files/partenaire-neomed.png"
+          alt="Neomed"
+        >
+      </div>
+
+      <div class="partner-card">
+        <img
+          src="files/partenaire-ims.png"
+          alt="IMS"
+        >
+      </div>
+
+      <div class="partner-card">
+        <img
+          src="files/partenaire-musee-pharmacie.png"
+          alt="Muzeul Farmaciei"
+        >
+      </div>
+
+      <div class="partner-card">
+        <img
+          src="files/partenaire-coffee-factory.png"
+          alt="The Coffee Factory"
+        >
+      </div>
+
+      <div class="partner-card">
+        <img
+          src="files/partenaire-anatomika.png"
+          alt="Anatomika"
+        >
+      </div>
+
+      <div class="partner-card">
+        <img
+          src="files/partenaire-golden-tulip.png"
+          alt="Golden Tulip"
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+  
 </div>
 
 
@@ -3903,6 +4127,20 @@ footer{
 
 </section>
 
+<span class="section-tag">
+  Nos partenaires
+</span>
+
+<h2>
+  Merci à ceux qui ont fait vivre Ti'Doc 2026.
+</h2>
+
+<p>
+  Partenaires, entreprises et acteurs locaux :
+  leur soutien a contribué à faire grandir
+  cette deuxième édition de Ti'Doc.
+</p>
+  
 
 </div>
 
