@@ -706,43 +706,93 @@ nav a:hover{
 }
 
 
+/* =====================================================
+   AFFICHE WONCA — PARTICIPATION
+===================================================== */
+
 .participation-image{
+  width:100%;
 
-  min-height:
-    560px;
+  padding:14px;
 
-  border-radius:
-    35px;
+  border:0;
+  border-radius:35px;
 
-  background:
-
-    linear-gradient(
-      rgba(
-        7,
-        60,
-        75,
-        .05
-      ),
-      rgba(
-        7,
-        60,
-        75,
-        .05
-      )
-    ),
-
-    url("files/wonca2026.pdf")
-    center/cover;
+  background:white;
 
   box-shadow:
     0 25px 60px
-    rgba(
-      7,
-      60,
-      75,
-      .14
-    );
+    rgba(7,60,75,.14);
 
+  cursor:zoom-in;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+
+.participation-image:hover{
+  transform:translateY(-5px);
+
+  box-shadow:
+    0 30px 70px
+    rgba(7,60,75,.20);
+}
+
+
+.participation-image img{
+  width:100%;
+  height:auto;
+
+  display:block;
+
+  border-radius:24px;
+
+  object-fit:contain;
+}
+
+
+/* PETITE INDICATION */
+
+.participation-image{
+  position:relative;
+}
+
+
+.participation-image::after{
+  content:"Cliquer pour agrandir";
+
+  position:absolute;
+
+  right:28px;
+  bottom:28px;
+
+  padding:9px 14px;
+
+  border-radius:50px;
+
+  color:white;
+
+  background:
+    rgba(7,60,75,.82);
+
+  backdrop-filter:blur(8px);
+
+  font-size:11px;
+  font-weight:800;
+
+  opacity:0;
+
+  transform:translateY(5px);
+
+  transition:.25s;
+}
+
+
+.participation-image:hover::after{
+  opacity:1;
+  transform:translateY(0);
 }
 
 
@@ -1107,13 +1157,6 @@ footer{
   }
 
 
-  .participation-image{
-
-    min-height:
-      430px;
-
-  }
-
 
   footer{
 
@@ -1334,7 +1377,19 @@ footer{
   <div class="participation-inner">
 
 
-    <div class="participation-image"></div>
+   <button
+  class="participation-image"
+  id="open-wonca-poster"
+  type="button"
+  aria-label="Agrandir l'affiche WONCA Europe 2026"
+>
+
+  <img
+    src="files/wonca2026.png"
+    alt="Affiche scientifique Ti'Doc présentée à WONCA Europe 2026"
+  >
+
+</button>
 
 
     <div class="participation-content">
@@ -1494,7 +1549,32 @@ footer{
 
 </section>
 
+<!-- =====================================================
+   AFFICHE PLEIN ÉCRAN
+===================================================== -->
 
+<div
+  class="poster-lightbox"
+  id="poster-lightbox"
+  aria-hidden="true"
+>
+
+  <button
+    class="poster-lightbox-close"
+    id="poster-lightbox-close"
+    type="button"
+    aria-label="Fermer"
+  >
+    ×
+  </button>
+
+
+  <img
+    src="files/wonca2026.png"
+    alt="Affiche scientifique Ti'Doc — WONCA Europe 2026"
+  >
+
+</div>
 
 <!-- =====================================================
    FOOTER
@@ -1578,6 +1658,120 @@ document.addEventListener(
 );
 
 
+/* =====================================================
+   AFFICHE WONCA PLEIN ÉCRAN
+===================================================== */
+
+const woncaPosterButton =
+  document.getElementById(
+    "open-wonca-poster"
+  );
+
+
+const posterLightbox =
+  document.getElementById(
+    "poster-lightbox"
+  );
+
+
+const posterLightboxClose =
+  document.getElementById(
+    "poster-lightbox-close"
+  );
+
+
+function openPoster(){
+
+  posterLightbox
+    ?.classList
+    .add(
+      "open"
+    );
+
+
+  posterLightbox
+    ?.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closePoster(){
+
+  posterLightbox
+    ?.classList
+    .remove(
+      "open"
+    );
+
+
+  posterLightbox
+    ?.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+woncaPosterButton
+  ?.addEventListener(
+    "click",
+    openPoster
+  );
+
+
+posterLightboxClose
+  ?.addEventListener(
+    "click",
+    closePoster
+  );
+
+
+posterLightbox
+  ?.addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target ===
+        posterLightbox
+      ){
+
+        closePoster();
+
+      }
+
+    }
+  );
+
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closePoster();
+
+    }
+
+  }
+);
+  
 </script>
 
 
