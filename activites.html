@@ -4615,41 +4615,67 @@ function setupActivityGalleryLinks(){
           );
 
 
-        /* ==========================================
-           PETIT DÉLAI AVANT DE CACHER LE MESSAGE
-        ========================================== */
+       /* ==========================================
+   ATTENDRE QUE LA PHOTO SOIT VRAIMENT AFFICHÉE
+========================================== */
 
-        setTimeout(
-          () => {
-
-            loadingMessage
-              .classList
-              .remove(
-                "visible"
-              );
-
-          },
-          900
-        );
+const targetImage =
+  targetPhoto.querySelector("img");
 
 
-        setTimeout(
-          () => {
+function hideLoadingMessage(){
 
-            targetPhoto
-              .classList
-              .remove(
-                "gallery-selected"
-              );
-
-          },
-          3000
-        );
-
-      }
+  loadingMessage
+    .classList
+    .remove(
+      "visible"
     );
 
-  });
+}
+
+
+/*
+  Si l'image est déjà complètement chargée
+*/
+
+if(
+  targetImage &&
+  targetImage.complete &&
+  targetImage.naturalWidth > 0
+){
+
+  hideLoadingMessage();
+
+}
+
+
+/*
+  Sinon on attend réellement son chargement
+*/
+
+else if(targetImage){
+
+  targetImage.addEventListener(
+    "load",
+    hideLoadingMessage,
+    {
+      once:true
+    }
+  );
+
+}
+
+
+/*
+  Sécurité si jamais aucune image n'existe
+*/
+
+else{
+
+  setTimeout(
+    hideLoadingMessage,
+    3000
+  );
 
 }
 
