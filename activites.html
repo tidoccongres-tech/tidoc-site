@@ -2076,7 +2076,355 @@ footer{
   }
 
 }
+/* =====================================================
+   ÉDITION 2027 — COMING SOON
+===================================================== */
 
+.coming-section{
+  padding:
+    20px 7%
+    130px;
+}
+
+
+.coming-heading{
+  width:min(800px,100%);
+
+  margin:
+    0 auto
+    50px;
+
+  text-align:center;
+}
+
+
+.coming-heading h2{
+  margin-top:12px;
+
+  color:var(--blue-deep);
+
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      58px
+    );
+
+  line-height:1.08;
+}
+
+
+.coming-heading p{
+  margin-top:18px;
+
+  color:var(--grey);
+
+  font-size:17px;
+  line-height:1.7;
+}
+
+
+.coming-grid{
+  width:min(1200px,100%);
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:22px;
+}
+
+
+.coming-card{
+  position:relative;
+
+  min-height:390px;
+
+  padding:34px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    #DDECEF;
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #FFFFFF,
+      #F1F9FA
+    );
+
+  text-align:left;
+
+  font-family:inherit;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 15px 40px
+    rgba(7,60,75,.08);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+
+.coming-card::before{
+  content:"";
+
+  position:absolute;
+
+  top:-80px;
+  right:-80px;
+
+  width:210px;
+  height:210px;
+
+  border-radius:50%;
+
+  background:
+    rgba(25,140,167,.08);
+}
+
+
+.coming-card:hover{
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(25,140,167,.35);
+
+  box-shadow:
+    0 24px 55px
+    rgba(7,60,75,.13);
+}
+
+
+.coming-number{
+  position:relative;
+
+  color:
+    rgba(25,140,167,.45);
+
+  font-size:13px;
+  font-weight:900;
+
+  letter-spacing:2px;
+}
+
+
+.coming-type{
+  position:relative;
+
+  display:block;
+
+  margin-bottom:10px;
+
+  color:var(--blue);
+
+  font-size:11px;
+  font-weight:900;
+
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+
+.coming-card h3{
+  position:relative;
+
+  color:var(--blue-deep);
+
+  font-size:28px;
+  line-height:1.15;
+}
+
+
+.coming-card p{
+  position:relative;
+
+  margin-top:15px;
+
+  color:var(--grey);
+
+  font-size:15px;
+  line-height:1.7;
+}
+
+
+.coming-link{
+  position:relative;
+
+  margin-top:30px;
+
+  color:var(--blue);
+
+  font-size:13px;
+  font-weight:900;
+}
+
+
+/* =====================================================
+   MODALE VIDÉO 2027
+===================================================== */
+
+.coming-modal{
+  position:fixed;
+
+  inset:0;
+
+  z-index:5000;
+
+  padding:30px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  visibility:hidden;
+
+  background:
+    rgba(3,30,38,.94);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+
+.coming-modal.open{
+  opacity:1;
+  visibility:visible;
+}
+
+
+.coming-modal-content{
+  width:min(650px,94vw);
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:30px;
+
+  background:white;
+
+  box-shadow:
+    0 30px 100px
+    rgba(0,0,0,.4);
+}
+
+
+.coming-modal video{
+  width:100%;
+
+  display:block;
+
+  aspect-ratio:
+    1 / 1;
+
+  object-fit:cover;
+
+  background:#073C4B;
+}
+
+
+.coming-modal-title{
+  padding:
+    22px 26px;
+
+  color:var(--blue-deep);
+
+  font-size:20px;
+  font-weight:800;
+}
+
+
+.coming-modal-close{
+  position:absolute;
+
+  top:15px;
+  right:15px;
+
+  z-index:3;
+
+  width:46px;
+  height:46px;
+
+  border:0;
+  border-radius:50%;
+
+  color:white;
+
+  background:
+    rgba(3,30,38,.60);
+
+  font-size:27px;
+
+  cursor:pointer;
+}
+
+
+@media(max-width:900px){
+
+  .coming-grid{
+    grid-template-columns:1fr;
+  }
+
+  .coming-card{
+    min-height:280px;
+  }
+
+}
+
+
+@media(max-width:650px){
+
+  .coming-section{
+    padding:
+      10px 5%
+      90px;
+  }
+
+  .coming-card{
+    min-height:250px;
+
+    padding:27px;
+  }
+
+  .coming-card h3{
+    font-size:25px;
+  }
+
+  .coming-modal{
+    padding:15px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+  
 <!-- =====================================================
    HEADER
 ===================================================== -->
@@ -4455,364 +4803,6 @@ footer{
 
 </div>
 
-/* =====================================================
-   ÉDITION 2027 — COMING SOON
-===================================================== */
-
-.coming-section{
-  padding:
-    20px 7%
-    130px;
-}
-
-
-.coming-heading{
-  width:min(800px,100%);
-
-  margin:
-    0 auto
-    50px;
-
-  text-align:center;
-}
-
-
-.coming-heading h2{
-  margin-top:12px;
-
-  color:var(--blue-deep);
-
-  font-size:
-    clamp(
-      38px,
-      5vw,
-      58px
-    );
-
-  line-height:1.08;
-}
-
-
-.coming-heading p{
-  margin-top:18px;
-
-  color:var(--grey);
-
-  font-size:17px;
-  line-height:1.7;
-}
-
-
-.coming-grid{
-  width:min(1200px,100%);
-
-  margin:auto;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:22px;
-}
-
-
-.coming-card{
-  position:relative;
-
-  min-height:390px;
-
-  padding:34px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
-  overflow:hidden;
-
-  border:
-    1px solid
-    #DDECEF;
-
-  border-radius:30px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #FFFFFF,
-      #F1F9FA
-    );
-
-  text-align:left;
-
-  font-family:inherit;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 15px 40px
-    rgba(7,60,75,.08);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    border-color .25s ease;
-}
-
-
-.coming-card::before{
-  content:"";
-
-  position:absolute;
-
-  top:-80px;
-  right:-80px;
-
-  width:210px;
-  height:210px;
-
-  border-radius:50%;
-
-  background:
-    rgba(25,140,167,.08);
-}
-
-
-.coming-card:hover{
-  transform:
-    translateY(-6px);
-
-  border-color:
-    rgba(25,140,167,.35);
-
-  box-shadow:
-    0 24px 55px
-    rgba(7,60,75,.13);
-}
-
-
-.coming-number{
-  position:relative;
-
-  color:
-    rgba(25,140,167,.45);
-
-  font-size:13px;
-  font-weight:900;
-
-  letter-spacing:2px;
-}
-
-
-.coming-type{
-  position:relative;
-
-  display:block;
-
-  margin-bottom:10px;
-
-  color:var(--blue);
-
-  font-size:11px;
-  font-weight:900;
-
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-}
-
-
-.coming-card h3{
-  position:relative;
-
-  color:var(--blue-deep);
-
-  font-size:28px;
-  line-height:1.15;
-}
-
-
-.coming-card p{
-  position:relative;
-
-  margin-top:15px;
-
-  color:var(--grey);
-
-  font-size:15px;
-  line-height:1.7;
-}
-
-
-.coming-link{
-  position:relative;
-
-  margin-top:30px;
-
-  color:var(--blue);
-
-  font-size:13px;
-  font-weight:900;
-}
-
-
-/* =====================================================
-   MODALE VIDÉO 2027
-===================================================== */
-
-.coming-modal{
-  position:fixed;
-
-  inset:0;
-
-  z-index:5000;
-
-  padding:30px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  opacity:0;
-  visibility:hidden;
-
-  background:
-    rgba(3,30,38,.94);
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-
-  transition:
-    opacity .25s ease,
-    visibility .25s ease;
-}
-
-
-.coming-modal.open{
-  opacity:1;
-  visibility:visible;
-}
-
-
-.coming-modal-content{
-  width:min(650px,94vw);
-
-  position:relative;
-
-  overflow:hidden;
-
-  border-radius:30px;
-
-  background:white;
-
-  box-shadow:
-    0 30px 100px
-    rgba(0,0,0,.4);
-}
-
-
-.coming-modal video{
-  width:100%;
-
-  display:block;
-
-  aspect-ratio:
-    1 / 1;
-
-  object-fit:cover;
-
-  background:#073C4B;
-}
-
-
-.coming-modal-title{
-  padding:
-    22px 26px;
-
-  color:var(--blue-deep);
-
-  font-size:20px;
-  font-weight:800;
-}
-
-
-.coming-modal-close{
-  position:absolute;
-
-  top:15px;
-  right:15px;
-
-  z-index:3;
-
-  width:46px;
-  height:46px;
-
-  border:0;
-  border-radius:50%;
-
-  color:white;
-
-  background:
-    rgba(3,30,38,.60);
-
-  font-size:27px;
-
-  cursor:pointer;
-}
-
-
-@media(max-width:900px){
-
-  .coming-grid{
-    grid-template-columns:1fr;
-  }
-
-  .coming-card{
-    min-height:280px;
-  }
-
-}
-
-
-@media(max-width:650px){
-
-  .coming-section{
-    padding:
-      10px 5%
-      90px;
-  }
-
-  .coming-card{
-    min-height:250px;
-
-    padding:27px;
-  }
-
-  .coming-card h3{
-    font-size:25px;
-  }
-
-  .coming-modal{
-    padding:15px;
-  }
-
-}
-  /* FOOTER */
-
-  footer{
-    flex-direction:column;
-
-    gap:20px;
-  }
-
-}
-
-</style>
-
-</head>
-  
-
-<body>
   
 <!-- =====================================================
    FOOTER
