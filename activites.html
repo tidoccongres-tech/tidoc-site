@@ -438,6 +438,70 @@ nav a:hover{
 
 
 /* =====================================================
+   BOUTONS DE NAVIGATION CONF / WS / EVENT
+===================================================== */
+
+.stat-link{
+  position:relative;
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    transform .25s ease;
+}
+
+.stat-link:hover{
+  background:var(--blue-light);
+}
+
+.stat-link:hover strong{
+  transform:translateY(-3px);
+}
+
+.stat-link strong{
+  transition:transform .25s ease;
+}
+
+.stat-link::after{
+  content:"↓";
+
+  display:block;
+
+  margin-top:12px;
+
+  color:var(--blue);
+
+  font-size:18px;
+  font-weight:900;
+
+  opacity:0;
+
+  transform:translateY(-5px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+.stat-link:hover::after{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* Évite que le titre soit caché
+   derrière le menu fixe */
+
+#conferences-2025,
+#workshops-2025,
+#events-2025,
+#conferences-2026,
+#workshops-2026,
+#events-2026{
+  scroll-margin-top:120px;
+}
+  
+/* =====================================================
    SECTIONS PROGRAMME
 ===================================================== */
 
@@ -1783,43 +1847,20 @@ footer{
 
 <div class="stats">
 
-  <div class="stat">
+  <a href="#conferences-2025" class="stat stat-link">
+    <strong>CONF</strong>
+    <span>Conférences</span>
+  </a>
 
-    <strong>
-      CONF
-    </strong>
+  <a href="#workshops-2025" class="stat stat-link">
+    <strong>WS</strong>
+    <span>Workshops</span>
+  </a>
 
-    <span>
-      Conférences
-    </span>
-
-  </div>
-
-
-  <div class="stat">
-
-    <strong>
-      WS
-    </strong>
-
-    <span>
-      Workshops
-    </span>
-
-  </div>
-
-
-  <div class="stat">
-
-    <strong>
-      EVENT
-    </strong>
-
-    <span>
-      Moments de partage
-    </span>
-
-  </div>
+  <a href="#events-2025" class="stat stat-link">
+    <strong>EVENT</strong>
+    <span>Moments de partage</span>
+  </a>
 
 </div>
 
@@ -1829,7 +1870,7 @@ footer{
    CONFÉRENCES 2025
 ===================================================== -->
 
-<section class="program-section">
+<section class="program-section" id="conferences-2025">
 
   <div class="program-heading">
 
@@ -2222,7 +2263,7 @@ footer{
    WORKSHOPS 2025
 ===================================================== -->
 
-<section class="program-section">
+<section class="program-section" id="workshops-2025">
 
   <div class="program-heading">
 
@@ -2505,7 +2546,7 @@ footer{
    ÉVÉNEMENTS 2025
 ===================================================== -->
 
-<section class="program-section">
+<section class="program-section" id="events-2025">
 
   <div class="program-heading">
 
@@ -2833,20 +2874,20 @@ footer{
 
 <div class="stats">
 
-  <div class="stat">
+  <a href="#conferences-2026" class="stat stat-link">
     <strong>CONF</strong>
     <span>Conférences</span>
-  </div>
+  </a>
 
-  <div class="stat">
+  <a href="#workshops-2026" class="stat stat-link">
     <strong>WS</strong>
     <span>Workshops</span>
-  </div>
+  </a>
 
-  <div class="stat">
+  <a href="#events-2026" class="stat stat-link">
     <strong>EVENT</strong>
     <span>Moments de partage</span>
-  </div>
+  </a>
 
 </div>
 
@@ -2856,7 +2897,7 @@ footer{
    CONFÉRENCES 2026
 ===================================================== -->
 
-<section class="program-section">
+<section class="program-section" id="conferences-2026">
 
   <div class="program-heading">
 
@@ -3587,7 +3628,7 @@ footer{
    WORKSHOPS 2026
 ===================================================== -->
 
-<section class="program-section">
+<section class="program-section" id="workshops-2026">
 
   <div class="program-heading">
 
@@ -3878,7 +3919,7 @@ footer{
    ÉVÉNEMENTS 2026
 ===================================================== -->
 
-<section class="program-section">
+<section class="program-section" id="events-2026">
 
   <div class="program-heading">
 
