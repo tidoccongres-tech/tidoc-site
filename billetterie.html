@@ -657,7 +657,199 @@ a{
 
 }
   
+/* =====================================================
+   MODALE PROTECTION DES DONNÉES
+===================================================== */
 
+.privacy-modal{
+
+  position:fixed;
+  inset:0;
+
+  z-index:5000;
+
+  padding:25px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  visibility:hidden;
+
+  background:
+    rgba(3,30,38,.88);
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+
+}
+
+
+.privacy-modal.open{
+
+  opacity:1;
+  visibility:visible;
+
+}
+
+
+.privacy-modal-box{
+
+  position:relative;
+
+  width:min(680px,100%);
+  max-height:85vh;
+
+  padding:40px;
+
+  overflow-y:auto;
+
+  border-radius:30px;
+
+  background:white;
+
+  box-shadow:
+    0 30px 100px
+    rgba(0,0,0,.30);
+
+}
+
+
+.privacy-modal-close{
+
+  position:absolute;
+
+  top:18px;
+  right:18px;
+
+  width:42px;
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:0;
+  border-radius:50%;
+
+  background:
+    var(--blue-light);
+
+  color:
+    var(--blue-dark);
+
+  font-size:24px;
+
+  cursor:pointer;
+
+}
+
+
+.privacy-modal-tag{
+
+  display:block;
+
+  padding-right:55px;
+
+  color:var(--blue);
+
+  font-size:11px;
+  font-weight:900;
+
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+
+}
+
+
+.privacy-modal-box h2{
+
+  margin-top:9px;
+
+  padding-right:45px;
+
+  color:
+    var(--blue-deep);
+
+  font-size:31px;
+
+}
+
+
+.privacy-modal-box p{
+
+  margin-top:18px;
+
+  color:
+    var(--grey);
+
+  font-size:14px;
+  line-height:1.75;
+
+}
+
+
+.privacy-modal-box strong{
+
+  color:
+    var(--blue-dark);
+
+}
+
+
+.privacy-modal-contact{
+
+  margin-top:22px;
+
+  padding:17px 19px;
+
+  border-radius:16px;
+
+  background:
+    var(--blue-light);
+
+}
+
+
+.privacy-modal-contact p{
+
+  margin:0;
+
+}
+
+
+@media(max-width:650px){
+
+  .privacy-modal{
+
+    padding:15px;
+
+  }
+
+
+  .privacy-modal-box{
+
+    padding:
+      34px 23px;
+
+    border-radius:24px;
+
+  }
+
+
+  .privacy-modal-box h2{
+
+    font-size:26px;
+
+  }
+
+}
+  
 /* =====================================================
    INFOS
 ===================================================== */
@@ -946,7 +1138,121 @@ footer img{
 
 </section>
 
+<!-- ==================================================
+     MODALE PROTECTION DES DONNÉES
+================================================== -->
 
+<div
+  class="privacy-modal"
+  id="privacy-modal"
+  aria-hidden="true"
+>
+
+  <div class="privacy-modal-box">
+
+    <button
+      class="privacy-modal-close"
+      type="button"
+      onclick="closePrivacyModal()"
+      aria-label="Fermer"
+    >
+      ×
+    </button>
+
+
+    <span class="privacy-modal-tag">
+      Données personnelles
+    </span>
+
+
+    <h2>
+      Protection de vos données
+    </h2>
+
+
+    <p>
+      Les informations personnelles recueillies
+      lors de votre inscription sont traitées
+      par <strong>Ti'Doc</strong> afin d'assurer
+      la gestion de votre inscription au congrès,
+      de votre billet, de votre programme
+      et de votre participation à Ti'Doc 2027.
+    </p>
+
+
+    <p>
+      Seules les informations nécessaires
+      au fonctionnement de l'inscription
+      et à l'organisation de l'événement
+      sont utilisées.
+    </p>
+
+
+    <p>
+      Elles peuvent être accessibles aux membres
+      de l'équipe Ti'Doc habilités à gérer
+      les inscriptions ainsi qu'aux prestataires
+      techniques nécessaires au fonctionnement
+      du service, notamment pour le paiement
+      et les outils utilisés pour la gestion
+      des inscriptions.
+    </p>
+
+
+    <p>
+      Ti'Doc met en œuvre des mesures adaptées
+      afin de protéger les données personnelles
+      contre l'accès, la modification,
+      la perte ou la divulgation non autorisés.
+    </p>
+
+
+    <p>
+      Les informations recueillies ne sont pas
+      vendues par Ti'Doc et ne sont pas utilisées
+      à des fins commerciales indépendantes
+      de l'organisation du congrès.
+    </p>
+
+
+    <p>
+      Les données sont conservées pendant
+      la durée nécessaire à la gestion
+      de l'inscription et de l'événement,
+      ainsi que pendant toute durée supplémentaire
+      rendue nécessaire par les obligations
+      administratives ou légales applicables.
+    </p>
+
+
+    <p>
+      Conformément à la réglementation
+      relative à la protection des données,
+      vous pouvez notamment demander l'accès,
+      la rectification ou, lorsque les conditions
+      sont réunies, l'effacement de vos données.
+    </p>
+
+
+    <div class="privacy-modal-contact">
+
+      <p>
+        Pour toute demande concernant vos données :
+        <strong>tidoc.congres@gmail.com</strong>
+      </p>
+
+    </div>
+
+
+    <p>
+      Vous disposez également du droit
+      d'introduire une réclamation
+      auprès de la CNIL.
+    </p>
+
+  </div>
+
+</div>
 
 <!-- ==================================================
      INFO
@@ -1439,7 +1745,110 @@ function escapeHtml(
 
 }
 
+/* =====================================================
+   MODALE PROTECTION DES DONNÉES
+===================================================== */
 
+function openPrivacyModal(){
+
+  const modal =
+    document.getElementById(
+      "privacy-modal"
+    );
+
+
+  modal
+    ?.classList
+    .add(
+      "open"
+    );
+
+
+  modal
+    ?.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+
+function closePrivacyModal(){
+
+  const modal =
+    document.getElementById(
+      "privacy-modal"
+    );
+
+
+  modal
+    ?.classList
+    .remove(
+      "open"
+    );
+
+
+  modal
+    ?.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+
+/* Fermer en cliquant sur le fond */
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const modal =
+      document.getElementById(
+        "privacy-modal"
+      );
+
+
+    if(
+      modal &&
+      event.target === modal
+    ){
+
+      closePrivacyModal();
+
+    }
+
+  }
+);
+
+
+
+/* Fermer avec Échap */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key === "Escape"
+    ){
+
+      closePrivacyModal();
+
+    }
+
+  }
+);
 
 /* =====================================================
    LANCEMENT
