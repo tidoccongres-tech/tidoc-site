@@ -498,6 +498,165 @@ a{
     rgba(7,60,75,.07);
 }
 
+/* =====================================================
+   PROTECTION DES DONNÉES
+===================================================== */
+
+.privacy-box{
+
+  width:min(900px,100%);
+
+  margin:
+    45px auto 0;
+
+  padding:
+    26px 30px;
+
+  display:flex;
+  align-items:flex-start;
+
+  gap:18px;
+
+  border:
+    1px solid
+    #DCECEF;
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.85);
+
+  box-shadow:
+    0 12px 35px
+    rgba(7,60,75,.06);
+
+}
+
+
+.privacy-icon{
+
+  width:42px;
+  height:42px;
+
+  min-width:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    var(--blue-light);
+
+  font-size:18px;
+
+}
+
+
+.privacy-content strong{
+
+  display:block;
+
+  color:
+    var(--blue-deep);
+
+  font-size:16px;
+
+}
+
+
+.privacy-content p{
+
+  margin-top:7px;
+
+  color:
+    var(--grey);
+
+  font-size:13px;
+  line-height:1.6;
+
+}
+
+
+.privacy-check{
+
+  margin-top:16px;
+
+  display:flex;
+  align-items:flex-start;
+
+  gap:10px;
+
+  color:
+    var(--text);
+
+  font-size:13px;
+  line-height:1.5;
+
+  cursor:pointer;
+
+}
+
+
+.privacy-check input{
+
+  width:17px;
+  height:17px;
+
+  margin-top:1px;
+
+  accent-color:
+    var(--blue);
+
+  cursor:pointer;
+
+}
+
+
+.privacy-more{
+
+  margin-top:11px;
+
+  padding:0;
+
+  border:0;
+
+  background:transparent;
+
+  color:
+    var(--blue);
+
+  font-family:inherit;
+
+  font-size:12px;
+  font-weight:800;
+
+  cursor:pointer;
+
+}
+
+
+.privacy-more:hover{
+
+  color:
+    var(--blue-dark);
+
+}
+
+
+@media(max-width:650px){
+
+  .privacy-box{
+
+    margin-top:30px;
+
+    padding:22px;
+
+  }
+
+}
+  
 
 /* =====================================================
    INFOS
@@ -734,6 +893,56 @@ footer img{
     </div>
 
   </div>
+
+  
+<!-- ==================================================
+     PROTECTION DES DONNÉES
+================================================== -->
+
+<div class="privacy-box">
+
+  <div class="privacy-icon">
+    🔒
+  </div>
+
+  <div class="privacy-content">
+
+    <strong>
+      Protection de vos données
+    </strong>
+
+    <p>
+      Les informations recueillies lors de votre inscription
+      sont utilisées pour gérer votre inscription,
+      votre billet et votre participation à Ti'Doc 2027.
+    </p>
+
+    <label class="privacy-check">
+
+      <input
+        type="checkbox"
+        id="privacy-consent"
+      >
+
+      <span>
+        J'ai pris connaissance des informations relatives
+        au traitement de mes données personnelles.
+      </span>
+
+    </label>
+
+    <button
+      type="button"
+      class="privacy-more"
+      onclick="openPrivacyModal()"
+    >
+      En savoir plus sur la protection de mes données
+    </button>
+
+  </div>
+
+</div>
+
 
 </section>
 
@@ -1071,7 +1280,30 @@ async function choosePack(
   packId
 ){
 
+  const privacyConsent =
+    document.getElementById(
+      "privacy-consent"
+    );
+
+
+  if(
+    !privacyConsent ||
+    !privacyConsent.checked
+  ){
+
+    alert(
+      "Veuillez prendre connaissance des informations relatives à la protection de vos données avant de poursuivre."
+    );
+
+    privacyConsent?.focus();
+
+    return;
+
+  }
+
+
   try{
+
 
     const buttons =
       document.querySelectorAll(
