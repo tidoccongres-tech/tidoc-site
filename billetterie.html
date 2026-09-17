@@ -1637,18 +1637,21 @@ async function choosePack(
     );
 
 
-    const url =
-      BILLETTERIE_API +
-      "?action=createCheckout&packId=" +
-      encodeURIComponent(
-        packId
-      );
+   const url =
+  BILLETTERIE_API +
+  "?action=createCheckout&packId=" +
+  encodeURIComponent(
+    packId
+  );
 
 
-    const response =
-      await fetch(
-        url
-      );
+const response =
+  await fetch(
+    url,
+    {
+      method: "POST"
+    }
+  );
 
 
     const data =
