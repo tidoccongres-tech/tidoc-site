@@ -882,19 +882,27 @@ form.addEventListener(
     try {
 
 
-      const url =
-        STAFF_API +
-        "?action=staffLogin" +
-        "&code=" +
-        encodeURIComponent(
-          code
-        );
+     const formData =
+  new URLSearchParams();
 
+formData.append(
+  "action",
+  "staffLogin"
+);
 
-      const response =
-        await fetch(
-          url
-        );
+formData.append(
+  "code",
+  code
+);
+
+const response =
+  await fetch(
+    STAFF_API,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
 
 
       const result =
