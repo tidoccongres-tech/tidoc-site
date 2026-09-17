@@ -1740,6 +1740,10 @@
         data.participant
       );
 
+      fillActivities(
+  data.activities || []
+);
+
     }
 
 
@@ -1992,6 +1996,138 @@ function fillActivities(
 
     }
   );
+
+}
+
+    /* ============================================
+   VALIDER PRÉSENCE ACTIVITÉ
+============================================ */
+
+async function validateActivityPresence(
+  reservationId,
+  button
+) {
+
+  if (
+    !currentQr ||
+    !reservationId
+  ) {
+    return;
+  }
+
+
+  const originalText =
+    button.textContent;
+
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    "Validation…";
+
+
+  try {
+
+    const formData =
+      new URLSearchParams();
+
+
+    formData.append(
+      "action",
+      "staffActivityCheckIn"
+    );
+
+    formData.append(
+      "session",
+      sessionToken
+    );
+
+    formData.append(
+      "qr",
+      currentQr
+    );
+
+    formData.append(
+      "reservationId",
+      reservationId
+    );
+
+
+    const response =
+      await fetch(
+        API_URL,
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Impossible de contacter le serveur."
+      );
+
+    }
+
+
+    const result =
+      await response.json();
+
+
+    if (
+      result.success === false
+    ) {
+
+      throw new Error(
+        result.message ||
+        "Impossible de valider la présence."
+      );
+
+    }
+
+
+    fillActivities(
+      result.data.activities ||
+      []
+    );
+
+
+    if (
+      navigator.vibrate
+    ) {
+
+      navigator.vibrate(
+        80
+      );
+
+    }
+
+  }
+
+
+  catch (error) {
+
+    console.error(
+      error
+    );
+
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      originalText;
+
+
+    alert(
+      error.message ||
+      "Impossible de valider la présence."
+    );
+
+  }
 
 }
 
