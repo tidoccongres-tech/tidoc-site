@@ -577,6 +577,78 @@
     }
 
 
+/* =========================================
+   ACTIVITÉS
+========================================= */
+
+.activities {
+  display: none;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #E5EEF0;
+}
+
+.activities-title {
+  margin-bottom: 5px;
+  color: var(--blue-deep);
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.activities-subtitle {
+  margin-bottom: 14px;
+  color: var(--grey);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.activity-item {
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid #E1ECEE;
+  border-radius: 16px;
+  background: #F9FCFC;
+}
+
+.activity-type {
+  margin-bottom: 4px;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.activity-name {
+  color: var(--blue-deep);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.activity-button {
+  width: 100%;
+  margin-top: 11px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--blue);
+  color: white;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.activity-button.present {
+  background: var(--green-light);
+  color: var(--green);
+  cursor: default;
+}
+
+.activity-button:disabled {
+  opacity: .75;
+}
+    
     /* =========================================
        BOUTONS
     ========================================= */
@@ -962,6 +1034,23 @@
       </div>
 
 
+<div
+  class="activities"
+  id="activitiesBlock"
+>
+
+  <div class="activities-title">
+    Activités du participant
+  </div>
+
+  <div class="activities-subtitle">
+    Validez uniquement l'activité à laquelle le participant se présente.
+  </div>
+
+  <div id="activitiesList"></div>
+
+</div>
+      
       <div class="actions">
 
         <button
