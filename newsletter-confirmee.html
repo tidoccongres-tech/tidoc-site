@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Inscription confirmée — Ti'Doc</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="/files/logo.png">
+
+  <style>
+    :root{
+      --blue:#198CA7;
+      --blue-deep:#073C4B;
+      --blue-light:#E9F7FA;
+      --text:#153C46;
+      --grey:#637D84;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:30px;
+
+      font-family:Arial,Helvetica,sans-serif;
+
+      color:var(--text);
+
+      background:
+        linear-gradient(
+          135deg,
+          #E9F7FA,
+          #F8FCFD
+        );
+    }
+
+    .card{
+      width:min(580px,100%);
+
+      padding:55px 40px;
+
+      text-align:center;
+
+      background:white;
+
+      border-radius:30px;
+
+      box-shadow:
+        0 20px 60px rgba(7,60,75,.12);
+    }
+
+    .logo{
+      width:90px;
+      height:auto;
+
+      margin:0 auto 25px;
+    }
+
+    .heart{
+      margin-bottom:18px;
+
+      font-size:48px;
+    }
+
+    h1{
+      margin:0 0 18px;
+
+      color:var(--blue-deep);
+
+      font-size:clamp(30px,6vw,42px);
+    }
+
+    p{
+      margin:0 auto;
+
+      max-width:450px;
+
+      color:var(--grey);
+
+      font-size:17px;
+      line-height:1.7;
+    }
+
+    .button{
+      display:inline-block;
+
+      margin-top:32px;
+
+      padding:15px 27px;
+
+      color:white;
+      background:var(--blue);
+
+      border-radius:50px;
+
+      text-decoration:none;
+
+      font-weight:700;
+
+      transition:.2s;
+    }
+
+    .button:hover{
+      transform:translateY(-2px);
+    }
+
+    .small{
+      margin-top:25px;
+
+      color:#8AA0A5;
+
+      font-size:13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card">
+
+    <img
+      src="/files/logo.png"
+      alt="Ti'Doc"
+      class="logo"
+    >
+
+    <div class="heart">
+      💙
+    </div>
+
+    <h1>
+      Inscription confirmée !
+    </h1>
+
+    <p>
+      Votre inscription à la newsletter Ti'Doc
+      est bien confirmée.
+      Vous recevrez désormais les actualités,
+      informations et nouveautés de la prochaine édition.
+    </p>
+
+    <a
+      href="/"
+      class="button"
+    >
+      Retourner sur Ti'Doc
+    </a>
+
+    <div class="small">
+      À très vite 💙 — L'équipe Ti'Doc
+    </div>
+
+  </main>
+
+</body>
+</html>
