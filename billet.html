@@ -2178,14 +2178,11 @@ function renderTicket(
       <aside class="ticket-qr">
 
 
-        <div class="qr-box">
-
-          <img
-            src="${escapeAttribute(ticket.qrUrl)}"
-            alt="QR code du billet"
-          >
-
-        </div>
+        <div
+  class="qr-box"
+  id="ticket-qr-code"
+  aria-label="QR code du billet"
+></div>
 
 
         <div class="valid-badge">
@@ -2246,6 +2243,36 @@ ${scheduleHtml}
 
   `;
 
+const qrContainer =
+  document.getElementById(
+    "ticket-qr-code"
+  );
+
+
+if (
+  qrContainer &&
+  ticket.qrContent
+) {
+
+  new QRCode(
+    qrContainer,
+    {
+      text:
+        ticket.qrContent,
+
+      width:
+        200,
+
+      height:
+        200,
+
+      correctLevel:
+        QRCode.CorrectLevel.H
+    }
+  );
+
+}
+  
 }
 
 
