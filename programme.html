@@ -2952,29 +2952,36 @@ async function saveProgramme(){
     }
 
 
-    const response =
+    const formData =
+  new URLSearchParams();
+
+formData.append(
+  "action",
+  "saveProgramme"
+);
+
+formData.append(
+  "token",
+  token
+);
+
+formData.append(
+  "conferences",
+  selectedConferences.join(",")
+);
+
+formData.append(
+  "workshops",
+  selectedWorkshops.join(",")
+);
+
+
+const response =
   await fetch(
     BILLETTERIE_API,
     {
       method: "POST",
-
-      headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-
-      body:
-        "action=saveProgramme" +
-        "&token=" +
-        encodeURIComponent(token) +
-        "&conferences=" +
-        encodeURIComponent(
-          selectedConferences.join(",")
-        ) +
-        "&workshops=" +
-        encodeURIComponent(
-          selectedWorkshops.join(",")
-        )
+      body: formData
     }
   );
 
