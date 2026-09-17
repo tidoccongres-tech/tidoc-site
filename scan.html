@@ -1848,7 +1848,152 @@
 
     }
 
+/* ============================================
+   ACTIVITÉS DU PARTICIPANT
+============================================ */
 
+function fillActivities(
+  activities
+) {
+
+  const block =
+    document.getElementById(
+      "activitiesBlock"
+    );
+
+  const list =
+    document.getElementById(
+      "activitiesList"
+    );
+
+
+  list.innerHTML =
+    "";
+
+
+  if (
+    !Array.isArray(
+      activities
+    ) ||
+    activities.length === 0
+  ) {
+
+    block.style.display =
+      "none";
+
+    return;
+
+  }
+
+
+  block.style.display =
+    "block";
+
+
+  activities.forEach(
+    activity => {
+
+      const item =
+        document.createElement(
+          "div"
+        );
+
+      item.className =
+        "activity-item";
+
+
+      const type =
+        document.createElement(
+          "div"
+        );
+
+      type.className =
+        "activity-type";
+
+      type.textContent =
+        activity.activityType ||
+        "Activité";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+      name.className =
+        "activity-name";
+
+      name.textContent =
+        activity.activityName ||
+        activity.activityId ||
+        "Activité";
+
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "activity-button";
+
+
+      if (
+        activity.present
+      ) {
+
+        button.classList.add(
+          "present"
+        );
+
+        button.textContent =
+          "✓ Présence validée";
+
+        button.disabled =
+          true;
+
+      }
+
+      else {
+
+        button.textContent =
+          "Valider la présence";
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            validateActivityPresence(
+              activity.reservationId,
+              button
+            );
+
+          }
+        );
+
+      }
+
+
+      item.appendChild(
+        type
+      );
+
+      item.appendChild(
+        name
+      );
+
+      item.appendChild(
+        button
+      );
+
+      list.appendChild(
+        item
+      );
+
+    }
+  );
+
+}
 
     /* ============================================
        ERREUR BILLET
