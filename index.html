@@ -1716,15 +1716,30 @@ newsletterForm?.addEventListener(
 
       if(data.success){
 
-        newsletterMessage.textContent =
-          "Merci ! Votre inscription à la newsletter est confirmée 💙";
+  if(data.pending){
 
-        newsletterMessage.style.color =
-          "#198CA7";
+    newsletterMessage.textContent =
+      "Presque terminé 💙 Consultez votre boîte mail et cliquez sur le lien de confirmation pour valider votre inscription.";
 
-        newsletterEmail.value = "";
+  } else if(data.alreadyRegistered){
 
-      }
+    newsletterMessage.textContent =
+      "Cette adresse est déjà inscrite à la newsletter Ti'Doc 💙";
+
+  } else{
+
+    newsletterMessage.textContent =
+      data.message ||
+      "Votre demande a bien été prise en compte 💙";
+
+  }
+
+  newsletterMessage.style.color =
+    "#198CA7";
+
+  newsletterEmail.value = "";
+
+}
 
       else{
 
