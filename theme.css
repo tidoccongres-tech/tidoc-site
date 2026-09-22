@@ -1,9 +1,15 @@
-/* Ti'Doc — base visuelle commune */
+/* Ti'Doc — direction artistique commune */
 :root{
   --surface:#fff;
   --surface-soft:#f4fafb;
+  --surface-deep:#073c4b;
+  --ink:#123b45;
+  --muted:#68828a;
   --line:rgba(7,60,75,.12);
+  --line-strong:rgba(25,140,167,.25);
   --shadow-soft:0 18px 55px rgba(7,60,75,.10);
+  --shadow-premium:0 24px 70px rgba(7,60,75,.16);
+  --radius-xl:36px;
   --radius-lg:28px;
   --radius-md:18px;
 }
@@ -13,6 +19,167 @@ html{ background:var(--surface-soft); }
 body{
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   text-rendering:optimizeLegibility;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 0 0,rgba(25,140,167,.06),transparent 28rem),
+    var(--surface-soft);
+}
+
+h1,h2,h3,h4,p{ text-wrap:pretty; }
+h1,h2,h3,h4{ letter-spacing:-.025em; }
+
+section{ scroll-margin-top:112px; }
+
+/* Barre de navigation commune */
+header{
+  padding-top:18px;
+  padding-bottom:18px;
+}
+
+header nav{
+  border:1px solid rgba(255,255,255,.72);
+  background:rgba(255,255,255,.82);
+  box-shadow:0 14px 45px rgba(7,60,75,.13);
+}
+
+header nav > a,
+header .nav-main-row{
+  transition:background .2s ease,color .2s ease;
+}
+
+header nav > a:hover,
+header .nav-main-row:hover{
+  border-radius:12px;
+  background:rgba(233,247,250,.88);
+}
+
+/* Surfaces et cartes */
+.info-bar,
+.about-path-card,
+.program-card,
+.pack-card,
+.contact-card,
+.privacy-content,
+.section,
+.intro-inner,
+.team-intro-inner{
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+}
+
+.about-path-card,
+.program-card,
+.pack-card{
+  overflow:hidden;
+  border-radius:var(--radius-lg);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+
+.about-path-card:hover,
+.program-card:hover,
+.pack-card:hover{
+  transform:translateY(-7px);
+  border-color:var(--line-strong);
+  box-shadow:var(--shadow-premium);
+}
+
+.about-path-card img,
+.program-card img{
+  transition:transform .5s cubic-bezier(.2,.75,.25,1),filter .5s ease;
+}
+
+.about-path-card:hover img,
+.program-card:hover img{
+  transform:scale(1.04);
+  filter:saturate(1.06) contrast(1.02);
+}
+
+.contact-card,
+.privacy-content{
+  border-radius:var(--radius-xl);
+  background:rgba(255,255,255,.92);
+  box-shadow:var(--shadow-premium);
+}
+
+.newsletter input,
+.newsletter button,
+.staff-input,
+.pack-button,
+.privacy-more{
+  border-radius:14px;
+}
+
+.newsletter input,
+.staff-input{
+  border:1px solid var(--line);
+  background:#fbfeff;
+  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
+
+.newsletter input:focus,
+.staff-input:focus{
+  border-color:var(--blue);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(25,140,167,.12);
+  outline:0;
+}
+
+.newsletter-consent{
+  order:3;
+  flex:0 0 100%;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:14px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+  cursor:pointer;
+}
+
+.newsletter-form{
+  flex-wrap:wrap;
+}
+
+.newsletter-form button{
+  order:2;
+}
+
+.newsletter-consent input{
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  margin-top:2px;
+  border-radius:4px;
+  accent-color:var(--blue);
+  cursor:pointer;
+}
+
+.pack-button,
+.newsletter button,
+.staff-button{
+  box-shadow:0 10px 25px rgba(7,60,75,.12);
+}
+
+.pack-button:hover,
+.newsletter button:hover,
+.staff-button:hover{
+  transform:translateY(-2px);
+}
+
+.site-footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 85% 0,rgba(25,140,167,.28),transparent 22rem),
+    linear-gradient(135deg,#073c4b,#062e3a);
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+    animation-duration:.01ms!important;
+  }
 }
 
 ::selection{ color:#fff; background:var(--blue); }

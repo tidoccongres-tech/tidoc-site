@@ -1637,6 +1637,20 @@ footer{
             required
           >
 
+        <label class="newsletter-consent" for="newsletter-consent">
+          <input
+            type="checkbox"
+            id="newsletter-consent"
+            name="consent"
+            value="1"
+            required
+          >
+          <span>
+            J'accepte de recevoir les actualités de Ti'Doc par e-mail.
+            Je peux retirer mon consentement à tout moment.
+          </span>
+        </label>
+
           <button type="submit">
             S'inscrire
           </button>
@@ -1691,6 +1705,9 @@ const newsletterForm =
 const newsletterEmail =
   document.getElementById("newsletter-email");
 
+const newsletterConsent =
+  document.getElementById("newsletter-consent");
+
 const newsletterMessage =
   document.getElementById("newsletter-message");
 
@@ -1710,6 +1727,17 @@ newsletterForm?.addEventListener(
 
       newsletterMessage.textContent =
         "Veuillez entrer une adresse e-mail.";
+
+      return;
+
+    }
+
+    if(!newsletterConsent?.checked){
+
+      newsletterMessage.textContent =
+        "Veuillez accepter de recevoir les actualités de Ti'Doc.";
+
+      newsletterConsent?.focus();
 
       return;
 
@@ -1736,7 +1764,8 @@ newsletterForm?.addEventListener(
 
             body:
               "email=" +
-              encodeURIComponent(email)
+              encodeURIComponent(email) +
+              "&consent=1"
 
           }
         );
