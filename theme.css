@@ -102,11 +102,83 @@ header .nav-main-row:hover{
 }
 
 .newsletter input,
-.newsletter button,
-.staff-input,
-.pack-button,
-.privacy-more{
+/* Bouton d'inscription newsletter Ti'Doc */
+
+.newsletter-form button{
+  order:2;
+
+  /* Dimensions */
+  width:100%;
+  min-height:54px;
+  padding:15px 26px;
+  margin-top:12px;
+
+  /* Design */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  border:1px solid transparent;
   border-radius:14px;
+
+  background:linear-gradient(
+    135deg,
+    #198CA7 0%,
+    #0B5367 100%
+  );
+
+  color:#ffffff;
+  font-family:inherit;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.2px;
+
+  /* Effet de profondeur */
+  box-shadow:
+    0 8px 22px rgba(25,140,167,.22),
+    inset 0 1px 0 rgba(255,255,255,.15);
+
+  cursor:pointer;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+/* Animation au survol */
+
+.newsletter-form button:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(25,140,167,.30),
+    inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+/* Effet au clic */
+
+.newsletter-form button:active{
+  transform:translateY(0);
+
+  box-shadow:
+    0 4px 12px rgba(25,140,167,.18);
+}
+
+/* Accessibilité */
+
+.newsletter-form button:focus-visible{
+  outline:3px solid rgba(25,140,167,.35);
+  outline-offset:4px;
+}
+
+/* Bouton désactivé */
+
+.newsletter-form button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none;
 }
 
 .newsletter input,
