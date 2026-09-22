@@ -26,7 +26,9 @@
   href="https://tidoccongres.fr/apropos.html"
 >
 
-<link rel="icon" type="image/png" href="files/logo.png">  
+<link rel="icon" type="image/png" href="/files/logo.png?v=3">
+<link rel="shortcut icon" type="image/png" href="/files/logo.png?v=3">
+<link rel="apple-touch-icon" href="/files/logo.png?v=3">
 
 <link
   rel="stylesheet"
@@ -745,6 +747,25 @@ a{
 
 }
 
+.about-footer-button{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:28px;
+  padding:14px 20px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  color:white;
+  background:rgba(255,255,255,.12);
+  font-weight:800;
+  transition:transform .22s ease,background .22s ease;
+}
+
+.about-footer-button:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.22);
+}
+
 
 
 /* =====================================================
@@ -1146,6 +1167,14 @@ footer{
       contribuent tous à faire évoluer le projet
       et à construire les prochaines éditions.
     </p>
+
+    <a
+      href="activites.html"
+      class="about-footer-button"
+    >
+      Découvrir les éditions
+      <span aria-hidden="true">→</span>
+    </a>
 
   </div>
 
