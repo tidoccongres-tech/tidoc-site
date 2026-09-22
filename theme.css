@@ -1,0 +1,34 @@
+/* Ti'Doc — base visuelle commune */
+:root{
+  --surface:#fff;
+  --surface-soft:#f4fafb;
+  --line:rgba(7,60,75,.12);
+  --shadow-soft:0 18px 55px rgba(7,60,75,.10);
+  --radius-lg:28px;
+  --radius-md:18px;
+}
+
+html{ background:var(--surface-soft); }
+
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  text-rendering:optimizeLegibility;
+}
+
+::selection{ color:#fff; background:var(--blue); }
+a,button,input,select,textarea{ -webkit-tap-highlight-color:transparent; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid rgba(25,140,167,.42);
+  outline-offset:4px;
+}
+button,input,select,textarea{ font:inherit; }
+.section-tag,.hero-tag,.privacy-tag,.page-tag{ letter-spacing:1.8px; }
+.btn,.staff-button,.pack-button,.privacy-more{
+  transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease;
+}
+.btn:hover,.staff-button:hover,.pack-button:hover,.privacy-more:hover{
+  box-shadow:0 12px 28px rgba(7,60,75,.14);
+}
+@media(max-width:650px){
+  .hero,.team-hero,.about-hero,.privacy-hero,.page-heading{ padding-top:135px; }
+}

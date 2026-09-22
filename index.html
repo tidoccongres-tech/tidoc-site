@@ -29,6 +29,7 @@
   rel="stylesheet"
   href="footer.css"
 >
+
    
 <style>
 
@@ -1154,6 +1155,7 @@ footer{
 }
 
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 
 
@@ -1628,6 +1630,9 @@ footer{
           <input
             type="email"
             id="newsletter-email"
+            name="email"
+            autocomplete="email"
+            aria-label="Adresse e-mail"
             placeholder="Votre adresse e-mail"
             required
           >
@@ -1639,10 +1644,10 @@ footer{
         </form>
 
 <p class="newsletter-privacy">
-  En vous inscrivant, vous demandez à recevoir les actualités
-  de Ti'Doc par e-mail. Votre inscription ne sera effective
-  qu'après confirmation par e-mail. Vous pourrez vous
-  désinscrire à tout moment.
+  Votre adresse e-mail est obligatoire pour recevoir les actualités
+  de Ti'Doc. Votre inscription ne sera effective qu'après
+  confirmation par e-mail. Vous pourrez vous désinscrire à tout
+  moment.
 
   <a href="confidentialite.html">
     En savoir plus sur l'utilisation de vos données.

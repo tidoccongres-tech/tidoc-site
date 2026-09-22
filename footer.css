@@ -82,6 +82,23 @@
 
 }
 
+.privacy-link{
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size:11px;
+  text-decoration:underline;
+  text-underline-offset:3px;
+
+}
+
+.privacy-link:hover{
+
+  color:white;
+
+}
+
 
 /* =====================================================
    ESPACE STAFF

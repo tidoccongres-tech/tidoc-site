@@ -38,6 +38,7 @@
   href="footer.css"
 >
 
+
 <style>
 
 /* =====================================================
@@ -1058,6 +1059,7 @@ body.privacy-locked
 
 </style>
 
+<link rel="stylesheet" href="theme.css">
 </head>
 
 
@@ -1184,9 +1186,11 @@ body.privacy-locked
           >
 
           <span>
-            J'ai pris connaissance des informations
-            relatives au traitement de mes données
-            personnelles.
+            J'ai pris connaissance des informations relatives
+            au traitement de mes données personnelles.
+            <a href="confidentialite.html">
+              Lire la politique de confidentialité
+            </a>
           </span>
 
         </label>
@@ -1195,9 +1199,9 @@ body.privacy-locked
         <button
           type="button"
           class="privacy-more"
-          onclick="openPrivacyModal()"
+          onclick="window.location.href='confidentialite.html#inscriptions'"
         >
-          En savoir plus sur la protection de mes données
+          Voir les détails du traitement
         </button>
 
 
@@ -1721,22 +1725,6 @@ const response =
    EN SAVOIR PLUS
 ===================================================== */
 
-function openPrivacyModal(){
-
-  alert(
-
-    "Les données personnelles renseignées lors de votre inscription sont utilisées uniquement pour la gestion de votre inscription, de votre billet et de votre participation au congrès Ti'Doc 2027.\n\n" +
-
-    "Elles ne sont pas utilisées à des fins commerciales par Ti'Doc.\n\n" +
-
-    "Vous pouvez contacter Ti'Doc pour toute question relative à vos données personnelles."
-
-  );
-
-}
-
-
-
 /* =====================================================
    SÉCURITÉ HTML
 ===================================================== */
@@ -1795,6 +1783,3 @@ loadBilletterie();
 </body>
 
 </html>
-
-
-

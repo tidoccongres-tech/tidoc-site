@@ -36,6 +36,7 @@ async function loadHeader(){
       html;
 
 
+    setupMobileNavigation();
     setupHeaderDropdowns();
 
   }
@@ -50,6 +51,42 @@ async function loadHeader(){
 
   }
 
+}
+
+function setupMobileNavigation(){
+  const toggle = document.querySelector(".menu-toggle");
+  const navigation = document.getElementById("main-navigation");
+
+  if(!toggle || !navigation){
+    return;
+  }
+
+  toggle.addEventListener("click", function(event){
+    event.stopPropagation();
+    const isOpen = navigation.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navigation.addEventListener("click", function(event){
+    if(event.target.closest("a")){
+      navigation.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("click", function(event){
+    if(!event.target.closest("header")){
+      navigation.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("keydown", function(event){
+    if(event.key === "Escape"){
+      navigation.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
 
