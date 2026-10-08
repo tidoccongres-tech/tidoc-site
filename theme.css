@@ -101,7 +101,6 @@ header .nav-main-row:hover{
   box-shadow:var(--shadow-premium);
 }
 
-.newsletter input,
 /* Bouton d'inscription newsletter Ti'Doc */
 
 .newsletter-form button{
@@ -270,4 +269,48 @@ button,input,select,textarea{ font:inherit; }
 }
 @media(max-width:650px){
   .hero,.team-hero,.about-hero,.privacy-hero,.page-heading{ padding-top:135px; }
+}
+
+/* =====================================================
+   TI'DOC — CORRECTION BOUTONS BILLETTERIE
+===================================================== */
+
+.pack-button{
+  position:relative;
+  z-index:2;
+
+  pointer-events:auto;
+  touch-action:manipulation;
+
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+/* Retour visuel au toucher */
+
+.pack-button:active:not(:disabled){
+  transform:scale(.98);
+}
+
+/* État pendant la connexion HelloAsso */
+
+.pack-button.is-loading{
+  opacity:1;
+  background:#0B5367;
+  cursor:wait;
+  transform:none;
+  box-shadow:0 10px 25px rgba(7,60,75,.12);
+}
+
+/* Désactivation pendant le paiement */
+
+.pack-button:disabled{
+  cursor:wait;
+  transform:none;
+}
+
+/* Respecter le blocage RGPD */
+
+body.privacy-locked .pack-button{
+  pointer-events:none;
 }
