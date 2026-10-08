@@ -60,7 +60,6 @@ header .nav-main-row:hover{
 .pack-card,
 .contact-card,
 .privacy-content,
-.section,
 .intro-inner,
 .team-intro-inner{
   border:1px solid var(--line);
@@ -525,4 +524,39 @@ body.privacy-locked .pack-button{
   flex:1;
   min-width:0;
 }
+
+
+/* =====================================================
+   TI'DOC — SECTIONS SANS ENCADRÉ
+===================================================== */
+
+/* Les sections classiques restent intégrées au fond */
+
+.section{
+  border:none;
+  box-shadow:none;
+  background:transparent;
+}
+
+/* Les titres et descriptions ne deviennent pas des cartes */
+
+.section > h1,
+.section > h2,
+.section > h3,
+.section > p{
+  border:none;
+  box-shadow:none;
+  background:transparent;
+}
+
+/* Meilleur rendu sur tablette et ordinateur */
+
+@media(min-width:768px){
+
+  .section{
+    border-radius:0;
+  }
+
+}
+
 
