@@ -467,3 +467,62 @@ body.privacy-locked .pack-button{
   }
 
 }
+
+
+/* ==========================================
+   TI'DOC — CORRECTION NEWSLETTER
+========================================== */
+
+.newsletter-form .newsletter-consent{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  gap:12px !important;
+
+  width:100% !important;
+  margin:12px 0 0 !important;
+  padding:14px !important;
+
+  border-radius:14px;
+  background:rgba(25,140,167,.05);
+
+  font-size:12px;
+  line-height:1.6;
+  text-align:left;
+}
+
+.newsletter-form .newsletter-consent input[type="checkbox"],
+.newsletter .newsletter-consent input[type="checkbox"]{
+  display:block !important;
+  appearance:auto !important;
+  -webkit-appearance:checkbox !important;
+
+  order:-1 !important;
+  flex:0 0 16px !important;
+
+  width:16px !important;
+  height:16px !important;
+  min-width:16px !important;
+  min-height:16px !important;
+  max-width:16px !important;
+  max-height:16px !important;
+
+  padding:0 !important;
+  margin:2px 0 0 !important;
+
+  border:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+
+  accent-color:#198CA7;
+  cursor:pointer;
+}
+
+.newsletter-form .newsletter-consent span,
+.newsletter .newsletter-consent span{
+  order:0;
+  flex:1;
+  min-width:0;
+}
+
