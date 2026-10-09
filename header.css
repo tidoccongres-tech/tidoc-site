@@ -591,3 +591,10 @@ nav a{
   }
 
 }
+
+/* Ti'Doc bilingual language switch */
+.language-switch{display:inline-flex;align-items:center;flex:none;gap:3px;padding:4px;border:1px solid rgba(25,140,167,.16);border-radius:30px;background:#e9f7fa;white-space:nowrap}
+.language-switch .language-choice{appearance:none;border:0;border-radius:24px;background:transparent;color:#0b5367;padding:8px 11px;font-size:12px;font-weight:800;letter-spacing:.03em;cursor:pointer;line-height:1.1;transition:background .2s,color .2s,box-shadow .2s}
+.language-switch .language-choice[aria-pressed="true"]{background:#198ca7;color:#fff;box-shadow:0 2px 7px rgba(25,140,167,.2)}
+.language-switch .language-choice:focus-visible{outline:2px solid #198ca7;outline-offset:3px}
+@media(max-width:800px){.language-switch{margin:10px 0;align-self:flex-start}}
