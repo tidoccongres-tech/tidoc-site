@@ -684,5 +684,91 @@ body.privacy-locked .pack-button{
 
 
 
+/* ==========================================
+   TI'DOC — TITRES ÉDITIONS 2025 / 2026 / 2027
+   Même style que la page Accueil
+========================================== */
+
+/* Supprimer les encadrés des en-têtes */
+.page-heading,
+.page-heading-inner,
+.edition-hero,
+.edition-header,
+.edition-intro {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Supprimer les encadrés des éléments internes */
+.page-heading::before,
+.page-heading::after,
+.edition-hero::before,
+.edition-hero::after {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Mise en page centrée */
+.page-heading,
+.edition-hero,
+.edition-header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Étiquette au-dessus du titre */
+.page-heading .page-tag,
+.edition-hero .page-tag {
+  color: #198CA7;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Titres */
+.page-heading h1,
+.edition-hero h1,
+.edition-header h1 {
+  color: #073C4B;
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.12;
+  text-align: center;
+}
+
+/* Description */
+.page-heading p,
+.edition-hero p,
+.edition-header p {
+  color: #68828A;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tablette et mobile */
+@media (max-width: 768px) {
+  .page-heading,
+  .edition-hero,
+  .edition-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .page-heading h1,
+  .edition-hero h1,
+  .edition-header h1 {
+    font-size: clamp(30px, 7vw, 48px);
+  }
+}
+
+
+
 
 
