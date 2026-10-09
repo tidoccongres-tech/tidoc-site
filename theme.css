@@ -560,5 +560,129 @@ body.privacy-locked .pack-button{
 }
 
 
+/* ================================================
+   TI'DOC — NOTRE HISTOIRE / DESIGN PREMIUM
+================================================ */
+
+/* Section de présentation */
+.about-hero,
+.about-section {
+  position: relative;
+  background: transparent;
+}
+
+/* Conteneur principal vidéo */
+.about-hero video,
+.about-hero iframe,
+.about-hero .about-video,
+.about-section video {
+  border-radius: 30px;
+  box-shadow:
+    0 24px 65px rgba(7, 60, 75, .14),
+    0 5px 15px rgba(7, 60, 75, .05);
+}
+
+/* Images de couverture */
+.about-hero img,
+.about-section .about-video img {
+  border-radius: 30px;
+}
+
+/* Titres de la section */
+.about-hero h1,
+.about-hero h2,
+.about-section h1,
+.about-section h2 {
+  color: #073C4B;
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.13;
+  text-wrap: balance;
+}
+
+/* Petite étiquette NOTRE HISTOIRE */
+.about-hero .section-tag,
+.about-section .section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #198CA7;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* Accent graphique avant l'étiquette */
+.about-hero .section-tag::before,
+.about-section .section-tag::before {
+  content: "";
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  background: #198CA7;
+}
+
+/* Texte de présentation */
+.about-hero p,
+.about-section p {
+  color: #637D84;
+  line-height: 1.85;
+  letter-spacing: -.01em;
+}
+
+/* Animation discrète pour vidéo */
+@media (hover: hover) {
+  .about-hero video,
+  .about-hero .about-video {
+    transition:
+      transform .4s ease,
+      box-shadow .4s ease;
+  }
+
+  .about-hero video:hover,
+  .about-hero .about-video:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 30px 80px rgba(7, 60, 75, .18);
+  }
+}
+
+/* Tablette */
+@media (min-width: 651px) and (max-width: 1024px) {
+  .about-hero h1,
+  .about-hero h2 {
+    font-size: clamp(32px, 4vw, 46px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .about-hero video,
+  .about-hero iframe,
+  .about-hero img,
+  .about-hero .about-video {
+    border-radius: 20px;
+  }
+
+  .about-hero h1,
+  .about-hero h2 {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.17;
+  }
+
+  .about-hero p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .about-hero .section-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+}
+
+
+
 
 
