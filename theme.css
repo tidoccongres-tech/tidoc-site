@@ -1,36 +1,78 @@
-/* Ti'Doc — direction artistique commune */
+
+/* =====================================================
+   TI'DOC — DIRECTION ARTISTIQUE COMMUNE
+   VERSION CORRIGÉE
+===================================================== */
+
 :root{
+  --blue:#198CA7;
+  --blue-dark:#0B5367;
+  --blue-deep:#073C4B;
+
   --surface:#fff;
   --surface-soft:#f4fafb;
   --surface-deep:#073c4b;
+
   --ink:#123b45;
   --muted:#68828a;
+
   --line:rgba(7,60,75,.12);
   --line-strong:rgba(25,140,167,.25);
+
   --shadow-soft:0 18px 55px rgba(7,60,75,.10);
   --shadow-premium:0 24px 70px rgba(7,60,75,.16);
+
   --radius-xl:36px;
   --radius-lg:28px;
   --radius-md:18px;
 }
 
-html{ background:var(--surface-soft); }
+/* =====================================================
+   BASE DU SITE
+===================================================== */
+
+html{
+  background:var(--surface-soft);
+}
 
 body{
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
   text-rendering:optimizeLegibility;
   color:var(--ink);
+
   background:
-    radial-gradient(circle at 0 0,rgba(25,140,167,.06),transparent 28rem),
+    radial-gradient(
+      circle at 0 0,
+      rgba(25,140,167,.06),
+      transparent 28rem
+    ),
     var(--surface-soft);
 }
 
-h1,h2,h3,h4,p{ text-wrap:pretty; }
-h1,h2,h3,h4{ letter-spacing:-.025em; }
+h1,h2,h3,h4,p{
+  text-wrap:pretty;
+}
 
-section{ scroll-margin-top:112px; }
+h1,h2,h3,h4{
+  letter-spacing:-.025em;
+}
 
-/* Barre de navigation commune */
+section{
+  scroll-margin-top:112px;
+}
+
+/* =====================================================
+   BARRE DE NAVIGATION
+===================================================== */
+
 header{
   padding-top:18px;
   padding-bottom:18px;
@@ -39,12 +81,16 @@ header{
 header nav{
   border:1px solid rgba(255,255,255,.72);
   background:rgba(255,255,255,.82);
-  box-shadow:0 14px 45px rgba(7,60,75,.13);
+
+  box-shadow:
+    0 14px 45px rgba(7,60,75,.13);
 }
 
 header nav > a,
 header .nav-main-row{
-  transition:background .2s ease,color .2s ease;
+  transition:
+    background .2s ease,
+    color .2s ease;
 }
 
 header nav > a:hover,
@@ -53,16 +99,19 @@ header .nav-main-row:hover{
   background:rgba(233,247,250,.88);
 }
 
-/* Surfaces et cartes */
+/* =====================================================
+   CARTES DU SITE
+===================================================== */
+
+/* On conserve les bordures uniquement
+   sur les véritables cartes */
+
 .info-bar,
 .about-path-card,
 .program-card,
 .pack-card,
 .contact-card,
-.privacy-content,
-.section,
-.intro-inner,
-.team-intro-inner{
+.privacy-content{
   border:1px solid var(--line);
   box-shadow:var(--shadow-soft);
 }
@@ -72,7 +121,11 @@ header .nav-main-row:hover{
 .pack-card{
   overflow:hidden;
   border-radius:var(--radius-lg);
-  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease;
 }
 
 .about-path-card:hover,
@@ -85,7 +138,9 @@ header .nav-main-row:hover{
 
 .about-path-card img,
 .program-card img{
-  transition:transform .5s cubic-bezier(.2,.75,.25,1),filter .5s ease;
+  transition:
+    transform .5s cubic-bezier(.2,.75,.25,1),
+    filter .5s ease;
 }
 
 .about-path-card:hover img,
@@ -101,19 +156,199 @@ header .nav-main-row:hover{
   box-shadow:var(--shadow-premium);
 }
 
-.newsletter input,
-/* Bouton d'inscription newsletter Ti'Doc */
+/* =====================================================
+   ÉDITIONS 2025 / 2026 / 2027
+   SUPPRESSION DES ENCADRÉS
+===================================================== */
+
+/* Important :
+   Les titres des éditions utilisent .intro-inner.
+   Cette classe ne doit PAS avoir l'apparence
+   d'une carte.
+*/
+
+.edition-content .intro{
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  text-align:center;
+}
+
+/* Suppression des encadrés */
+
+.edition-content .intro-inner{
+  display:block;
+
+  width:100%;
+  max-width:900px;
+
+  margin-left:auto;
+  margin-right:auto;
+
+  padding:0;
+
+  background:transparent !important;
+  background-image:none !important;
+
+  border:0 !important;
+  border-radius:0 !important;
+
+  box-shadow:none !important;
+  outline:none !important;
+
+  text-align:center;
+}
+
+/* Suppression des éventuels effets décoratifs */
+
+.edition-content .intro-inner::before,
+.edition-content .intro-inner::after{
+  content:none !important;
+  display:none !important;
+}
+
+/* Étiquette : PREMIÈRE ÉDITION, etc. */
+
+.edition-content .intro .section-tag{
+  display:block;
+
+  color:#198CA7;
+  font-size:14px;
+  font-weight:800;
+
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  margin-bottom:22px;
+
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+
+/* Titres des éditions */
+
+.edition-content .intro h1,
+.edition-content .intro h2{
+  color:#073C4B;
+
+  font-size:clamp(36px,5vw,64px);
+  font-weight:800;
+
+  letter-spacing:-.045em;
+  line-height:1.12;
+
+  margin:0 auto;
+
+  max-width:1000px;
+  text-align:center;
+
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+
+/* Descriptions */
+
+.edition-content .intro p{
+  color:#68828A;
+
+  font-size:clamp(16px,1.6vw,20px);
+  font-weight:400;
+
+  line-height:1.8;
+
+  max-width:850px;
+
+  margin:30px auto 0;
+
+  text-align:center;
+
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+
+/* Les sections génériques ne sont pas des cartes */
+
+.section{
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+
+/* =====================================================
+   FORMULAIRE NEWSLETTER
+===================================================== */
+
+.newsletter-form{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:stretch;
+  gap:12px;
+}
+
+/* Champs */
+
+.newsletter input:not([type="checkbox"]),
+.staff-input{
+  border:1px solid var(--line);
+
+  background:#fbfeff;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+.newsletter-form input:not([type="checkbox"]){
+  flex:1 1 240px;
+
+  width:100%;
+  min-width:0;
+  min-height:52px;
+
+  padding:14px 18px;
+
+  border:1px solid rgba(25,140,167,.20);
+  border-radius:14px;
+
+  background:#fff;
+  color:#153C46;
+
+  font-size:14px;
+  box-shadow:none;
+}
+
+/* Focus */
+
+.newsletter input:not([type="checkbox"]):focus,
+.staff-input:focus{
+  border-color:var(--blue);
+  background:#fff;
+
+  box-shadow:
+    0 0 0 4px rgba(25,140,167,.12);
+
+  outline:0;
+}
+
+/* =====================================================
+   BOUTON NEWSLETTER
+===================================================== */
 
 .newsletter-form button{
   order:2;
 
-  /* Dimensions */
-  width:100%;
-  min-height:54px;
-  padding:15px 26px;
-  margin-top:12px;
+  flex:0 0 auto;
 
-  /* Design */
+  width:auto;
+  min-height:52px;
+
+  padding:14px 26px;
+  margin:0;
+
   display:flex;
   align-items:center;
   justify-content:center;
@@ -128,13 +363,13 @@ header .nav-main-row:hover{
     #0B5367 100%
   );
 
-  color:#ffffff;
+  color:#fff;
+
   font-family:inherit;
   font-size:15px;
   font-weight:700;
   letter-spacing:.2px;
 
-  /* Effet de profondeur */
   box-shadow:
     0 8px 22px rgba(25,140,167,.22),
     inset 0 1px 0 rgba(255,255,255,.15);
@@ -147,8 +382,6 @@ header .nav-main-row:hover{
     background .25s ease;
 }
 
-/* Animation au survol */
-
 .newsletter-form button:hover{
   transform:translateY(-2px);
 
@@ -157,23 +390,14 @@ header .nav-main-row:hover{
     inset 0 1px 0 rgba(255,255,255,.2);
 }
 
-/* Effet au clic */
-
 .newsletter-form button:active{
   transform:translateY(0);
-
-  box-shadow:
-    0 4px 12px rgba(25,140,167,.18);
 }
-
-/* Accessibilité */
 
 .newsletter-form button:focus-visible{
   outline:3px solid rgba(25,140,167,.35);
   outline-offset:4px;
 }
-
-/* Bouton désactivé */
 
 .newsletter-form button:disabled{
   opacity:.55;
@@ -181,56 +405,98 @@ header .nav-main-row:hover{
   transform:none;
 }
 
-.newsletter input,
-.staff-input{
-  border:1px solid var(--line);
-  background:#fbfeff;
-  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
-}
+/* =====================================================
+   NEWSLETTER — CONSENTEMENT RGPD
+===================================================== */
 
-.newsletter input:focus,
-.staff-input:focus{
-  border-color:var(--blue);
-  background:#fff;
-  box-shadow:0 0 0 4px rgba(25,140,167,.12);
-  outline:0;
-}
-
-.newsletter-consent{
+.newsletter-form .newsletter-consent{
   order:3;
+
   flex:0 0 100%;
+
   display:flex;
+  flex-direction:row;
   align-items:flex-start;
-  gap:10px;
-  margin-top:14px;
-  color:var(--muted);
+  justify-content:flex-start;
+
+  gap:12px;
+
+  width:100%;
+
+  margin:12px 0 0;
+  padding:14px;
+
+  border:1px solid rgba(25,140,167,.12);
+  border-radius:14px;
+
+  background:rgba(25,140,167,.05);
+
+  color:#637D84;
+
   font-size:12px;
-  line-height:1.5;
+  line-height:1.6;
+
+  text-align:left;
   cursor:pointer;
 }
 
-.newsletter-form{
-  flex-wrap:wrap;
-}
+/* Checkbox de taille normale */
 
-.newsletter-form button{
-  order:2;
-}
+.newsletter-form .newsletter-consent input[type="checkbox"],
+.newsletter .newsletter-consent input[type="checkbox"]{
+  display:block !important;
 
-.newsletter-consent input{
-  width:16px;
-  height:16px;
-  flex:0 0 16px;
-  margin-top:2px;
-  border-radius:4px;
-  accent-color:var(--blue);
+  appearance:auto !important;
+  -webkit-appearance:checkbox !important;
+
+  order:-1;
+
+  flex:0 0 16px !important;
+
+  width:16px !important;
+  height:16px !important;
+
+  min-width:16px !important;
+  min-height:16px !important;
+
+  max-width:16px !important;
+  max-height:16px !important;
+
+  padding:0 !important;
+  margin:2px 0 0 !important;
+
+  border:0 !important;
+  box-shadow:none !important;
+
+  transform:none !important;
+
+  accent-color:#198CA7;
   cursor:pointer;
 }
+
+.newsletter-consent span{
+  order:0;
+  flex:1;
+  min-width:0;
+}
+
+.newsletter-consent a{
+  color:#198CA7;
+  font-weight:700;
+
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* =====================================================
+   BOUTONS DU SITE
+===================================================== */
 
 .pack-button,
 .newsletter button,
 .staff-button{
-  box-shadow:0 10px 25px rgba(7,60,75,.12);
+  box-shadow:
+    0 10px 25px rgba(7,60,75,.12);
 }
 
 .pack-button:hover,
@@ -239,35 +505,213 @@ header .nav-main-row:hover{
   transform:translateY(-2px);
 }
 
+.btn,
+.staff-button,
+.pack-button,
+.privacy-more{
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease,
+    border-color .22s ease;
+}
+
+.btn:hover,
+.staff-button:hover,
+.pack-button:hover,
+.privacy-more:hover{
+  box-shadow:
+    0 12px 28px rgba(7,60,75,.14);
+}
+
+/* =====================================================
+   BILLETTERIE HELLOASSO
+===================================================== */
+
+.pack-button{
+  position:relative;
+  z-index:2;
+
+  pointer-events:auto;
+  touch-action:manipulation;
+
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.pack-button:active:not(:disabled){
+  transform:scale(.98);
+}
+
+.pack-button.is-loading{
+  opacity:1;
+  background:#0B5367;
+
+  cursor:wait;
+  transform:none;
+
+  box-shadow:
+    0 10px 25px rgba(7,60,75,.12);
+}
+
+.pack-button:disabled{
+  cursor:wait;
+  transform:none;
+}
+
+body.privacy-locked .pack-button{
+  pointer-events:none;
+}
+
+/* =====================================================
+   PIED DE PAGE
+===================================================== */
+
 .site-footer{
-  border-top:1px solid rgba(255,255,255,.08);
+  border-top:
+    1px solid rgba(255,255,255,.08);
+
   background:
-    radial-gradient(circle at 85% 0,rgba(25,140,167,.28),transparent 22rem),
-    linear-gradient(135deg,#073c4b,#062e3a);
+    radial-gradient(
+      circle at 85% 0,
+      rgba(25,140,167,.28),
+      transparent 22rem
+    ),
+    linear-gradient(
+      135deg,
+      #073c4b,
+      #062e3a
+    );
 }
 
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
-    animation-duration:.01ms!important;
-  }
+/* =====================================================
+   ACCESSIBILITÉ
+===================================================== */
+
+::selection{
+  color:#fff;
+  background:var(--blue);
 }
 
-::selection{ color:#fff; background:var(--blue); }
-a,button,input,select,textarea{ -webkit-tap-highlight-color:transparent; }
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+a,button,input,select,textarea{
+  -webkit-tap-highlight-color:transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
   outline:3px solid rgba(25,140,167,.42);
   outline-offset:4px;
 }
-button,input,select,textarea{ font:inherit; }
-.section-tag,.hero-tag,.privacy-tag,.page-tag{ letter-spacing:1.8px; }
-.btn,.staff-button,.pack-button,.privacy-more{
-  transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease;
+
+button,input,select,textarea{
+  font:inherit;
 }
-.btn:hover,.staff-button:hover,.pack-button:hover,.privacy-more:hover{
-  box-shadow:0 12px 28px rgba(7,60,75,.14);
+
+.section-tag,
+.hero-tag,
+.privacy-tag,
+.page-tag{
+  letter-spacing:1.8px;
 }
+
+/* =====================================================
+   TABLETTE
+===================================================== */
+
+@media(max-width:1024px){
+
+  .edition-content .intro-inner{
+    max-width:90%;
+  }
+
+  .edition-content .intro h2{
+    font-size:clamp(34px,5vw,50px);
+  }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media(max-width:650px){
-  .hero,.team-hero,.about-hero,.privacy-hero,.page-heading{ padding-top:135px; }
+
+  .hero,
+  .team-hero,
+  .about-hero,
+  .privacy-hero,
+  .page-heading{
+    padding-top:135px;
+  }
+
+  /* Éditions */
+
+  .edition-content .intro{
+    padding:70px 20px 45px;
+  }
+
+  .edition-content .intro-inner{
+    width:100%;
+    max-width:100%;
+    padding:0;
+  }
+
+  .edition-content .intro .section-tag{
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:18px;
+  }
+
+  .edition-content .intro h1,
+  .edition-content .intro h2{
+    font-size:clamp(29px,7vw,40px);
+    line-height:1.16;
+  }
+
+  .edition-content .intro p{
+    font-size:15px;
+    line-height:1.7;
+    margin-top:22px;
+  }
+
+  /* Newsletter */
+
+  .newsletter-form{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .newsletter-form input:not([type="checkbox"]){
+    flex:none;
+    width:100%;
+  }
+
+  .newsletter-form button{
+    width:100%;
+  }
+
+  .newsletter-form .newsletter-consent{
+    width:100%;
+    padding:12px;
+  }
+
+}
+
+/* =====================================================
+   ANIMATIONS RÉDUITES
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
+  }
+
 }
