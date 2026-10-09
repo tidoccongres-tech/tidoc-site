@@ -38,6 +38,7 @@ async function loadHeader(){
 
     setupMobileNavigation();
     setupHeaderDropdowns();
+    setupActiveNavigation();
     await ensureLanguageSystem();
 
   }
@@ -98,6 +99,49 @@ async function ensureLanguageSystem(){
   }
   catch(error){
     console.error("Erreur chargement traductions Ti'Doc :", error);
+  }
+}
+
+
+/* Current page stays highlighted, including the selected edition. */
+function setupActiveNavigation(){
+  const nav=document.getElementById('main-navigation');
+  if(!nav)return;
+  const url=new URL(window.location.href);
+  const page=url.pathname.split('/').pop()||'index.html';
+  const edition=url.searchParams.get('edition');
+  const links=[...nav.querySelectorAll('a[href]')];
+  for(const link of links){
+    const target=new URL(link.getAttribute('href'),window.location.href);
+    const targetPage=target.pathname.split('/').pop()||'index.html';
+    const targetEdition=target.searchParams.get('edition');
+    let active=false;
+    if(page==='index.html'&&targetPage==='index.html'){
+      // Both top-level Home and matching anchor remain relevant.
+      active=!link.closest('.nav-dropdown-menu');
+    }else if(page==='activites.html'&&targetPage==='activites.html'){
+      active=edition ? targetEdition===edition : !targetEdition;
+    }else{
+      active=page===targetPage && !targetEdition;
+    }
+    if(!active)continue;
+    link.classList.add('is-current');
+    link.setAttribute('aria-current','page');
+    const dropdown=link.closest('.nav-dropdown');
+    if(dropdown){
+      dropdown.classList.add('is-current');
+      dropdown.querySelector(':scope > .nav-main-row > .nav-main-link')?.classList.add('is-current');
+    }
+  }
+  // Highlight the Activities parent on all edition pages.
+  if(page==='activites.html'){
+    const parent=nav.querySelector('.nav-main-link[href="activites.html"]');
+    parent?.classList.add('is-current');
+    parent?.closest('.nav-dropdown')?.classList.add('is-current');
+  }
+  // Other nested pages select their parent menu.
+  if(['equipe.html','wonca.html'].includes(page)){
+    nav.querySelector('.nav-main-link[href="apropos.html"]')?.classList.add('is-current');
   }
 }
 

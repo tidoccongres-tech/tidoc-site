@@ -326,6 +326,13 @@ window.TIDOC_EN_TRANSLATIONS = {
 
   "Ti'Doc accorde une importance particulière à la protection des données personnelles des participants, abonnés et utilisateurs de son site.": "Ti'Doc attaches particular importance to protecting the personal data of participants, subscribers and website users.",
   "Cette politique explique quelles données personnelles peuvent être traitées par l'association Ti'Doc, pourquoi elles sont utilisées, pendant combien de temps et quels sont vos droits.": "This policy explains what personal data may be processed by the Ti'Doc association, why it is used, how long it is kept and what your rights are.",
+  "Le responsable des traitements de données personnelles décrits dans cette politique est l'association": "The data controller for the personal data processing described in this policy is the association",
+  "🔐 Accès réservé": "🔐 Restricted access",
+  "Entrez le code staff": "Enter staff code",
+  "Afficher le code": "Show code",
+  "Masquer le code": "Hide code",
+  "Entrez le code staff.": "Please enter the staff code.",
+  "Code staff incorrect.": "Incorrect staff code.",
   "Le responsable des traitements de données personnelles décrits dans cette politique est l'association TI DOC.": "The data controller for the personal data processing described in this policy is the TI DOC association.",
   "Association TI DOC": "TI DOC Association",
   "Association régie par la loi du 1er juillet 1901": "Association governed by the French law of 1 July 1901",

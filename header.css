@@ -598,3 +598,27 @@ nav a{
 .language-switch .language-choice[aria-pressed="true"]{background:#198ca7;color:#fff;box-shadow:0 2px 7px rgba(25,140,167,.2)}
 .language-switch .language-choice:focus-visible{outline:2px solid #198ca7;outline-offset:3px}
 @media(max-width:800px){.language-switch{margin:10px 0;align-self:flex-start}}
+
+
+/* Ti'Doc — repère persistant de navigation */
+header .nav-main-link.is-current,
+header .nav-dropdown.is-current > .nav-main-row > .nav-main-link{
+  color:#198CA7 !important;
+  font-weight:800;
+}
+header .nav-dropdown-menu a.is-current{
+  background:#E9F7FA !important;
+  color:#0B5367 !important;
+  font-weight:800;
+}
+header .nav-main-link.is-current::after{
+  content:"";
+  display:block;
+  height:3px;
+  background:#198CA7;
+  border-radius:3px;
+  margin-top:4px;
+}
+@media(max-width:800px){
+ header .nav-main-link.is-current::after{height:2px;margin-top:2px;}
+}

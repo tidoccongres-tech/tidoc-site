@@ -599,6 +599,11 @@ body{
 
 }
 
+
+/* Language toggle kept independent of the staff login form. */
+.staff-lang-picker{position:fixed;top:max(15px,env(safe-area-inset-top));right:20px;z-index:20;display:flex;gap:3px;padding:4px;border-radius:24px;background:#e9f7fa;border:1px solid rgba(25,140,167,.2)}
+.staff-lang-picker button{font:700 12px Arial,sans-serif;padding:8px 13px;border:0;border-radius:20px;background:transparent;color:#0b5367;cursor:pointer}
+.staff-lang-picker button[aria-pressed="true"]{color:white;background:#198ca7}
 </style>
 
 </head>
@@ -607,6 +612,10 @@ body{
 <body>
 
 
+<div class="staff-lang-picker" role="group" aria-label="Site language">
+  <button type="button" class="language-choice" data-lang="fr" aria-pressed="true">FR</button>
+  <button type="button" class="language-choice" data-lang="en" aria-pressed="false">EN</button>
+</div>
 <main class="staff-page">
 
   <div class="staff-container">
@@ -1099,6 +1108,8 @@ checkExistingSession();
 </script>
 
 
+<script src="translations.js"></script>
+<script src="language.js"></script>
 </body>
 
 </html>
