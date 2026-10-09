@@ -1062,6 +1062,8 @@ body.privacy-locked
 </style>
 
 <link rel="stylesheet" href="theme.css">
+<script src="translations.js" defer></script>
+<script src="language.js" defer></script>
 </head>
 
 
@@ -1596,105 +1598,130 @@ privacyConsent
    CHOISIR UN PACK
 ===================================================== */
 
+async function choosePack(
+  packId
+){
 
-let checkoutInProgress = false;
+  const consent =
+    document.getElementById(
+      "privacy-consent"
+    );
 
-async function choosePack(packId) {
 
-  if (checkoutInProgress) {
-    return;
-  }
+  if(
+    !consent ||
+    !consent.checked
+  ){
 
-  const consent = document.getElementById("privacy-consent");
-
-  if (!consent || !consent.checked) {
     alert(
       "Veuillez prendre connaissance des informations relatives à la protection de vos données avant de poursuivre."
     );
+
+
     consent?.focus();
+
+
     return;
+
   }
 
-  const buttons = Array.from(
-    document.querySelectorAll(".pack-button")
+
+  try{
+
+
+    const buttons =
+      document.querySelectorAll(
+        ".pack-button"
+      );
+
+
+    buttons.forEach(
+      button => {
+
+        button.disabled =
+          true;
+
+      }
+    );
+
+
+   const url =
+  BILLETTERIE_API +
+  "?action=createCheckout&packId=" +
+  encodeURIComponent(
+    packId
   );
 
-  const clickedButton = buttons.find(button =>
-    button.closest(".pack-card")?.dataset.packId === packId
-  );
 
-  checkoutInProgress = true;
-
-  buttons.forEach(button => {
-    button.disabled = true;
-  });
-
-  if (clickedButton) {
-    clickedButton.textContent = "Connexion à HelloAsso…";
-    clickedButton.classList.add("is-loading");
-  }
-
-  try {
-
-    const url =
-      BILLETTERIE_API +
-      "?action=createCheckout&packId=" +
-      encodeURIComponent(packId);
-
-    const response = await fetch(url, {
+const response =
+  await fetch(
+    url,
+    {
       method: "POST"
-    });
+    }
+  );
 
-    if (!response.ok) {
+
+    const data =
+      await response.json();
+
+
+    if(!data.success){
+
       throw new Error(
-        "Le serveur de paiement ne répond pas. Veuillez réessayer."
+        data.message ||
+        "Impossible de créer le paiement."
       );
+
     }
 
-    const data = await response.json();
 
-    if (!data.success) {
-      throw new Error(
-        data.message || "Impossible de créer le paiement."
-      );
-    }
+    if(!data.redirectUrl){
 
-    if (!data.redirectUrl) {
       throw new Error(
         "HelloAsso n'a pas renvoyé de page de paiement."
       );
+
     }
 
-    if (clickedButton) {
-      clickedButton.textContent = "Redirection vers HelloAsso…";
-    }
 
-    window.location.assign(data.redirectUrl);
+    window.location.href =
+      data.redirectUrl;
 
-  } catch (error) {
+  }
 
-    console.error("Erreur paiement Ti'Doc :", error);
+
+  catch(error){
+
+    console.error(
+      error
+    );
+
 
     alert(
       "Impossible de démarrer le paiement.\n\n" +
       error.message
     );
 
-    checkoutInProgress = false;
 
-    buttons.forEach(button => {
-      button.disabled = false;
-    });
+    const buttons =
+      document.querySelectorAll(
+        ".pack-button"
+      );
 
-    if (clickedButton) {
-      clickedButton.textContent = "Choisir ce pack";
-      clickedButton.classList.remove("is-loading");
-    }
+
+    buttons.forEach(
+      button => {
+
+        button.disabled =
+          false;
+
+      }
+    );
 
   }
 
 }
-
 
 
 
