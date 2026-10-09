@@ -38,6 +38,7 @@ async function loadHeader(){
 
     setupMobileNavigation();
     setupHeaderDropdowns();
+    await ensureLanguageSystem();
 
   }
 
@@ -51,6 +52,53 @@ async function loadHeader(){
 
   }
 
+}
+
+
+async function ensureLanguageSystem(){
+  if(window.TiDocLanguage){
+    window.TiDocLanguage.refresh?.();
+    return;
+  }
+
+  function loadScript(src){
+    return new Promise((resolve,reject)=>{
+      const existing=document.querySelector(`script[src="${src}"]`);
+      if(existing){
+        if(
+          existing.dataset.loaded==='true' ||
+          (src==='translations.js' && window.TIDOC_EN_TRANSLATIONS) ||
+          (src==='language.js' && window.TiDocLanguage)
+        ){
+          resolve();
+        }else{
+          existing.addEventListener('load',()=>resolve(),{once:true});
+          existing.addEventListener('error',()=>reject(new Error(`Impossible de charger ${src}`)),{once:true});
+        }
+        return;
+      }
+
+      const script=document.createElement('script');
+      script.src=src;
+      script.defer=true;
+      script.dataset.loaded='false';
+      script.onload=()=>{
+        script.dataset.loaded='true';
+        resolve();
+      };
+      script.onerror=()=>reject(new Error(`Impossible de charger ${src}`));
+      document.head.appendChild(script);
+    });
+  }
+
+  try{
+    await loadScript('translations.js');
+    await loadScript('language.js');
+    window.TiDocLanguage?.refresh?.();
+  }
+  catch(error){
+    console.error("Erreur chargement traductions Ti'Doc :", error);
+  }
 }
 
 function setupMobileNavigation(){

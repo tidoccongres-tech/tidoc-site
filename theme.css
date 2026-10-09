@@ -1,78 +1,36 @@
-
-/* =====================================================
-   TI'DOC — DIRECTION ARTISTIQUE COMMUNE
-   VERSION CORRIGÉE
-===================================================== */
-
+/* Ti'Doc — direction artistique commune */
 :root{
-  --blue:#198CA7;
-  --blue-dark:#0B5367;
-  --blue-deep:#073C4B;
-
   --surface:#fff;
   --surface-soft:#f4fafb;
   --surface-deep:#073c4b;
-
   --ink:#123b45;
   --muted:#68828a;
-
   --line:rgba(7,60,75,.12);
   --line-strong:rgba(25,140,167,.25);
-
   --shadow-soft:0 18px 55px rgba(7,60,75,.10);
   --shadow-premium:0 24px 70px rgba(7,60,75,.16);
-
   --radius-xl:36px;
   --radius-lg:28px;
   --radius-md:18px;
 }
 
-/* =====================================================
-   BASE DU SITE
-===================================================== */
-
-html{
-  background:var(--surface-soft);
-}
+html{ background:var(--surface-soft); }
 
 body{
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   text-rendering:optimizeLegibility;
   color:var(--ink);
-
   background:
-    radial-gradient(
-      circle at 0 0,
-      rgba(25,140,167,.06),
-      transparent 28rem
-    ),
+    radial-gradient(circle at 0 0,rgba(25,140,167,.06),transparent 28rem),
     var(--surface-soft);
 }
 
-h1,h2,h3,h4,p{
-  text-wrap:pretty;
-}
+h1,h2,h3,h4,p{ text-wrap:pretty; }
+h1,h2,h3,h4{ letter-spacing:-.025em; }
 
-h1,h2,h3,h4{
-  letter-spacing:-.025em;
-}
+section{ scroll-margin-top:112px; }
 
-section{
-  scroll-margin-top:112px;
-}
-
-/* =====================================================
-   BARRE DE NAVIGATION
-===================================================== */
-
+/* Barre de navigation commune */
 header{
   padding-top:18px;
   padding-bottom:18px;
@@ -81,16 +39,12 @@ header{
 header nav{
   border:1px solid rgba(255,255,255,.72);
   background:rgba(255,255,255,.82);
-
-  box-shadow:
-    0 14px 45px rgba(7,60,75,.13);
+  box-shadow:0 14px 45px rgba(7,60,75,.13);
 }
 
 header nav > a,
 header .nav-main-row{
-  transition:
-    background .2s ease,
-    color .2s ease;
+  transition:background .2s ease,color .2s ease;
 }
 
 header nav > a:hover,
@@ -99,19 +53,15 @@ header .nav-main-row:hover{
   background:rgba(233,247,250,.88);
 }
 
-/* =====================================================
-   CARTES DU SITE
-===================================================== */
-
-/* On conserve les bordures uniquement
-   sur les véritables cartes */
-
+/* Surfaces et cartes */
 .info-bar,
 .about-path-card,
 .program-card,
 .pack-card,
 .contact-card,
-.privacy-content{
+.privacy-content,
+.intro-inner,
+.team-intro-inner{
   border:1px solid var(--line);
   box-shadow:var(--shadow-soft);
 }
@@ -121,11 +71,7 @@ header .nav-main-row:hover{
 .pack-card{
   overflow:hidden;
   border-radius:var(--radius-lg);
-
-  transition:
-    transform .28s ease,
-    box-shadow .28s ease,
-    border-color .28s ease;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
 }
 
 .about-path-card:hover,
@@ -138,9 +84,7 @@ header .nav-main-row:hover{
 
 .about-path-card img,
 .program-card img{
-  transition:
-    transform .5s cubic-bezier(.2,.75,.25,1),
-    filter .5s ease;
+  transition:transform .5s cubic-bezier(.2,.75,.25,1),filter .5s ease;
 }
 
 .about-path-card:hover img,
@@ -156,199 +100,18 @@ header .nav-main-row:hover{
   box-shadow:var(--shadow-premium);
 }
 
-/* =====================================================
-   ÉDITIONS 2025 / 2026 / 2027
-   SUPPRESSION DES ENCADRÉS
-===================================================== */
-
-/* Important :
-   Les titres des éditions utilisent .intro-inner.
-   Cette classe ne doit PAS avoir l'apparence
-   d'une carte.
-*/
-
-.edition-content .intro{
-  background:transparent;
-  border:none;
-  box-shadow:none;
-  text-align:center;
-}
-
-/* Suppression des encadrés */
-
-.edition-content .intro-inner{
-  display:block;
-
-  width:100%;
-  max-width:900px;
-
-  margin-left:auto;
-  margin-right:auto;
-
-  padding:0;
-
-  background:transparent !important;
-  background-image:none !important;
-
-  border:0 !important;
-  border-radius:0 !important;
-
-  box-shadow:none !important;
-  outline:none !important;
-
-  text-align:center;
-}
-
-/* Suppression des éventuels effets décoratifs */
-
-.edition-content .intro-inner::before,
-.edition-content .intro-inner::after{
-  content:none !important;
-  display:none !important;
-}
-
-/* Étiquette : PREMIÈRE ÉDITION, etc. */
-
-.edition-content .intro .section-tag{
-  display:block;
-
-  color:#198CA7;
-  font-size:14px;
-  font-weight:800;
-
-  letter-spacing:3px;
-  text-transform:uppercase;
-
-  margin-bottom:22px;
-
-  background:transparent;
-  border:0;
-  box-shadow:none;
-}
-
-/* Titres des éditions */
-
-.edition-content .intro h1,
-.edition-content .intro h2{
-  color:#073C4B;
-
-  font-size:clamp(36px,5vw,64px);
-  font-weight:800;
-
-  letter-spacing:-.045em;
-  line-height:1.12;
-
-  margin:0 auto;
-
-  max-width:1000px;
-  text-align:center;
-
-  background:transparent;
-  border:0;
-  box-shadow:none;
-}
-
-/* Descriptions */
-
-.edition-content .intro p{
-  color:#68828A;
-
-  font-size:clamp(16px,1.6vw,20px);
-  font-weight:400;
-
-  line-height:1.8;
-
-  max-width:850px;
-
-  margin:30px auto 0;
-
-  text-align:center;
-
-  background:transparent;
-  border:0;
-  box-shadow:none;
-}
-
-/* Les sections génériques ne sont pas des cartes */
-
-.section{
-  background:transparent;
-  border:none;
-  box-shadow:none;
-}
-
-/* =====================================================
-   FORMULAIRE NEWSLETTER
-===================================================== */
-
-.newsletter-form{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:stretch;
-  gap:12px;
-}
-
-/* Champs */
-
-.newsletter input:not([type="checkbox"]),
-.staff-input{
-  border:1px solid var(--line);
-
-  background:#fbfeff;
-
-  transition:
-    border-color .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
-}
-
-.newsletter-form input:not([type="checkbox"]){
-  flex:1 1 240px;
-
-  width:100%;
-  min-width:0;
-  min-height:52px;
-
-  padding:14px 18px;
-
-  border:1px solid rgba(25,140,167,.20);
-  border-radius:14px;
-
-  background:#fff;
-  color:#153C46;
-
-  font-size:14px;
-  box-shadow:none;
-}
-
-/* Focus */
-
-.newsletter input:not([type="checkbox"]):focus,
-.staff-input:focus{
-  border-color:var(--blue);
-  background:#fff;
-
-  box-shadow:
-    0 0 0 4px rgba(25,140,167,.12);
-
-  outline:0;
-}
-
-/* =====================================================
-   BOUTON NEWSLETTER
-===================================================== */
+/* Bouton d'inscription newsletter Ti'Doc */
 
 .newsletter-form button{
   order:2;
 
-  flex:0 0 auto;
+  /* Dimensions */
+  width:100%;
+  min-height:54px;
+  padding:15px 26px;
+  margin-top:12px;
 
-  width:auto;
-  min-height:52px;
-
-  padding:14px 26px;
-  margin:0;
-
+  /* Design */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -363,13 +126,13 @@ header .nav-main-row:hover{
     #0B5367 100%
   );
 
-  color:#fff;
-
+  color:#ffffff;
   font-family:inherit;
   font-size:15px;
   font-weight:700;
   letter-spacing:.2px;
 
+  /* Effet de profondeur */
   box-shadow:
     0 8px 22px rgba(25,140,167,.22),
     inset 0 1px 0 rgba(255,255,255,.15);
@@ -382,6 +145,8 @@ header .nav-main-row:hover{
     background .25s ease;
 }
 
+/* Animation au survol */
+
 .newsletter-form button:hover{
   transform:translateY(-2px);
 
@@ -390,14 +155,23 @@ header .nav-main-row:hover{
     inset 0 1px 0 rgba(255,255,255,.2);
 }
 
+/* Effet au clic */
+
 .newsletter-form button:active{
   transform:translateY(0);
+
+  box-shadow:
+    0 4px 12px rgba(25,140,167,.18);
 }
+
+/* Accessibilité */
 
 .newsletter-form button:focus-visible{
   outline:3px solid rgba(25,140,167,.35);
   outline-offset:4px;
 }
+
+/* Bouton désactivé */
 
 .newsletter-form button:disabled{
   opacity:.55;
@@ -405,98 +179,56 @@ header .nav-main-row:hover{
   transform:none;
 }
 
-/* =====================================================
-   NEWSLETTER — CONSENTEMENT RGPD
-===================================================== */
+.newsletter input:not([type="checkbox"]),
+.staff-input{
+  border:1px solid var(--line);
+  background:#fbfeff;
+  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+}
 
-.newsletter-form .newsletter-consent{
+.newsletter input:focus,
+.staff-input:focus{
+  border-color:var(--blue);
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(25,140,167,.12);
+  outline:0;
+}
+
+.newsletter-consent{
   order:3;
-
   flex:0 0 100%;
-
   display:flex;
-  flex-direction:row;
   align-items:flex-start;
-  justify-content:flex-start;
-
-  gap:12px;
-
-  width:100%;
-
-  margin:12px 0 0;
-  padding:14px;
-
-  border:1px solid rgba(25,140,167,.12);
-  border-radius:14px;
-
-  background:rgba(25,140,167,.05);
-
-  color:#637D84;
-
+  gap:10px;
+  margin-top:14px;
+  color:var(--muted);
   font-size:12px;
-  line-height:1.6;
-
-  text-align:left;
+  line-height:1.5;
   cursor:pointer;
 }
 
-/* Checkbox de taille normale */
+.newsletter-form{
+  flex-wrap:wrap;
+}
 
-.newsletter-form .newsletter-consent input[type="checkbox"],
-.newsletter .newsletter-consent input[type="checkbox"]{
-  display:block !important;
+.newsletter-form button{
+  order:2;
+}
 
-  appearance:auto !important;
-  -webkit-appearance:checkbox !important;
-
-  order:-1;
-
-  flex:0 0 16px !important;
-
-  width:16px !important;
-  height:16px !important;
-
-  min-width:16px !important;
-  min-height:16px !important;
-
-  max-width:16px !important;
-  max-height:16px !important;
-
-  padding:0 !important;
-  margin:2px 0 0 !important;
-
-  border:0 !important;
-  box-shadow:none !important;
-
-  transform:none !important;
-
-  accent-color:#198CA7;
+.newsletter-consent input{
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  margin-top:2px;
+  border-radius:4px;
+  accent-color:var(--blue);
   cursor:pointer;
 }
-
-.newsletter-consent span{
-  order:0;
-  flex:1;
-  min-width:0;
-}
-
-.newsletter-consent a{
-  color:#198CA7;
-  font-weight:700;
-
-  text-decoration:underline;
-  text-underline-offset:3px;
-}
-
-/* =====================================================
-   BOUTONS DU SITE
-===================================================== */
 
 .pack-button,
 .newsletter button,
 .staff-button{
-  box-shadow:
-    0 10px 25px rgba(7,60,75,.12);
+  box-shadow:0 10px 25px rgba(7,60,75,.12);
 }
 
 .pack-button:hover,
@@ -505,27 +237,41 @@ header .nav-main-row:hover{
   transform:translateY(-2px);
 }
 
-.btn,
-.staff-button,
-.pack-button,
-.privacy-more{
-  transition:
-    transform .22s ease,
-    box-shadow .22s ease,
-    background-color .22s ease,
-    border-color .22s ease;
+.site-footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at 85% 0,rgba(25,140,167,.28),transparent 22rem),
+    linear-gradient(135deg,#073c4b,#062e3a);
 }
 
-.btn:hover,
-.staff-button:hover,
-.pack-button:hover,
-.privacy-more:hover{
-  box-shadow:
-    0 12px 28px rgba(7,60,75,.14);
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+    animation-duration:.01ms!important;
+  }
+}
+
+::selection{ color:#fff; background:var(--blue); }
+a,button,input,select,textarea{ -webkit-tap-highlight-color:transparent; }
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid rgba(25,140,167,.42);
+  outline-offset:4px;
+}
+button,input,select,textarea{ font:inherit; }
+.section-tag,.hero-tag,.privacy-tag,.page-tag{ letter-spacing:1.8px; }
+.btn,.staff-button,.pack-button,.privacy-more{
+  transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease;
+}
+.btn:hover,.staff-button:hover,.pack-button:hover,.privacy-more:hover{
+  box-shadow:0 12px 28px rgba(7,60,75,.14);
+}
+@media(max-width:650px){
+  .hero,.team-hero,.about-hero,.privacy-hero,.page-heading{ padding-top:135px; }
 }
 
 /* =====================================================
-   BILLETTERIE HELLOASSO
+   TI'DOC — CORRECTION BOUTONS BILLETTERIE
 ===================================================== */
 
 .pack-button{
@@ -539,145 +285,166 @@ header .nav-main-row:hover{
   appearance:none;
 }
 
+/* Retour visuel au toucher */
+
 .pack-button:active:not(:disabled){
   transform:scale(.98);
 }
 
+/* État pendant la connexion HelloAsso */
+
 .pack-button.is-loading{
   opacity:1;
   background:#0B5367;
-
   cursor:wait;
   transform:none;
-
-  box-shadow:
-    0 10px 25px rgba(7,60,75,.12);
+  box-shadow:0 10px 25px rgba(7,60,75,.12);
 }
+
+/* Désactivation pendant le paiement */
 
 .pack-button:disabled{
   cursor:wait;
   transform:none;
 }
 
+/* Respecter le blocage RGPD */
+
 body.privacy-locked .pack-button{
   pointer-events:none;
 }
 
 /* =====================================================
-   PIED DE PAGE
+   TI'DOC — NEWSLETTER PREMIUM
 ===================================================== */
 
-.site-footer{
-  border-top:
-    1px solid rgba(255,255,255,.08);
+/* Formulaire */
 
-  background:
-    radial-gradient(
-      circle at 85% 0,
-      rgba(25,140,167,.28),
-      transparent 22rem
-    ),
-    linear-gradient(
-      135deg,
-      #073c4b,
-      #062e3a
-    );
+.newsletter-form{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:stretch;
+  gap:12px;
 }
 
-/* =====================================================
-   ACCESSIBILITÉ
-===================================================== */
+/* Champ e-mail */
 
-::selection{
-  color:#fff;
-  background:var(--blue);
+.newsletter-form input:not([type="checkbox"]){
+  flex:1 1 240px;
+  width:100%;
+  min-width:0;
+  min-height:52px;
+  padding:14px 18px;
+
+  border:1px solid rgba(25,140,167,.20);
+  border-radius:14px;
+
+  background:#FFFFFF;
+  color:#153C46;
+
+  font-size:14px;
+  box-shadow:none;
 }
 
-a,button,input,select,textarea{
-  -webkit-tap-highlight-color:transparent;
+.newsletter-form input:not([type="checkbox"]):focus{
+  outline:none;
+  border-color:#198CA7;
+  box-shadow:0 0 0 4px rgba(25,140,167,.12);
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible{
-  outline:3px solid rgba(25,140,167,.42);
-  outline-offset:4px;
+/* Bouton */
+
+.newsletter-form button{
+  flex:0 0 auto;
+  width:auto;
+  min-height:52px;
+  margin:0;
+  padding:14px 26px;
+
+  border-radius:14px;
+
+  background:linear-gradient(
+    135deg,
+    #198CA7,
+    #0B5367
+  );
+
+  color:white;
+  font-weight:700;
+  cursor:pointer;
 }
 
-button,input,select,textarea{
-  font:inherit;
+/* Ligne RGPD */
+
+.newsletter-consent{
+  order:3;
+  flex:0 0 100%;
+
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:11px;
+
+  margin-top:8px;
+  padding:13px 15px;
+
+  border:1px solid rgba(25,140,167,.12);
+  border-radius:12px;
+
+  background:rgba(233,247,250,.55);
+
+  color:#637D84;
+  font-size:12px;
+  line-height:1.6;
+
+  cursor:pointer;
 }
 
-.section-tag,
-.hero-tag,
-.privacy-tag,
-.page-tag{
-  letter-spacing:1.8px;
+/* Petite checkbox */
+
+.newsletter-consent input[type="checkbox"]{
+  appearance:auto;
+  -webkit-appearance:checkbox;
+
+  flex:0 0 16px;
+
+  width:16px !important;
+  height:16px !important;
+  min-width:16px !important;
+  min-height:16px !important;
+  max-width:16px;
+
+  padding:0 !important;
+  margin:2px 0 0 !important;
+
+  border:0;
+  border-radius:4px;
+
+  background:transparent;
+  box-shadow:none !important;
+
+  accent-color:#198CA7;
+
+  cursor:pointer;
 }
 
-/* =====================================================
-   TABLETTE
-===================================================== */
+/* Texte de consentement */
 
-@media(max-width:1024px){
-
-  .edition-content .intro-inner{
-    max-width:90%;
-  }
-
-  .edition-content .intro h2{
-    font-size:clamp(34px,5vw,50px);
-  }
-
+.newsletter-consent span{
+  flex:1;
+  min-width:0;
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+.newsletter-consent a{
+  color:#198CA7;
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* Version mobile */
 
 @media(max-width:650px){
-
-  .hero,
-  .team-hero,
-  .about-hero,
-  .privacy-hero,
-  .page-heading{
-    padding-top:135px;
-  }
-
-  /* Éditions */
-
-  .edition-content .intro{
-    padding:70px 20px 45px;
-  }
-
-  .edition-content .intro-inner{
-    width:100%;
-    max-width:100%;
-    padding:0;
-  }
-
-  .edition-content .intro .section-tag{
-    font-size:11px;
-    letter-spacing:2px;
-    margin-bottom:18px;
-  }
-
-  .edition-content .intro h1,
-  .edition-content .intro h2{
-    font-size:clamp(29px,7vw,40px);
-    line-height:1.16;
-  }
-
-  .edition-content .intro p{
-    font-size:15px;
-    line-height:1.7;
-    margin-top:22px;
-  }
-
-  /* Newsletter */
 
   .newsletter-form{
     flex-direction:column;
@@ -693,25 +460,341 @@ button,input,select,textarea{
     width:100%;
   }
 
-  .newsletter-form .newsletter-consent{
+  .newsletter-consent{
     width:100%;
     padding:12px;
   }
 
 }
 
+
+/* ==========================================
+   TI'DOC — CORRECTION NEWSLETTER
+========================================== */
+
+.newsletter-form .newsletter-consent{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  gap:12px !important;
+
+  width:100% !important;
+  margin:12px 0 0 !important;
+  padding:14px !important;
+
+  border-radius:14px;
+  background:rgba(25,140,167,.05);
+
+  font-size:12px;
+  line-height:1.6;
+  text-align:left;
+}
+
+.newsletter-form .newsletter-consent input[type="checkbox"],
+.newsletter .newsletter-consent input[type="checkbox"]{
+  display:block !important;
+  appearance:auto !important;
+  -webkit-appearance:checkbox !important;
+
+  order:-1 !important;
+  flex:0 0 16px !important;
+
+  width:16px !important;
+  height:16px !important;
+  min-width:16px !important;
+  min-height:16px !important;
+  max-width:16px !important;
+  max-height:16px !important;
+
+  padding:0 !important;
+  margin:2px 0 0 !important;
+
+  border:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+
+  accent-color:#198CA7;
+  cursor:pointer;
+}
+
+.newsletter-form .newsletter-consent span,
+.newsletter .newsletter-consent span{
+  order:0;
+  flex:1;
+  min-width:0;
+}
+
+
 /* =====================================================
-   ANIMATIONS RÉDUITES
+   TI'DOC — SECTIONS SANS ENCADRÉ
 ===================================================== */
 
-@media(prefers-reduced-motion:reduce){
+/* Les sections classiques restent intégrées au fond */
 
-  *,
-  *::before,
-  *::after{
-    scroll-behavior:auto !important;
-    transition-duration:.01ms !important;
-    animation-duration:.01ms !important;
+.section{
+  border:none;
+  box-shadow:none;
+  background:transparent;
+}
+
+/* Les titres et descriptions ne deviennent pas des cartes */
+
+.section > h1,
+.section > h2,
+.section > h3,
+.section > p{
+  border:none;
+  box-shadow:none;
+  background:transparent;
+}
+
+/* Meilleur rendu sur tablette et ordinateur */
+
+@media(min-width:768px){
+
+  .section{
+    border-radius:0;
   }
 
+}
+
+
+/* ================================================
+   TI'DOC — NOTRE HISTOIRE / DESIGN PREMIUM
+================================================ */
+
+/* Section de présentation */
+.about-hero,
+.about-section {
+  position: relative;
+  background: transparent;
+}
+
+/* Conteneur principal vidéo */
+.about-hero video,
+.about-hero iframe,
+.about-hero .about-video,
+.about-section video {
+  border-radius: 30px;
+  box-shadow:
+    0 24px 65px rgba(7, 60, 75, .14),
+    0 5px 15px rgba(7, 60, 75, .05);
+}
+
+/* Images de couverture */
+.about-hero img,
+.about-section .about-video img {
+  border-radius: 30px;
+}
+
+/* Titres de la section */
+.about-hero h1,
+.about-hero h2,
+.about-section h1,
+.about-section h2 {
+  color: #073C4B;
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.13;
+  text-wrap: balance;
+}
+
+/* Petite étiquette NOTRE HISTOIRE */
+.about-hero .section-tag,
+.about-section .section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #198CA7;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* Accent graphique avant l'étiquette */
+.about-hero .section-tag::before,
+.about-section .section-tag::before {
+  content: "";
+  width: 25px;
+  height: 3px;
+  border-radius: 10px;
+  background: #198CA7;
+}
+
+/* Texte de présentation */
+.about-hero p,
+.about-section p {
+  color: #637D84;
+  line-height: 1.85;
+  letter-spacing: -.01em;
+}
+
+/* Animation discrète pour vidéo */
+@media (hover: hover) {
+  .about-hero video,
+  .about-hero .about-video {
+    transition:
+      transform .4s ease,
+      box-shadow .4s ease;
+  }
+
+  .about-hero video:hover,
+  .about-hero .about-video:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 30px 80px rgba(7, 60, 75, .18);
+  }
+}
+
+/* Tablette */
+@media (min-width: 651px) and (max-width: 1024px) {
+  .about-hero h1,
+  .about-hero h2 {
+    font-size: clamp(32px, 4vw, 46px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .about-hero video,
+  .about-hero iframe,
+  .about-hero img,
+  .about-hero .about-video {
+    border-radius: 20px;
+  }
+
+  .about-hero h1,
+  .about-hero h2 {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.17;
+  }
+
+  .about-hero p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .about-hero .section-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+}
+
+
+
+/* ==========================================
+   TI'DOC — TITRES ÉDITIONS 2025 / 2026 / 2027
+   Même style que la page Accueil
+========================================== */
+
+/* Supprimer les encadrés des en-têtes */
+.page-heading,
+.page-heading-inner,
+.edition-hero,
+.edition-header,
+.edition-intro {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Supprimer les encadrés des éléments internes */
+.page-heading::before,
+.page-heading::after,
+.edition-hero::before,
+.edition-hero::after {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Mise en page centrée */
+.page-heading,
+.edition-hero,
+.edition-header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Étiquette au-dessus du titre */
+.page-heading .page-tag,
+.edition-hero .page-tag {
+  color: #198CA7;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Titres */
+.page-heading h1,
+.edition-hero h1,
+.edition-header h1 {
+  color: #073C4B;
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.12;
+  text-align: center;
+}
+
+/* Description */
+.page-heading p,
+.edition-hero p,
+.edition-header p {
+  color: #68828A;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tablette et mobile */
+@media (max-width: 768px) {
+  .page-heading,
+  .edition-hero,
+  .edition-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .page-heading h1,
+  .edition-hero h1,
+  .edition-header h1 {
+    font-size: clamp(30px, 7vw, 48px);
+  }
+}
+
+
+
+
+
+
+
+/* =====================================================
+   TI'DOC — CORRECTION HERO PAGE À PROPOS
+===================================================== */
+
+.about-hero{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7,60,75,.88) 0%,
+      rgba(11,83,103,.75) 48%,
+      rgba(25,140,167,.45) 100%
+    ),
+    url("files/IMG_3180_resultat.jpeg") center/cover no-repeat !important;
+  color:#fff !important;
+}
+
+.about-hero h1,
+.about-hero h2{
+  color:#fff !important;
+}
+
+.about-hero p{
+  color:rgba(255,255,255,.84) !important;
 }
